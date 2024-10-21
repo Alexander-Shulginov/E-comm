@@ -1,0 +1,10 @@
+@import './reset.css';
+@import './fonts.css';
+@import './vars.css';
+
+body {
+    line-height: 1.5;
+    font-family: var(--font-base);
+    color: var(--color-dark);
+    background-color: var(--color-light);
+}

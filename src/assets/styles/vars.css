@@ -1,0 +1,9 @@
+:root {
+    --color-light: #f5f5f5;
+    /* --color-dark: #364f6b; */
+    --color-dark: #2C3639;
+    --color-second: #3fc1c9;
+    --color-accent: #fc5185;
+
+    --font-base: 'Roboto';
+}
