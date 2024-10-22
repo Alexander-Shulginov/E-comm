@@ -34,7 +34,7 @@ defineProps<{
             </div>
         </q-card-section>
 
-        <q-card-actions style="">
+        <q-card-actions>
             <q-btn class="fit" color="primary"> Buy </q-btn>
         </q-card-actions>
     </q-card>

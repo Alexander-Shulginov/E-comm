@@ -1,48 +1,48 @@
-import { defineStore } from 'pinia';
-import { getProductById, getProducts } from '../services/cardService';
-import { Product } from '../types/productType';
-import { AxiosResponse } from 'axios';
+import { defineStore } from 'pinia'
+import { getProductById, getProducts } from '../services/productService'
+import { Product } from '../types/productType'
 
 export const shopStore = defineStore('shotStore', {
     state: () => ({
         products: [] as Product[],
         product: null as Product | null,
         loading: false,
-        error: null as null | string,
+        error: null as null | string
     }),
 
     actions: {
         async loadProducts() {
-            this.loading = true;
+            this.loading = true
             try {
-                const response: AxiosResponse<Product[]> = await getProducts();
-                this.products = response.data;
+                const response = await getProducts()
+                this.products = response
             } catch (error) {
                 if (error instanceof Error) {
-                    this.error = error.message;
+                    this.error = error.message
                 } else {
-                    this.error = String(error);
+                    this.error = String(error)
                 }
             } finally {
-                this.loading = false;
+                this.loading = false
             }
         },
+
         async loadProductById(id: number) {
-            this.loading = true;
+            this.loading = true
             try {
-                const response = await getProductById(id);
-                this.product = response.data as Product;
+                const response = await getProductById(id)
+                this.product = response.data as Product
             } catch (error) {
                 if (error instanceof Error) {
-                    this.error = error.message;
+                    this.error = error.message
                 } else {
-                    this.error = String(error);
+                    this.error = String(error)
                 }
             } finally {
-                this.loading = false;
+                this.loading = false
             }
-        },
+        }
     },
 
-    getters: {},
-});
+    getters: {}
+})

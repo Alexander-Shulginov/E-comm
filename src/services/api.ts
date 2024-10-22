@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const url = 'https://fakestoreapi.com';
-// const url = 'https://dummyjson.com/';
 
 export const apiService = axios.create({
     baseURL: url,

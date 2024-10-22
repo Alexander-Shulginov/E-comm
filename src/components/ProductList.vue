@@ -6,7 +6,6 @@ const store = shopStore()
 
 onMounted(async () => {
     await store.loadProducts()
-    await store.loadProductById(2)
 })
 </script>
 
