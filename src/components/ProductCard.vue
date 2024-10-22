@@ -1,91 +1,57 @@
 <script setup lang="ts">
-    defineProps<{
-        id: number;
-        price: number;
-        title: string;
-        image: string;
-        description: string;
-    }>();
+defineProps<{
+    id: number
+    price: number
+    title: string
+    image: string
+    rating: number
+    description: string
+}>()
 </script>
 
 <template>
-    <div class="card">
-        <img class="card__img" :src="image" width="125" />
-        <p class="card__title">{{ title }}</p>
-        <p class="card__descr" :title="description">{{ description }}</p>
-        <div class="card__wrap">
-            <p class="card__price">{{ price }} $</p>
-            <button class="card__buy">Buy</button>
-        </div>
-    </div>
+    <q-card rounded bordered>
+        <q-img fit="contain" class="q-mt-md" height="220px" :src="image" />
+
+        <q-card-section>
+            <div style="line-height: 1.1" class="text-h6 text-weight-bold q-mb-sm title--clamp">
+                {{ title }}
+            </div>
+            <div class="q-mb-sm descr--clamp">{{ description }}</div>
+            <div class="row justify-between">
+                <q-rating
+                    color="yellow-6"
+                    size="1.2rem"
+                    icon="star_border"
+                    icon-selected="star"
+                    readonly
+                    :model-value="rating"
+                ></q-rating>
+                <div class="text-body1 text-weight-bold">
+                    {{ price }}
+                    $
+                </div>
+            </div>
+        </q-card-section>
+
+        <q-card-actions style="">
+            <q-btn class="fit" color="primary"> Buy </q-btn>
+        </q-card-actions>
+    </q-card>
 </template>
 
 <style scoped lang="scss">
-    .card {
-        width: 100%;
-        height: 100%;
-        border-radius: 12px;
-        box-shadow: 1px 1px 10px var(--color-dark);
-        display: flex;
-        flex-direction: column;
+.title--clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
 
-        padding: 12px;
-
-        &__img {
-            display: block;
-            margin: 0 auto;
-            height: 250px;
-            width: 100%;
-            object-fit: contain;
-
-            margin-bottom: 18px;
-        }
-
-        &__title {
-            font-size: 22px;
-            line-height: 1.1;
-            font-weight: 700;
-            margin-bottom: 12px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
-        }
-
-        &__descr {
-            margin-bottom: 12px;
-
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-        }
-
-        &__wrap {
-            display: flex;
-            justify-content: space-between;
-            margin-top: auto;
-            gap: 12px;
-            text-align: center;
-        }
-
-        &__price {
-            flex-grow: 2;
-            font-size: 18px;
-            padding: 8px;
-            background-color: var(--color-second);
-            border-radius: 6px;
-            color: var(--color-light);
-        }
-
-        &__buy {
-            cursor: pointer;
-            flex-grow: 2;
-            font-size: 18px;
-            padding: 8px;
-            background-color: var(--color-accent);
-            border-radius: 6px;
-            color: var(--color-light);
-        }
-    }
+.descr--clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
 </style>
