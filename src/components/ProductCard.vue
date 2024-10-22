@@ -1,44 +1,42 @@
 <script setup lang="ts">
-    import { onMounted, ref } from 'vue';
-    import { getProductById, getProducts } from '../services/cardService';
-
-    const products = ref();
-    const product = ref();
-
-    onMounted(async () => {
-        products.value = await getProducts();
-        product.value = await getProductById(1);
-    });
+    defineProps<{
+        id: number;
+        price: number;
+        title: string;
+        image: string;
+        description: string;
+    }>();
 </script>
 
 <template>
-    <div class="card" v-if="product">
-        <img class="card__img" :src="product.data.image" alt="" width="125" />
-        <!-- <p>{{ product.data.id }}</p> -->
-        <p class="card__title">{{ product.data.title }}</p>
-        <p class="card__descr">{{ product.data.description }}</p>
-        <!-- <p>{{ product.data.category }}</p> -->
-        <!-- <p>{{ product.data.rating.rate }}</p> -->
+    <div class="card">
+        <img class="card__img" :src="image" width="125" />
+        <p class="card__title">{{ title }}</p>
+        <p class="card__descr" :title="description">{{ description }}</p>
         <div class="card__wrap">
+            <p class="card__price">{{ price }} $</p>
             <button class="card__buy">Buy</button>
-            <p class="card__price">{{ product.data.price }} $</p>
         </div>
     </div>
-    <div v-else>load</div>
 </template>
 
 <style scoped lang="scss">
     .card {
-        max-width: 350px;
+        width: 100%;
+        height: 100%;
         border-radius: 12px;
         box-shadow: 1px 1px 10px var(--color-dark);
+        display: flex;
+        flex-direction: column;
 
         padding: 12px;
-        margin: 3rem;
 
         &__img {
             display: block;
             margin: 0 auto;
+            height: 250px;
+            width: 100%;
+            object-fit: contain;
 
             margin-bottom: 18px;
         }
@@ -48,15 +46,25 @@
             line-height: 1.1;
             font-weight: 700;
             margin-bottom: 12px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
         }
 
         &__descr {
             margin-bottom: 12px;
+
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
         }
 
         &__wrap {
             display: flex;
             justify-content: space-between;
+            margin-top: auto;
             gap: 12px;
             text-align: center;
         }
