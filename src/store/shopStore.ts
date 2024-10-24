@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
-import { getProductById, getProducts } from '../services/productService'
-import { Product } from '../types/productType'
+import { getProductById, getProducts, getProductSortedBy } from '../services/productService'
+import { Category, Product, SortDirection } from '../types/productType'
+import { getCategory } from '../services/categoryService'
 
 export const shopStore = defineStore('shotStore', {
     state: () => ({
@@ -11,36 +12,43 @@ export const shopStore = defineStore('shotStore', {
     }),
 
     actions: {
-        async loadProducts() {
+        async handleRequest(callback: Function) {
             this.loading = true
             try {
-                const response = await getProducts()
-                this.products = response
+                await callback()
             } catch (error) {
-                if (error instanceof Error) {
-                    this.error = error.message
-                } else {
-                    this.error = String(error)
-                }
+                this.error = error instanceof Error ? error.message : String(error)
             } finally {
                 this.loading = false
             }
         },
 
+        async loadProducts() {
+            await this.handleRequest(async () => {
+                const res = await getProducts()
+                this.products = res
+            })
+        },
+
         async loadProductById(id: number) {
-            this.loading = true
-            try {
-                const response = await getProductById(id)
-                this.product = response.data as Product
-            } catch (error) {
-                if (error instanceof Error) {
-                    this.error = error.message
-                } else {
-                    this.error = String(error)
-                }
-            } finally {
-                this.loading = false
-            }
+            await this.handleRequest(async () => {
+                const res = await getProductById(id)
+                this.products = res
+            })
+        },
+
+        async sortProduct(direction: SortDirection) {
+            await this.handleRequest(async () => {
+                const res = await getProductSortedBy(direction)
+                this.products = res
+            })
+        },
+
+        async loadProductByCategory(category: Category) {
+            await this.handleRequest(async () => {
+                const res = await getCategory(category)
+                this.products = res
+            })
         }
     },
 

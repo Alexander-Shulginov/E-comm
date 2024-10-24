@@ -14,6 +14,7 @@ onMounted(async () => {
         <ProductCard
             v-for="product in store.products"
             :id="product.id"
+            :key="product.id"
             :image="product.image"
             :title="product.title"
             :price="product.price"
