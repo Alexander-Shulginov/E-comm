@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { isRef, ref, watch } from 'vue'
 import { shopStore } from '../store/shopStore'
 import { Category, SortDirection } from '../types/productType'
 
 const store = shopStore()
 
+const i = 12;
 const modelSort = ref(null)
 const optionsSort: SortDirection[] = ['asc', 'desc']
+
+console.log(isRef(i))
 
 const modelCategory = ref(null)
 const optionsCategory: Category[] = [
