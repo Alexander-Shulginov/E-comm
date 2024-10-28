@@ -6,5 +6,10 @@ const errorHandler = (error: unknown) => {
 }
 
 export const addProduct = async () => {
-    
+    try {
+        const { data } = await apiService.get(`/users/`)
+        return data
+    } catch (error) {
+        errorHandler(error)
+    }
 }

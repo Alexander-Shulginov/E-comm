@@ -1,5 +1,4 @@
 import { apiService } from './api'
-import { Category } from '../types/productType'
 
 const errorHandler = (error: unknown) => {
     console.error(error)

@@ -10,8 +10,8 @@ defineProps<{
 </script>
 
 <template>
-    <router-link :to="{ name: 'ProductDetail', params: { id: id } }">
-        <q-card rounded bordered>
+    <q-card rounded bordered>
+        <router-link :to="{ name: 'ProductDetail', params: { id: id } }">
             <q-img fit="contain" class="q-mt-md" height="220px" :src="image" />
 
             <q-card-section>
@@ -34,12 +34,11 @@ defineProps<{
                     </div>
                 </div>
             </q-card-section>
-
-            <q-card-actions>
-                <q-btn class="fit" color="primary"> Buy </q-btn>
-            </q-card-actions>
-        </q-card>
-    </router-link>
+        </router-link>
+        <q-card-actions>
+            <q-btn @click="console.log(11)" class="fit" color="primary"> Buy </q-btn>
+        </q-card-actions>
+    </q-card>
 </template>
 
 <style scoped lang="scss">
