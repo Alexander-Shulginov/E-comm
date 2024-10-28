@@ -6,7 +6,7 @@ import { getCategory } from '../services/categoryService'
 export const shopStore = defineStore('shotStore', {
     state: () => ({
         products: [] as Product[],
-        product: null as Product | null,
+        product: <Product | null>(null),
         loading: false,
         error: null as null | string
     }),

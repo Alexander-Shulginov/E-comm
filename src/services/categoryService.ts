@@ -15,7 +15,7 @@ export const getAllCategory = async () => {
     }
 }
 
-export const getCategory = async (category: Category) => {
+export const getCategory = async (category: string) => {
     try {
         const { data } = await apiService.get(`/products/category/${category}`)
         return data

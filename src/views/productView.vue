@@ -1,6 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ProductDetail from '../components/ProductDetail.vue'
+import TheBreadcrumbs from '../components/TheBreadcrumbs.vue'
+</script>
+
 <template>
-    <h3>Product page</h3>
+    <ProductDetail />
 </template>
 
 <style scoped></style>

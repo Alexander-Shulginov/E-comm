@@ -24,7 +24,7 @@ onMounted(async () => {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style  lang="scss">
 .grid-wrap {
     max-width: 1280px;
     padding: 0 16px;

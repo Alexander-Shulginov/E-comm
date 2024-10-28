@@ -22,7 +22,7 @@ const toggleLeftDrawer = () => {
                 </q-toolbar-title>
                 <div class="row q-gutter-md">
                     <router-link to="/">Home</router-link>
-                    <router-link to="/product">Product</router-link>
+                    <router-link to="/category">Category</router-link>
                     <router-link to="/cart">Cart</router-link>
                 </div>
             </q-toolbar>
