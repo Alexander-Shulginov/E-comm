@@ -1,44 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import FilterSelect from './components/FilterSelect.vue'
+import { onMounted, ref } from 'vue'
 
-const leftDrawerOpen = ref(false)
-const toggleLeftDrawer = () => {
-    leftDrawerOpen.value = !leftDrawerOpen.value
-}
+// onMounted(async () => {
+//     const response = await fetch('http://localhost:3000/sneakers/')
+//     sneakers.value = await response.json()
+//     console.log(sneakers.value.length)
+//     if (sneakers) {
+// uniqueBrands.value = new Set(sneakers.value.map((sneaker) => sneaker.designer))
+//     }
+// })
+// <div v-if="sneakers.length > 0">
+//     <div v-for="sneaker in sneakers" :key="sneaker.id" class="sneaker-item">
+//         <ol>
+//             <li>
+//                 {{ uniqueBrands }}
+//             </li>
+//         </ol>
+//     </div>
+// </div>
 </script>
 
 <template>
-    <q-layout view="HHH LpR lFf">
-        <q-header reveal class="bg-primary text-white" height-hint="98">
-            <q-toolbar>
-                <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-
-                <q-toolbar-title>
-                    <!-- <q-avatar>
-                        <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
-                    </q-avatar> -->
-                    E-commerce
-                </q-toolbar-title>
-                <div class="row q-gutter-md">
-                    <router-link to="/">Home</router-link>
-                    <router-link to="/category">Category</router-link>
-                    <router-link to="/cart">Cart</router-link>
-                </div>
-            </q-toolbar>
-        </q-header>
-
-        <q-drawer v-model="leftDrawerOpen" side="left" overlay bordered>
-            <!-- drawer content -->
-            <FilterSelect />
-        </q-drawer>
-
-        <q-page-container>
-            <router-view />
-        </q-page-container>
-
-        <q-footer reveal elevated class="bg-grey-8 text-white"> </q-footer>
-    </q-layout>
+    <div>1</div>
 </template>
 
 <style scoped lang="scss"></style>
