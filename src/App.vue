@@ -18,10 +18,28 @@ import { onMounted, ref } from 'vue'
 //         </ol>
 //     </div>
 // </div>
+
+let themeIsDark = ref(false)
+
+const toggleTheme = () => {
+    themeIsDark.value = !themeIsDark.value
+}
 </script>
 
 <template>
-    <div>1</div>
+    <v-app :theme="themeIsDark ? 'dark' : 'light'">
+        <v-app-bar class="px-3">
+            <v-spacer></v-spacer>
+            <v-btn @click="toggleTheme" color="info" text="Toggle Theme" slim></v-btn>
+        </v-app-bar>
+
+        <v-main>
+            <v-container>
+                <v-icon icon="mdi-checkbox-marked-circle" end></v-icon>
+                <h1>Main Content</h1>
+            </v-container>
+        </v-main>
+    </v-app>
 </template>
 
 <style scoped lang="scss"></style>
