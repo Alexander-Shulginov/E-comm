@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const url = 'https://fakestoreapi.com'
+const url = 'https://www.googleapis.com/books/v1'
+export const apiKey = import.meta.env.VITE_API_KEY
 
 export const apiService = axios.create({
     baseURL: url,
