@@ -1,19 +1,19 @@
 import { apiKey, apiService } from './api'
 
-export interface IRequestConf {
-    maxResult: 10
-}
-
 const errorHandler = (error: unknown) => {
     console.error(error)
     throw error
 }
 
-export const getBooks = async (searchQuery: string) => {
+export const getBooksBySearch = async (searchQuery: string) => {
     try {
-        const { data } = await apiService.get(
-            `/volumes?q=${searchQuery}+intitle:${searchQuery}&key=${apiKey}&maxResults=10`
-        )
+        const { data } = await apiService.get('/volumes', {
+            params: {
+                q: `${searchQuery}+intitle:${searchQuery}`,
+                key: apiKey,
+                maxResults: 20
+            }
+        })
         return data
     } catch (error) {
         errorHandler(error)
