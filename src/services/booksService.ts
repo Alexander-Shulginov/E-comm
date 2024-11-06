@@ -1,7 +1,7 @@
 import { apiKey, apiService } from './api'
 
 export interface IRequestConf {
-    maxResult: 3
+    maxResult: 10
 }
 
 const errorHandler = (error: unknown) => {
@@ -12,7 +12,7 @@ const errorHandler = (error: unknown) => {
 export const getBooks = async (searchQuery: string) => {
     try {
         const { data } = await apiService.get(
-            `/volumes?q=${searchQuery}+intitle:${searchQuery}&key=${apiKey}&maxResults=3`
+            `/volumes?q=${searchQuery}+intitle:${searchQuery}&key=${apiKey}&maxResults=10`
         )
         return data
     } catch (error) {
