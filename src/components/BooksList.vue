@@ -5,24 +5,13 @@ const booksStore = useBooksStore()
 </script>
 
 <template>
-    <div v-if="booksStore.books" class="books-list">
-        <BooksCard v-for="book in booksStore.books.items" :book="book":key="book.id" />
-    </div>
+    <v-row v-if="booksStore.books">
+        <v-col
+            class="v-col-12 v-col-sm-6 v-col-md-4 v-col-lg-3 v-col-xl-2"
+            v-for="book in booksStore.books.items"
+            :key="book.id"
+        >
+            <BooksCard :book="book" />
+        </v-col>
+    </v-row>
 </template>
-
-<style lang="scss" scoped>
-.books-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 24px;
-
-    @media (max-width: 1024px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 768px) {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-}
-</style>

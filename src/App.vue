@@ -3,7 +3,7 @@ import TheHeader from './components/TheHeader.vue'
 </script>
 
 <template>
-    <v-app :theme="'light'">
+    <v-app :theme="'dark'">
         <TheHeader />
 
         <v-main>
