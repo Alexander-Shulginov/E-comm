@@ -5,8 +5,8 @@ defineProps<{ book: BookInfo }>()
 </script>
 
 <template>
-    <v-card class="h-100" >
-        <RouterLink to="">
+    <v-card class="h-100">
+        <RouterLink :to="{ name: 'Book', params: { id: book.id } }">
             <div v-if="book.volumeInfo.imageLinks">
                 <v-img
                     :src="book.volumeInfo.imageLinks.thumbnail"

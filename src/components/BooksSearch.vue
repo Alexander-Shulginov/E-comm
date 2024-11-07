@@ -13,15 +13,16 @@ const getSearchResult = async () => {
 </script>
 
 <template>
-    <div class="d-flex ga-3">
+    <div class="d-flex ga-3 mb-16">
         <v-text-field
             name="user-search"
             label="Search"
             clearable
+            density="comfortable"
             v-model="searchQuery"
             @keydown.enter="getSearchResult"
         ></v-text-field>
-        <v-btn @click="getSearchResult" size="x-large" color="success">Search</v-btn>
+        <v-btn @click="getSearchResult" size="x-large" color="success" style="height: 47px;">Search</v-btn>
     </div>
 </template>
 

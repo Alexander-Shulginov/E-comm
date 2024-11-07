@@ -10,6 +10,12 @@ const routes = [
     },
 
     {
+        path: '/book/:id',
+        name: 'Book',
+        component: () => import('../views/bookView.vue')
+    },
+
+    {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
         component: () => import('../views/404View.vue')

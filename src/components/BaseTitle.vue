@@ -15,6 +15,8 @@ defineProps<{
 .base-title {
     margin-bottom: 26px;
     line-height: 1.3;
+    text-align: center;
+    font-size: 46px;
 
     @media (max-width: 768px) {
         margin-bottom: 18px;

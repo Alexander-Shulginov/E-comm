@@ -15,3 +15,19 @@ export interface BookInfo {
 export interface BooksResponse {
     items: BookInfo[]
 }
+
+export interface BookDetails {
+    volumeInfo: {
+        title: string
+        publisher: string
+        publishedDate: string
+        description: string
+        pageCount: number
+        language: string
+        imageLinks: {
+            large: string
+        }
+        authors: string | string[]
+        categories: string | string[]
+    }
+}
