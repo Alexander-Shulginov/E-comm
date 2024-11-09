@@ -1,39 +1,43 @@
 <script setup lang="ts">
+import { useBooksStore } from '../store/booksStore';
 import { BookInfo } from '../types/BookInterface'
 
 defineProps<{ book: BookInfo }>()
+const bookStore = useBooksStore()
 </script>
 
 <template>
-    <v-card class="h-100">
-        <RouterLink :to="{ name: 'Book', params: { id: book.id } }">
-            <div v-if="book.volumeInfo.imageLinks">
-                <v-img
-                    :src="book.volumeInfo.imageLinks.thumbnail"
-                    :alt="book.volumeInfo.title"
-                    contain
-                    height="250"
-                />
-            </div>
-            <div v-else class="d-flex align-center justify-center" style="height: 250px">
-                no photo
-            </div>
-            <v-card-title>{{ book.volumeInfo.title }}</v-card-title>
-            <v-card-text class="pb-0"> {{ book.volumeInfo.categories?.[0] }}</v-card-text>
-            <v-card-text>
-                <div class="card-authors">
-                    <span
-                        class="card-authors__name"
-                        v-for="author in book.volumeInfo.authors"
-                        :key="author"
-                        :title="book.volumeInfo.authors?.join(', ')"
-                    >
-                        {{ author + ' ' }}
-                    </span>
+    <v-skeleton-loader type="card" :loading="bookStore.isLoading">
+        <v-card class="h-100">
+            <RouterLink :to="{ name: 'Book', params: { id: book.id } }">
+                <div v-if="book.volumeInfo.imageLinks">
+                    <v-img
+                        :src="book.volumeInfo.imageLinks.thumbnail"
+                        :alt="book.volumeInfo.title"
+                        contain
+                        height="250"
+                    />
                 </div>
-            </v-card-text>
-        </RouterLink>
-    </v-card>
+                <div v-else class="d-flex align-center justify-center" style="height: 250px">
+                    no photo
+                </div>
+                <v-card-title>{{ book.volumeInfo.title }}</v-card-title>
+                <v-card-text class="pb-0"> {{ book.volumeInfo.categories?.[0] }}</v-card-text>
+                <v-card-text>
+                    <div class="card-authors">
+                        <span
+                            class="card-authors__name"
+                            v-for="author in book.volumeInfo.authors"
+                            :key="author"
+                            :title="book.volumeInfo.authors?.join(', ')"
+                        >
+                            {{ author + ' ' }}
+                        </span>
+                    </div>
+                </v-card-text>
+            </RouterLink>
+        </v-card>
+    </v-skeleton-loader>
 </template>
 
 <style scoped lang="scss">
