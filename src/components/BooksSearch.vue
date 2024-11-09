@@ -9,11 +9,11 @@ const searchQuery = ref<string>('')
 const getSearchResult = async () => {
     if (searchQuery.value === '' || /^\s*$/.test(searchQuery.value)) return
     booksStore.getBooksBySearch(searchQuery.value)
-    booksStore.searchQuery = searchQuery.value
+    booksStore.lastQuery = searchQuery.value
 }
 
 onMounted(() => {
-    searchQuery.value = booksStore.searchQuery
+    searchQuery.value = booksStore.lastQuery
 })
 </script>
 
@@ -32,5 +32,3 @@ onMounted(() => {
         >
     </div>
 </template>
-
-<style scoped></style>
