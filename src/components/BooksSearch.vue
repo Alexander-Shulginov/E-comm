@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useBooksStore } from '../store/booksStore'
 
 const booksStore = useBooksStore()
@@ -9,7 +9,12 @@ const searchQuery = ref<string>('')
 const getSearchResult = async () => {
     if (searchQuery.value === '' || /^\s*$/.test(searchQuery.value)) return
     booksStore.getBooksBySearch(searchQuery.value)
+    booksStore.searchQuery = searchQuery.value
 }
+
+onMounted(() => {
+    searchQuery.value = booksStore.searchQuery
+})
 </script>
 
 <template>
@@ -22,7 +27,9 @@ const getSearchResult = async () => {
             v-model="searchQuery"
             @keydown.enter="getSearchResult"
         ></v-text-field>
-        <v-btn @click="getSearchResult" size="x-large" color="success" style="height: 47px;">Search</v-btn>
+        <v-btn @click="getSearchResult" size="x-large" color="success" style="height: 47px"
+            >Search</v-btn
+        >
     </div>
 </template>
 
