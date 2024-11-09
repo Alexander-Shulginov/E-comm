@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="d-flex ga-3 mb-16">
+    <div class="d-flex ga-3 mb-3">
         <v-text-field
             name="user-search"
             label="Search"

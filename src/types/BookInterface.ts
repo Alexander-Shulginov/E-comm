@@ -13,6 +13,7 @@ export interface BookInfo {
 }
 
 export interface BooksResponse {
+    totalItems?: number
     items: BookInfo[]
 }
 

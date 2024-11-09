@@ -5,6 +5,7 @@ import { getBookById, getBooksBySearch } from '../services/booksService'
 export const useBooksStore = defineStore('booksStore', {
     state: () => ({
         lastQuery: "",
+        resultCounter: 0,
         book: null as BookDetails | null,
         books: null as BooksResponse | null
     }),
