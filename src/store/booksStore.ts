@@ -4,15 +4,24 @@ import { getBookById, getBooksBySearch } from '../services/booksService'
 
 export const useBooksStore = defineStore('booksStore', {
     state: () => ({
-        lastQuery: "",
+        lastQuery: '',
+        error: null as string | null,
+        isLoading: false,
         resultCounter: 0,
         book: null as BookDetails | null,
         books: null as BooksResponse | null
     }),
 
     actions: {
-        async getBooksBySearch(searchQuery: string) {
-            this.books = await getBooksBySearch(searchQuery)
+        async fetchBooksBySearch(searchQuery: string) {
+            this.isLoading = true
+            try {
+                this.books = await getBooksBySearch(searchQuery)
+            } catch (error) {
+                this.error = error as string
+            } finally {
+                this.isLoading = false
+            }
         },
 
         async getBookById(id: string) {

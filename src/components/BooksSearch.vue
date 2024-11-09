@@ -8,7 +8,7 @@ const searchQuery = ref<string>('')
 
 const getSearchResult = async () => {
     if (searchQuery.value === '' || /^\s*$/.test(searchQuery.value)) return
-    booksStore.getBooksBySearch(searchQuery.value)
+    booksStore.fetchBooksBySearch(searchQuery.value)
     booksStore.lastQuery = searchQuery.value
 }
 
