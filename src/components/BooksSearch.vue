@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import { onMounted, ref, useTemplateRef } from 'vue'
+import { onMounted, useTemplateRef } from 'vue'
 import { useBooksStore } from '../store/booksStore'
 import { focusState } from '../hooks/useFocus'
 
 const booksStore = useBooksStore()
 
-const searchQuery = ref<string>('')
 const getSearchResult = async () => {
-    if (searchQuery.value === '' || /^\s*$/.test(searchQuery.value)) return
-    booksStore.fetchBooks(searchQuery.value)
-    booksStore.lastQuery = searchQuery.value
+    if (booksStore.searchQuery === '' || /^\s*$/.test(booksStore.searchQuery)) return
+    booksStore.fetchBooks(booksStore.searchQuery)
+    booksStore.lastQuery = booksStore.searchQuery
 }
 
 const inputElem = useTemplateRef('input-field')
 onMounted(() => {
-    searchQuery.value = booksStore.lastQuery
+    booksStore.searchQuery = booksStore.lastQuery
     focusState.setInputRef(inputElem.value)
 })
 </script>
@@ -27,7 +26,7 @@ onMounted(() => {
             label="Search"
             clearable
             density="comfortable"
-            v-model="searchQuery"
+            v-model="booksStore.searchQuery"
             @keydown.enter="getSearchResult"
         ></v-text-field>
         <v-btn @click="getSearchResult" size="x-large" color="success" style="height: 47px"

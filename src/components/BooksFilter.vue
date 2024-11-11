@@ -14,21 +14,19 @@ const selectItems = {
     Poetry: 'poetry'
 }
 
-
 const activeItem = ref<string>('')
 
 watch(activeItem, (n) => {
-    if (bookStore.lastQuery !== '') {
+    if (bookStore.searchQuery !== '') {
         bookStore.fetchBooks(bookStore.lastQuery, n)
     } else {
         focusState.focusInput()
-        console.log('empty')
     }
 })
 </script>
 
 <template>
-    <select style="background-color: gray; margin-bottom: 25px;" v-model="activeItem">
+    <select style="background-color: gray; margin-bottom: 25px" v-model="activeItem">
         <option style="background-color: black" :value="item" v-for="(item, key) in selectItems">
             {{ key }}
         </option>

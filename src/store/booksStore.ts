@@ -4,6 +4,7 @@ import { getBookById, getBooks } from '../services/booksService'
 
 export const useBooksStore = defineStore('booksStore', {
     state: () => ({
+        searchQuery: '',
         lastQuery: '',
         categoryQuery: '',
         error: null as string | null,
