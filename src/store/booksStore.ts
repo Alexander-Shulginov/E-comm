@@ -15,10 +15,10 @@ export const useBooksStore = defineStore('booksStore', {
     }),
 
     actions: {
-        async fetchBooks(searchQuery: string, categoryQuery?: string) {
+        async fetchBooks(searchQuery: string, categoryQuery?: string, orderBy?: string) {
             this.isLoading = true
             try {
-                this.books = await getBooks(searchQuery, categoryQuery)
+                this.books = await getBooks(searchQuery, categoryQuery, orderBy)
             } catch (error) {
                 this.error = error as string
             } finally {
