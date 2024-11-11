@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
 import { BookDetails, BooksResponse } from '../types/BookInterface'
-import { getBookById, getBooksBySearch } from '../services/booksService'
+import { getBookById, getBooks } from '../services/booksService'
 
 export const useBooksStore = defineStore('booksStore', {
     state: () => ({
         lastQuery: '',
+        categoryQuery: '',
         error: null as string | null,
         isLoading: false,
         resultCounter: 0,
@@ -13,10 +14,10 @@ export const useBooksStore = defineStore('booksStore', {
     }),
 
     actions: {
-        async fetchBooksBySearch(searchQuery: string) {
+        async fetchBooks(searchQuery: string, categoryQuery?: string) {
             this.isLoading = true
             try {
-                this.books = await getBooksBySearch(searchQuery)
+                this.books = await getBooks(searchQuery, categoryQuery)
             } catch (error) {
                 this.error = error as string
             } finally {

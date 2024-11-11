@@ -1,9 +1,9 @@
 import { apiKey, apiService } from './api'
 
-export const getBooksBySearch = async (searchQuery: string) => {
+export const getBooks = async (searchQuery: string, categoryQuery: string = '') => {
     const { data } = await apiService.get('/volumes', {
         params: {
-            q: `${searchQuery}+intitle:${searchQuery}`,
+            q: `${searchQuery}+intitle:${searchQuery}+subject:${categoryQuery}`,
             key: apiKey,
             maxResults: 20
         }
