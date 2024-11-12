@@ -5,15 +5,15 @@ const booksStore = useBooksStore()
 </script>
 
 <template>
-    <div class="d-flex ga-3 mb-3">
+    <div class="mb-3 v-row align-center">
         <v-text-field
+            class="v-col-10"
             name="user-search"
             ref="input-field"
             label="Search"
             clearable
-            density="comfortable"
             v-model="booksStore.searchQuery"
         ></v-text-field>
-        <v-btn size="x-large" color="success" style="height: 47px">Search</v-btn>
+        <v-btn class="v-col-2" size="x-large" color="success">Search</v-btn>
     </div>
 </template>

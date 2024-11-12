@@ -4,6 +4,8 @@ import { BookDetails, BooksResponse } from '../types/BookInterface'
 export const useBooksStore = defineStore('booksStore', {
     state: () => ({
         searchQuery: '',
+        selectedCategory: '',
+        selectedOrder: '',
         resultCounter: 0,
         isLoading: false,
         error: null as string | null,
