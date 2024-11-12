@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useBooksStore } from '../store/booksStore'
-import { focusState } from '../hooks/useFocus'
+import { ref } from 'vue'
 
-const bookStore = useBooksStore()
 const orderValue = ref('')
 const selectItems = {
     All: '',
@@ -16,22 +13,6 @@ const selectItems = {
 }
 
 const activeItem = ref<string>('')
-
-watch(activeItem, (n) => {
-    if (bookStore.searchQuery !== '') {
-        bookStore.fetchBooks(bookStore.lastQuery, n)
-    } else {
-        focusState.focusInput()
-    }
-})
-
-watch(orderValue, (n) => {
-    if (bookStore.searchQuery !== '') {
-        bookStore.fetchBooks(bookStore.lastQuery, activeItem.value, n)
-    } else {
-        focusState.focusInput()
-    }
-})
 </script>
 
 <template>
