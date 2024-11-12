@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const url = 'https://www.googleapis.com/books/v1'
+const url = import.meta.env.VITE_BASE_URL
 export const apiKey = import.meta.env.VITE_API_KEY
 
 export const apiService = axios.create({
     baseURL: url,
-    timeout: 5000,
+    timeout: 10000,
     responseType: 'json'
 })
 

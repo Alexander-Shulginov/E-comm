@@ -1,7 +1,26 @@
 <script setup lang="ts">
+import { useRoute, useRouter } from 'vue-router'
 import { useBooksStore } from '../store/booksStore'
+import { watch } from 'vue'
 
+const route = useRoute()
+const router = useRouter()
 const booksStore = useBooksStore()
+
+const sendRequest = async () => {
+    router.push({
+        name: 'Home',
+        query: { q: booksStore.searchQuery }
+    })
+}
+
+watch(
+    () => route.query.q,
+    () => {
+        booksStore.searchQuery = (route.query.q as string) || ''
+        booksStore.fetchBooks()
+    }
+)
 </script>
 
 <template>
@@ -14,6 +33,6 @@ const booksStore = useBooksStore()
             clearable
             v-model="booksStore.searchQuery"
         ></v-text-field>
-        <v-btn class="v-col-2" size="x-large" color="success">Search</v-btn>
+        <v-btn @click="sendRequest" class="v-col-2" size="x-large" color="success">Search</v-btn>
     </div>
 </template>

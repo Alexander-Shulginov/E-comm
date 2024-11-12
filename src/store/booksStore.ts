@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { BookDetails, BooksResponse } from '../types/BookInterface'
+import { getBooks } from '../services/booksService'
 
 export const useBooksStore = defineStore('booksStore', {
     state: () => ({
@@ -14,9 +15,16 @@ export const useBooksStore = defineStore('booksStore', {
     }),
 
     actions: {
-        async fetchBooks() {},
-
-        async getBookById() {}
+        async fetchBooks() {
+            try {
+                this.startLoadind
+                this.books = await getBooks(this.searchQuery)
+            } catch (error) {
+                console.log(error)
+            } finally {
+                this.stopLoading
+            }
+        }
     },
 
     getters: {
