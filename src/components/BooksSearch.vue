@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
 import { useBooksStore } from '../store/booksStore'
-import { watch } from 'vue'
+import { onMounted, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
@@ -10,17 +10,29 @@ const booksStore = useBooksStore()
 const sendRequest = async () => {
     router.push({
         name: 'Home',
-        query: { q: booksStore.searchQuery }
+        query: { ...booksStore.queryParams }
     })
 }
 
 watch(
     () => route.query.q,
     () => {
-        booksStore.searchQuery = (route.query.q as string) || ''
-        booksStore.fetchBooks()
+        booksStore.queryParams.q = (route.query.q as string) || ''
+        if (booksStore.queryParams) booksStore.fetchBooks()
     }
 )
+
+watch(
+    () => booksStore.queryParams.q,
+    (newValue) => {
+        booksStore.queryParams.q = newValue
+    }
+)
+
+onMounted(() => {
+    booksStore.queryParams.q = (route.query.q as string) || ''
+    if (booksStore.queryParams) booksStore.fetchBooks()
+})
 </script>
 
 <template>
@@ -31,7 +43,7 @@ watch(
             ref="input-field"
             label="Search"
             clearable
-            v-model="booksStore.searchQuery"
+            v-model="booksStore.queryParams.q"
         ></v-text-field>
         <v-btn @click="sendRequest" class="v-col-2" size="x-large" color="success">Search</v-btn>
     </div>

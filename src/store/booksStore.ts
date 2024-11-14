@@ -4,6 +4,12 @@ import { getBooks } from '../services/booksService'
 
 export const useBooksStore = defineStore('booksStore', {
     state: () => ({
+        queryParams: {
+            q: '',
+            orderBy: 'newest',
+            category: 'all'
+
+        },
         searchQuery: '',
         selectedCategory: '',
         selectedOrder: '',
@@ -18,13 +24,14 @@ export const useBooksStore = defineStore('booksStore', {
         async fetchBooks() {
             try {
                 this.startLoadind
-                this.books = await getBooks(this.searchQuery)
+                this.books = await getBooks(this.queryParams)
             } catch (error) {
                 console.log(error)
             } finally {
                 this.stopLoading
             }
-        }
+        },
+        
     },
 
     getters: {
