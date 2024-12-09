@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import { useGameStore } from '../store/gameStore'
 import GameCard from './GameCard.vue'
+import GameView from '../views/GameView.vue'
 
 const store = useGameStore()
 onMounted(async () => {
@@ -43,14 +44,16 @@ onMounted(async () => {
                 :loading="store.isLoading"
                 type="image, list-item-two-line"
             />
-            <GameCard
-                :id="game.id"
-                :title="game.title"
-                :img="game.thumbnail"
-                :genre="game.genre"
-                :platform="game.platform"
-                :descr="game.short_description"
-            />
+            <RouterLink :to="{ name: 'Game', params: { id: game.id } }">
+                <GameCard
+                    :id="game.id"
+                    :title="game.title"
+                    :img="game.thumbnail"
+                    :genre="game.genre"
+                    :platform="game.platform"
+                    :descr="game.short_description"
+                />
+            </RouterLink>
         </v-col>
     </v-row>
 </template>
