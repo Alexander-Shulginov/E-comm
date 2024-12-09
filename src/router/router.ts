@@ -7,7 +7,12 @@ const routes = [
         path: '/',
         name: 'Home',
         component: HomeView
-    }
+    },
+    // {
+    //     path: '/item/:id',
+    //     name: 'Item',
+    //     component: ItemView
+    // }
 ]
 
 export const router = createRouter({
