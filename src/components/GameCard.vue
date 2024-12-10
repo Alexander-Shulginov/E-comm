@@ -15,9 +15,10 @@ const { formatDate } = useFormatDate()
 </script>
 
 <template>
-    <v-card hover>
+    <v-card hover style="height: 200px;">
         <div class="d-flex flex-xs-column w-100">
-            <v-img class="flex-grow-0 w-sm-25 w-xs-50" :src="img" :alt="title" />
+            <!-- <v-img class="flex-grow-0 w-sm-25 w-xs-50" :src="img" :alt="title" /> -->
+            <img :src="img" alt="" loading="lazy" height="200">
             <div class="d-flex flex-column w-100">
                 <v-card-title>
                     {{ title }}
