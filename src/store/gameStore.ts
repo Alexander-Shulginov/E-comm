@@ -13,6 +13,8 @@ export const useGameStore = defineStore('gameStore', {
     },
     actions: {
         async fetchAllGames() {
+            if (this.gameList.length) return
+
             this.isLoading = true
             this.isError = false
             try {

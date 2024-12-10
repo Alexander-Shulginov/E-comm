@@ -2,7 +2,6 @@
 import { onMounted } from 'vue'
 import { useGameStore } from '../store/gameStore'
 import GameCard from './GameCard.vue'
-import GameView from '../views/GameView.vue'
 
 const store = useGameStore()
 onMounted(async () => {
@@ -11,7 +10,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <v-row>
+    <v-row style="max-width: 1100px;">
         <v-col
             v-for="n in 12"
             :key="n"
@@ -33,11 +32,6 @@ onMounted(async () => {
             v-for="game in store.gameList"
             :key="game.id"
             cols="12"
-            xs="12"
-            sm="6"
-            md="4"
-            lg="3"
-            xl="2"
         >
             <v-skeleton-loader
                 v-if="store.isLoading"
@@ -50,8 +44,9 @@ onMounted(async () => {
                     :title="game.title"
                     :img="game.thumbnail"
                     :genre="game.genre"
-                    :platform="game.platform"
+                    :published="game.publisher"
                     :descr="game.short_description"
+                    :release="game.release_date"
                 />
             </RouterLink>
         </v-col>
