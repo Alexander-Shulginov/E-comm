@@ -2,12 +2,16 @@ import { GameCategory } from '../types/categoryTypes'
 import { GamePlatform } from '../types/platformTypes'
 import { GameSorted } from '../types/sortedTypes'
 import { IGame } from '../types/types'
+import { retryWithExponentialBackoff } from '../utils/retryWithExponentialBackoff'
 import { api } from './api'
 
 export const getAllGames = async (): Promise<IGame[]> => {
-    const { data } = await api.get('/games')
+    const { data } = await api.get('/games11')
     return data
 }
+// export const getAllGamesWithRetry = async (): Promise<IGame[]> => {
+//     return retryWithExponentialBackoff(() => getAllGames(), 5, 100)
+// }
 
 export const getGameById = async (id: number): Promise<IGame[]> => {
     const { data } = await api.get('/game', {
@@ -17,7 +21,6 @@ export const getGameById = async (id: number): Promise<IGame[]> => {
     })
 
     return data
-
 }
 
 export const getGameByPlatform = async (platformType: GamePlatform): Promise<IGame[]> => {
