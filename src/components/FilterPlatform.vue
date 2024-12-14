@@ -19,6 +19,7 @@ const items = [
 
 onMounted(() => {
     const sortParam = route.query.sort as GameSorted
+    console.log((route.query.length))
     if (sortParam) {
         selectValue.value = sortParam
     }

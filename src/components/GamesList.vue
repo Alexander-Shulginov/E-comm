@@ -3,6 +3,7 @@ import { onMounted } from 'vue'
 import { useGameStore } from '../store/gameStore'
 import GameCard from './GameCard.vue'
 const store = useGameStore()
+
 onMounted(async () => {
     await store.fetchAllGames()
 })
