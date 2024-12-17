@@ -7,7 +7,7 @@ const store = useGameStore()
 const route = useRoute()
 
 onMounted(() => {
-    store.fetchGameById(Number(route.params.id))
+    // store.fetchGameById(Number(route.params.id))
 })
 </script>
 

@@ -27,8 +27,8 @@ onMounted(() => {
 watch(
     () => selectValue.value,
     (newValue) => {
-        router.push({ query: { ...route.query, sort: newValue } })
-        store.sortGamesBy(newValue)
+        // router.push({ query: { ...route.query, sort: newValue } })
+        // store.sortGamesBy(newValue)
     }
 )
 </script>
