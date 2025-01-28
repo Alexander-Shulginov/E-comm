@@ -1,1 +1,0 @@
-export type GamePlatform = 'pc' | 'browser' | 'all'

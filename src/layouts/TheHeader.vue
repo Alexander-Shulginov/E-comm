@@ -1,11 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import BaseGitHubLink from '../components/UI/BaseGitHubLink.vue'
+import BaseLogo from '../components/UI/BaseLogo.vue'
+import TheHeaderNav from './TheHeaderNav.vue'
+</script>
 
 <template>
-    <v-toolbar color="light-blue-darken-4">
-        <v-toolbar-title>
-            <a href="https://github.com/avito-tech/frontend-trainee-assignment-2023" target="_blank">ТЗ</a>
-        </v-toolbar-title>
-    </v-toolbar>
+    <header class="header">
+        <BaseLogo />
+        <TheHeaderNav />
+        <BaseGitHubLink />
+    </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.header {
+    background-color: var(--color-dark-second);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+</style>

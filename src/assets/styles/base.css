@@ -1,0 +1,28 @@
+body {
+    line-height: 1.5;
+    color: var(--color-light);
+    font-family: var(--font-base);
+    background-color: var(--color-dark-base);
+}
+
+a,
+input,
+button {
+    transition: color 0.2s linear;
+}
+
+a:focus-visible,
+input:focus-visible,
+button:focus-visible {
+    border-radius: 1px;
+    outline-offset: 3px;
+    outline: 2px solid var(--color-accent);
+}
+
+@media (any-hover: hover) {
+    a:hover,
+    input:hover,
+    button:hover {
+        color: var(--color-accent-hover);
+    }
+}
