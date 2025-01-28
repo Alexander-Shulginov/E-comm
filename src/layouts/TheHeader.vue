@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconFavorites from '../components/icons/IconFavorites.vue';
+import BaseFavorites from '../components/UI/BaseFavorites.vue';
 import BaseGitHubLink from '../components/UI/BaseGitHubLink.vue'
 import BaseLogo from '../components/UI/BaseLogo.vue'
 import TheHeaderNav from './TheHeaderNav.vue'
@@ -9,8 +9,8 @@ import TheHeaderNav from './TheHeaderNav.vue'
     <header class="header">
         <BaseLogo />
         <TheHeaderNav />
+        <BaseFavorites />
         <BaseGitHubLink />
-        <IconFavorites />
     </header>
 </template>
 
