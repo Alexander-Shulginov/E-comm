@@ -10,12 +10,18 @@
                 <a href="#">Games</a>
             </li>
         </ul>
+        <span>|</span>
     </nav>
-    <span>|</span>
 </template>
 
 <style lang="scss" scoped>
 .nav {
+    display: flex;
+    gap: 12px;
+
+    margin-left: auto;
+    margin-right: 12px;
+
     &__items {
         display: flex;
         gap: 12px;
