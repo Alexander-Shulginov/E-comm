@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import GenreList from '../components/GenreList.vue';
+
 </script>
 
 <template>
-    <h1>home</h1>
+    <GenreList/>
 </template>
 
 <style lang="scss" scoped></style>
