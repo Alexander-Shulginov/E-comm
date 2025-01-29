@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import IconFavorites from '../icons/IconFavorites.vue';
-
+import IconFavorites from '../icons/IconFavorites.vue'
 </script>
 
 <template>
     <a href="#" class="favorites-link">
-        <IconFavorites />
+        <IconFavorites :width="22" :height="22" />
         <span>|</span>
     </a>
 </template>
