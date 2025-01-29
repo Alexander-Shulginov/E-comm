@@ -49,7 +49,20 @@ const swiperGenreInit = () => {
         loop: true,
         spaceBetween: 16,
         speed: 800,
-        slidesPerView: 4,
+        breakpoints: {
+            320: {
+                slidesPerView: 1
+            },
+            450: {
+                slidesPerView: 2
+            },
+            768: {
+                slidesPerView: 3
+            },
+            1024: {
+                slidesPerView: 4
+            }
+        },
         // navigation: {
         //     nextEl: '.swiper-button-next.swiper-el-next',
         //     prevEl: '.swiper-button-prev.swiper-el-prev'
