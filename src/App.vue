@@ -4,9 +4,9 @@ import TheHeader from './layouts/TheHeader.vue'
 
 <template>
     <TheHeader />
-    <div class="container">
+    <main class="container">
         <RouterView />
-    </div>
+    </main>
 </template>
 
 <style scoped lang="scss"></style>

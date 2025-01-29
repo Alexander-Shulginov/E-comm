@@ -16,6 +16,16 @@ defineProps<{
 .genreCard {
     display: block;
     position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+
+    @media (any-hover: hover) {
+        &:hover {
+            .genreCard__img {
+                transform: scale(1.05);
+            }
+        }
+    }
 
     &::after {
         content: '';
@@ -23,7 +33,7 @@ defineProps<{
 
         position: absolute;
         top: 0;
-        right: 0;
+        right: -1px;
         bottom: 0;
         left: 0;
 
@@ -39,11 +49,13 @@ defineProps<{
         z-index: 2;
 
         font-size: 24px;
+        transition: color 0.3s ease-in-out;
     }
 
     &__img {
         object-fit: cover;
         width: 100%;
+        transition: transform 0.8s ease-in-out;
     }
 }
 </style>

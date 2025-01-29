@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, readonly } from 'vue'
 import GenreListCard from './GenreListCard.vue'
+import Swiper from 'swiper'
+import { Pagination } from 'swiper/modules'
 
 import actionImg from '@/assets/img/genre/actions.jpg?format=webp'
 import horrorImg from '@/assets/img/genre/horror.jpg?format=webp'
@@ -40,16 +42,26 @@ const genreList = readonly([
         genreImg: simulationImg
     }
 ])
-import Swiper from 'swiper'
-import { Navigation } from 'swiper/modules'
 
-onMounted(() => {
+const swiperGenreInit = () => {
     const swiper = new Swiper('.swiper-genre', {
+        modules: [Pagination],
         loop: true,
         spaceBetween: 16,
         speed: 800,
-        slidesPerView: 3
+        slidesPerView: 4,
+        // navigation: {
+        //     nextEl: '.swiper-button-next.swiper-el-next',
+        //     prevEl: '.swiper-button-prev.swiper-el-prev'
+        // },
+        pagination: {
+            el: '.swiper-pagination'
+        }
     })
+}
+
+onMounted(() => {
+    swiperGenreInit()
 })
 </script>
 
@@ -65,8 +77,13 @@ onMounted(() => {
                 />
             </div>
         </div>
+        <div class="swiper-pagination"></div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.genre {
+    position: relative;
+    padding-bottom: 40px;
+}
 </style>

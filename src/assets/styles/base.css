@@ -32,3 +32,16 @@ button:focus-visible {
         color: var(--color-accent-hover);
     }
 }
+
+.swiper-pagination-bullet {
+    background-color: var(--color-light);
+    opacity: 0.4;
+    width: 24px;
+    height: 4px;
+    border-radius: 1px;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--color-accent);
+    opacity: 1;
+}
