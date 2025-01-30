@@ -21,9 +21,11 @@ defineProps<{
 
     @media (any-hover: hover) {
         &:hover {
-            .genreCard__img {
+            .genreCard__img,
+            &::after {
                 transform: scale(1.05);
             }
+            
         }
     }
 
@@ -39,6 +41,7 @@ defineProps<{
 
         background-image: linear-gradient(0deg, rgba(0, 0, 0, 9) 0%, rgba(0, 0, 0, 0) 50%);
         width: 100%;
+        transition: transform 0.8s ease-in-out;
     }
 
     &__title {
@@ -50,11 +53,18 @@ defineProps<{
 
         font-size: 24px;
         transition: color 0.3s ease-in-out;
+
+        @media (max-width: 768px){
+            font-size: 18px;
+            bottom: 12px;
+            left: 12px;
+        }
     }
 
     &__img {
         object-fit: cover;
         width: 100%;
+        height: 100%;
         transition: transform 0.8s ease-in-out;
     }
 }
