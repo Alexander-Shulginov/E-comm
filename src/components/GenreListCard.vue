@@ -41,7 +41,7 @@ defineProps<{
         bottom: 0;
         left: 0;
 
-        background-image: linear-gradient(0deg, rgba(0, 0, 0, 9) 0%, rgba(0, 0, 0, 0) 50%);
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
         width: 100%;
         transition: transform 0.8s ease-in-out;
     }

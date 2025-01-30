@@ -5,12 +5,71 @@ import BaseTitle from './UI/BaseTitle.vue'
 
 <template>
     <div class="promoCard">
+        <img class="promoCard__img" src="../assets/img/promo/promo-1.webp" alt="Promo img" />
         <div class="promoCard__wrapper">
-            <BaseTitle :tag="'h3'" :is-bold="true" :class="'11'">Title comp</BaseTitle>
-            <p class="promoCard__descr">Descr</p>
+            <BaseTitle :tag="'h3'" :is-bold="true" :class="'promoCard__title'"
+                >Title comp</BaseTitle
+            >
+            <p class="promoCard__descr">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, consequatur
+                voluptate? Quam repellendus, eveniet rem aliquid suscipit repellat sint quia
+                molestias ducimus numquam a enim!
+            </p>
             <BaseBtn as="a" href="#" variant="accent" target="_blank">Details</BaseBtn>
         </div>
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.promoCard {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        pointer-events: none;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 80%);
+        width: 100%;
+        transition: transform 0.8s ease-in-out;
+    }
+
+    &__wrapper {
+        position: absolute;
+        z-index: 2;
+        bottom: 24px;
+        left: 24px;
+    }
+
+    &__title {
+        margin-bottom: 18px;
+        overflow: hidden;
+        display: -webkit-box;
+
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
+
+    &__descr {
+        padding-right: 20%;
+        margin-bottom: 12px;
+
+        overflow: hidden;
+        display: -webkit-box;
+
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+
+        @media (max-width: 768px) {
+            padding-right: 18px;
+        }
+    }
+}
+</style>
