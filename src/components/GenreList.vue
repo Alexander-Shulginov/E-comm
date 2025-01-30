@@ -34,7 +34,7 @@ useSwiper(swiperGenre, {
 </script>
 
 <template>
-    <div class="genre">
+    <section class="genre">
         <div class="swiper genre__swiper" ref="swiperGenre">
             <div class="swiper-wrapper">
                 <GenreListCard
@@ -46,7 +46,7 @@ useSwiper(swiperGenre, {
             </div>
             <div class="swiper-pagination"></div>
         </div>
-    </div>
+    </section>
 </template>
 
 <style lang="scss" scoped>

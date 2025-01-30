@@ -15,7 +15,7 @@ import BaseTitle from './UI/BaseTitle.vue'
                 voluptate? Quam repellendus, eveniet rem aliquid suscipit repellat sint quia
                 molestias ducimus numquam a enim!
             </p>
-            <BaseBtn as="a" href="#" variant="accent" target="_blank">Details</BaseBtn>
+            <BaseBtn as="a" href="#" variant="accent">Details</BaseBtn>
         </div>
     </div>
 </template>
@@ -25,6 +25,8 @@ import BaseTitle from './UI/BaseTitle.vue'
     position: relative;
     border-radius: 12px;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
+    min-height: 300px;
 
     &::after {
         content: '';
@@ -41,15 +43,24 @@ import BaseTitle from './UI/BaseTitle.vue'
         transition: transform 0.8s ease-in-out;
     }
 
+    &__img {
+        object-fit: cover;
+    }
+
     &__wrapper {
         position: absolute;
         z-index: 2;
-        bottom: 24px;
-        left: 24px;
+        bottom: 28px;
+        left: 28px;
+
+        @media (max-width: 1024px) {
+            bottom: 20px;
+            left: 20px;
+        }
     }
 
     &__title {
-        margin-bottom: 18px;
+        margin-bottom: 4px;
         overflow: hidden;
         display: -webkit-box;
 
@@ -59,7 +70,7 @@ import BaseTitle from './UI/BaseTitle.vue'
 
     &__descr {
         padding-right: 20%;
-        margin-bottom: 12px;
+        margin-bottom: 20px;
 
         overflow: hidden;
         display: -webkit-box;
