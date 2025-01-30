@@ -55,7 +55,7 @@ useSwiper(swiperGenre, {
     margin-bottom: 40px;
 
     &__swiper {
-        padding-bottom: 40px;
+        padding: 4px 3px 40px 3px;
     }
 }
 </style>

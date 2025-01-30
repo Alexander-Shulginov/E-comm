@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import GenreList from '../components/GenreList.vue';
-
+import GamePromo from '../components/GamePromo.vue'
+import GenreList from '../components/GenreList.vue'
 </script>
 
 <template>
-    <GenreList/>
+    <GenreList />
+    <GamePromo />
 </template>
 
 <style lang="scss" scoped></style>

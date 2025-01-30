@@ -1,0 +1,52 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+
+interface IProps {
+    tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
+    isBold?: boolean
+    class?: string
+}
+
+const props = defineProps<IProps>()
+
+const classes = computed(() => ['title', props.isBold && 'title--bold', props.class])
+</script>
+
+<template>
+    <component :is="tag" :class="classes" v-bind="$attrs">
+        <slot></slot>
+    </component>
+</template>
+
+<style lang="scss" scoped>
+.title {
+    font-weight: 400;
+
+    &--bold {
+        font-weight: 700;
+    }
+}
+
+h1.title {
+    font-size: 36px;
+}
+
+h2.title {
+    font-size: 28px;
+}
+
+h3.title {
+    font-size: 24px;
+    @media (max-width: 768px) {
+        font-size: 18px;
+    }
+}
+
+h4.title {
+    font-size: 18px;
+}
+
+h5.title {
+    font-size: 16px;
+}
+</style>

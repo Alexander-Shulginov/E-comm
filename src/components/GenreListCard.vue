@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import BaseTitle from './UI/BaseTitle.vue';
+
 defineProps<{
     genreName: string
     genreImg: string
@@ -7,7 +9,7 @@ defineProps<{
 
 <template>
     <a class="genreCard" href="#">
-        <h3 class="genreCard__title">{{ genreName }}</h3>
+        <BaseTitle :tag="'h3'" :is-bold="true" :class="'genreCard__title'">{{ genreName }}</BaseTitle>
         <img class="genreCard__img" width="440" height="260" :src="genreImg" :alt="genreName" />
     </a>
 </template>
@@ -55,7 +57,6 @@ defineProps<{
         transition: color 0.3s ease-in-out;
 
         @media (max-width: 768px){
-            font-size: 18px;
             bottom: 12px;
             left: 12px;
         }

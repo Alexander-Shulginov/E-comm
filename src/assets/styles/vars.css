@@ -3,8 +3,10 @@
 
     --color-light: #f5f5f5;
     --color-accent: #6d4eec;
-    --color-accent-hover: #957df3;
+    /* --color-accent-hover: #957df3; */
+    --color-accent-hover: #5a38e2;
 
     --color-dark-base: #1a1a1a;
     --color-dark-second: #212121;
+    --color-dark-second-hover: #141414;
 }
