@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BaseBtn from './UI/BaseBtn.vue'
+import BaseText from './UI/BaseText.vue'
 import BaseTitle from './UI/BaseTitle.vue'
 </script>
 
@@ -7,14 +8,14 @@ import BaseTitle from './UI/BaseTitle.vue'
     <div class="promoCard">
         <img class="promoCard__img" src="../assets/img/promo/promo-1.webp" alt="Promo img" />
         <div class="promoCard__wrapper">
-            <BaseTitle :tag="'h3'" :is-bold="true" :class="'promoCard__title'"
+            <BaseTitle :tag="'h3'" :is-bold="true" class="promoCard__title"
                 >Title comp</BaseTitle
             >
-            <p class="promoCard__descr">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, consequatur
-                voluptate? Quam repellendus, eveniet rem aliquid suscipit repellat sint quia
-                molestias ducimus numquam a enim!
-            </p>
+            <BaseText class="promoCard__descr">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident id veniam
+                incidunt commodi ullam aliquid ex. Voluptates id debitis repellat, doloremque
+                dolorum repellendus omnis ab.
+            </BaseText>
             <BaseBtn as="a" href="#" variant="accent">Details</BaseBtn>
         </div>
     </div>

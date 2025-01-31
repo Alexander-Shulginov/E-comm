@@ -4,16 +4,15 @@ import { computed } from 'vue'
 interface IProps {
     tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
     isBold?: boolean
-    class?: string
 }
 
 const props = defineProps<IProps>()
 
-const classes = computed(() => ['title', props.isBold && 'title--bold', props.class])
+const classes = computed(() => ['title', props.isBold && 'title--bold'])
 </script>
 
 <template>
-    <component :is="tag" :class="classes" v-bind="$attrs">
+    <component :is="tag" :class="classes">
         <slot></slot>
     </component>
 </template>
