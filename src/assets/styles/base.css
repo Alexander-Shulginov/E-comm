@@ -29,7 +29,7 @@ button:focus-visible {
     a:hover,
     input:hover,
     button:hover {
-        color: var(--color-accent-hover);
+        color: var(--color-accent);
     }
 }
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import BaseTitle from '../components/UI/BaseTitle.vue'
+import BaseTitle from '../../components/UI/BaseTitle.vue'
+import TheFooterNavList from './TheFooterNavList.vue'
 
 const footerNav = [
     {
@@ -34,12 +35,10 @@ const footerNav = [
 <template>
     <nav class="footer__nav">
         <div class="footer__column" v-for="link in footerNav">
-            <BaseTitle :tag="'h4'" :is-bold="true" class="footer__subtitle">{{ link.title }}</BaseTitle>
-            <ul class="footer__list">
-                <li v-for="text in link.links">
-                    <a href="#">{{ text.text }}</a>
-                </li>
-            </ul>
+            <BaseTitle :tag="'h4'" :is-bold="true" class="footer__subtitle">{{
+                link.title
+            }}</BaseTitle>
+            <TheFooterNavList :links="link" />
         </div>
     </nav>
 </template>
@@ -50,16 +49,15 @@ const footerNav = [
         width: 100%;
         display: flex;
         justify-content: space-between;
+
+        @media (max-width: 480px) {
+            flex-direction: column;
+            gap: 28px;
+        }
     }
 
     &__subtitle {
         margin-bottom: 18px;
-    }
-
-    &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
     }
 }
 </style>

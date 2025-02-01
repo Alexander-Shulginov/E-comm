@@ -1,25 +1,19 @@
 <script setup lang="ts">
-import BaseLogo from '../components/UI/BaseLogo.vue'
-import BaseText from '../components/UI/BaseText.vue'
 import TheFooterNav from './TheFooterNav.vue'
+import TheFooterPolicy from './TheFooterPolicy.vue';
+import TheFooterSlogan from './TheFooterSlogan.vue';
 </script>
 
 <template>
     <footer class="footer">
         <div class="footer__inner">
-            <div class="footer__info">
-                <BaseLogo />
-                <BaseText>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae architecto
-                    consequatur a laboriosam ipsam adipisci animi.
-                </BaseText>
+            <div class="footer__slogan">
+                <TheFooterSlogan />
             </div>
             <TheFooterNav />
         </div>
         <div class="footer__bottom">
-            <div class="footer__links">
-                <a href="">GitHub</a>
-            </div>
+            <TheFooterPolicy />
         </div>
     </footer>
 </template>
@@ -33,25 +27,30 @@ import TheFooterNav from './TheFooterNav.vue'
         max-width: 1440px;
         margin: 0 auto;
         padding: 50px 15px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 40px;
+        }
     }
 
-    &__info {
+    &__slogan {
         width: 380px;
         display: flex;
         align-items: flex-start;
         flex-direction: column;
         justify-content: space-between;
         gap: 24px;
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
     }
 
     &__bottom {
         padding: 16px 0;
-        border-top: 1px solid var(--color-light);
+        border-top: 1px solid rgba(255, 255, 255, 0.8);
     }
 
-    &__links {
-        max-width: 1440px;
-        margin: 0 auto;
-    }
 }
 </style>

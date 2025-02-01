@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 interface IProps {
-    type?: 'large'
+    size?: 'large' | 'small'
+    color?: 'second'
 }
 
 const props = defineProps<IProps>()
 
 const classes = computed(() => [
     'base-text',
-    props.type && 'base-text--large'
+    props.size === 'large' && 'base-text--large',
+    props.size === 'small' && 'base-text--small',
+    props.color && 'base-text--second'
 ])
 </script>
 
@@ -28,11 +31,19 @@ const classes = computed(() => [
         font-size: 14px;
     }
 
+    &--small {
+        font-size: 13px;
+    }
+
     &--large {
         font-size: 18px;
         @media (max-width: 768px) {
             font-size: 16px;
         }
+    }
+
+    &--second {
+        color: var(--color-light-second);
     }
 }
 </style>
