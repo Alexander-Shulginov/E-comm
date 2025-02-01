@@ -31,6 +31,8 @@ import TheFooterSlogan from './TheFooterSlogan.vue';
         @media (max-width: 768px) {
             flex-direction: column;
             gap: 40px;
+
+            padding: 30px 15px;
         }
     }
 

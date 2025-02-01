@@ -51,7 +51,7 @@ const footerNav = [
         justify-content: space-between;
 
         @media (max-width: 480px) {
-            flex-direction: column;
+            flex-wrap: wrap;
             gap: 28px;
         }
     }
