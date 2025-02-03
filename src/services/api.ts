@@ -1,9 +1,13 @@
 import axios from 'axios'
 
-// const baseUrl = import.meta.env.VITE_BASE_URL
+const url = import.meta.env.VITE_BASE_URL
+const apiKey = import.meta.env.VITE_API_KEY
 
 export const api = axios.create({
-    baseURL: '/api', // proxy, see vite.config.ts
+    baseURL: '/api', //vite.config.ts CORS proxy
     timeout: 10000,
-    responseType: 'json'
+    responseType: 'json',
+    params: {
+        key: apiKey
+    },
 })

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import GamePromoCard from './GamePromoCard.vue'
 import { useSwiper } from '../hooks/useSwiper'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { Pagination } from 'swiper/modules'
+import { api } from '../services/api'
+import { fetchGames } from '../services/gamesService'
 
 const swiperPromo = ref<HTMLElement | null>(null)
 useSwiper(swiperPromo, {
@@ -21,6 +23,11 @@ useSwiper(swiperPromo, {
     pagination: {
         el: '.swiper-pagination'
     }
+})
+
+onMounted(async () => {
+    const res = await fetchGames('/games')
+    console.log(res)
 })
 </script>
 
