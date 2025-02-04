@@ -25,10 +25,6 @@ useSwiper(swiperPromo, {
     }
 })
 
-onMounted(async () => {
-    const res = await fetchGames('/games')
-    console.log(res)
-})
 </script>
 
 <template>

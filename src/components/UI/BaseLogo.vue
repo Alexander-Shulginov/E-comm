@@ -4,8 +4,9 @@ import IconLogo from '../icons/IconLogo.vue'
 
 <template>
     <a href="/" class="logo">
+        <img src="../../assets/img/logo/logo3.png" width="60" height="60" />
+        <!-- <span class="logo__text">GameWorld</span> -->
         <IconLogo />
-        <span class="logo__text">GameWorld</span>
     </a>
 </template>
 
@@ -15,11 +16,12 @@ import IconLogo from '../icons/IconLogo.vue'
     align-items: center;
     gap: 6px;
 
-    svg {
-        width: 42px;
-        height: 42px;
+    img {
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             width: 32px;
             height: 32px;
         }
@@ -29,7 +31,7 @@ import IconLogo from '../icons/IconLogo.vue'
         font-weight: 700;
         font-size: 28px;
         letter-spacing: -1px;
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             font-size: 16px;
         }
     }
