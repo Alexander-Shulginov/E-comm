@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, shallowRef } from 'vue'
+import { computed } from 'vue'
 import IconStar from '../../icons/IconStar.vue'
 import IconPlatformPc from '../../icons/IconPlatformPc.vue'
 import IconPlatformPlayStation from '../../icons/IconPlatformPlayStation.vue'
@@ -8,19 +8,13 @@ import IconPlatformApple from '../../icons/IconPlatformApple.vue'
 import IconPlatformLinux from '../../icons/IconPlatformLinux.vue'
 import IconPlatformNintendo from '../../icons/IconPlatformNintendo.vue'
 import IconPlatformAndroid from '../../icons/IconPlatformAndroid.vue'
+import { formatNumber } from '../../../utils/formatNumber'
+import { useImgLoading } from '../../../hooks/useImgLoading'
 
-interface Platform {
-    id: number
-    name: string
-    slug: string
-}
-
-interface Device {
-    platform: Platform
-}
 const props = defineProps<{
     name: string
     img: string
+    loading: boolean
     rating?: number
     platforms: {
         platform: {
@@ -45,11 +39,17 @@ const filteredPlatforms = computed(() =>
         .map(({ platform }) => ({ id: platform.id, component: platformIcons[platform.id] }))
         .filter((p) => p.component)
 )
+
+const { loading } = useImgLoading(props.img)
 </script>
 
 <template>
     <div class="cardBase">
-        <img class="cardBase__img" :src="img" :alt="name" />
+        <div class="cardBase__img-wrap">
+            <!-- <div v-if="loading">Load</div> -->
+            <img v-if="loading" class="cardBase__img" src="../../../assets/img/common/no-game-placeholder.png" alt="">
+            <img v-else="img" class="cardBase__img" :src="img" :alt="name" />
+        </div>
         <p class="cardBase__name">{{ name ? name : 'No name' }}</p>
 
         <div class="cardBase__wrap">
@@ -63,7 +63,7 @@ const filteredPlatforms = computed(() =>
             <div v-if="rating" class="cardBase__rating">
                 <IconStar :width="18" :height="18" />
                 <span>
-                    {{ rating }}
+                    {{ formatNumber(rating) }}
                 </span>
             </div>
         </div>
@@ -106,6 +106,9 @@ const filteredPlatforms = computed(() =>
         display: flex;
         align-items: center;
         gap: 6px;
+        svg:hover {
+            fill: var(--color-accent);
+        }
     }
 
     &__rating {

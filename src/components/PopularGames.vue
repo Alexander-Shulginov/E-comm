@@ -9,16 +9,21 @@ const { isPending, isError, data, error } = useQuery({
 })
 
 setTimeout(() => {
-console.log(data.value)
-    
-}, 500);
+    console.log(data.value)
+}, 500)
 </script>
 
 <template>
     <section class="popularGames">
         <ul class="popularGames__list" v-if="data">
             <li v-for="game in data.results">
-                <CardBase :name="game.name" :img="game.background_image" :rating="game.rating" :platforms="game.parent_platforms" />
+                <CardBase
+                    :loading="isPending"
+                    :name="game.name"
+                    :img="game.background_image"
+                    :rating="game.rating"
+                    :platforms="game.parent_platforms"
+                />
             </li>
         </ul>
     </section>
