@@ -4,8 +4,7 @@ import IconLogo from '../icons/IconLogo.vue'
 
 <template>
     <a href="/" class="logo">
-        <img src="../../assets/img/logo/logo3.png" width="60" height="60" />
-        <!-- <span class="logo__text">GameWorld</span> -->
+        <img src="../../assets/img/logo/logo.png" width="60" height="60" alt="Main logo" />
         <IconLogo />
     </a>
 </template>
@@ -15,10 +14,11 @@ import IconLogo from '../icons/IconLogo.vue'
     display: flex;
     align-items: center;
     gap: 6px;
+    padding-right: 2px;
 
     img {
-        width: 52px;
-        height: 52px;
+        width: 48px;
+        height: 48px;
         object-fit: contain;
 
         @media (max-width: 768px) {

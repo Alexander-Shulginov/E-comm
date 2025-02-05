@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import GamePromoCard from './GamePromoCard.vue'
 import { useSwiper } from '../hooks/useSwiper'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { Pagination } from 'swiper/modules'
-import { api } from '../services/api'
-import { fetchGames } from '../services/gamesService'
 
 const swiperPromo = ref<HTMLElement | null>(null)
 useSwiper(swiperPromo, {
