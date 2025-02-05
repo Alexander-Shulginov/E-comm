@@ -1,6 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, shallowRef } from 'vue'
 import IconStar from '../../icons/IconStar.vue'
+import IconPlatformPc from '../../icons/IconPlatformPc.vue'
+import IconPlatformPlayStation from '../../icons/IconPlatformPlayStation.vue'
+import IconPlatformXbox from '../../icons/IconPlatformXbox.vue'
+import IconPlatformApple from '../../icons/IconPlatformApple.vue'
+import IconPlatformLinux from '../../icons/IconPlatformLinux.vue'
+import IconPlatformNintendo from '../../icons/IconPlatformNintendo.vue'
+import IconPlatformAndroid from '../../icons/IconPlatformAndroid.vue'
 
 interface Platform {
     id: number
@@ -18,13 +25,26 @@ const props = defineProps<{
     platforms: {
         platform: {
             id: number
+            name: string
         }
     }[]
 }>()
 
-const isPc = (id: number) => computed(() => {
-    return id === 5
-})
+const platformIcons: Record<number, any> = {
+    1: IconPlatformPc,
+    2: IconPlatformPlayStation,
+    3: IconPlatformXbox,
+    5: IconPlatformApple,
+    6: IconPlatformLinux,
+    7: IconPlatformNintendo,
+    8: IconPlatformAndroid
+}
+
+const filteredPlatforms = computed(() =>
+    props.platforms
+        .map(({ platform }) => ({ id: platform.id, component: platformIcons[platform.id] }))
+        .filter((p) => p.component)
+)
 </script>
 
 <template>
@@ -32,14 +52,14 @@ const isPc = (id: number) => computed(() => {
         <img class="cardBase__img" :src="img" :alt="name" />
         <p class="cardBase__name">{{ name ? name : 'No name' }}</p>
 
-        <div class="cardBase__platforms" v-for="device in platforms">
-            {{ device.platform.id }}
-            <div v-if="isPc(device.platform.id)">
-                pccc
-            </div>
-        </div>
-
         <div class="cardBase__wrap">
+            <div class="cardBase__platforms">
+                <component
+                    v-for="platform in filteredPlatforms"
+                    :key="platform.id"
+                    :is="platform.component"
+                />
+            </div>
             <div v-if="rating" class="cardBase__rating">
                 <IconStar :width="18" :height="18" />
                 <span>
@@ -79,13 +99,20 @@ const isPc = (id: number) => computed(() => {
     &__wrap {
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: space-between;
+    }
+
+    &__platforms {
+        display: flex;
+        align-items: center;
+        gap: 6px;
     }
 
     &__rating {
         display: flex;
         align-items: center;
         gap: 4px;
+        margin-left: auto;
     }
 }
 </style>
