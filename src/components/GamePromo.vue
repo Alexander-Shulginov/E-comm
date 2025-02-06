@@ -22,7 +22,6 @@ useSwiper(swiperPromo, {
         el: '.swiper-pagination'
     }
 })
-
 </script>
 
 <template>

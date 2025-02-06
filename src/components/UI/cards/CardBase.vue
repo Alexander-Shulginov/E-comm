@@ -10,6 +10,8 @@ import IconPlatformNintendo from '../../icons/IconPlatformNintendo.vue'
 import IconPlatformAndroid from '../../icons/IconPlatformAndroid.vue'
 import { formatNumber } from '../../../utils/formatNumber'
 import { useImgLoading } from '../../../hooks/useImgLoading'
+import BaseTitle from '../BaseTitle.vue'
+import BaseImg from '../BaseImg.vue'
 
 const props = defineProps<{
     name: string
@@ -46,11 +48,11 @@ const { loading } = useImgLoading(props.img)
 <template>
     <div class="cardBase">
         <div class="cardBase__img-wrap">
-            <!-- <div v-if="loading">Load</div> -->
-            <img v-if="loading" class="cardBase__img" src="../../../assets/img/common/no-game-placeholder.png" alt="">
-            <img v-else="img" class="cardBase__img" :src="img" :alt="name" />
+            <BaseImg :src="img" :alt="name" :width="300" :height="400" class="cardBase__img" />
         </div>
-        <p class="cardBase__name">{{ name ? name : 'No name' }}</p>
+        <BaseTitle :tag="'h4'" :is-bold="true" class="cardBase__name">
+            {{ name ? name : 'No name' }}
+        </BaseTitle>
 
         <div class="cardBase__wrap">
             <div class="cardBase__platforms">
@@ -75,7 +77,6 @@ const { loading } = useImgLoading(props.img)
     overflow: hidden;
 
     &__img {
-        width: 300px;
         aspect-ratio: 3 / 4;
         object-fit: cover;
         border-radius: 8px;

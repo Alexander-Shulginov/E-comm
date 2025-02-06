@@ -6,8 +6,8 @@ import PopularGames from '../components/PopularGames.vue'
 
 <template>
     <PopularGames />
-    <!-- <GenreList /> -->
-    <!-- <GamePromo /> -->
+    <GenreList />
+    <GamePromo />
 </template>
 
 <style lang="scss" scoped></style>
