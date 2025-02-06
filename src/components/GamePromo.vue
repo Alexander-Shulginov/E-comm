@@ -28,7 +28,10 @@ useSwiper(swiperPromo, {
     <section class="promo">
         <div class="swiper promo__swiper" ref="swiperPromo">
             <div class="swiper-wrapper">
-                <GamePromoCard v-for="i in 4" class="swiper-slide" />
+                <GamePromoCard class="swiper-slide" />
+                <GamePromoCard class="swiper-slide" />
+                <GamePromoCard class="swiper-slide" />
+                <GamePromoCard class="swiper-slide" />
             </div>
             <div class="swiper-pagination"></div>
         </div>

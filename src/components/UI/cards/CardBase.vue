@@ -9,7 +9,7 @@ import IconPlatformLinux from '@/components/icons/IconPlatformLinux.vue'
 import IconPlatformNintendo from '@/components/icons/IconPlatformNintendo.vue'
 import IconPlatformAndroid from '@/components/icons/IconPlatformAndroid.vue'
 import { formatNumber } from '@/utils/formatNumber'
-import { useImgLoading } from '@/hooks/useImgLoading'
+// import { useImgLoading } from '@/hooks/useImgLoading'
 import BaseTitle from '@/components/UI/BaseTitle.vue'
 import BaseImg from '@/components/UI/BaseImg.vue'
 
@@ -42,7 +42,7 @@ const filteredPlatforms = computed(() =>
         .filter((p) => p.component)
 )
 
-const { loading } = useImgLoading(props.img)
+// const { loading } = useImgLoading(props.img)
 </script>
 
 <template>
@@ -75,6 +75,7 @@ const { loading } = useImgLoading(props.img)
 <style lang="scss" scoped>
 .cardBase {
     overflow: hidden;
+    width: 300px; //!
 
     &__img {
         aspect-ratio: 3 / 4;
