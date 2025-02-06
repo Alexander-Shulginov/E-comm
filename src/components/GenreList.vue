@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useSwiper } from '../hooks/useSwiper'
+import { useSwiper } from '@/hooks/useSwiper'
 import { Pagination } from 'swiper/modules'
-import GenreListCard from './GenreListCard.vue'
-import { genreList } from '../types/genres'
+import GenreListCard from '@/components/GenreListCard.vue'
+import { genreList } from '@/types/genres'
 
 const swiperGenre = ref<HTMLElement | null>(null)
 
@@ -29,7 +29,7 @@ useSwiper(swiperGenre, {
             slidesPerView: 5
         }
     },
-    pagination: { el: '.swiper-pagination' },
+    pagination: { el: '.swiper-pagination' }
 })
 </script>
 

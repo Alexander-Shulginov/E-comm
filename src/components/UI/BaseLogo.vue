@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import IconLogo from '../icons/IconLogo.vue'
+import IconLogo from '@/components/icons/IconLogo.vue'
 </script>
 
 <template>
     <a href="/" class="logo">
-        <img src="../../assets/img/logo/logo.png" width="60" height="60" alt="Main logo" />
+        <img src="@/assets/img/logo/logo.png" width="60" height="60" alt="Main logo" />
         <IconLogo />
     </a>
 </template>

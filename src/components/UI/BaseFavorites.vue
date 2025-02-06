@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconFavorites from '../icons/IconFavorites.vue'
+import IconFavorites from '@/components/icons/IconFavorites.vue'
 </script>
 
 <template>

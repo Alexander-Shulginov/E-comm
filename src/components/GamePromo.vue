@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import GamePromoCard from './GamePromoCard.vue'
-import { useSwiper } from '../hooks/useSwiper'
+import GamePromoCard from '@/components/GamePromoCard.vue'
+import { useSwiper } from '@/hooks/useSwiper'
 import { ref } from 'vue'
 import { Pagination } from 'swiper/modules'
 

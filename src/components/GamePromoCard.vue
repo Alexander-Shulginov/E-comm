@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import BaseBtn from './UI/BaseBtn.vue'
-import BaseText from './UI/BaseText.vue'
-import BaseTitle from './UI/BaseTitle.vue'
+import BaseBtn from '@/components/UI/BaseBtn.vue'
+import BaseText from '@/components/UI/BaseText.vue'
+import BaseTitle from '@/components/UI/BaseTitle.vue'
 </script>
 
 <template>
