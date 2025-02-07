@@ -7,19 +7,19 @@ import { nextTick, ref, watch } from 'vue'
 
 const { isPending, data } = useQuery({
     queryKey: ['getGames'],
-    queryFn: () => fetchGames('/games', { page_size: 10, page: 1 })
+    queryFn: () => fetchGames('/games', { page_size: 12, page: 1 })
 })
 
 const swiperPopular = ref<HTMLElement | null>(null)
 const { initSwiper } = useSwiper(swiperPopular, {
     loop: true,
-    spaceBetween: 28,
     speed: 800,
     breakpoints: {
-        320: { slidesPerView: 2 },
+        320: { slidesPerView: 1.2, spaceBetween: 18 },
+        440: { slidesPerView: 2.2, spaceBetween: 18 },
         768: { slidesPerView: 3 },
-        1024: { slidesPerView: 4 },
-        1280: { slidesPerView: 5 },
+        1024: { slidesPerView: 4, spaceBetween: 24 },
+        1280: { slidesPerView: 5 }
     }
 })
 
@@ -28,6 +28,7 @@ watch([data, swiperPopular], (newData) => {
         nextTick(() => {
             initSwiper()
         })
+        console.log(newData)
     }
 })
 </script>

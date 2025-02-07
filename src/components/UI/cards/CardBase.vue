@@ -48,7 +48,7 @@ const filteredPlatforms = computed(() =>
 <template>
     <div class="cardBase">
         <div class="cardBase__img-wrap">
-            <BaseImg :src="img" :alt="name" :width="300" :height="400" class="cardBase__img" />
+            <BaseImg :src="img" :alt="name" :width="300" :height="400"  class="cardBase__img" />
         </div>
         <BaseTitle :tag="'h4'" :is-bold="true" class="cardBase__name">
             {{ name ? name : 'No name' }}
@@ -101,6 +101,7 @@ const filteredPlatforms = computed(() =>
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 6px;
     }
 
     &__platforms {
@@ -109,6 +110,13 @@ const filteredPlatforms = computed(() =>
         gap: 6px;
         svg:hover {
             fill: var(--color-accent);
+        }
+
+        @media (max-width: 768px){
+            svg {
+                width: 16px;
+                height: 16px;
+            }
         }
     }
 
