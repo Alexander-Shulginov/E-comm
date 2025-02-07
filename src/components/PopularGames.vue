@@ -8,6 +8,7 @@ const { isPending, data } = useQuery({
     queryKey: ['getGames'],
     queryFn: () => fetchGames('/games', { page_size: 12, page: 1 })
 })
+console.log(data)
 </script>
 
 <template>

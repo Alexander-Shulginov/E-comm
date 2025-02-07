@@ -3,8 +3,9 @@ import BaseTitle from '@/components/UI/BaseTitle.vue'
 import BaseImg from '@/components/UI/BaseImg.vue'
 import CardBasePlatforms from '@/components/UI/cards/CardBasePlatforms.vue'
 import CardBaseRating from '@/components/UI/cards/CardBaseRating.vue'
+import { computed } from 'vue'
 
-defineProps<{
+const props = defineProps<{
     name: string
     img: string
     loading: boolean
@@ -16,6 +17,11 @@ defineProps<{
         }
     }[]
 }>()
+
+const displayName = computed(() => {
+    return props.name ? props.name : 'No name'
+})
+
 </script>
 
 <template>
@@ -24,7 +30,7 @@ defineProps<{
             <BaseImg :src="img" :alt="name" :width="300" :height="400" class="cardBase__img" />
         </div>
         <BaseTitle :tag="'h4'" :is-bold="true" class="cardBase__name">
-            {{ name ? name : 'No name' }}
+            {{ displayName }}
         </BaseTitle>
 
         <div class="cardBase__wrap">
