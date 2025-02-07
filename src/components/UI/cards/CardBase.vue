@@ -75,7 +75,6 @@ const filteredPlatforms = computed(() =>
 <style lang="scss" scoped>
 .cardBase {
     overflow: hidden;
-    width: 300px; //!
 
     &__img {
         aspect-ratio: 3 / 4;

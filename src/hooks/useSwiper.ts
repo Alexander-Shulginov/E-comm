@@ -7,16 +7,29 @@ export function useSwiper(swiperContainer: Ref<HTMLElement | null>, options: Swi
 
     const initSwiper = () => {
         if (!swiperContainer.value || swiperInstance.value) return
-
         swiperInstance.value = new Swiper(swiperContainer.value, options)
     }
 
-    onMounted(() => nextTick(initSwiper))
+    const updateSwiper = () => {
+        if (swiperInstance.value) {
+            swiperInstance.value.update()
+        }
+    }
 
-    onUnmounted(() => {
-        swiperInstance.value?.destroy(true, true)
-        swiperInstance.value = null
+    const destroySwiper = () => {
+        if (swiperInstance.value) {
+            swiperInstance.value.destroy(true, true)
+            swiperInstance.value = null
+        }
+    }
+
+    onMounted(() => {
+        nextTick(initSwiper)
     })
 
-    return { swiperInstance }
+    onUnmounted(() => {
+        destroySwiper()
+    })
+
+    return { swiperInstance, initSwiper, updateSwiper }
 }
