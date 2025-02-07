@@ -1,23 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import IconStar from '@/components/icons/IconStar.vue'
-import IconPlatformPc from '@/components/icons/IconPlatformPc.vue'
-import IconPlatformPlayStation from '@/components/icons/IconPlatformPlayStation.vue'
-import IconPlatformXbox from '@/components/icons/IconPlatformXbox.vue'
-import IconPlatformApple from '@/components/icons/IconPlatformApple.vue'
-import IconPlatformLinux from '@/components/icons/IconPlatformLinux.vue'
-import IconPlatformNintendo from '@/components/icons/IconPlatformNintendo.vue'
-import IconPlatformAndroid from '@/components/icons/IconPlatformAndroid.vue'
-import { formatNumber } from '@/utils/formatNumber'
-// import { useImgLoading } from '@/hooks/useImgLoading'
 import BaseTitle from '@/components/UI/BaseTitle.vue'
 import BaseImg from '@/components/UI/BaseImg.vue'
+import CardBasePlatforms from '@/components/UI/cards/CardBasePlatforms.vue'
+import CardBaseRating from '@/components/UI/cards/CardBaseRating.vue'
 
-const props = defineProps<{
+defineProps<{
     name: string
     img: string
     loading: boolean
-    rating?: number
+    rating: number
     platforms: {
         platform: {
             id: number
@@ -25,49 +16,20 @@ const props = defineProps<{
         }
     }[]
 }>()
-
-const platformIcons: Record<number, any> = {
-    1: IconPlatformPc,
-    2: IconPlatformPlayStation,
-    3: IconPlatformXbox,
-    5: IconPlatformApple,
-    6: IconPlatformLinux,
-    7: IconPlatformNintendo,
-    8: IconPlatformAndroid
-}
-
-const filteredPlatforms = computed(() =>
-    props.platforms
-        .map(({ platform }) => ({ id: platform.id, component: platformIcons[platform.id] }))
-        .filter((p) => p.component)
-)
-
-// const { loading } = useImgLoading(props.img)
 </script>
 
 <template>
     <div class="cardBase">
         <div class="cardBase__img-wrap">
-            <BaseImg :src="img" :alt="name" :width="300" :height="400"  class="cardBase__img" />
+            <BaseImg :src="img" :alt="name" :width="300" :height="400" class="cardBase__img" />
         </div>
         <BaseTitle :tag="'h4'" :is-bold="true" class="cardBase__name">
             {{ name ? name : 'No name' }}
         </BaseTitle>
 
         <div class="cardBase__wrap">
-            <div class="cardBase__platforms">
-                <component
-                    v-for="platform in filteredPlatforms"
-                    :key="platform.id"
-                    :is="platform.component"
-                />
-            </div>
-            <div v-if="rating" class="cardBase__rating">
-                <IconStar :width="18" :height="18" />
-                <span>
-                    {{ formatNumber(rating) }}
-                </span>
-            </div>
+            <CardBasePlatforms :platforms="platforms" />
+            <CardBaseRating :rating="rating" />
         </div>
     </div>
 </template>
@@ -80,6 +42,7 @@ const filteredPlatforms = computed(() =>
         aspect-ratio: 3 / 4;
         object-fit: cover;
         border-radius: 8px;
+        overflow: hidden;
 
         margin-bottom: 12px;
     }
@@ -102,29 +65,6 @@ const filteredPlatforms = computed(() =>
         align-items: center;
         justify-content: space-between;
         gap: 6px;
-    }
-
-    &__platforms {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        svg:hover {
-            fill: var(--color-accent);
-        }
-
-        @media (max-width: 768px){
-            svg {
-                width: 16px;
-                height: 16px;
-            }
-        }
-    }
-
-    &__rating {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        margin-left: auto;
     }
 }
 </style>
