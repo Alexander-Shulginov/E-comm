@@ -20,9 +20,9 @@ export interface PlatformDTO {
 export interface GameDTO {
     id: number
     name: string
-    image: string
+    background_image: string
     rating: number
-    platforms: {
+    parent_platforms: {
         platform: PlatformDTO
     }[]
 }

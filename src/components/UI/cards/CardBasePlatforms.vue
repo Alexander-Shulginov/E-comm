@@ -20,18 +20,21 @@ const platformIcons: Record<number, any> = {
 
 const props = defineProps<{
     platforms: {
-        platform: {
-            id: number
-            name: string
-        }
+        id: number
+        name: string
     }[]
 }>()
-
 const filteredPlatforms = computed(() =>
     props.platforms
-        .map(({ platform }) => ({ id: platform.id, component: platformIcons[platform.id] }))
+        .map(({ id }) => ({ id, component: platformIcons[id] }))
         .filter((p) => p.component)
 )
+
+// const filteredPlatforms = computed(() =>
+//     props.platforms
+//         .map(({ platform }) => ({ id: platform.id, component: platformIcons[platform.id] }))
+//         .filter((p) => p.component)
+// )
 </script>
 
 <template>

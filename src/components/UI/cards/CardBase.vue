@@ -10,18 +10,15 @@ const props = defineProps<{
     img: string
     loading: boolean
     rating: number
-    platforms: {
-        platform: {
-            id: number
-            name: string
-        }
+    platform: {
+        id: number
+        name: string
     }[]
 }>()
 
 const displayName = computed(() => {
     return props.name ? props.name : 'No name'
 })
-
 </script>
 
 <template>
@@ -34,7 +31,7 @@ const displayName = computed(() => {
         </BaseTitle>
 
         <div class="cardBase__wrap">
-            <CardBasePlatforms :platforms="platforms" />
+            <CardBasePlatforms :platforms="platform" />
             <CardBaseRating :rating="rating" />
         </div>
     </div>

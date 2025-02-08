@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import CardBase from '@/components/UI/cards/CardBase.vue'
 import { useSwiper } from '@/hooks/useSwiper'
+import { Game } from '@/types/models/Game';
 import { nextTick, ref, watch } from 'vue'
 
 const props = defineProps<{
-    data: any
+    data: Game[] | undefined
     isPending: boolean
 }>()
 
@@ -31,13 +32,13 @@ watch([() => props.data, swiperPopular], (newData) => {
 <template>
     <div v-if="data" class="swiper" ref="swiperPopular">
         <ul class="popularGames__list swiper-wrapper">
-            <li v-for="game in data.results" :key="game.id" class="swiper-slide">
+            <li v-for="game in data" :key="game.id" class="swiper-slide">
                 <CardBase
                     :loading="isPending"
                     :name="game.name"
-                    :img="game.background_image"
+                    :img="game.image"
                     :rating="game.rating"
-                    :platforms="game.parent_platforms"
+                    :platform="game.platforms"
                 />
             </li>
         </ul>
