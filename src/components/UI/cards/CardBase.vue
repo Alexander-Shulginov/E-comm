@@ -4,35 +4,35 @@ import BaseImg from '@/components/UI/BaseImg.vue'
 import CardBasePlatforms from '@/components/UI/cards/CardBasePlatforms.vue'
 import CardBaseRating from '@/components/UI/cards/CardBaseRating.vue'
 import { computed } from 'vue'
+import { Game } from '@/types/models/Game'
 
 const props = defineProps<{
-    name: string
-    img: string
-    loading: boolean
-    rating: number
-    platform: {
-        id: number
-        name: string
-    }[]
+    game: Game
 }>()
 
 const displayName = computed(() => {
-    return props.name ? props.name : 'No name'
+    return props.game.name ? props.game.name : 'No name'
 })
 </script>
 
 <template>
-    <div class="cardBase">
+    <div v-if="game" class="cardBase">
         <div class="cardBase__img-wrap">
-            <BaseImg :src="img" :alt="name" :width="300" :height="400" class="cardBase__img" />
+            <BaseImg
+                :src="game.image"
+                :alt="game.name"
+                :width="300"
+                :height="400"
+                class="cardBase__img"
+            />
         </div>
         <BaseTitle :tag="'h4'" :is-bold="true" class="cardBase__name">
             {{ displayName }}
         </BaseTitle>
 
         <div class="cardBase__wrap">
-            <CardBasePlatforms :platforms="platform" />
-            <CardBaseRating :rating="rating" />
+            <CardBasePlatforms :platforms="game.platforms" />
+            <CardBaseRating :rating="game.rating" />
         </div>
     </div>
 </template>
