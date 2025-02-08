@@ -5,6 +5,7 @@ import CardBasePlatforms from '@/components/UI/cards/CardBasePlatforms.vue'
 import CardBaseRating from '@/components/UI/cards/CardBaseRating.vue'
 import { computed } from 'vue'
 import { Game } from '@/types/models/Game'
+import BtnAddToFavorites from '@/components/UI/buttons/BtnAddToFavorites.vue'
 
 const props = defineProps<{
     game: Game
@@ -16,7 +17,7 @@ const displayName = computed(() => {
 </script>
 
 <template>
-    <div v-if="game" class="cardBase">
+    <a href="#" v-if="game" class="cardBase">
         <div class="cardBase__img-wrap">
             <BaseImg
                 :src="game.image"
@@ -25,6 +26,7 @@ const displayName = computed(() => {
                 :height="400"
                 class="cardBase__img"
             />
+            <BtnAddToFavorites class="cardBase__favorite" />
         </div>
         <BaseTitle :tag="'h4'" :is-bold="true" class="cardBase__name">
             {{ displayName }}
@@ -34,12 +36,21 @@ const displayName = computed(() => {
             <CardBasePlatforms :platforms="game.platforms" />
             <CardBaseRating :rating="game.rating" />
         </div>
-    </div>
+    </a>
 </template>
 
 <style lang="scss" scoped>
 .cardBase {
     overflow: hidden;
+
+    @media (any-hover: hover) {
+        &:hover {
+            .cardBase__favorite {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
 
     &__img {
         aspect-ratio: 3 / 4;
@@ -61,6 +72,21 @@ const displayName = computed(() => {
 
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
+    }
+
+    &__img-wrap {
+        position: relative;
+    }
+
+    &__favorite {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        visibility: hidden;
+        opacity: 0;
+        transition:
+            visibility 0.3s ease-in-out,
+            opacity 0.3s ease-in-out;
     }
 
     &__wrap {

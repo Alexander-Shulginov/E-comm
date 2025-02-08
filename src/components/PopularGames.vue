@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
 import PopularGamesCarousel from './PopularGamesCarousel.vue'
 import BaseTitle from './UI/BaseTitle.vue'
+import BaseBtn from './UI/buttons/BaseBtn.vue'
 
 const { isPending, data } = useQuery({
     queryKey: ['getGames'],
@@ -12,7 +13,12 @@ const { isPending, data } = useQuery({
 
 <template>
     <section class="popularGames">
-        <BaseTitle :tag="'h2'" :is-bold="true" class="popularGames__title"> Most Popular</BaseTitle>
+        <div class="popularGames__top">
+            <BaseTitle :tag="'h2'" :is-bold="true" class="popularGames__title">
+                Most Popular</BaseTitle
+            >
+            <BaseBtn :as="'a'" :variant="'base'">View All</BaseBtn>
+        </div>
         <PopularGamesCarousel :data="data" :is-pending="isPending" />
     </section>
 </template>
@@ -21,8 +27,11 @@ const { isPending, data } = useQuery({
 .popularGames {
     margin-bottom: 68px;
 
-    &__title {
+    &__top {
         margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 }
 </style>

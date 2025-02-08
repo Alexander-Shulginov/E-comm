@@ -13,11 +13,12 @@ const swiperPopular = ref<HTMLElement | null>(null)
 const { initSwiper } = useSwiper(swiperPopular, {
     loop: true,
     speed: 800,
+    spaceBetween: 24,
     breakpoints: {
-        320: { slidesPerView: 1.2, spaceBetween: 18 },
+        320: { slidesPerView: 1.2, spaceBetween: 16 },
         440: { slidesPerView: 2.2, spaceBetween: 18 },
         768: { slidesPerView: 3 },
-        1024: { slidesPerView: 4, spaceBetween: 24 },
+        1024: { slidesPerView: 4 },
         1280: { slidesPerView: 5 }
     }
 })

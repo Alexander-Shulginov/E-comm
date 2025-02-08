@@ -54,7 +54,7 @@ const classes = computed(() => [
 
     &--base {
         min-height: 36px;
-        padding: 5px 14px;
+        padding: 5px 16px;
         font-size: 13px;
         background-color: var(--color-dark-second);
 
