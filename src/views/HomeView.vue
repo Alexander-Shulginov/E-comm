@@ -8,7 +8,7 @@ import PopularGames from '@/components/PopularGames.vue'
 <template>
     <PopularCategory />
     <GenreList />
-    <!-- <PopularGames /> -->
+    <PopularGames />
     <GamePromo />
 </template>
 

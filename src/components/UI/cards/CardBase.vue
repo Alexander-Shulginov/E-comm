@@ -8,7 +8,9 @@ import { Game } from '@/types/models/Game'
 import BtnAddToFavorites from '@/components/UI/buttons/BtnAddToFavorites.vue'
 
 const props = defineProps<{
-    game: Game
+    game: Game,
+    showPlatforms?: boolean,
+    showRating?: boolean
 }>()
 
 const displayName = computed(() => {
@@ -30,13 +32,14 @@ const displayName = computed(() => {
         </div>
         <BaseTitle :tag="'h4'" :is-bold="true" class="cardBase__name">
             {{ displayName }}
+            {{ showPlatforms }}
         </BaseTitle>
 
         <div class="cardBase__wrap">
-            <div v-if="game.platforms" class="cardBase__platforms">
+            <div v-if="showPlatforms" class="cardBase__platforms">
                 <CardBasePlatforms :platforms="game.platforms" />
             </div>
-            <CardBaseRating :rating="game.rating" />
+            <CardBaseRating v-if="showRating" :rating="game.rating" />
         </div>
     </a>
 </template>

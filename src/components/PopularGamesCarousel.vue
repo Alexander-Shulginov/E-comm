@@ -20,7 +20,7 @@ const { initSwiper } = useSwiper(swiperPopular, {
         768: { slidesPerView: 3 },
         1024: { slidesPerView: 4 },
         1280: { slidesPerView: 5 }
-    },
+    }
 })
 
 watch([() => props.data, swiperPopular], (newData) => {
@@ -34,7 +34,7 @@ watch([() => props.data, swiperPopular], (newData) => {
     <div v-if="data" class="swiper popularGames__carousel" ref="swiperPopular">
         <ul class="popularGames__list swiper-wrapper">
             <li v-for="game in data" :key="game.id" class="swiper-slide">
-                <CardBase :game="game" />
+                <CardBase :game="game" :show-platforms="true" :show-rating="true" />
             </li>
         </ul>
     </div>

@@ -7,7 +7,7 @@ import { fetchGames } from '@/services/gamesService'
 
 const { isPending, data } = useQuery({
     queryKey: ['getGamesByCategory'],
-    queryFn: () => fetchGames('/games', { page_size: 5, page: 1, genres: 'indie' })
+    queryFn: () => fetchGames('/games', { page_size: 5, page: 1, genres: 'strategy' })
 })
 </script>
 
@@ -25,7 +25,10 @@ const { isPending, data } = useQuery({
             </ul>
         </div>
         <div class="popularCategory__games" v-if="data">
-            <CardBase v-for="game in data" :game="game" />
+            <div v-for="game in data">
+                <img :src="game.image" :alt="game.name" />
+                <p>{{ game.name }}</p>
+            </div>
         </div>
     </div>
 </template>
@@ -34,6 +37,7 @@ const { isPending, data } = useQuery({
 .popularCategory {
     display: flex;
     margin-bottom: 68px;
+    gap: 18px;
 
     &__block {
         background-color: var(--color-dark-second);
@@ -57,7 +61,29 @@ const { isPending, data } = useQuery({
 
     &__games {
         display: flex;
+        gap: 12px;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        img {
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-weight: 700;
+            font-size: 18px;
+            overflow: hidden;
+            display: -webkit-box;
+
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+        }
     }
 }
-
 </style>
