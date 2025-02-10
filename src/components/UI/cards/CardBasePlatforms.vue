@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { type Component, computed } from 'vue'
 import IconPlatformPc from '@/components/icons/IconPlatformPc.vue'
 import IconPlatformPlayStation from '@/components/icons/IconPlatformPlayStation.vue'
 import IconPlatformXbox from '@/components/icons/IconPlatformXbox.vue'
@@ -7,8 +7,13 @@ import IconPlatformApple from '@/components/icons/IconPlatformApple.vue'
 import IconPlatformLinux from '@/components/icons/IconPlatformLinux.vue'
 import IconPlatformNintendo from '@/components/icons/IconPlatformNintendo.vue'
 import IconPlatformAndroid from '@/components/icons/IconPlatformAndroid.vue'
+import { PlatformDTO } from '@/types/DTO/GameDTO'
 
-const platformIcons: Record<number, any> = {
+const props = defineProps<{
+    platforms: PlatformDTO[]
+}>()
+
+const platformIcons: Record<number, Component> = {
     1: IconPlatformPc,
     2: IconPlatformPlayStation,
     3: IconPlatformXbox,
@@ -18,49 +23,86 @@ const platformIcons: Record<number, any> = {
     8: IconPlatformAndroid
 }
 
-const props = defineProps<{
-    platforms: {
-        id: number
-        name: string
-    }[]
-}>()
 const filteredPlatforms = computed(() =>
     props.platforms
-        .map(({ id }) => ({ id, component: platformIcons[id] }))
+        .map(({ id, name }) => ({
+            id,
+            name: name.includes('Macintosh') ? 'Apple' : name,
+            component: platformIcons[id]
+        }))
         .filter((p) => p.component)
 )
-
-// const filteredPlatforms = computed(() =>
-//     props.platforms
-//         .map(({ platform }) => ({ id: platform.id, component: platformIcons[platform.id] }))
-//         .filter((p) => p.component)
-// )
 </script>
 
 <template>
-    <div class="cardBase__platforms">
-        <component
-            v-for="platform in filteredPlatforms"
-            :key="platform.id"
-            :is="platform.component"
-        />
+    <div class="platform" v-for="platform in filteredPlatforms" :key="platform.id">
+        <component :is="platform.component" class="platform__icon" />
+        <span class="platform__name">{{ platform.name }}</span>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.cardBase {
-    &__platforms {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        svg:hover {
-            fill: var(--color-accent);
-        }
+.platform {
+    display: flex;
+    position: relative;
 
+    @media (any-hover: hover) {
+        &:hover {
+            .platform__name {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .platform__icon {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &__icon {
+        transition: transform 0.3s ease-in-out;
         @media (max-width: 768px) {
-            svg {
-                width: 16px;
-                height: 16px;
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &__name {
+        position: absolute;
+        bottom: -28px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 12px;
+
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            opacity 0.2s ease-in-out,
+            visibility 0.2s ease-in-out;
+        background-color: var(--color-accent);
+        padding: 2px 6px;
+        border-radius: 2px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 0 8px 8px 8px;
+            border-color: transparent transparent var(--color-accent) transparent;
+            transform: rotate(0deg) translateX(-50%);
+        }
+    }
+
+    &:first-child {
+        .platform__name {
+            left: 76%;
+            &::after {
+                left: 12px;
+                border-width: 0 6px 6px 6px;
             }
         }
     }

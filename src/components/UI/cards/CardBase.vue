@@ -33,7 +33,9 @@ const displayName = computed(() => {
         </BaseTitle>
 
         <div class="cardBase__wrap">
-            <CardBasePlatforms :platforms="game.platforms" />
+            <div v-if="game.platforms" class="cardBase__platforms">
+                <CardBasePlatforms :platforms="game.platforms" />
+            </div>
             <CardBaseRating :rating="game.rating" />
         </div>
     </a>
@@ -59,6 +61,10 @@ const displayName = computed(() => {
         overflow: hidden;
 
         margin-bottom: 12px;
+
+        @media (max-width: 460px){
+            aspect-ratio: 16 / 9;
+        }
     }
 
     &__name {
@@ -91,9 +97,16 @@ const displayName = computed(() => {
 
     &__wrap {
         display: flex;
-        align-items: center;
+        // align-items: center;
         justify-content: space-between;
         gap: 6px;
+    }
+
+    &__platforms {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding-left: 2px;
     }
 }
 </style>
