@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { genreList } from '@/types/genres'
-import BaseTitle from '@/components/UI/BaseTitle.vue'
-import CardBase from '@/components/UI/cards/CardBase.vue'
 import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
+import PopularCategoryNav from '@/components/PopularCategoryNav.vue'
 
 const { isPending, data } = useQuery({
     queryKey: ['getGamesByCategory'],
@@ -13,17 +11,8 @@ const { isPending, data } = useQuery({
 
 <template>
     <div class="popularCategory">
-        <div class="popularCategory__block">
-            <BaseTitle :tag="'h3'" :is-bold="true" class="popularCategory__title">
-                Popular By Category
-            </BaseTitle>
+        <PopularCategoryNav />
 
-            <ul class="popularCategory__list">
-                <li class="popularCategory__item" v-for="genre in genreList">
-                    {{ genre.genreName }}
-                </li>
-            </ul>
-        </div>
         <div class="popularCategory__games" v-if="data">
             <div v-for="game in data">
                 <img :src="game.image" :alt="game.name" />
@@ -38,26 +27,6 @@ const { isPending, data } = useQuery({
     display: flex;
     margin-bottom: 68px;
     gap: 18px;
-
-    &__block {
-        background-color: var(--color-dark-second);
-        padding: 16px;
-        flex-shrink: 0;
-    }
-
-    &__title {
-        margin-bottom: 20px;
-    }
-
-    &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    &__item {
-        cursor: pointer;
-    }
 
     &__games {
         display: flex;
