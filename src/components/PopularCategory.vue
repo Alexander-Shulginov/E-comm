@@ -2,8 +2,9 @@
 import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
 import PopularCategoryNav from '@/components/PopularCategoryNav.vue'
+import PopularCategoryCarousel from '@/components/PopularCategoryCarousel.vue'
 
-const { isPending, data } = useQuery({
+const { data } = useQuery({
     queryKey: ['getGamesByCategory'],
     queryFn: () => fetchGames('/games', { page_size: 5, page: 1, genres: 'strategy' })
 })
@@ -12,13 +13,7 @@ const { isPending, data } = useQuery({
 <template>
     <div class="popularCategory">
         <PopularCategoryNav />
-
-        <div class="popularCategory__games" v-if="data">
-            <div v-for="game in data">
-                <img :src="game.image" :alt="game.name" />
-                <p>{{ game.name }}</p>
-            </div>
-        </div>
+        <PopularCategoryCarousel :data="data" />
     </div>
 </template>
 
@@ -28,31 +23,8 @@ const { isPending, data } = useQuery({
     margin-bottom: 68px;
     gap: 18px;
 
-    &__games {
-        display: flex;
-        gap: 12px;
-
-        div {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        img {
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 12px;
-        }
-
-        p {
-            font-weight: 700;
-            font-size: 18px;
-            overflow: hidden;
-            display: -webkit-box;
-
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
-        }
+    @media (max-width: 768px){
+        flex-direction: column;
     }
 }
 </style>

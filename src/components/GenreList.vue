@@ -39,6 +39,7 @@ useSwiper(swiperGenre, {
             <div class="swiper-wrapper">
                 <GenreListCard
                     v-for="genre in genreList"
+                    :key="genre.genreName"
                     :genre-name="genre.genreName"
                     :genre-img="genre.genreImg"
                     class="swiper-slide"
