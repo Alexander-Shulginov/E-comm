@@ -9,7 +9,7 @@ const props = defineProps<{
 }>()
 
 const swiperCategory = ref<HTMLElement | null>(null)
-const { initSwiper } = useSwiper(swiperCategory, {
+const { initSwiper, swiperInstance, destroySwiper } = useSwiper(swiperCategory, {
     loop: true,
     speed: 800,
     spaceBetween: 18,
@@ -22,9 +22,13 @@ const { initSwiper } = useSwiper(swiperCategory, {
     }
 })
 
-watch([() => props.data, swiperCategory], (newData) => {
+watch([() => props.data, swiperCategory], async (newData) => {
     if (newData && swiperCategory.value) {
-        nextTick(() => initSwiper())
+        await nextTick()
+        if (swiperInstance) {
+            destroySwiper()
+        }
+        initSwiper()
     }
 })
 </script>

@@ -1,20 +1,31 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { genreList } from '@/types/genres'
+import { popularCategory } from '@/types/popularCategory'
 
+const emit = defineEmits(['getSlugActiveItem'])
+
+const getSlugActiveItem = (slug: string) => {
+    emit('getSlugActiveItem', slug)
+}
 const clickedItem = ref<number>(0)
+const updateClickedItem = (index: number) => {
+    clickedItem.value = index
+}
 </script>
 
 <template>
     <ul class="categoryNav__list">
-        <li class="categoryNav__item" v-for="(genre, index) in genreList" :key="index">
+        <li class="categoryNav__item" v-for="(category, index) in popularCategory" :key="index">
             <button
                 class="categoryNav__btn"
                 :class="{ 'categoryNav__btn--active': clickedItem === index }"
-                @click="clickedItem = index"
+                @click="
+                    updateClickedItem(index);
+                    getSlugActiveItem(category.slug)
+                "
                 type="button"
             >
-                {{ genre.genreName }}
+                {{ category.name }}
             </button>
         </li>
     </ul>

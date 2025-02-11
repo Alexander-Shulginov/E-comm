@@ -31,5 +31,5 @@ export function useSwiper(swiperContainer: Ref<HTMLElement | null>, options: Swi
         destroySwiper()
     })
 
-    return { swiperInstance, initSwiper, updateSwiper }
+    return { swiperInstance, initSwiper, updateSwiper, destroySwiper }
 }

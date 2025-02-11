@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import BaseTitle from '@/components/UI/BaseTitle.vue'
 import PopularCategoryNavList from '@/components/PopularCategoryNavList.vue'
+
+const emit = defineEmits(['getSlugActiveItem'])
+
+const getSlugActiveItem = (slug: string) => {
+    emit('getSlugActiveItem', slug)
+}
 </script>
 
 <template>
@@ -8,7 +14,7 @@ import PopularCategoryNavList from '@/components/PopularCategoryNavList.vue'
         <BaseTitle :tag="'h3'" :is-bold="true" class="categoryNav__title">
             Popular By Category
         </BaseTitle>
-        <PopularCategoryNavList />
+        <PopularCategoryNavList v-on:get-slug-active-item="getSlugActiveItem" />
     </div>
 </template>
 
@@ -21,7 +27,7 @@ import PopularCategoryNavList from '@/components/PopularCategoryNavList.vue'
     &__title {
         margin-bottom: 20px;
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             text-align: center;
         }
     }
