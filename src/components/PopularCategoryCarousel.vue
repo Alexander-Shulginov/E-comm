@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue'
 import { Game } from '@/types/models/Game'
-import CardPopular from './UI/cards/CardPopular.vue'
+import CardPopular from '@/components/cards/CardPopular.vue'
 import { useSwiper } from '@/hooks/useSwiper'
+import BaseLoader from '@/components/UI/BaseLoader.vue';
 
 const props = defineProps<{
     data: Game[] | undefined
+    isLoading: boolean
 }>()
 
 const swiperCategory = ref<HTMLElement | null>(null)
@@ -34,11 +36,27 @@ watch([() => props.data, swiperCategory], async (newData) => {
 </script>
 
 <template>
-    <div class="swiper" ref="swiperCategory" v-if="data">
-        <div class="swiper-wrapper">
-            <CardPopular class="swiper-slide" v-for="game in data" :key="game.id" :data="game" />
+    <div class="popularCarousel">
+        <BaseLoader v-if="isLoading" />
+        <div class="swiper" ref="swiperCategory" v-if="data">
+            <div class="swiper-wrapper">
+                <CardPopular
+                    class="swiper-slide"
+                    v-for="game in data"
+                    :key="game.id"
+                    :data="game"
+                />
+            </div>
         </div>
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.popularCarousel {
+    width: 100%;
+    flex-grow: 2;
+    overflow: hidden;
+    position: relative;
+}
+
+</style>

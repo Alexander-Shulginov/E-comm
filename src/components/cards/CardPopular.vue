@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
     <div v-if="data" class="cardPopular">
-        <img class="cardPopular__img" :src="data.image" :alt="data.name" width="215" height="270" />
+        <img class="cardPopular__img" :src="data.image" :alt="data.name" width="215" height="230" />
         <p class="cardPopular__name">{{ data.name ? data.name : 'No name' }}</p>
     </div>
 </template>

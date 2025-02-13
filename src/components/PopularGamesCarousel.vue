@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import CardBase from '@/components/UI/cards/CardBase.vue'
+import { nextTick, ref, watch } from 'vue'
+import CardBase from '@/components/cards/CardBase.vue'
 import { useSwiper } from '@/hooks/useSwiper'
 import { Game } from '@/types/models/Game'
-import { nextTick, ref, watch } from 'vue'
+import BaseLoader from '@/components/UI/BaseLoader.vue'
 
 const props = defineProps<{
     data: Game[] | undefined
@@ -31,18 +32,25 @@ watch([() => props.data, swiperPopular], (newData) => {
 </script>
 
 <template>
-    <div v-if="data" class="swiper popularGames__carousel" ref="swiperPopular">
-        <ul class="popularGames__list swiper-wrapper">
-            <li v-for="game in data" :key="game.id" class="swiper-slide">
-                <CardBase :game="game" :show-platforms="true" :show-rating="true" />
-            </li>
-        </ul>
+    <div class="popularGames__carousel">
+        <BaseLoader v-if="isPending" />
+        <div v-if="data" class="swiper" ref="swiperPopular">
+            <ul class="popularGames__list swiper-wrapper">
+                <li v-for="game in data" :key="game.id" class="swiper-slide">
+                    <CardBase :game="game" :show-platforms="true" :show-rating="true" />
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .popularGames {
     &__carousel {
+        position: relative;
+    }
+
+    &__list {
         padding-bottom: 30px;
     }
 }

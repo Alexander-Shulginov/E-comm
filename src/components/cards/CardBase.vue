@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import BaseTitle from '@/components/UI/BaseTitle.vue'
 import BaseImg from '@/components/UI/BaseImg.vue'
-import CardBasePlatforms from '@/components/UI/cards/CardBasePlatforms.vue'
-import CardBaseRating from '@/components/UI/cards/CardBaseRating.vue'
+import CardBasePlatforms from '@/components/cards/CardBasePlatforms.vue'
+import CardBaseRating from '@/components/cards/CardBaseRating.vue'
 import { computed } from 'vue'
 import { Game } from '@/types/models/Game'
 import BtnAddToFavorites from '@/components/UI/buttons/BtnAddToFavorites.vue'

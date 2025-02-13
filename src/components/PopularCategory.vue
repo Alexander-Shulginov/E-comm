@@ -7,7 +7,7 @@ import { computed, ref } from 'vue'
 
 const genre = ref<string>('racing')
 
-const { data } = useQuery({
+const { data, isPending } = useQuery({
     queryKey: computed(() => ['getGamesByCategory', genre.value]),
 
     queryFn: () => fetchGames('/games', { page_size: 8, page: 1, genres: genre.value })
@@ -21,7 +21,7 @@ const getClickedCategory = (slug: string) => {
 <template>
     <div class="popularCategory">
         <PopularCategoryNav v-on:get-slug-active-item="getClickedCategory" />
-        <PopularCategoryCarousel :data="data" />
+        <PopularCategoryCarousel :data="data" :is-loading="isPending" />
     </div>
 </template>
 

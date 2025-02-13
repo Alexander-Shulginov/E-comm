@@ -69,7 +69,7 @@ const filteredPlatforms = computed(() =>
 
     &__name {
         position: absolute;
-        bottom: -28px;
+        bottom: -32px;
         left: 50%;
         transform: translateX(-50%);
         font-size: 12px;
