@@ -4,6 +4,7 @@ import { Game } from '@/types/models/Game'
 import CardPopular from '@/components/cards/CardPopular.vue'
 import { useSwiper } from '@/hooks/useSwiper'
 import BaseLoader from '@/components/UI/BaseLoader.vue';
+import { Navigation } from 'swiper/modules';
 
 const props = defineProps<{
     data: Game[] | undefined
@@ -12,6 +13,7 @@ const props = defineProps<{
 
 const swiperCategory = ref<HTMLElement | null>(null)
 const { initSwiper, swiperInstance, destroySwiper } = useSwiper(swiperCategory, {
+    modules: [Navigation],
     loop: true,
     speed: 800,
     spaceBetween: 18,
@@ -21,6 +23,10 @@ const { initSwiper, swiperInstance, destroySwiper } = useSwiper(swiperCategory, 
         860: { slidesPerView: 3 },
         1024: { slidesPerView: 4 },
         1280: { slidesPerView: 5 }
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
     }
 })
 
@@ -47,6 +53,8 @@ watch([() => props.data, swiperCategory], async (newData) => {
                     :data="game"
                 />
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </div>
 </template>
