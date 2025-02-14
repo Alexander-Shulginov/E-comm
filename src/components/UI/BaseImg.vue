@@ -1,53 +1,62 @@
+
 <script setup lang="ts">
 import { ref } from 'vue'
+
+import errorPl from '@/assets/img/common/error-placeholder.png'
 defineProps<{
     src: string
-    alt: string
-    width: number
-    height: number
-    lazy?: boolean
+    alt?: string
 }>()
 
 const isLoading = ref(true)
-const isError = ref(false)
+const hasError = ref(false)
 
-const onImageLoading = () => {
+const onLoad = () => {
     isLoading.value = false
 }
 
-const onImageError = () => {
+const onError = () => {
+    hasError.value = true
     isLoading.value = false
-    isError.value = true
 }
 </script>
 
 <template>
-    <div class="base-image">
-        <div v-if="isLoading">Loading...</div>
-
-        <div v-else-if="isError">
-            <img src="../../assets/img/common/error-placeholder.png" alt="" />
-        </div>
-        <img
-            v-show="!isLoading && !isError"
-            :src="src"
-            :width="width"
-            :height="height"
-            :alt="alt"
-            :loading="lazy ? 'lazy' : 'eager'"
-            @load="onImageLoading"
-            @error="onImageError"
-        />
-    </div>
+    <img
+        :src="hasError ? errorPl : src"
+        :alt="alt"
+        @load="onLoad"
+        @error="onError"
+        v-bind="$attrs"
+    />
 </template>
 
-<style lang="scss" scoped>
-.base-image {
-    img {
-        aspect-ratio: inherit;
-        // width: inherit;
-        // height: inherit;
-        object-fit: inherit;
+<style scoped>
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255);
+    border-left-color: #000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
 </style>

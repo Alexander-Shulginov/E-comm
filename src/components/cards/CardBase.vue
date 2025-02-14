@@ -36,10 +36,8 @@ const displayName = computed(() => {
         </BaseTitle>
 
         <div class="cardBase__wrap">
-            <div v-if="showPlatforms" class="cardBase__platforms">
-                <CardBasePlatforms :platforms="game.platforms" />
-            </div>
-            <CardBaseRating v-if="showRating" :rating="game.rating" />
+            <CardBasePlatforms :platforms="game.platforms" />
+            <CardBaseRating :rating="game.rating" />
         </div>
     </a>
 </template>

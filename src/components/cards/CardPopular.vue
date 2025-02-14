@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Game } from '@/types/models/Game'
+import BaseImg from '../UI/BaseImg.vue'
 
 defineProps<{
     data: Game | undefined
@@ -8,7 +9,13 @@ defineProps<{
 
 <template>
     <div v-if="data" class="cardPopular">
-        <img class="cardPopular__img" :src="data.image" :alt="data.name" width="215" height="230" />
+        <BaseImg
+            :src="data.image"
+            :alt="data.name"
+            width="215"
+            height="230"
+            class="cardPopular__img"
+        />
         <p class="cardPopular__name">{{ data.name ? data.name : 'No name' }}</p>
     </div>
 </template>
@@ -24,7 +31,7 @@ defineProps<{
         border-radius: 8px;
         margin-bottom: 12px;
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             aspect-ratio: 16 / 9;
         }
     }
@@ -38,7 +45,7 @@ defineProps<{
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             font-size: 14px;
         }
     }

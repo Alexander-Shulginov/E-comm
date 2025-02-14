@@ -4,7 +4,7 @@ import CardBase from '@/components/cards/CardBase.vue'
 import { useSwiper } from '@/hooks/useSwiper'
 import { Game } from '@/types/models/Game'
 import BaseLoader from '@/components/UI/BaseLoader.vue'
-import { Navigation } from 'swiper/modules';
+import { Navigation } from 'swiper/modules'
 
 const props = defineProps<{
     data: Game[] | undefined
@@ -43,7 +43,7 @@ watch([() => props.data, swiperPopular], (newData) => {
         <div v-if="data" class="swiper" ref="swiperPopular">
             <ul class="popularGames__list swiper-wrapper">
                 <li v-for="game in data" :key="game.id" class="swiper-slide">
-                    <CardBase :game="game" :show-platforms="true" :show-rating="true" />
+                    <CardBase :game="game" />
                 </li>
             </ul>
             <div class="swiper-button-next"></div>
@@ -56,6 +56,11 @@ watch([() => props.data, swiperPopular], (newData) => {
 .popularGames {
     &__carousel {
         position: relative;
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            margin-top: -56px;
+        }
     }
 
     &__list {
