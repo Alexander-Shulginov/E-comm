@@ -7,7 +7,17 @@ defineProps<{
 </script>
 
 <template>
-    <CardRating v-for="game in games" :key="game.id" :game="game" />
+    <div class="gamesColumn">
+        <CardRating v-for="game in games" :key="game.id" :game="game" />
+    </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.gamesColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 16px;
+    background-color: var(--color-dark-second);
+}
+</style>

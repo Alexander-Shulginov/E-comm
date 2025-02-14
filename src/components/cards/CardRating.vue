@@ -30,11 +30,9 @@ defineProps<{
     display: flex;
     gap: 12px;
 
-    background-color: var(--color-dark-second);
-
     &__img {
         width: 70px;
-        height: 90px;
+        height: 70px;
         object-fit: cover;
 
         border-radius: 4px;
@@ -48,6 +46,12 @@ defineProps<{
 
     &__name {
         font-weight: 700;
+
+        overflow: hidden;
+        display: -webkit-box;
+
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
     }
 }
 </style>
