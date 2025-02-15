@@ -16,7 +16,7 @@ defineProps<{
             </p>
             <div class="cardFull__block">
                 <BaseBtn :as="'a'" :variant="'accent'">Details</BaseBtn>
-                <span class="cardFull__date">Release date: {{ data.date }}</span>
+                <span class="cardFull__date">Release: {{ data.date }}</span>
             </div>
         </div>
     </div>
@@ -30,6 +30,7 @@ defineProps<{
     overflow: hidden;
 
     position: relative;
+
     &::after {
         content: '';
         position: absolute;
@@ -45,6 +46,9 @@ defineProps<{
     @media (max-width: 768px) {
         aspect-ratio: 3 / 4;
         max-height: 660px;
+        &::after {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 80%);
+        }
     }
 
     &__img {
@@ -60,6 +64,11 @@ defineProps<{
         transform: translateY(-50%);
         z-index: 1;
 
+        @media (max-width: 1024px) {
+            left: 24px;
+            right: 24px;
+        }
+
         @media (max-width: 768px) {
             left: 16px;
             right: 16px;
@@ -71,6 +80,10 @@ defineProps<{
         margin-bottom: 18px;
         opacity: 0;
         transition: all 1.1s ease-in-out;
+
+        @media (max-width: 768px) {
+            max-width: 180px;
+        }
     }
 
     &__descr {
