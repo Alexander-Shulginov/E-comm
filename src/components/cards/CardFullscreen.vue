@@ -12,10 +12,11 @@ defineProps<{
 
 <template>
     <div class="cardFull">
-        <img src="../../assets/img/main/witcher.webp" alt="">
+        <img :src="data.img" alt="">
         <div class="cardFull__wrap">
             <div class="cardFull__logo">
-                <IconGameWitcher :width="206" :height="100" />
+                <component :is="data.icon"></component>
+                <!-- <IconGameWitcher :width="206" :height="100" /> -->
                 <!-- <IconGameAtomic :width="206" :height="100" /> -->
                 <!-- <IconGameDiablo :width="950" :height="600" /> -->
                 <!-- <IconGameDoom :width="160" :height="100" /> -->
