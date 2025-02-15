@@ -32,7 +32,6 @@ const displayName = computed(() => {
         </div>
         <p class="cardBase__name">
             {{ displayName }}
-            {{ showPlatforms }}
         </p>
 
         <div class="cardBase__wrap">
@@ -98,7 +97,7 @@ const displayName = computed(() => {
 
     &__wrap {
         display: flex;
-        // align-items: center;
+        align-items: center;
         justify-content: space-between;
         gap: 6px;
     }

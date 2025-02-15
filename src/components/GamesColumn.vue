@@ -17,7 +17,6 @@ defineProps<{
 
 <style lang="scss" scoped>
 .gamesColumn {
-    height: 100%;
     position: relative;
 
     border-radius: 8px;

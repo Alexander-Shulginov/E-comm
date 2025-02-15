@@ -21,5 +21,10 @@ defineProps<{
     &__title {
         margin-bottom: 20px;
     }
+
+    &__item {
+        height: 100%;
+        overflow: hidden;
+    }
 }
 </style>
