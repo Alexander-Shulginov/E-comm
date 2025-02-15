@@ -10,9 +10,7 @@ defineProps<{
     <div class="cardFull">
         <img class="cardFull__img" :src="data.img" alt="Game wallpaper" fetchpriority="high" />
         <div class="cardFull__wrap">
-            <div class="cardFull__logo">
-                <component :is="data.icon"></component>
-            </div>
+            <img class="cardFull__logo" :src="data.icon" width="120" height="100" alt="Game logo" />
             <p class="cardFull__descr">
                 {{ data.descr }}
             </p>
@@ -69,6 +67,7 @@ defineProps<{
     }
 
     &__logo {
+        max-width: 280px;
         margin-bottom: 18px;
         opacity: 0;
         transition: all 1.1s ease-in-out;
