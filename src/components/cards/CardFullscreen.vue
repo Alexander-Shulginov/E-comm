@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import IconGameAtomic from '../icons/IconGameAtomic.vue'
-import IconGameDiablo from '../icons/IconGameDiablo.vue'
-import IconGameDoom from '../icons/IconGameDoom.vue'
-import IconGameWitcher from '../icons/IconGameWitcher.vue'
 import BaseBtn from '../UI/buttons/BaseBtn.vue'
 
 defineProps<{
@@ -12,14 +8,10 @@ defineProps<{
 
 <template>
     <div class="cardFull">
-        <img :src="data.img" alt="">
+        <img class="cardFull__img" :src="data.img" alt="Game wallpaper" fetchpriority="high" />
         <div class="cardFull__wrap">
             <div class="cardFull__logo">
                 <component :is="data.icon"></component>
-                <!-- <IconGameWitcher :width="206" :height="100" /> -->
-                <!-- <IconGameAtomic :width="206" :height="100" /> -->
-                <!-- <IconGameDiablo :width="950" :height="600" /> -->
-                <!-- <IconGameDoom :width="160" :height="100" /> -->
             </div>
             <p class="cardFull__descr">
                 {{ data.descr }}
@@ -36,15 +28,8 @@ defineProps<{
 .cardFull {
     aspect-ratio: 16 / 9;
 
-    // background-image: url(../../assets/img/main/witcher.webp);
-    // background-image: url(../../assets/img/main/atomic.webp);
-    // background-image: url(../../assets/img/main/diablo.webp);
-    // background-image: url("../../assets/img/main/#{v-bind('data.img')}.webp");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center top;
-
     border-radius: 12px;
+    overflow: hidden;
 
     position: relative;
     &::after {
@@ -62,6 +47,11 @@ defineProps<{
     @media (max-width: 768px) {
         aspect-ratio: 3 / 4;
         max-height: 660px;
+    }
+
+    &__img {
+        object-fit: cover;
+        object-position: center top;
     }
 
     &__wrap {
