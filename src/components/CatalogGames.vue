@@ -10,9 +10,7 @@ const { data: releasedGames, isPending: releasedGamesLoaded } = useQuery({
         fetchGames('/games', {
             page_size: 5,
             ordering: '-added',
-            platforms: '4',
-            platforms_count: 1,
-            dates: '1980-01-01,2005-12-31'
+            dates: '2025-02-01,2025-12-31'
         })
 })
 
