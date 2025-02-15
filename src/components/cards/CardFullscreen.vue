@@ -7,14 +7,21 @@ defineProps<{
 </script>
 
 <template>
-    <div class="cardFull">
+    <div class="cardFull" data-swiper-anim>
         <img class="cardFull__img" :src="data.img" alt="Game wallpaper" fetchpriority="high" />
         <div class="cardFull__wrap">
-            <img class="cardFull__logo" :src="data.icon" width="120" height="100" alt="Game logo" />
-            <p class="cardFull__descr">
+            <img
+                class="cardFull__logo"
+                :src="data.icon"
+                width="280"
+                height="140"
+                alt="Game logo"
+                data-swiper-anim
+            />
+            <p class="cardFull__descr" data-swiper-anim>
                 {{ data.descr }}
             </p>
-            <div class="cardFull__block">
+            <div class="cardFull__block" data-swiper-anim>
                 <BaseBtn :as="'a'" :variant="'accent'">Details</BaseBtn>
                 <span class="cardFull__date">Release: {{ data.date }}</span>
             </div>
@@ -79,7 +86,9 @@ defineProps<{
         max-width: 280px;
         margin-bottom: 18px;
         opacity: 0;
-        transition: all 1.1s ease-in-out;
+        transition:
+            opacity 1.1s ease-in-out,
+            visibility 1.1s ease-in-out;
 
         @media (max-width: 768px) {
             max-width: 180px;
@@ -93,12 +102,20 @@ defineProps<{
 
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
+        opacity: 0;
+        transition:
+            opacity 1.5s ease-in-out,
+            visibility 1.5s ease-in-out;
     }
 
     &__block {
         display: flex;
         align-items: center;
         gap: 12px;
+        opacity: 0;
+        transition:
+            opacity 2s ease-in-out,
+            visibility 2s ease-in-out;
     }
 
     &__date {
@@ -107,8 +124,9 @@ defineProps<{
 }
 
 .swiper-slide-active {
-    .cardFull__logo {
+    [data-swiper-anim] {
         opacity: 1;
+        visibility: visible;
     }
 }
 </style>
