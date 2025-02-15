@@ -46,6 +46,7 @@ const updateClickedItem = (index: number) => {
 
     &__btn {
         cursor: pointer;
+        font-family: var(--font-second);
         color: var(--color-light);
         font-size: 16px;
         background-color: transparent;

@@ -30,10 +30,10 @@ const displayName = computed(() => {
             />
             <BtnAddToFavorites class="cardBase__favorite" />
         </div>
-        <BaseTitle :tag="'h4'" :is-bold="true" class="cardBase__name">
+        <p class="cardBase__name">
             {{ displayName }}
             {{ showPlatforms }}
-        </BaseTitle>
+        </p>
 
         <div class="cardBase__wrap">
             <CardBasePlatforms :platforms="game.platforms" />

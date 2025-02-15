@@ -12,20 +12,18 @@ const { data: releasedGames, isPending: releasedGamesLoaded } = useQuery({
             ordering: '-added',
             platforms: '4',
             platforms_count: 1,
-            dates: '2024-10-01,2025-03-31'
+            dates: '1980-01-01,2005-12-31'
         })
 })
 
-const { data: upcomingGames, isPending: upcomingGamesLoaded } = useQuery({
-    queryKey: ['upcoming'],
+const { data: oldGames, isPending: oldGamesLoaded } = useQuery({
+    queryKey: ['old'],
 
     queryFn: () =>
         fetchGames('/games', {
             page_size: 5,
             ordering: '-added',
-            platforms: '4',
-            platforms_count: 1,
-            dates: '2025-02-01,2025-07-31'
+            dates: '1980-01-01,2000-12-31'
         })
 })
 
@@ -60,16 +58,16 @@ const { data: xboxGames, isPending: xboxGamesLoaded } = useQuery({
             :loading="releasedGamesLoaded"
         />
         <CatalogGamesItem
-            :games="upcomingGames"
-            :title="'Upcoming'"
-            :loading="upcomingGamesLoaded"
-        />
-        <CatalogGamesItem
             :games="playstationGames"
             :title="'PlayStation'"
             :loading="playStationLoaded"
         />
         <CatalogGamesItem :games="xboxGames" :title="'Xbox'" :loading="xboxGamesLoaded" />
+        <CatalogGamesItem
+            :games="oldGames"
+            :title="'Old school'"
+            :loading="oldGamesLoaded"
+        />
     </div>
 </template>
 

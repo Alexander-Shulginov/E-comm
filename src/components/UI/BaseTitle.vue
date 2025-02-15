@@ -19,7 +19,8 @@ const classes = computed(() => ['title', props.isBold && 'title--bold'])
 
 <style lang="scss" scoped>
 .title {
-    font-weight: 400;
+    font-family: var(--font-second);
+    font-weight: 600;
 
     &--bold {
         font-weight: 700;
