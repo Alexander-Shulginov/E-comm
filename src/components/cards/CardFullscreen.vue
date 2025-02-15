@@ -4,27 +4,28 @@ import IconGameDiablo from '../icons/IconGameDiablo.vue'
 import IconGameDoom from '../icons/IconGameDoom.vue'
 import IconGameWitcher from '../icons/IconGameWitcher.vue'
 import BaseBtn from '../UI/buttons/BaseBtn.vue'
+
+defineProps<{
+    data: any
+}>()
 </script>
 
 <template>
     <div class="cardFull">
+        <img src="../../assets/img/main/witcher.webp" alt="">
         <div class="cardFull__wrap">
             <div class="cardFull__logo">
-                <!-- <IconGameWitcher :width="206" :height="100" /> -->
+                <IconGameWitcher :width="206" :height="100" />
                 <!-- <IconGameAtomic :width="206" :height="100" /> -->
                 <!-- <IconGameDiablo :width="950" :height="600" /> -->
-                <IconGameDoom :width="160" :height="100" />
+                <!-- <IconGameDoom :width="160" :height="100" /> -->
             </div>
             <p class="cardFull__descr">
-                In the open world of Wild Hunt, you chart your own path to adventure. You play as a
-                bounty hunter, a man of the road. You set your own goals and choose your own
-                destinations. Go after the bounty on the head of a nasty monster pestering a village
-                or help a scheming prince who needs a dirty job done -- no matter what style of epic
-                questing you crave, The Witcher will provide it.
+                {{ data.descr }}
             </p>
             <div class="cardFull__block">
                 <BaseBtn :as="'a'" :variant="'accent'">Details</BaseBtn>
-                <span class="cardFull__date">Release date: 01.02.0003</span>
+                <span class="cardFull__date">Release date: {{ data.date }}</span>
             </div>
         </div>
     </div>
@@ -37,7 +38,7 @@ import BaseBtn from '../UI/buttons/BaseBtn.vue'
     // background-image: url(../../assets/img/main/witcher.webp);
     // background-image: url(../../assets/img/main/atomic.webp);
     // background-image: url(../../assets/img/main/diablo.webp);
-    background-image: url(../../assets/img/main/doom.webp);
+    // background-image: url("../../assets/img/main/#{v-bind('data.img')}.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
