@@ -5,6 +5,7 @@ import GamePromo from '@/components/GamePromo.vue'
 import GenreList from '@/components/GenreList.vue'
 import PopularGames from '@/components/PopularGames.vue'
 import MainCarousel from '@/components/MainCarousel.vue'
+import BaseScrollToTop from '@/components/UI/BaseScrollToTop.vue'
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import MainCarousel from '@/components/MainCarousel.vue'
     <PopularCategory />
     <CatalogGames />
     <GamePromo />
+    <BaseScrollToTop />
 </template>
 
 <style lang="scss" scoped></style>
