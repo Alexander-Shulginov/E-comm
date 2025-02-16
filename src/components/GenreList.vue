@@ -53,7 +53,11 @@ useSwiper(swiperGenre, {
 <style lang="scss" scoped>
 .genre {
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 56px;
+
+    @media (max-width: 768px) {
+        margin-bottom: 35px;
+    }
 
     &__swiper {
         padding: 4px 3px 40px 3px;

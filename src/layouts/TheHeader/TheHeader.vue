@@ -19,7 +19,11 @@ import TheHeaderNav from './TheHeaderNav.vue'
 <style lang="scss" scoped>
 .header {
     background-color: var(--color-dark-second);
-    margin-bottom: 68px;
+    margin-bottom: 38px;
+
+    @media (max-width: 768px){
+        margin-bottom: 18px;
+    }
 
     &__inner {
         max-width: 1440px;

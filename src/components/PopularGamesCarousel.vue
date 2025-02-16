@@ -65,6 +65,9 @@ watch([() => props.data, swiperPopular], (newData) => {
 
     &__list {
         padding-bottom: 30px;
+        @media (max-width: 768px){
+            padding-bottom: 0;
+        }
     }
 }
 </style>

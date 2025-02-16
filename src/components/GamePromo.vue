@@ -40,6 +40,15 @@ useSwiper(swiperPromo, {
 
 <style lang="scss" scoped>
 .promo {
+    margin-bottom: 86px;
+
+    @media (max-width: 1024px){
+        margin-bottom: 66px;
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 35px;
+    }
     &__swiper {
         padding-bottom: 40px;
     }

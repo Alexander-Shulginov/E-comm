@@ -28,10 +28,15 @@ const getClickedCategory = (slug: string) => {
 <style lang="scss" scoped>
 .popularCategory {
     display: flex;
-    margin-bottom: 68px;
+    margin-bottom: 86px;
     gap: 18px;
 
+    @media (max-width: 1024px){
+        margin-bottom: 60px;
+    }
+
     @media (max-width: 768px) {
+        margin-bottom: 40px;
         flex-direction: column;
     }
 }

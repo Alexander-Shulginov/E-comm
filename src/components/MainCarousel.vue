@@ -64,6 +64,14 @@ useSwiper(swiperFullscreen, {
 
 <style lang="scss" scoped>
 .mainCarousel {
-    margin-bottom: 86px;
+    margin-bottom: 80px;
+
+    @media (max-width: 1024px){
+        margin-bottom: 60px;
+    }
+
+    @media (max-width: 768px){
+        margin-bottom: 40px;
+    }
 }
 </style>

@@ -11,7 +11,7 @@ defineProps<{
 
 <template>
     <div class="catalogGames__item">
-        <BaseTitle :tag="'h3'" class="catalogGames__title">{{ title }}</BaseTitle>
+        <BaseTitle :tag="'h2'" class="catalogGames__title">{{ title }}</BaseTitle>
         <GamesColumn :games="games" :loading="loading" />
     </div>
 </template>
@@ -20,6 +20,7 @@ defineProps<{
 .catalogGames {
     &__title {
         margin-bottom: 20px;
+        font-size: 18px;
     }
 
     &__item {

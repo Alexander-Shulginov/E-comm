@@ -25,7 +25,14 @@ const { isPending, data } = useQuery({
 
 <style lang="scss" scoped>
 .popularGames {
-    margin-bottom: 68px;
+    margin-bottom: 80px;
+    @media (max-width: 1024px){
+        margin-bottom: 50px;
+    }
+
+    @media (max-width: 768px){
+        margin-bottom: 40px;
+    }
 
     &__top {
         margin-bottom: 28px;

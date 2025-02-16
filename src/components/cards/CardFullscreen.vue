@@ -35,6 +35,10 @@ defineProps<{
 
     border-radius: 12px;
     overflow: hidden;
+    opacity: 0.3;
+    transition:
+        opacity 1.1s ease-in-out,
+        visibility 1.1s ease-in-out;
 
     position: relative;
 
@@ -54,7 +58,7 @@ defineProps<{
         aspect-ratio: 3 / 4;
         max-height: 660px;
         &::after {
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 80%);
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
         }
     }
 
@@ -64,7 +68,7 @@ defineProps<{
     }
 
     &__wrap {
-        max-width: 350px;
+        max-width: 400px;
         position: absolute;
         left: 36px;
         top: 50%;
@@ -72,6 +76,7 @@ defineProps<{
         z-index: 1;
 
         @media (max-width: 1024px) {
+            max-width: 350px;
             left: 24px;
             right: 24px;
         }
@@ -85,6 +90,7 @@ defineProps<{
     &__logo {
         max-width: 280px;
         margin-bottom: 18px;
+        visibility: hidden;
         opacity: 0;
         transition:
             opacity 1.1s ease-in-out,
@@ -103,6 +109,7 @@ defineProps<{
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
         opacity: 0;
+        visibility: hidden;
         transition:
             opacity 1.5s ease-in-out,
             visibility 1.5s ease-in-out;
@@ -113,6 +120,7 @@ defineProps<{
         align-items: center;
         gap: 12px;
         opacity: 0;
+        visibility: hidden;
         transition:
             opacity 2s ease-in-out,
             visibility 2s ease-in-out;
@@ -128,5 +136,9 @@ defineProps<{
         opacity: 1;
         visibility: visible;
     }
+}
+
+.swiper-slide-active[data-swiper-anim] {
+    opacity: 1;
 }
 </style>

@@ -74,14 +74,16 @@ const { data: xboxGames, isPending: xboxGamesLoaded } = useQuery({
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    margin-bottom: 80px;
+    margin-bottom: 86px;
     overflow: hidden;
     @media (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 66px;
     }
 
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
+        margin-bottom: 40px;
     }
 }
 </style>

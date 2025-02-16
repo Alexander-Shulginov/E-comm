@@ -11,7 +11,7 @@ const getSlugActiveItem = (slug: string) => {
 
 <template>
     <div class="categoryNav">
-        <BaseTitle :tag="'h3'" :is-bold="true" class="categoryNav__title">
+        <BaseTitle :tag="'h2'" :is-bold="true" class="categoryNav__title">
             Popular By Category
         </BaseTitle>
         <PopularCategoryNavList v-on:get-slug-active-item="getSlugActiveItem" />
