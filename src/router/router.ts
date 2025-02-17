@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
 
 const routes = [
     {
@@ -8,7 +8,11 @@ const routes = [
         name: 'Home',
         component: HomeView
     },
-
+    {
+        path: '/wishlist',
+        name: 'WishList',
+        component: () => import('@/views/WishlistView.vue')
+    }
 ]
 
 export const router = createRouter({

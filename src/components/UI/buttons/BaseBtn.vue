@@ -3,8 +3,8 @@ import { computed } from 'vue'
 
 interface IProps {
     as: 'a' | 'button'
-    href?: string
     variant: 'accent' | 'base'
+    href?: string
 }
 
 const props = defineProps<IProps>()

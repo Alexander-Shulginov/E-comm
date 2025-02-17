@@ -17,5 +17,3 @@ import BaseScrollToTop from '@/components/UI/BaseScrollToTop.vue'
     <GamePromo />
     <BaseScrollToTop />
 </template>
-
-<style lang="scss" scoped></style>

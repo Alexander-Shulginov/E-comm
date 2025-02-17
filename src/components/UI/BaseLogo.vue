@@ -17,22 +17,13 @@ import IconLogo from '@/components/icons/IconLogo.vue'
     padding-right: 2px;
 
     img {
-        width: 48px;
-        height: 48px;
+        width: 42px;
+        height: 42px;
         object-fit: contain;
 
         @media (max-width: 768px) {
             width: 32px;
             height: 32px;
-        }
-    }
-
-    &__text {
-        font-weight: 700;
-        font-size: 28px;
-        letter-spacing: -1px;
-        @media (max-width: 768px) {
-            font-size: 16px;
         }
     }
 }

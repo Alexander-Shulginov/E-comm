@@ -3,10 +3,10 @@ import IconFavorites from '@/components/icons/IconFavorites.vue'
 </script>
 
 <template>
-    <a href="#" class="favorites-link">
+    <RouterLink :to="{ name: 'WishList' }" class="favorites-link">
         <IconFavorites :width="22" :height="22" />
         <span>|</span>
-    </a>
+    </RouterLink>
 </template>
 
 <style lang="scss" scoped>

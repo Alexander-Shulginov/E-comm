@@ -28,7 +28,7 @@ import TheHeaderNav from './TheHeaderNav.vue'
     &__inner {
         max-width: 1440px;
         margin: 0 auto;
-        padding: 20px 15px;
+        padding: 16px 15px;
 
         display: flex;
         justify-content: space-between;
