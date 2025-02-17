@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import WishListIsEmpty from '@/components/WishListIsEmpty.vue'
-// import { vGlitch } from 'vue-powerglitch'
 </script>
 
 <template>

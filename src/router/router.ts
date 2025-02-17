@@ -12,6 +12,11 @@ const routes = [
         path: '/wishlist',
         name: 'WishList',
         component: () => import('@/views/WishlistView.vue')
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: '404',
+        component: () => import('@/views/NotFoundView.vue')
     }
 ]
 
