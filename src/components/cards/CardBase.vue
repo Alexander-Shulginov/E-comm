@@ -8,8 +8,8 @@ import { Game } from '@/types/models/Game'
 import BtnAddToFavorites from '@/components/UI/buttons/BtnAddToFavorites.vue'
 
 const props = defineProps<{
-    game: Game,
-    showPlatforms?: boolean,
+    game: Game
+    showPlatforms?: boolean
     showRating?: boolean
 }>()
 
@@ -35,7 +35,9 @@ const displayName = computed(() => {
         </p>
 
         <div class="cardBase__wrap">
-            <CardBasePlatforms :platforms="game.platforms" />
+            <div class="cardBase__platforms">
+                <CardBasePlatforms :platforms="game.platforms" />
+            </div>
             <CardBaseRating :rating="game.rating" />
         </div>
     </a>
@@ -62,7 +64,7 @@ const displayName = computed(() => {
 
         margin-bottom: 12px;
 
-        @media (max-width: 460px){
+        @media (max-width: 460px) {
             aspect-ratio: 16 / 9;
         }
     }

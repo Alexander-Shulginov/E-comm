@@ -36,7 +36,9 @@ const filteredPlatforms = computed(() =>
 
 <template>
     <div class="platform" v-for="platform in filteredPlatforms" :key="platform.id">
-        <component :is="platform.component" class="platform__icon" />
+        <template v-if="platform.component">
+            <component :is="platform.component" class="platform__icon" />
+        </template>
         <span class="platform__name">{{ platform.name }}</span>
     </div>
 </template>

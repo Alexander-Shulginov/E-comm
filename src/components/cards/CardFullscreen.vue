@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import BaseBtn from '../UI/buttons/BaseBtn.vue'
-
-defineProps<{
-    data: any
-}>()
+interface GameData {
+    img: string
+    icon: string
+    descr: string
+    date: string
+}
+defineProps<{ data: GameData }>()
 </script>
 
 <template>
