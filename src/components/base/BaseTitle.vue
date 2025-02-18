@@ -29,6 +29,10 @@ const classes = computed(() => ['title', props.isBold && 'title--bold'])
 
 h1.title {
     font-size: 36px;
+
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
 }
 
 h2.title {

@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import BaseBtn from '@/components/UI/buttons/BaseBtn.vue'
-import BaseText from '@/components/UI/BaseText.vue'
-import BaseTitle from '@/components/UI/BaseTitle.vue'
+import BaseBtn from '@/components/UI/BaseBtn.vue'
+import BaseText from '@/components/base/BaseText.vue'
+import BaseTitle from '@/components/base/BaseTitle.vue'
 </script>
 
 <template>
     <div class="promoCard">
         <img class="promoCard__img" src="../assets/img/promo/promo-1.webp" alt="Promo img" />
         <div class="promoCard__wrapper">
-            <BaseTitle :tag="'h3'" :is-bold="true" class="promoCard__title"
-                >Title comp</BaseTitle
-            >
+            <BaseTitle :tag="'h3'" :is-bold="true" class="promoCard__title">Title comp</BaseTitle>
             <BaseText class="promoCard__descr">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident id veniam
                 incidunt commodi ullam aliquid ex. Voluptates id debitis repellat, doloremque

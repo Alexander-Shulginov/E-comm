@@ -9,6 +9,11 @@ const routes = [
         component: HomeView
     },
     {
+        path: '/category',
+        name: 'Category',
+        component: () => import('@/views/CategoryView.vue')
+    },
+    {
         path: '/wishlist',
         name: 'WishList',
         component: () => import('@/views/WishlistView.vue')

@@ -3,7 +3,7 @@ import { nextTick, ref, watch } from 'vue'
 import CardBase from '@/components/cards/CardBase.vue'
 import { useSwiper } from '@/hooks/useSwiper'
 import { Game } from '@/types/models/Game'
-import BaseLoader from '@/components/UI/BaseLoader.vue'
+import BaseLoader from '@/components/base/BaseLoader.vue'
 import { Navigation } from 'swiper/modules'
 
 const props = defineProps<{
@@ -65,7 +65,7 @@ watch([() => props.data, swiperPopular], (newData) => {
 
     &__list {
         padding-bottom: 30px;
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             padding-bottom: 0;
         }
     }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseText from '../../components/UI/BaseText.vue'
+import BaseText from '../../components/base/BaseText.vue'
 
 const currentYear = new Date().getFullYear()
 </script>

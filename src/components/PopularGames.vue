@@ -2,8 +2,8 @@
 import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
 import PopularGamesCarousel from './PopularGamesCarousel.vue'
-import BaseTitle from './UI/BaseTitle.vue'
-import BaseBtn from './UI/buttons/BaseBtn.vue'
+import BaseTitle from './base/BaseTitle.vue'
+import BaseBtn from './UI/BaseBtn.vue'
 
 const { isPending, data } = useQuery({
     queryKey: ['getGames'],
@@ -26,11 +26,11 @@ const { isPending, data } = useQuery({
 <style lang="scss" scoped>
 .popularGames {
     margin-bottom: 80px;
-    @media (max-width: 1024px){
+    @media (max-width: 1024px) {
         margin-bottom: 50px;
     }
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
         margin-bottom: 40px;
     }
 

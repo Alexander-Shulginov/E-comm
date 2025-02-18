@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BaseTitle from './UI/BaseTitle.vue'
-import BaseBtn from './UI/buttons/BaseBtn.vue'
+import BaseTitle from './base/BaseTitle.vue'
+import BaseBtn from './UI/BaseBtn.vue'
 </script>
 
 <template>
@@ -46,7 +46,7 @@ import BaseBtn from './UI/buttons/BaseBtn.vue'
     }
 
     h1 {
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             font-size: 24px;
         }
     }

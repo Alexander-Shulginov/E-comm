@@ -1,22 +1,14 @@
-<script setup lang="ts">
-import BaseBtn from './UI/buttons/BaseBtn.vue'
-import { vGlitch } from 'vue-powerglitch'
-
-const glitchOptions = {
-    timing: { duration: 6000, easing: 'ease-in-out' },
-    shake: { amplitudeX: 0.05, amplitudeY: 0.05 }
-}
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <div class="notFound">
-        <pre v-glitch="glitchOptions">
-                     ██╗  ██╗ ██████╗ ██╗  ██╗                               
-                     ██║  ██║██╔═████╗██║  ██║                               
-                     ███████║██║██╔██║███████║                               
-                     ╚════██║████╔╝██║╚════██║                               
-                          ██║╚██████╔╝     ██║                               
-                         ╚═╝ ╚═════╝      ╚═╝                               
+        <pre>
+                        ██╗  ██╗ ██████╗ ██╗  ██╗                           
+                        ██║  ██║██╔═████╗██║  ██║                           
+                        ███████║██║██╔██║███████║                           
+                        ╚════██║████╔╝██║╚════██║                           
+                             ██║╚██████╔╝     ██║                           
+                             ╚═╝ ╚═════╝      ╚═╝                           
                                                                             
 ███╗   ██╗ ██████╗ ████████╗    ███████╗ ██████╗ ██╗   ██╗███╗   ██╗██████╗ 
 ████╗  ██║██╔═══██╗╚══██╔══╝    ██╔════╝██╔═══██╗██║   ██║████╗  ██║██╔══██╗
@@ -24,10 +16,7 @@ const glitchOptions = {
 ██║╚██╗██║██║   ██║   ██║       ██╔══╝  ██║   ██║██║   ██║██║╚██╗██║██║  ██║
 ██║ ╚████║╚██████╔╝   ██║       ██║     ╚██████╔╝╚██████╔╝██║ ╚████║██████╔╝
 ╚═╝  ╚═══╝ ╚═════╝    ╚═╝       ╚═╝      ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═════╝ 
-    </pre
-        >
-
-        <BaseBtn :as="'a'" :variant="'accent'" href="/">Go To Home</BaseBtn>
+        </pre>
     </div>
 </template>
 
@@ -35,6 +24,10 @@ const glitchOptions = {
 .notFound {
     text-align: center;
     overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     @media (max-width: 768px) {
         font-size: 5px;

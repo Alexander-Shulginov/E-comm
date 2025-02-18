@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import GamesColumn from '@/components/GamesColumn.vue'
-import BaseTitle from './UI/BaseTitle.vue'
+import BaseTitle from './base/BaseTitle.vue'
 import { Game } from '@/types/models/Game'
 defineProps<{
     games: Game[] | undefined

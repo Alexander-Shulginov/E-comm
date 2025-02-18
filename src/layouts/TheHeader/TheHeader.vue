@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import BaseFavorites from '../../components/UI/BaseFavorites.vue'
-import BaseGitHubLink from '../../components/UI/BaseGitHubLink.vue'
-import BaseLogo from '../../components/UI/BaseLogo.vue'
+import BaseFavorites from '../../components/base/BaseFavorites.vue'
+import BaseGitHubLink from '../../components/base/BaseGitHubLink.vue'
+import BaseLogo from '../../components/base/BaseLogo.vue'
 import TheHeaderNav from './TheHeaderNav.vue'
 </script>
 
@@ -21,7 +21,7 @@ import TheHeaderNav from './TheHeaderNav.vue'
     background-color: var(--color-dark-second);
     margin-bottom: 38px;
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
         margin-bottom: 18px;
     }
 

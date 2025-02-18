@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseBtn from '../UI/buttons/BaseBtn.vue'
+import BaseBtn from '../UI/BaseBtn.vue'
 interface GameData {
     img: string
     icon: string

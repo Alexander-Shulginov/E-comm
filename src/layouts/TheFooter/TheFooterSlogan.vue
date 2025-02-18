@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BaseLogo from '../../components/UI/BaseLogo.vue'
-import BaseText from '../../components/UI/BaseText.vue'
+import BaseLogo from '../../components/base/BaseLogo.vue'
+import BaseText from '../../components/base/BaseText.vue'
 </script>
 
 <template>

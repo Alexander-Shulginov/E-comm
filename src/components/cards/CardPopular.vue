@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Game } from '@/types/models/Game'
-import BaseImg from '../UI/BaseImg.vue'
+import BaseImg from '../base/BaseImg.vue'
 
 defineProps<{
     data: Game | undefined

@@ -4,10 +4,10 @@
     <nav class="nav">
         <ul class="nav__items">
             <li>
-                <a href="/">Home</a>
+                <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
             </li>
             <li>
-                <a href="#">Games</a>
+                <RouterLink :to="{ name: 'Category' }">Category</RouterLink>
             </li>
         </ul>
         <span>|</span>

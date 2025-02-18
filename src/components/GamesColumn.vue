@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CardRating from '@/components/cards/CardRating.vue'
 import { Game } from '@/types/models/Game'
-import BaseLoader from './UI/BaseLoader.vue'
+import BaseLoader from './base/BaseLoader.vue'
 defineProps<{
     games: Game[] | undefined
     loading: boolean

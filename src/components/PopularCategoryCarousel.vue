@@ -3,7 +3,7 @@ import { nextTick, ref, watch } from 'vue'
 import { Game } from '@/types/models/Game'
 import CardPopular from '@/components/cards/CardPopular.vue'
 import { useSwiper } from '@/hooks/useSwiper'
-import BaseLoader from '@/components/UI/BaseLoader.vue'
+import BaseLoader from '@/components/base/BaseLoader.vue'
 import { Navigation } from 'swiper/modules'
 
 const props = defineProps<{
@@ -65,5 +65,9 @@ watch([() => props.data, swiperCategory], async (newData) => {
     flex-grow: 2;
     overflow: hidden;
     position: relative;
+
+    @media (max-width: 768px) {
+        min-height: 160px;
+    }
 }
 </style>
