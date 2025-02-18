@@ -9,11 +9,13 @@ import BaseScrollToTop from '@/components/base/BaseScrollToTop.vue'
 </script>
 
 <template>
-    <MainCarousel />
-    <GenreList />
-    <PopularGames />
-    <PopularCategory />
-    <CatalogGames />
-    <GamePromo />
-    <BaseScrollToTop />
+    <div class="home-view">
+        <MainCarousel />
+        <GenreList />
+        <PopularGames />
+        <PopularCategory />
+        <CatalogGames />
+        <GamePromo />
+        <BaseScrollToTop />
+    </div>
 </template>

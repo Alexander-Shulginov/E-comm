@@ -20,6 +20,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 main {
@@ -107,4 +108,14 @@ button:focus-visible {
 .swiper-button-next::after {
     position: relative;
     left: 1px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.4s ease-in-out, transform .4s ease-in-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+    transform: translateX(20px);
 }

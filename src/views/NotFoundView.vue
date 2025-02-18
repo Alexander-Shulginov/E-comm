@@ -3,7 +3,9 @@ import NotFound from '@/components/NotFound.vue'
 </script>
 
 <template>
-    <NotFound />
+    <div>
+        <NotFound />
+    </div>
 </template>
 
 <style lang="scss" scoped></style>

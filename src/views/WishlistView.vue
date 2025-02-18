@@ -3,5 +3,7 @@ import WishList from '@/components/WishList.vue'
 </script>
 
 <template>
-    <WishList />
+    <div>
+        <WishList />
+    </div>
 </template>
