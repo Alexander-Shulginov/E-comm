@@ -3,7 +3,7 @@ import BaseImg from '@/components/base/BaseImg.vue'
 import CardBasePlatforms from '@/components/cards/CardBasePlatforms.vue'
 import CardBaseRating from '@/components/cards/CardBaseRating.vue'
 import { computed } from 'vue'
-import { Game } from '@/types/models/Game'
+import { Game } from '@/types/models/GameModel'
 import BtnAddToFavorites from '@/components/UI/BtnAddToFavorites.vue'
 
 const props = defineProps<{

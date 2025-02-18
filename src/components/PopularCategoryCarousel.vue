@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue'
-import { Game } from '@/types/models/Game'
+import { Game } from '@/types/models/GameModel'
 import CardPopular from '@/components/cards/CardPopular.vue'
 import { useSwiper } from '@/hooks/useSwiper'
 import BaseLoader from '@/components/base/BaseLoader.vue'

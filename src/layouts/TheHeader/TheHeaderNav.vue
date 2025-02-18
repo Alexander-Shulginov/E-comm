@@ -7,7 +7,7 @@
                 <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
             </li>
             <li>
-                <RouterLink :to="{ name: 'Category' }">Category</RouterLink>
+                <RouterLink :to="{ name: 'Genres' }">Genres</RouterLink>
             </li>
         </ul>
         <span>|</span>

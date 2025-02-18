@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BaseImg from '../base/BaseImg.vue'
 import BaseRating from '../base/BaseRating.vue'
-import { Game } from '@/types/models/Game'
+import { Game } from '@/types/models/GameModel'
 defineProps<{
     game: Game | undefined
 }>()

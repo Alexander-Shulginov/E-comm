@@ -2,7 +2,7 @@
 import { nextTick, ref, watch } from 'vue'
 import CardBase from '@/components/cards/CardBase.vue'
 import { useSwiper } from '@/hooks/useSwiper'
-import { Game } from '@/types/models/Game'
+import { Game } from '@/types/models/GameModel'
 import BaseLoader from '@/components/base/BaseLoader.vue'
 import { Navigation } from 'swiper/modules'
 

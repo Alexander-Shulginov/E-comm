@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
     data: {
         name: string
         img: string
@@ -8,20 +8,28 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="cardCategory">
-        <img class="cardCategory__img" :src="data.img" :alt="data.name" />
-        <p class="cardCategory__name">{{ data.name }}</p>
+    <div class="cardGenres">
+        <img class="cardGenres__img" :src="data.img" :alt="data.name" width="340" height="190" />
+        <p class="cardGenres__name">{{ data.name }}</p>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.cardCategory {
+.cardGenres {
     position: relative;
 
     border-radius: 10px;
     overflow: hidden;
 
-    @media (max-width: 768px){
+    @media (any-hover: hover) {
+        &:hover {
+            .cardGenres__img {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
         border-radius: 4px;
     }
 
@@ -36,9 +44,11 @@ const props = defineProps<{
         pointer-events: none;
         background-color: rgba(0, 0, 0, 0.3);
     }
+
     &__img {
-        aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 9;
         object-fit: cover;
+        transition: transform 0.6s ease-in-out;
     }
 
     &__name {
@@ -53,15 +63,15 @@ const props = defineProps<{
         font-size: 34px;
         font-weight: 700;
 
-        @media (max-width: 1024px){
+        @media (max-width: 1024px) {
             font-size: 28px;
         }
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             font-size: 22px;
         }
 
-        @media (max-width: 460px){
+        @media (max-width: 460px) {
             font-size: 16px;
         }
     }
