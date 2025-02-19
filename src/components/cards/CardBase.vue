@@ -3,13 +3,14 @@ import BaseImg from '@/components/base/BaseImg.vue'
 import CardBasePlatforms from '@/components/cards/CardBasePlatforms.vue'
 import CardBaseRating from '@/components/cards/CardBaseRating.vue'
 import { computed } from 'vue'
-import { Game } from '@/types/models/GamesModel'
+import { Games } from '@/types/models/GamesModel'
 import BtnAddToFavorites from '@/components/UI/BtnAddToFavorites.vue'
 
 const props = defineProps<{
-    game: Game
+    game: Games
     showPlatforms?: boolean
     showRating?: boolean
+    to?: any
 }>()
 
 const displayName = computed(() => {
@@ -18,7 +19,8 @@ const displayName = computed(() => {
 </script>
 
 <template>
-    <a href="#" v-if="game" class="cardBase">
+    <!-- <router-link :to="{ name: 'Game', params: { id: game.id } }"> </router-link> -->
+    <router-link :to="props.to" v-if="game" class="cardBase">
         <div class="cardBase__img-wrap">
             <BaseImg
                 :src="game.image"
@@ -39,7 +41,7 @@ const displayName = computed(() => {
             </div>
             <CardBaseRating :rating="game.rating" />
         </div>
-    </a>
+    </router-link>
 </template>
 
 <style lang="scss" scoped>

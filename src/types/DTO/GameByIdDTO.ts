@@ -10,7 +10,3 @@ export interface Game {
     rating: number
     playtime: number
 }
-
-// export interface GameByIdResponse {
-//     results: Game[]
-// } 
