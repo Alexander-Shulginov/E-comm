@@ -3,9 +3,9 @@ import NotFound from '@/components/NotFound.vue'
 </script>
 
 <template>
-    <div>
+    <section aria-label="Not found page">
         <NotFound />
-    </div>
+    </section>
 </template>
 
 <style lang="scss" scoped></style>

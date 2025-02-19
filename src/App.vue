@@ -8,7 +8,9 @@ import TheFooter from './layouts/TheFooter/TheFooter.vue'
     <main class="container">
         <router-view v-slot="{ Component, route }">
             <transition name="fade" mode="out-in">
-                <component :is="Component" :key="route.fullPath" />
+                <keep-alive :max="3">
+                    <component :is="Component" :key="route.fullPath" />
+                </keep-alive>
             </transition>
         </router-view>
     </main>

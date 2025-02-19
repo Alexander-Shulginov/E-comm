@@ -24,13 +24,11 @@
 .notFound {
     text-align: center;
     overflow: hidden;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    padding: 100px 0;
 
     @media (max-width: 768px) {
         font-size: 5px;
+        // padding-top: 20%;
     }
 }
 </style>

@@ -9,7 +9,7 @@ import BaseScrollToTop from '@/components/base/BaseScrollToTop.vue'
 </script>
 
 <template>
-    <div class="home-view">
+    <div aria-label="Home page">
         <MainCarousel />
         <GenreList />
         <PopularGames />

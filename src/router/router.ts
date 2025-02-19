@@ -19,7 +19,7 @@ const routes = [
     {
         path: '/game',
         name: 'Game',
-        meta: {title: 'Game'},
+        meta: { title: 'Game' },
         component: () => import('@/views/GameView.vue')
     },
     {
@@ -32,7 +32,7 @@ const routes = [
         path: '/:pathMatch(.*)*',
         name: '404',
         meta: { title: '404' },
-        component: () => import('@/views/NotFoundView.vue'),
+        component: () => import('@/views/NotFoundView.vue')
     }
 ]
 
@@ -44,5 +44,4 @@ export const router = createRouter({
 router.afterEach((to) => {
     const pageTitle = to.meta.title ? `${APP_NAME} | ${to.meta.title}` : APP_NAME
     document.title = pageTitle
-    
 })
