@@ -7,7 +7,7 @@ import IconPlatformApple from '@/components/icons/IconPlatformApple.vue'
 import IconPlatformLinux from '@/components/icons/IconPlatformLinux.vue'
 import IconPlatformNintendo from '@/components/icons/IconPlatformNintendo.vue'
 import IconPlatformAndroid from '@/components/icons/IconPlatformAndroid.vue'
-import { PlatformDTO } from '@/types/DTO/GameDTO'
+import { PlatformDTO } from '@/types/DTO/GamesDTO'
 
 const props = defineProps<{
     platforms: PlatformDTO[]

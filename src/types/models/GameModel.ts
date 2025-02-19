@@ -1,20 +1,27 @@
-import { GameDTO } from '@/types/DTO/GameDTO'
+import { Game } from '@/types/DTO/GameByIdDTO'
 
-export class Game {
+export class GameById {
     id: number
     name: string
-    image: string
+    descr: string
+    metacritic: number
+    released: string
+    img: string
+    img_additional?: string
+    website?: string
     rating: number
-    platforms: { id: number; name: string }[]
+    playtime: number
 
-    constructor(dto: GameDTO) {
-        this.id = dto.id
-        this.name = dto.name
-        this.image = dto.background_image
-        this.rating = dto.rating
-        this.platforms = dto.parent_platforms.map(({ platform }) => ({
-            id: platform.id,
-            name: platform.name
-        }))
+    constructor(dto: Game) {
+        this.id = dto.id ?? 0
+        this.name = dto.name ?? ''
+        this.descr= dto.description
+        this.metacritic = dto.metacritic ?? 0
+        this.released = dto.released ?? ''
+        this.img = dto.background_image ?? ''
+        this.img_additional = dto.background_image_additional
+        this.website = dto.website
+        this.rating = dto.rating ?? 0
+        this.playtime = dto.playtime ?? 0
     }
 }

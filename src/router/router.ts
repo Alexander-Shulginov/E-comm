@@ -17,7 +17,7 @@ const routes = [
         component: () => import('@/views/GenresView.vue')
     },
     {
-        path: '/game',
+        path: '/game:id',
         name: 'Game',
         meta: { title: 'Game' },
         component: () => import('@/views/GameView.vue')

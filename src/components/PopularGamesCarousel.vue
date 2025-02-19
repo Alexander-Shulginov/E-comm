@@ -2,12 +2,12 @@
 import { nextTick, ref, watch } from 'vue'
 import CardBase from '@/components/cards/CardBase.vue'
 import { useSwiper } from '@/hooks/useSwiper'
-import { Game } from '@/types/models/GameModel'
+import { Games } from '@/types/models/GamesModel'
 import BaseLoader from '@/components/base/BaseLoader.vue'
 import { Navigation } from 'swiper/modules'
 
 const props = defineProps<{
-    data: Game[] | undefined
+    data: Games[] | undefined
     isPending: boolean
 }>()
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import GamesColumn from '@/components/GamesColumn.vue'
 import BaseTitle from './base/BaseTitle.vue'
-import { Game } from '@/types/models/GameModel'
+import { Game } from '@/types/models/GamesModel'
 defineProps<{
     games: Game[] | undefined
     title: string

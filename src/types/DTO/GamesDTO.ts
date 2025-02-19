@@ -3,7 +3,7 @@ export interface PlatformDTO {
     name: string
 }
 
-export interface GameDTO {
+export interface GamesDTO {
     id: number
     name: string
     background_image: string
@@ -14,5 +14,5 @@ export interface GameDTO {
 }
 
 export interface GamesResponseDTO {
-    results: GameDTO[]
+    results: GamesDTO[]
 }

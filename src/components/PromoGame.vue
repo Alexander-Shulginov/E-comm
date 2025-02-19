@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import GamePromoCard from '@/components/GamePromoCard.vue'
+import GamePromoCard from '@/components/PromoGameCard.vue'
 import { useSwiper } from '@/hooks/useSwiper'
 import { ref } from 'vue'
 import { Pagination } from 'swiper/modules'
@@ -40,15 +40,8 @@ useSwiper(swiperPromo, {
 
 <style lang="scss" scoped>
 .promo {
-    margin-bottom: 86px;
+    margin-bottom: 40px;
 
-    @media (max-width: 1024px){
-        margin-bottom: 66px;
-    }
-
-    @media (max-width: 768px) {
-        margin-bottom: 35px;
-    }
     &__swiper {
         padding-bottom: 40px;
     }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Game } from '@/types/models/GameModel'
+import { Game } from '@/types/models/GamesModel'
 import BaseImg from '../base/BaseImg.vue'
 
 defineProps<{
