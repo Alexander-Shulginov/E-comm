@@ -11,11 +11,12 @@ export class GameById {
     website?: string
     rating: number
     playtime: number
+    platforms: { id: number; name: string, min: string, rec: string }[]
 
     constructor(dto: Game) {
         this.id = dto.id ?? 0
         this.name = dto.name ?? ''
-        this.descr= dto.description
+        this.descr = dto.description
         this.metacritic = dto.metacritic ?? 0
         this.released = dto.released ?? ''
         this.img = dto.background_image ?? ''
@@ -23,5 +24,11 @@ export class GameById {
         this.website = dto.website
         this.rating = dto.rating ?? 0
         this.playtime = dto.playtime ?? 0
+        this.platforms = dto.platforms.map(({ platform, requirements }) => ({
+            id: platform.id,
+            name: platform.name,
+            min: requirements.minimum,
+            rec: requirements.recommended
+        }))
     }
 }

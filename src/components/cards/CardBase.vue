@@ -93,6 +93,7 @@ const displayName = computed(() => {
         right: 12px;
         visibility: hidden;
         opacity: 0;
+        z-index: 3;
         transition:
             visibility 0.3s ease-in-out,
             opacity 0.3s ease-in-out;

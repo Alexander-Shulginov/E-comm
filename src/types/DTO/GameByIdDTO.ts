@@ -9,4 +9,14 @@ export interface Game {
     website: string
     rating: number
     playtime: number
+    platforms: {
+        platform: {
+            id: number
+            name: string
+        }
+        requirements: {
+            minimum: string
+            recommended: string
+        }
+    }[]
 }

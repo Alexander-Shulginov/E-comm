@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/vue-query'
 import { useRoute } from 'vue-router'
 import BaseTitle from './base/BaseTitle.vue'
 import BaseImg from './base/BaseImg.vue'
+import GameInfoDetails from './GameInfoDetails.vue'
 
 const route = useRoute()
 
@@ -15,23 +16,29 @@ const { data } = useQuery({
 
 <template>
     <div class="gameInfo" v-if="data">
-        <div class="gameInfo__top">
+        <div class="gameInfo__wrap">
             <BaseImg :src="data.img" :alt="data.name" class="gameInfo__img" />
-            <BaseTitle :tag="'h1'" class="gameInfo__name">{{ data.name }}</BaseTitle>
+            <div>
+                <BaseTitle :tag="'h1'" class="gameInfo__name">{{ data.name }}</BaseTitle>
+                <GameInfoDetails :info="data" />
+            </div>
         </div>
+
         <div v-html="data.descr"></div>
-        {{ data }}
     </div>
 </template>
 
 <style lang="scss" scoped>
-.gameInfo{
-    &__top {
+.gameInfo {
+    &__wrap {
         display: flex;
     }
 
     &__img {
-        width: 50%;
+        width: 30%;
+        max-height: 500px;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
     }
 }
 </style>
