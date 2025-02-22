@@ -19,7 +19,6 @@ const displayName = computed(() => {
 </script>
 
 <template>
-    <!-- <router-link :to="{ name: 'Game', params: { id: game.id } }"> </router-link> -->
     <router-link :to="props.to" v-if="game" class="cardBase">
         <div class="cardBase__img-wrap">
             <BaseImg
@@ -29,7 +28,7 @@ const displayName = computed(() => {
                 :height="400"
                 class="cardBase__img"
             />
-            <BtnAddToFavorites class="cardBase__favorite" />
+            <BtnAddToFavorites :width="18" :height="18" class="cardBase__favorite" />
         </div>
         <p class="cardBase__name">
             {{ displayName }}

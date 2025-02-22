@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router'
 import BaseTitle from './base/BaseTitle.vue'
 import BaseImg from './base/BaseImg.vue'
 import GameInfoDetails from './GameInfoDetails.vue'
+import BtnAddToFavorites from './UI/BtnAddToFavorites.vue'
 
 const route = useRoute()
 
@@ -19,7 +20,10 @@ const { data } = useQuery({
         <div class="gameInfo__wrap">
             <BaseImg :src="data.img" :alt="data.name" class="gameInfo__img" />
             <div>
-                <BaseTitle :tag="'h1'" class="gameInfo__name">{{ data.name }}</BaseTitle>
+                <div class="gameInfo__top">
+                    <BaseTitle :tag="'h1'" class="gameInfo__name">{{ data.name }}</BaseTitle>
+                    <BtnAddToFavorites :width="24" :height="24" class="gameInfo__favorites" />
+                </div>
                 <GameInfoDetails :info="data" />
             </div>
         </div>
@@ -32,6 +36,20 @@ const { data } = useQuery({
 .gameInfo {
     &__wrap {
         display: flex;
+        gap: 24px;
+        margin-bottom: 36px;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 28px;
+    }
+
+    &__favorites {
+        width: 56px;
+        height: 56px;
+        border-radius: 6px;
     }
 
     &__img {
@@ -39,6 +57,7 @@ const { data } = useQuery({
         max-height: 500px;
         aspect-ratio: 3 / 4;
         object-fit: cover;
+        border-radius: 10px;
     }
 }
 </style>

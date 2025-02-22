@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import IconFavorites from '@/components/icons/IconFavorites.vue'
+defineProps<{
+    width: number
+    height: number
+}>()
 </script>
 
 <template>
-    <button class="addFavorite">
-        <IconFavorites :width="18" :height="18" />
+    <button type="button" class="addFavorite">
+        <IconFavorites :width="width" :height="height" />
     </button>
 </template>
 
