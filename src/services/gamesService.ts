@@ -27,13 +27,3 @@ export const fetchGameSeries = async (id: number) => {
     const response = await api.get(`${ENDPOINT}/${id}/game-series`)
     return response.data.results
 }
-
-export const fetchStores = async (id: number) => {
-    const response = await api.get(`${ENDPOINT}/${id}/stores`)
-    return response.data.results
-}
-
-export const fetchStoreNames = async (id: number) => {
-    const response = await api.get(`/stores/${id}`)
-    return response.data.results
-}
