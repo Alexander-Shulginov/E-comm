@@ -8,6 +8,7 @@ import BaseImg from './base/BaseImg.vue'
 import GameInfoDetails from './GameInfoDetails.vue'
 import BtnAddToFavorites from './UI/BtnAddToFavorites.vue'
 import GameInfoGallery from './GameInfoGallery.vue'
+import CardPopular from './cards/CardPopular.vue'
 
 const route = useRoute()
 const gameId = computed(() => Number(route.params.id))
@@ -41,7 +42,7 @@ const { data: similar } = useQuery({
             </div>
         </div>
 
-        <GameInfoGallery :data="game" :screens="screens"/>
+        <GameInfoGallery :data="game" :screens="screens" />
         <div v-html="game.descr"></div>
         <div
             style="
@@ -90,9 +91,6 @@ const { data: similar } = useQuery({
         aspect-ratio: 3 / 4;
         object-fit: cover;
         border-radius: 10px;
-    }
-
-    &__gallery {
     }
 }
 </style>

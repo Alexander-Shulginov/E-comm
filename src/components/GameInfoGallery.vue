@@ -33,6 +33,7 @@ useSwiper(swiperSimilar, {
 })
 
 Fancybox.bind('[data-fancybox]', {
+    contentClick: false,
     Toolbar: {
         display: {
             left: [],
