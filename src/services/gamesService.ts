@@ -3,6 +3,10 @@ import { Games } from '@/types/models/GamesModel'
 import { GamesResponseDTO } from '@/types/DTO/GamesDTO'
 import { Game } from '@/types/DTO/GameByIdDTO'
 import { GameById } from '@/types/models/GameModel'
+import { GameScreenResponse } from '@/types/DTO/GameScreenDTO'
+import { GameScreens } from '@/types/models/GameScreenModel'
+
+const ENDPOINT = '/games'
 
 export const fetchGames = async (args: string, params?: {}) => {
     const response = await api.get<GamesResponseDTO>(args, { params })
@@ -10,6 +14,26 @@ export const fetchGames = async (args: string, params?: {}) => {
 }
 
 export const fetchGameById = async (id: number) => {
-    const response = await api.get<Game>(`/games/${id}`)
-    return  new GameById(response.data)
+    const response = await api.get<Game>(`${ENDPOINT}/${id}`)
+    return new GameById(response.data)
+}
+
+export const fetchScreenShootsById = async (id: number) => {
+    const response = await api.get<GameScreenResponse>(`${ENDPOINT}/${id}/screenshots`)
+    return response.data.results.map((dto) => new GameScreens(dto))
+}
+
+export const fetchGameSeries = async (id: number) => {
+    const response = await api.get(`${ENDPOINT}/${id}/game-series`)
+    return response.data.results
+}
+
+export const fetchStores = async (id: number) => {
+    const response = await api.get(`${ENDPOINT}/${id}/stores`)
+    return response.data.results
+}
+
+export const fetchStoreNames = async (id: number) => {
+    const response = await api.get(`/stores/${id}`)
+    return response.data.results
 }

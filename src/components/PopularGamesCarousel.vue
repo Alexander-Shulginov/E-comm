@@ -43,10 +43,7 @@ watch([() => props.data, swiperPopular], (newData) => {
         <div v-if="data" class="swiper" ref="swiperPopular">
             <ul class="popularGames__list swiper-wrapper">
                 <li v-for="game in data" :key="game.id" class="swiper-slide">
-                    <CardBase
-                        :game="game"
-                        :to="{ name: 'Game', params: { id: game.id }, state: { gameData: game } }"
-                    />
+                    <CardBase :game="game" :to="{ name: 'Game', params: { id: game.id } }" />
                 </li>
             </ul>
             <div class="swiper-button-next"></div>
