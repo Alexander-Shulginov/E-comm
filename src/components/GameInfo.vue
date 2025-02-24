@@ -8,7 +8,7 @@ import BaseImg from './base/BaseImg.vue'
 import GameInfoDetails from './GameInfoDetails.vue'
 import BtnAddToFavorites from './UI/BtnAddToFavorites.vue'
 import GameInfoGallery from './GameInfoGallery.vue'
-import CardPopular from './cards/CardPopular.vue'
+import GameInfoSeries from './GameInfoSeries.vue'
 
 const route = useRoute()
 const gameId = computed(() => Number(route.params.id))
@@ -23,7 +23,7 @@ const { data: screens } = useQuery({
     queryFn: () => fetchScreenShootsById(gameId.value)
 })
 
-const { data: similar } = useQuery({
+const { data: series } = useQuery({
     queryKey: ['getGameSeries', gameId.value],
     queryFn: () => fetchGameSeries(gameId.value)
 })
@@ -43,24 +43,10 @@ const { data: similar } = useQuery({
         </div>
 
         <GameInfoGallery :data="game" :screens="screens" />
-        <div v-html="game.descr"></div>
-        <div
-            style="
-                margin-top: 150px;
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 18px;
-            "
-        >
-            <div v-for="game in similar" :key="game.id">
-                {{ game.name }}
-                <img
-                    style="width: 200px; height: 200px; object-fit: cover"
-                    :src="game.background_image"
-                    alt=""
-                />
-            </div>
-        </div>
+
+        <div style="margin-bottom: 50px" v-html="game.descr"></div>
+
+        <GameInfoSeries :data="series" />
     </div>
     <div v-else-if="isError">ERROR</div>
 </template>

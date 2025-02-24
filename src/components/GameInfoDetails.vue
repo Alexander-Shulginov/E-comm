@@ -16,18 +16,17 @@ defineProps<{
                 <BaseRating :rating="info.rating" />
             </span>
         </div>
-        <div class="gameDetails__item">
+        <div v-if="info.metacritic > 0" class="gameDetails__item">
             <span class="gameDetails__key">Metacritic</span>
             <span class="gameDetails__value">{{ info.metacritic }}</span>
         </div>
         <div class="gameDetails__item">
             <span class="gameDetails__key">Released</span>
-            <span class="gameDetails__value">{{ formatDate(info.released) }}</span>
+            <span class="gameDetails__value">{{
+                info.released ? formatDate(info.released) : 'Not announced'
+            }}</span>
         </div>
-        <div class="gameDetails__item">
-            <span class="gameDetails__key">Playtime</span>
-            <span class="gameDetails__value">{{ info.playtime }}h</span>
-        </div>
+
         <div class="gameDetails__item">
             <span class="gameDetails__key"> Website</span>
             <a

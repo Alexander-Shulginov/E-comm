@@ -24,6 +24,6 @@ export const fetchScreenShootsById = async (id: number) => {
 }
 
 export const fetchGameSeries = async (id: number) => {
-    const response = await api.get(`${ENDPOINT}/${id}/game-series`)
-    return response.data.results
+    const response = await api.get<GamesResponseDTO>(`${ENDPOINT}/${id}/game-series`)
+    return response.data.results.map((dto) => new Games(dto))
 }
