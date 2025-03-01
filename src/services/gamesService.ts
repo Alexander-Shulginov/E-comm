@@ -8,8 +8,8 @@ import { GameScreens } from '@/types/models/GameScreenModel'
 
 const ENDPOINT = '/games'
 
-export const fetchGames = async (args: string, params?: {}) => {
-    const response = await api.get<GamesResponseDTO>(args, { params })
+export const fetchGames = async (params?: {}) => {
+    const response = await api.get<GamesResponseDTO>(ENDPOINT, { params })
     return response.data.results.map((dto) => new Games(dto))
 }
 

@@ -56,11 +56,11 @@ const classes = computed(() => [
         min-height: 36px;
         padding: 5px 16px;
         font-size: 13px;
-        background-color: var(--color-dark-second);
+        background-color: var(--color-accent);
 
         @media (any-hover: hover) {
             &:hover {
-                background-color: var(--color-dark-second-hover);
+                background-color: var(--color-accent-hover);
             }
         }
     }

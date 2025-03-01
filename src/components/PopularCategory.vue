@@ -10,7 +10,7 @@ const genre = ref<string>('racing')
 const { data, isPending } = useQuery({
     queryKey: computed(() => ['getGamesByCategory', genre.value]),
 
-    queryFn: () => fetchGames('/games', { page_size: 8, page: 1, genres: genre.value })
+    queryFn: () => fetchGames({ page_size: 8, page: 1, genres: genre.value })
 })
 
 const getClickedCategory = (slug: string) => {

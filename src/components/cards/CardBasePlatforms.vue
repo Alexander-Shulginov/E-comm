@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { type Component, computed } from 'vue'
-import IconPlatformPc from '@/components/icons/IconPlatformPc.vue'
 import IconPlatformPlayStation from '@/components/icons/IconPlatformPlayStation.vue'
 import IconPlatformXbox from '@/components/icons/IconPlatformXbox.vue'
 import IconPlatformApple from '@/components/icons/IconPlatformApple.vue'
 import IconPlatformLinux from '@/components/icons/IconPlatformLinux.vue'
 import IconPlatformNintendo from '@/components/icons/IconPlatformNintendo.vue'
 import IconPlatformAndroid from '@/components/icons/IconPlatformAndroid.vue'
+import IconPlatformWindows from '@/components/icons/IconPlatformWindows.vue'
 import { PlatformDTO } from '@/types/DTO/GamesDTO'
 
 const props = defineProps<{
@@ -14,7 +14,7 @@ const props = defineProps<{
 }>()
 
 const platformIcons: Record<number, Component> = {
-    1: IconPlatformPc,
+    1: IconPlatformWindows,
     2: IconPlatformPlayStation,
     3: IconPlatformXbox,
     5: IconPlatformApple,
@@ -27,7 +27,8 @@ const filteredPlatforms = computed(() =>
     props.platforms
         .map(({ id, name }) => ({
             id,
-            name: name.includes('Macintosh') ? 'Apple' : name,
+            name: name.includes('Macintosh') ? 'Apple' : name.replace(/PC/g, 'Windows'),
+
             component: platformIcons[id]
         }))
         .filter((p) => p.component)
@@ -101,9 +102,9 @@ const filteredPlatforms = computed(() =>
 
     &:first-child {
         .platform__name {
-            left: 76%;
+            left: 150%;
             &::after {
-                left: 12px;
+                left: 10px;
                 border-width: 0 6px 6px 6px;
             }
         }

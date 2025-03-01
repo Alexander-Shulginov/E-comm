@@ -7,7 +7,7 @@ const { data: releasedGames, isPending: releasedGamesLoaded } = useQuery({
     queryKey: ['released'],
 
     queryFn: () =>
-        fetchGames('/games', {
+        fetchGames({
             page_size: 5,
             ordering: '-added',
             dates: '2025-02-01,2025-12-31'
@@ -18,7 +18,7 @@ const { data: oldGames, isPending: oldGamesLoaded } = useQuery({
     queryKey: ['old'],
 
     queryFn: () =>
-        fetchGames('/games', {
+        fetchGames({
             page_size: 5,
             ordering: '-added',
             dates: '1980-01-01,2000-12-31'
@@ -28,7 +28,7 @@ const { data: oldGames, isPending: oldGamesLoaded } = useQuery({
 const { data: playstationGames, isPending: playStationLoaded } = useQuery({
     queryKey: ['playstation'],
     queryFn: () =>
-        fetchGames('/games', {
+        fetchGames({
             page_size: 5,
             platforms: '187',
             ordering: '-rating',
@@ -39,7 +39,7 @@ const { data: playstationGames, isPending: playStationLoaded } = useQuery({
 const { data: xboxGames, isPending: xboxGamesLoaded } = useQuery({
     queryKey: ['xbox'],
     queryFn: () =>
-        fetchGames('/games', {
+        fetchGames({
             page_size: 5,
             platforms: '1',
             ordering: '-rating',
