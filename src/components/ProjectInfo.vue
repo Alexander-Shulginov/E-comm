@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import BaseTitle from './base/BaseTitle.vue'
+import BaseTitle from '@/components/base/BaseTitle.vue'
+
 const isCompact = ref<boolean>(true)
+
+const toggleContent = () => {
+    isCompact.value = !isCompact.value
+}
 </script>
 
 <template>
@@ -46,7 +51,7 @@ const isCompact = ref<boolean>(true)
                 trends, and become part of the gaming community with us.
             </p>
         </div>
-        <button @click="isCompact = !isCompact" class="project-info__btn" type="button">
+        <button @click="toggleContent" class="project-info__btn" type="button">
             {{ isCompact ? 'Show more' : 'Show less' }}
         </button>
     </section>
