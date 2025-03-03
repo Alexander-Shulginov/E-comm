@@ -9,6 +9,7 @@ defineProps<{
 </script>
 
 <template>
+    {{ info.esrb.name }}
     <div class="gameDetails">
         <div class="gameDetails__item">
             <span class="gameDetails__key">Rating</span>

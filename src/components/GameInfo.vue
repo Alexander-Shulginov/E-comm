@@ -33,7 +33,7 @@ const { data: series } = useQuery({
     <div class="gameInfo" v-if="game">
         <div class="gameInfo__wrap">
             <BaseImg :src="game.img" :alt="game.name" class="gameInfo__img" />
-            <div>
+            <div class="gameInfo__right">
                 <div class="gameInfo__top">
                     <BaseTitle :tag="'h1'" class="gameInfo__name">{{ game.name }}</BaseTitle>
                     <BtnAddToFavorites :width="24" :height="24" class="gameInfo__favorites" />
@@ -77,6 +77,10 @@ const { data: series } = useQuery({
         aspect-ratio: 3 / 4;
         object-fit: cover;
         border-radius: 10px;
+    }
+
+    &__right {
+        width: 100%;
     }
 }
 </style>
