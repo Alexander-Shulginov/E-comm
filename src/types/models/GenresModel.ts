@@ -1,15 +1,9 @@
 import { GenresDTO } from '@/types/DTO/GenresDTO'
+import { IGenres } from '@/types/interfaces/IGenres'
 
-export class Genres {
-    id: number
-    name: string
-    img: string
-    gameCount: number
-
-    constructor(dto: GenresDTO) {
-        this.id = dto.id
-        this.name = dto.name
-        this.img = dto.image_background
-        this.gameCount = dto.games_count
-    }
-}
+export const GenresModel = (dto: GenresDTO): IGenres => ({
+    id: dto.id,
+    name: dto.name,
+    img: dto.image_background,
+    gameCount: dto.games_count
+})

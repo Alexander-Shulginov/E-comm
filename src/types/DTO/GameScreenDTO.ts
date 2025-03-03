@@ -5,6 +5,6 @@ export interface GameScreenShotsDTO {
     height: number
 }
 
-export interface GameScreenResponse {
+export interface GameScreenResponseDTO {
     results: GameScreenShotsDTO[]
 }

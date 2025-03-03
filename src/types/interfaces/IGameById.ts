@@ -1,12 +1,12 @@
-export interface GameByIdResponseDTO {
+export interface IGameById {
     id: number
     name: string
-    description: string
+    descr: string
     metacritic: number
     released: string
-    background_image: string
-    background_image_additional: string
-    esrb_rating: {
+    img: string
+    img_added: string
+    esrb: {
         id: number
         name: string
     }

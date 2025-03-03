@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GameById } from '@/types/models/GameModel'
+import { GameById } from '@/types/models/GameByIdModel'
 import BaseRating from './base/BaseRating.vue'
 import { formatDate } from '@/utils/formatDate'
 

@@ -1,8 +1,12 @@
 import { api } from './api'
-import { GenresResponseDTO } from '@/types/DTO/GenresDTO'
-import { Genres } from '@/types/models/GenresModel'
 
-export const fetchGenres = async (params?: {}) => {
-    const response = await api.get<GenresResponseDTO>('/genres', { params })
-    return response.data.results.map((dto) => new Genres(dto))
+import { IGenres } from '@/types/interfaces/IGenres'
+import { GenresModel } from '@/types/models/GenresModel'
+import { GenresResponseDTO } from '@/types/DTO/GenresDTO'
+
+const ENDPOINT = '/genres'
+
+export const fetchGenres = async (params?: {}): Promise<IGenres[]> => {
+    const response = await api.get<GenresResponseDTO>(ENDPOINT, { params })
+    return response.data.results.map(GenresModel)
 }
