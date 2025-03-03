@@ -1,4 +1,4 @@
-import { api } from './api'
+import { api } from '@/services/api'
 
 import { IGenres } from '@/types/interfaces/IGenres'
 import { GenresModel } from '@/types/models/GenresModel'

@@ -1,4 +1,4 @@
-import { api } from './api'
+import { api } from '@/services/api'
 
 import { IGame } from '@/types/interfaces/IGames'
 import { IGameById } from '@/types/interfaces/IGameById'

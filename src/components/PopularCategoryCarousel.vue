@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue'
-import { Game } from '@/types/models/GamesModel'
+import { IGame } from '@/types/interfaces/IGames'
 import CardPopular from '@/components/cards/CardPopular.vue'
 import { useSwiper } from '@/hooks/useSwiper'
 import BaseLoader from '@/components/base/BaseLoader.vue'
 import { Navigation } from 'swiper/modules'
 
 const props = defineProps<{
-    data: Game[] | undefined
+    data: IGame[]
     isLoading: boolean
 }>()
 

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { GameById } from '@/types/models/GameByIdModel'
+import { IGameById } from '@/types/interfaces/IGameById';
 import BaseRating from './base/BaseRating.vue'
 import { formatDate } from '@/utils/formatDate'
 
 defineProps<{
-    info: GameById
+    info: IGameById
 }>()
 </script>
 
@@ -41,7 +41,7 @@ defineProps<{
             <span class="gameDetails__key">Platforms</span>
             <div class="gameDetails__value--platforms">
                 <span v-for="(platform, index) in info.platforms" :key="index">
-                    {{ platform.name }}
+                    {{ platform.platform.name }}
                 </span>
             </div>
         </div>

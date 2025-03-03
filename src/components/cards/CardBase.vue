@@ -3,11 +3,11 @@ import BaseImg from '@/components/base/BaseImg.vue'
 import CardBasePlatforms from '@/components/cards/CardBasePlatforms.vue'
 import CardBaseRating from '@/components/cards/CardBaseRating.vue'
 import { computed } from 'vue'
-import { Games } from '@/types/models/GamesModel'
+import { IGame } from '@/types/interfaces/IGames'
 import BtnAddToFavorites from '@/components/UI/BtnAddToFavorites.vue'
 
 const props = defineProps<{
-    game: Games
+    game: IGame
     showPlatforms?: boolean
     showRating?: boolean
     to?: any

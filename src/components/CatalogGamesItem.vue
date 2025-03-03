@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import GamesColumn from '@/components/GamesColumn.vue'
-import BaseTitle from './base/BaseTitle.vue'
-import { Game } from '@/types/models/GamesModel'
+import BaseTitle from '@/components/base/BaseTitle.vue'
+import { IGame } from '@/types/interfaces/IGames'
+
 defineProps<{
-    games: Game[] | undefined
+    games: IGame[] | undefined
     title: string
     loading: boolean
 }>()

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Games } from '@/types/models/GamesModel'
+import { IGame } from '@/types/interfaces/IGames'
 import BaseTitle from './base/BaseTitle.vue'
 defineProps<{
-    data: Games[] | undefined
+    data: IGame[] | undefined
 }>()
 </script>
 

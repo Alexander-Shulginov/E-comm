@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Games } from '@/types/models/GamesModel'
+import { IGame } from '@/types/interfaces/IGames';
 import BaseImg from '../base/BaseImg.vue'
 
 defineProps<{
-    data: Games | undefined
+    data: IGame | undefined
 }>()
 </script>
 
