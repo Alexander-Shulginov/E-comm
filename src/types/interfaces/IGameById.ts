@@ -14,9 +14,7 @@ export interface IGameById {
     rating: number
     playtime: number
     platforms: {
-        platform: {
-            id: number
-            name: string
-        }
+        id: number
+        name: string
     }[]
 }

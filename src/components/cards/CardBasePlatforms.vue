@@ -7,10 +7,12 @@ import IconPlatformLinux from '@/components/icons/IconPlatformLinux.vue'
 import IconPlatformNintendo from '@/components/icons/IconPlatformNintendo.vue'
 import IconPlatformAndroid from '@/components/icons/IconPlatformAndroid.vue'
 import IconPlatformWindows from '@/components/icons/IconPlatformWindows.vue'
-import { PlatformDTO } from '@/types/DTO/GamesDTO'
 
 const props = defineProps<{
-    platforms: PlatformDTO[]
+    platforms: {
+        id: number
+        name: string
+    }[]
 }>()
 
 const platformIcons: Record<number, Component> = {

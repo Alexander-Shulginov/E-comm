@@ -41,7 +41,7 @@ defineProps<{
             <span class="gameDetails__key">Platforms</span>
             <div class="gameDetails__value--platforms">
                 <span v-for="(platform, index) in info.platforms" :key="index">
-                    {{ platform.platform.name }}
+                    {{ platform.name }}
                 </span>
             </div>
         </div>

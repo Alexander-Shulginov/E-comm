@@ -14,9 +14,7 @@ export const GameByIdModel = (dto: GameByIdResponseDTO): IGameById => ({
     playtime: dto.playtime ?? 0,
     esrb: dto.esrb_rating,
     platforms: dto.platforms.map(({ platform }) => ({
-        platform: {
-            id: platform.id,
-            name: platform.name
-        }
+        id: platform.id,
+        name: platform.name
     }))
 })
