@@ -17,7 +17,7 @@ defineProps<{
                     <div class="userRating__title">{{ rating.title }}</div>
                     <div class="userRating__percent">{{ rating.percent.toFixed() }}%</div>
                 </div>
-                <div :style="`--item-height: ${rating.percent}%`" class="userRating__value"></div>
+                <div :style="`--item-width: ${rating.percent}%`" class="userRating__value"></div>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@ defineProps<{
 
     &__value {
         height: 14px;
-        width: var(--item-height);
+        width: var(--item-width);
     }
 
     &__title {
