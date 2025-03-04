@@ -13,9 +13,11 @@ defineProps<{
     <div v-if="user_rating" class="userRating">
         <div class="userRating__block">
             <div v-for="rating in user_rating" :key="rating.id" class="userRating__item">
-                <div :style="`--item-height: ${rating.percent}%`"  class="userRating__percent"></div>
-                <div class="userRating__title">{{ rating.title }}</div>
-                <div class="userRating__count">{{ rating.percent.toFixed() }}%</div>
+                <div class="userRating__wrap">
+                    <div class="userRating__title">{{ rating.title }}</div>
+                    <div class="userRating__percent">{{ rating.percent.toFixed() }}%</div>
+                </div>
+                <div :style="`--item-height: ${rating.percent}%`" class="userRating__value"></div>
             </div>
         </div>
     </div>
@@ -25,36 +27,57 @@ defineProps<{
 .userRating {
     &__block {
         display: flex;
-        gap: 36px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    &__value {
+        height: 14px;
+        width: var(--item-height);
+    }
+
+    &__title {
+        text-align: left;
+        text-transform: capitalize;
     }
 
     &__percent {
-        width: 16px;
-        height: var(--item-height);
+        font-size: 14px;
+    }
+
+    &__wrap {
+        width: 150px;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        justify-content: space-between;
     }
 
     &__item {
-        height: 280px;
+        // height: 280px;
+        width: 100%;
         display: flex;
-        flex-direction: column;
+        // flex-direction: column;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: flex-start;
+        gap: 24px;
     }
 
-    &__item:nth-child(1) .userRating__percent {
-        background-color: #4CAF50;
+    &__item:nth-child(1) .userRating__value {
+        background-color: #4caf50;
     }
 
-    &__item:nth-child(2) .userRating__percent {
-        background-color: #FFC107;
+    &__item:nth-child(2) .userRating__value {
+        background-color: #ffc107;
     }
 
-    &__item:nth-child(3) .userRating__percent {
-        background-color: #2196F3;
+    &__item:nth-child(3) .userRating__value {
+        background-color: #2196f3;
     }
 
-    &__item:nth-child(4) .userRating__percent {
-        background-color: #F44336;
+    &__item:nth-child(4) .userRating__value {
+        background-color: #f44336;
     }
 }
 </style>
