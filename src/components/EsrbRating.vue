@@ -8,7 +8,7 @@ import IconEsrbPending from '@/components/icons/esrb/IconEsrbPending.vue'
 import IconEsrbTeen from '@/components/icons/esrb/IconEsrbTeen.vue'
 
 defineProps<{
-    esrb: {
+    esrb?: {
         id: number
     }
 }>()
