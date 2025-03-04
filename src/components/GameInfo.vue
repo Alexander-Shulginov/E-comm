@@ -6,11 +6,11 @@ import { useRoute } from 'vue-router'
 import BaseTitle from './base/BaseTitle.vue'
 import BaseImg from './base/BaseImg.vue'
 import GameInfoDetails from './GameInfoDetails.vue'
-import BtnAddToFavorites from './UI/BtnAddToFavorites.vue'
 import GameInfoGallery from './GameInfoGallery.vue'
 import GameInfoSeries from './GameInfoSeries.vue'
 import GameInfoTags from './GameInfoTags.vue';
 import MetacriticRating from './MetacriticRating.vue'
+import GameInfoUserRating from './GameInfoUserRating.vue'
 
 const route = useRoute()
 const gameId = computed(() => Number(route.params.id))
@@ -39,12 +39,17 @@ const { data: series } = useQuery({
                 <div class="gameInfo__top">
                     <BaseTitle :tag="'h1'" class="gameInfo__name">{{ game.name }}</BaseTitle>
 
-                    <MetacriticRating :value="game.metacritic" />
+                    <MetacriticRating v-if="game.metacritic > 0" :value="game.metacritic" />
                     <!-- <BtnAddToFavorites :width="24" :height="24" class="gameInfo__favorites" /> -->
                 </div>
                 <GameInfoDetails :info="game" />
             </div>
         </div>
+
+        <GameInfoUserRating :user_rating="game.ratings" />
+        <br>
+        <br>
+        <br>
 
         <GameInfoGallery :data="game" :screens="screens" />
 
@@ -76,7 +81,7 @@ const { data: series } = useQuery({
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        margin-bottom: 28px;
+        margin-bottom: 16px;
     }
 
     &__favorites {
