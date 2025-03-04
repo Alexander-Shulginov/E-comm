@@ -44,7 +44,9 @@ const { data: series } = useQuery({
 
         <GameInfoGallery :data="game" :screens="screens" />
 
-        <div style="margin-bottom: 50px" v-html="game.descr"></div>
+        <p style="margin-bottom: 50px" >
+            {{ game.descr }}
+        </p>
 
         <GameInfoSeries :data="series" />
     </div>

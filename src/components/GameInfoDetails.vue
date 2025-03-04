@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { IGameById } from '@/types/interfaces/IGameById';
+import { IGameById } from '@/types/interfaces/IGameById'
 import BaseRating from './base/BaseRating.vue'
 import { formatDate } from '@/utils/formatDate'
+import EsrbRating from './EsrbRating.vue';
 
 defineProps<{
     info: IGameById
@@ -9,7 +10,14 @@ defineProps<{
 </script>
 
 <template>
-    {{ info.esrb.name }}
+    <EsrbRating :esrb="info.esrb" />
+    <br>
+    <br>
+    <p v-for="tag in info.tags">
+        Tag -
+        {{ tag.name }}
+    </p>
+    <br />
     <div class="gameDetails">
         <div class="gameDetails__item">
             <span class="gameDetails__key">Rating</span>
@@ -20,6 +28,24 @@ defineProps<{
         <div v-if="info.metacritic > 0" class="gameDetails__item">
             <span class="gameDetails__key">Metacritic</span>
             <span class="gameDetails__value">{{ info.metacritic }}</span>
+        </div>
+        <div class="gameDetails__item">
+            <span class="gameDetails__key">Genre</span>
+            <span v-for="genre in info.genres">
+                {{ genre.name }}
+            </span>
+        </div>
+        <div class="gameDetails__item">
+            <span class="gameDetails__key">Developer</span>
+            <span v-for="developer in info.developers">
+                {{ developer.name }}
+            </span>
+        </div>
+        <div class="gameDetails__item">
+            <span class="gameDetails__key">Publisher</span>
+            <span v-for="publisher in info.publishers">
+                {{ publisher.name }}
+            </span>
         </div>
         <div class="gameDetails__item">
             <span class="gameDetails__key">Released</span>

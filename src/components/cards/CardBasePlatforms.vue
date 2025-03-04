@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { type Component, computed } from 'vue'
-import IconPlatformPlayStation from '@/components/icons/IconPlatformPlayStation.vue'
-import IconPlatformXbox from '@/components/icons/IconPlatformXbox.vue'
-import IconPlatformApple from '@/components/icons/IconPlatformApple.vue'
-import IconPlatformLinux from '@/components/icons/IconPlatformLinux.vue'
-import IconPlatformNintendo from '@/components/icons/IconPlatformNintendo.vue'
-import IconPlatformAndroid from '@/components/icons/IconPlatformAndroid.vue'
-import IconPlatformWindows from '@/components/icons/IconPlatformWindows.vue'
+import IconPlatformPlayStation from '@/components/icons/platforms/IconPlatformPlayStation.vue'
+import IconPlatformXbox from '@/components/icons/platforms/IconPlatformXbox.vue'
+import IconPlatformApple from '@/components/icons/platforms/IconPlatformApple.vue'
+import IconPlatformLinux from '@/components/icons/platforms/IconPlatformLinux.vue'
+import IconPlatformNintendo from '@/components/icons/platforms/IconPlatformNintendo.vue'
+import IconPlatformAndroid from '@/components/icons/platforms/IconPlatformAndroid.vue'
+import IconPlatformWindows from '@/components/icons/platforms/IconPlatformWindows.vue'
 
 const props = defineProps<{
     platforms: {
