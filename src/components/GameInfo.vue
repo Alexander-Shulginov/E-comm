@@ -9,6 +9,7 @@ import GameInfoDetails from './GameInfoDetails.vue'
 import BtnAddToFavorites from './UI/BtnAddToFavorites.vue'
 import GameInfoGallery from './GameInfoGallery.vue'
 import GameInfoSeries from './GameInfoSeries.vue'
+import GameInfoTags from './GameInfoTags.vue';
 
 const route = useRoute()
 const gameId = computed(() => Number(route.params.id))
@@ -48,6 +49,8 @@ const { data: series } = useQuery({
             {{ game.descr }}
         </p>
 
+        <GameInfoTags :tags="game.tags" />
+        <br>
         <GameInfoSeries :data="series" />
     </div>
     <div v-else-if="isError">ERROR</div>

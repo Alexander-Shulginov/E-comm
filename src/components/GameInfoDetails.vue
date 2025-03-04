@@ -2,8 +2,9 @@
 import { IGameById } from '@/types/interfaces/IGameById'
 import BaseRating from './base/BaseRating.vue'
 import { formatDate } from '@/utils/formatDate'
-import EsrbRating from './EsrbRating.vue';
-import MetacriticRating from './MetacriticRating.vue';
+import EsrbRating from './EsrbRating.vue'
+import MetacriticRating from './MetacriticRating.vue'
+import GameInfoUserRating from './GameInfoUserRating.vue'
 
 defineProps<{
     info: IGameById
@@ -12,13 +13,8 @@ defineProps<{
 
 <template>
     <EsrbRating :esrb="info.esrb" />
-    <MetacriticRating :value="info.metacritic"/>
-    <br>
-    <br>
-    <p v-for="tag in info.tags">
-        Tag -
-        {{ tag.name }}
-    </p>
+    <MetacriticRating :value="info.metacritic" />
+    <GameInfoUserRating :user_rating="info.ratings" />
     <br />
     <div class="gameDetails">
         <div class="gameDetails__item">
