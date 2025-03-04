@@ -18,11 +18,11 @@ const classes = computed(() => {
     <div :class="classes">
         {{ value }}
     </div>
-    <br />
 </template>
 
 <style lang="scss" scoped>
 .metacritic-rating {
+    flex-shrink: 0;
     background-color: #00ce7a;
     border-radius: 6px;
     width: 54px;

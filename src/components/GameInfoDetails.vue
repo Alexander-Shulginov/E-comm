@@ -12,20 +12,12 @@ defineProps<{
 </script>
 
 <template>
-    <EsrbRating :esrb="info.esrb" />
-    <MetacriticRating :value="info.metacritic" />
-    <GameInfoUserRating :user_rating="info.ratings" />
-    <br />
     <div class="gameDetails">
         <div class="gameDetails__item">
             <span class="gameDetails__key">Rating</span>
             <span class="gameDetails__value">
                 <BaseRating :rating="info.rating" />
             </span>
-        </div>
-        <div v-if="info.metacritic > 0" class="gameDetails__item">
-            <span class="gameDetails__key">Metacritic</span>
-            <span class="gameDetails__value">{{ info.metacritic }}</span>
         </div>
         <div class="gameDetails__item">
             <span class="gameDetails__key">Genre</span>
@@ -70,6 +62,9 @@ defineProps<{
             </div>
         </div>
     </div>
+    <EsrbRating :esrb="info.esrb" />
+    <!-- <MetacriticRating :value="info.metacritic" /> -->
+    <GameInfoUserRating :user_rating="info.ratings" />
 </template>
 
 <style lang="scss" scoped>

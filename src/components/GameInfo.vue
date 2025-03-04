@@ -10,6 +10,7 @@ import BtnAddToFavorites from './UI/BtnAddToFavorites.vue'
 import GameInfoGallery from './GameInfoGallery.vue'
 import GameInfoSeries from './GameInfoSeries.vue'
 import GameInfoTags from './GameInfoTags.vue';
+import MetacriticRating from './MetacriticRating.vue'
 
 const route = useRoute()
 const gameId = computed(() => Number(route.params.id))
@@ -37,7 +38,9 @@ const { data: series } = useQuery({
             <div class="gameInfo__right">
                 <div class="gameInfo__top">
                     <BaseTitle :tag="'h1'" class="gameInfo__name">{{ game.name }}</BaseTitle>
-                    <BtnAddToFavorites :width="24" :height="24" class="gameInfo__favorites" />
+
+                    <MetacriticRating :value="game.metacritic" />
+                    <!-- <BtnAddToFavorites :width="24" :height="24" class="gameInfo__favorites" /> -->
                 </div>
                 <GameInfoDetails :info="game" />
             </div>
@@ -62,11 +65,17 @@ const { data: series } = useQuery({
         display: flex;
         gap: 24px;
         margin-bottom: 36px;
+
+        @media (max-width: 768px){
+            flex-direction: column;
+        }
     }
 
     &__top {
         display: flex;
+        align-items: center;
         justify-content: space-between;
+        gap: 16px;
         margin-bottom: 28px;
     }
 
