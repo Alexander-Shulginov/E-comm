@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BaseTitle from './base/BaseTitle.vue'
-import BaseBtn from './UI/BaseBtn.vue'
+import BaseLink from './UI/BaseLink.vue'
 </script>
 
 <template>
@@ -29,7 +29,7 @@ import BaseBtn from './UI/BaseBtn.vue'
             So far, your wishlist is empty.<br />
             On the "Games" page, you can find plenty of interesting games.
         </p>
-        <BaseBtn :as="'a'" :variant="'accent'">Return To Games</BaseBtn>
+        <BaseLink :to="{ name: 'Home' }" :size="'large'" :text="'Home'" />
     </div>
 </template>
 

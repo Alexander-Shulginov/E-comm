@@ -44,7 +44,7 @@ const { data: dlc } = useQuery({
     <div class="gameInfo" v-else-if="game">
         <div class="gameInfo__wrap">
             <div class="gameInfo__picture">
-                <BaseImg :src="game.img" :alt="game.name" class="gameInfo__img" />
+                <BaseImg width="535px" height="346px" :src="game.img" :alt="game.name" class="gameInfo__img" />
                 <EsrbRating :esrb="game.esrb" class="gameInfo__esrb" />
             </div>
             <div class="gameInfo__right">
