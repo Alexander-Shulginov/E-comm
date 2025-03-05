@@ -25,6 +25,8 @@ defineProps<{
 
 <style lang="scss" scoped>
 .userRating {
+    background-color: var(--color-dark-second);
+    padding: 20px;
     &__block {
         display: flex;
         flex-direction: column;

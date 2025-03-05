@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BaseToggleColorTheme from '@/components/base/BaseToggleColorTheme.vue'
 import BaseFavorites from '../../components/base/BaseFavorites.vue'
 import BaseGitHubLink from '../../components/base/BaseGitHubLink.vue'
 import BaseLogo from '../../components/base/BaseLogo.vue'
@@ -10,6 +11,7 @@ import TheHeaderNav from './TheHeaderNav.vue'
         <div class="header__inner">
             <BaseLogo />
             <TheHeaderNav />
+            <!-- <BaseToggleColorTheme /> -->
             <BaseFavorites />
             <BaseGitHubLink />
         </div>

@@ -8,9 +8,10 @@ import BaseImg from './base/BaseImg.vue'
 import GameInfoDetails from './GameInfoDetails.vue'
 import GameInfoGallery from './GameInfoGallery.vue'
 import GameInfoSeries from './GameInfoSeries.vue'
-import GameInfoTags from './GameInfoTags.vue';
+import GameInfoTags from './GameInfoTags.vue'
 import MetacriticRating from './MetacriticRating.vue'
 import GameInfoUserRating from './GameInfoUserRating.vue'
+import EsrbRating from './EsrbRating.vue'
 
 const route = useRoute()
 const gameId = computed(() => Number(route.params.id))
@@ -34,31 +35,33 @@ const { data: series } = useQuery({
 <template>
     <div class="gameInfo" v-if="game">
         <div class="gameInfo__wrap">
-            <BaseImg :src="game.img" :alt="game.name" class="gameInfo__img" />
+            <div class="gameInfo__picture">
+                <BaseImg :src="game.img" :alt="game.name" class="gameInfo__img" />
+                <EsrbRating :esrb="game.esrb" class="gameInfo__esrb" />
+            </div>
             <div class="gameInfo__right">
                 <div class="gameInfo__top">
                     <BaseTitle :tag="'h1'" class="gameInfo__name">{{ game.name }}</BaseTitle>
 
                     <MetacriticRating v-if="game.metacritic > 0" :value="game.metacritic" />
-                    <!-- <BtnAddToFavorites :width="24" :height="24" class="gameInfo__favorites" /> -->
                 </div>
                 <GameInfoDetails :info="game" />
             </div>
         </div>
 
         <GameInfoUserRating :user_rating="game.ratings" />
-        <br>
-        <br>
-        <br>
+        <br />
+        <br />
+        <br />
 
         <GameInfoGallery :data="game" :screens="screens" />
 
-        <p style="margin-bottom: 50px" >
+        <p style="margin-bottom: 50px">
             {{ game.descr }}
         </p>
 
         <GameInfoTags :tags="game.tags" />
-        <br>
+        <br />
         <GameInfoSeries :data="series" />
     </div>
     <div v-else-if="isError">ERROR</div>
@@ -71,7 +74,7 @@ const { data: series } = useQuery({
         gap: 24px;
         margin-bottom: 36px;
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             flex-direction: column;
         }
     }
@@ -90,10 +93,20 @@ const { data: series } = useQuery({
         border-radius: 6px;
     }
 
+    &__picture {
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    &__esrb {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+
     &__img {
-        width: 30%;
-        max-height: 500px;
         aspect-ratio: 3 / 4;
+        max-height: 500px;
         object-fit: cover;
         border-radius: 10px;
     }

@@ -23,9 +23,19 @@ defineProps<{
     row-gap: 8px;
 
     &__item {
-        padding: 10px 16px;
+        font-size: 13px;
+        cursor: pointer;
+        padding: 6px 12px;
         border-radius: 10px;
         background-color: var(--color-dark-second);
+        border: 2px solid transparent;
+        transition: border-color .3s  ease-in-out;
+
+        @media (any-hover:hover) {
+            &:hover {
+                border-color: var(--color-accent);
+            }
+        }
     }
 }
 </style>
