@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
-import PopularGamesCarousel from './PopularGamesCarousel.vue'
-import BaseTitle from './base/BaseTitle.vue'
-import BaseBtn from './UI/BaseBtn.vue'
+import PopularGamesCarousel from '@/components/PopularGamesCarousel.vue'
+import BaseTitle from '@/components/base/BaseTitle.vue'
+import BaseLink from '@/components/UI/BaseLink.vue'
 
 const { isPending, data } = useQuery({
     queryKey: ['getGames'],
@@ -18,7 +18,11 @@ const { isPending, data } = useQuery({
             <BaseTitle :tag="'h2'" :is-bold="true" class="popularGames__title">
                 Most Popular</BaseTitle
             >
-            <BaseBtn :as="'a'" :variant="'base'">View All</BaseBtn>
+            <BaseLink
+                :to="{ name: 'Games', params: { id: 55 } }"
+                :text="'View all'"
+                :size="'compact'"
+            />
         </div>
         <PopularGamesCarousel :data="data" :is-pending="isPending" />
     </section>

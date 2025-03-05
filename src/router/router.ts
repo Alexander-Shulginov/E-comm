@@ -24,6 +24,13 @@ const routes = [
         component: () => import('@/views/GameView.vue')
     },
     {
+        path: '/games/:id',
+        name: 'Games',
+        props: true,
+        meta: { title: 'Games' },
+        component: () => import('@/views/GamesView.vue')
+    },
+    {
         path: '/wishlist',
         name: 'WishList',
         meta: { title: 'Wish List' },

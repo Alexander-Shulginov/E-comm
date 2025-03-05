@@ -7,7 +7,7 @@ import BaseLoader from '@/components/base/BaseLoader.vue'
 import { Navigation } from 'swiper/modules'
 
 const props = defineProps<{
-    data: IGame[]
+    data: IGame[] | undefined
     isLoading: boolean
 }>()
 

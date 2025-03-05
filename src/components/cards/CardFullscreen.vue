@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import BaseBtn from '../UI/BaseBtn.vue'
+import BaseLink from '@/components/UI/BaseLink.vue'
+
 interface GameData {
+    id: number
     img: string
     icon: string
     descr: string
     date: string
 }
+
 defineProps<{ data: GameData }>()
 </script>
 
@@ -25,7 +28,12 @@ defineProps<{ data: GameData }>()
                 {{ data.descr }}
             </p>
             <div class="cardFull__block" data-swiper-anim>
-                <BaseBtn :as="'a'" :variant="'accent'">Details</BaseBtn>
+                <!-- <BaseBtn :as="'a'" :variant="'accent'">Details</BaseBtn> -->
+                <BaseLink
+                    :to="{ name: 'Game', params: { id: data.id } }"
+                    :text="'Details'"
+                    :size="'large'"
+                />
                 <span class="cardFull__date">Release: {{ data.date }}</span>
             </div>
         </div>
