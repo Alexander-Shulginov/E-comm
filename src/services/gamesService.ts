@@ -33,3 +33,8 @@ export const fetchGameSeries = async (id: number): Promise<IGame[]> => {
     const response = await api.get<GamesResponseDTO>(`${ENDPOINT}/${id}/game-series`)
     return response.data.results.map(GameModel)
 }
+
+export const fetchGameDLC = async (id: number): Promise<IGame[]> => {
+    const response = await api.get<GamesResponseDTO>(`${ENDPOINT}/${id}/additions`)
+    return response.data.results.map(GameModel)
+}

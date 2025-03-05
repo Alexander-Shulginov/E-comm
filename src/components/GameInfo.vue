@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { fetchGameById, fetchGameSeries, fetchScreenShootsById } from '@/services/gamesService'
+import { fetchGameById, fetchGameDLC, fetchGameSeries, fetchScreenShootsById } from '@/services/gamesService'
 import { useQuery } from '@tanstack/vue-query'
 import { useRoute } from 'vue-router'
 import BaseTitle from './base/BaseTitle.vue'
@@ -12,11 +12,13 @@ import GameInfoTags from './GameInfoTags.vue'
 import MetacriticRating from './MetacriticRating.vue'
 import GameInfoUserRating from './GameInfoUserRating.vue'
 import EsrbRating from './EsrbRating.vue'
+import GameInfoDescription from './GameInfoDescription.vue'
+import BaseLoader from './base/BaseLoader.vue'
 
 const route = useRoute()
 const gameId = computed(() => Number(route.params.id))
 
-const { data: game, isError } = useQuery({
+const { data: game, isError, isLoading } = useQuery({
     queryKey: ['getGameById', gameId.value],
     queryFn: () => fetchGameById(gameId.value)
 })
@@ -30,10 +32,16 @@ const { data: series } = useQuery({
     queryKey: ['getGameSeries', gameId.value],
     queryFn: () => fetchGameSeries(gameId.value)
 })
+
+const { data: dlc } = useQuery({
+    queryKey: ['getGameDLC', gameId.value],
+    queryFn: () => fetchGameDLC(gameId.value)
+})
 </script>
 
 <template>
-    <div class="gameInfo" v-if="game">
+    <BaseLoader v-if="isLoading" />
+    <div class="gameInfo" v-else-if="game">
         <div class="gameInfo__wrap">
             <div class="gameInfo__picture">
                 <BaseImg :src="game.img" :alt="game.name" class="gameInfo__img" />
@@ -49,22 +57,19 @@ const { data: series } = useQuery({
             </div>
         </div>
 
-        <GameInfoUserRating :user_rating="game.ratings" />
-        <br />
-        <br />
-        <br />
+        <GameInfoUserRating :user_rating="game.ratings" class="gameInfo__user-rating" />
 
         <GameInfoGallery :data="game" :screens="screens" />
 
-        <p style="margin-bottom: 50px">
+        <GameInfoDescription>
             {{ game.descr }}
-        </p>
+        </GameInfoDescription>
 
-        <GameInfoTags :tags="game.tags" />
-        <br />
-        <GameInfoSeries :data="series" />
+        <GameInfoTags :tags="game.tags" class="gameInfo__tags" />
+        <GameInfoSeries :data="series" :title="'Game series'" />
+        <GameInfoSeries :data="dlc" :title="'DLC'" />
     </div>
-    <div v-else-if="isError">ERROR</div>
+    <div v-else="isError">ERROR</div>
 </template>
 
 <style lang="scss" scoped>
@@ -94,8 +99,15 @@ const { data: series } = useQuery({
     }
 
     &__picture {
-        flex-shrink: 0;
         position: relative;
+    }
+
+    &__user-rating {
+        margin-bottom: 36px;
+    }
+
+    &__tags {
+        margin-bottom: 40px;
     }
 
     &__esrb {
@@ -105,7 +117,6 @@ const { data: series } = useQuery({
     }
 
     &__img {
-        aspect-ratio: 3 / 4;
         max-height: 500px;
         object-fit: cover;
         border-radius: 10px;

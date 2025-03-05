@@ -3,13 +3,15 @@ import { IGame } from '@/types/interfaces/IGames'
 import BaseTitle from './base/BaseTitle.vue'
 defineProps<{
     data: IGame[] | undefined
+    title: string
 }>()
 </script>
 
 <template>
-    <section class="gameSeries">
-        <BaseTitle class="gameSeries__title" :tag="'h2'">Game Series</BaseTitle>
-        <div v-if="data" class="gameSeries__grid">
+    
+    <section v-if="data?.length" class="gameSeries">
+        <BaseTitle class="gameSeries__title" :tag="'h2'">{{ title }}</BaseTitle>
+        <div class="gameSeries__grid">
             <router-link
                 :to="{ name: 'Game', params: { id: game.id } }"
                 v-for="game in data"
@@ -31,7 +33,7 @@ defineProps<{
 
 <style lang="scss" scoped>
 .gameSeries {
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     &__title {
         margin-bottom: 30px;
 

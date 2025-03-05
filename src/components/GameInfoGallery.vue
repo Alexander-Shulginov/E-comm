@@ -77,10 +77,7 @@ defineProps<{
 <style lang="scss" scoped>
 .gameInfo {
     &__gallery {
-        margin-bottom: 80px;
-        @media (max-width: 768px) {
-            margin-bottom: 40px;
-        }
+        margin-bottom: 40px;
     }
 
     &__gallery-img {
