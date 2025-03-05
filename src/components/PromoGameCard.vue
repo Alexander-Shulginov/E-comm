@@ -1,22 +1,29 @@
 <script setup lang="ts">
-import BaseBtn from '@/components/UI/BaseBtn.vue'
 import BaseText from '@/components/base/BaseText.vue'
 import BaseTitle from '@/components/base/BaseTitle.vue'
+
+defineProps<{
+    data: {
+        id: number
+        title: string
+        descr: string
+        img: string
+    }
+}>()
 </script>
 
 <template>
-    <div class="promoCard">
-        <img class="promoCard__img" src="../assets/img/promo/promo-1.webp" alt="Promo img" />
+    <router-link :to="{ name: 'Game', params: { id: data.id } }" class="promoCard">
+        <img class="promoCard__img" :src="data.img" alt="Promo img" />
         <div class="promoCard__wrapper">
-            <BaseTitle :tag="'h3'" :is-bold="true" class="promoCard__title">Title comp</BaseTitle>
+            <BaseTitle :tag="'h3'" :is-bold="true" class="promoCard__title">{{
+                data.title
+            }}</BaseTitle>
             <BaseText class="promoCard__descr">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident id veniam
-                incidunt commodi ullam aliquid ex. Voluptates id debitis repellat, doloremque
-                dolorum repellendus omnis ab.
+                {{ data.descr }}
             </BaseText>
-            <BaseBtn as="a" href="#" variant="accent">Details</BaseBtn>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <style lang="scss" scoped>
@@ -49,7 +56,7 @@ import BaseTitle from '@/components/base/BaseTitle.vue'
     &__wrapper {
         position: absolute;
         z-index: 2;
-        bottom: 28px;
+        bottom: 6px;
         left: 28px;
 
         @media (max-width: 1024px) {
@@ -70,6 +77,7 @@ import BaseTitle from '@/components/base/BaseTitle.vue'
     &__descr {
         padding-right: 20%;
         margin-bottom: 20px;
+        color: rgba(255, 255, 255, .9);
 
         overflow: hidden;
         display: -webkit-box;

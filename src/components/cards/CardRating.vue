@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-    <div class="cardRating" v-if="game">
+    <router-link :to="{ name: 'Game', params: { id: game.id } }" class="cardRating" v-if="game">
         <BaseImg
             :src="game.image"
             :alt="game.name"
@@ -22,7 +22,7 @@ defineProps<{
                 <BaseRating :rating="game.rating" />
             </div>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <style lang="scss" scoped>
