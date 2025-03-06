@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import ListGames from '@/components/ListGames.vue';
+
     
 </script>
 
 <template>
-    <div aria-label="Games page">
-        Games
-    </div>
+    <section aria-label="Games page">
+        <ListGames />
+    </section>
 </template>
 
 <style lang="scss" scoped>

@@ -3,9 +3,9 @@ import GameInfo from '@/components/GameInfo.vue';
 </script>
 
 <template>
-    <div aria-label="Game page">
+    <section aria-label="Game page">
         <GameInfo />
-    </div>
+    </section>
 </template>
 
 <style lang="scss" scoped></style>
