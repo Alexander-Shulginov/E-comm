@@ -9,6 +9,11 @@ body {
     background-color: var(--color-dark-base);
 }
 
+main {
+    width: 100%;
+    flex: 1;
+}
+
 .container {
     max-width: 1440px;
     padding: 0 15px;
@@ -22,10 +27,13 @@ body {
     flex-direction: column;
 }
 
-main {
-    width: 100%;
-    flex: 1;
+.filters-wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 36px;
+    margin-bottom: 36px;
 }
+
 
 a,
 input,

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="filters"></div>
+    <aside class="filters">Filters layout</aside>
 </template>
 
 <style lang="scss" scoped>
