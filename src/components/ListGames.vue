@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
 import ListGamesTop from '@/components/ListGamesTop.vue'
 import CardProduct from '@/components/cards/CardProduct.vue'
+import BasePagination from './UI/BasePagination.vue'
 
 const { data: game } = useQuery({
     queryKey: ['getGames'],
@@ -28,6 +29,10 @@ const selectedRadio = ref('')
                 :to="{ name: 'Game', params: { id: game.id } }"
             />
         </div>
+
+        <div class="listGames__pagination">
+            <BasePagination />
+        </div>
     </div>
 </template>
 
@@ -44,6 +49,11 @@ const selectedRadio = ref('')
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 22px;
+        margin-bottom: 36px;
+    }
+
+    &__pagination {
+        margin-bottom: 36px;
     }
 }
 
@@ -69,10 +79,11 @@ const selectedRadio = ref('')
 
         &__picture {
             margin-bottom: unset;
+            flex-shrink: 0;
         }
 
         &__img {
-            max-width: 120px;
+            max-width: 180px;
             aspect-ratio: 16 / 9;
             border-radius: 4px;
         }
