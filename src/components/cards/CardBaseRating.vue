@@ -9,10 +9,10 @@ defineProps<{
 
 <template>
     <div v-if="rating !== undefined" class="cardBase__rating">
-        <IconStar :width="18" :height="18" />
         <span class="cardBase__value">
             {{ formatNumber(rating) }}
         </span>
+        <IconStar :width="16" :height="16" />
     </div>
 </template>
 

@@ -1,30 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 import IconCardLayoutLines from '@/components/icons/cards-layouts/IconCardLayoutLines.vue'
 import IconCardLayoutDots3x3 from '@/components/icons/cards-layouts/IconCardLayoutDots3x3.vue'
-import IconCardLayoutDots4x4 from '@/components/icons/cards-layouts/IconCardLayoutDots4x4.vue'
+// import IconCardLayoutDots4x4 from '@/components/icons/cards-layouts/IconCardLayoutDots4x4.vue'
 
-const isActive = ref<boolean>(false)
+const radioValue = defineModel()
+
 </script>
 
 <template>
     <div class="cardsLayouts">
         <div class="cardsLayouts__wrap">
-            <input @click="console.log('click')" type="radio" name="cards-layout" class="cardsLayouts__radio" >
+            <input type="radio" name="cards-layout" :value="'layout-row'" v-model="radioValue" class="cardsLayouts__radio" >
                 <IconCardLayoutLines class="cardsLayouts__icon" />
             </input>
         </div>
         <div class="cardsLayouts__wrap">
-            <input class="cardsLayouts__radio" type="radio" name="cards-layout">
+            <input class="cardsLayouts__radio" type="radio" name="cards-layout" checked  v-model="radioValue" :value="null">
                 <IconCardLayoutDots3x3 class="cardsLayouts__icon" />
             </input>
         </div>
-        <div class="cardsLayouts__wrap">
+        <!-- <div class="cardsLayouts__wrap">
             <input class="cardsLayouts__radio" type="radio" name="cards-layout">
                 <IconCardLayoutDots4x4 class="cardsLayouts__icon" />
             </input>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -32,7 +31,7 @@ const isActive = ref<boolean>(false)
 .cardsLayouts {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 14px;
 
     &__wrap {
         position: relative;

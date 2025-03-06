@@ -8,8 +8,6 @@ import BtnAddToFavorites from '@/components/UI/BtnAddToFavorites.vue'
 
 const props = defineProps<{
     game: IGame
-    showPlatforms?: boolean
-    showRating?: boolean
     to?: any
 }>()
 
