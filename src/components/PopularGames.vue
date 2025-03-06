@@ -18,11 +18,7 @@ const { isPending, data } = useQuery({
             <BaseTitle :tag="'h2'" :is-bold="true" class="popularGames__title">
                 Most Popular</BaseTitle
             >
-            <BaseLink
-                :to="{ name: 'Games', params: { id: 55 } }"
-                :text="'View all'"
-                :size="'compact'"
-            />
+            <BaseLink :to="{ name: 'Games' }" :text="'View all'" :size="'compact'" />
         </div>
         <PopularGamesCarousel :data="data" :is-pending="isPending" />
     </section>

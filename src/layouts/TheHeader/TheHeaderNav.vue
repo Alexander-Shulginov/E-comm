@@ -7,6 +7,9 @@
                 <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
             </li>
             <li>
+                <RouterLink :to="{ name: 'Games' }">Games</RouterLink>
+            </li>
+            <li>
                 <RouterLink :to="{ name: 'Genres' }">Genres</RouterLink>
             </li>
         </ul>

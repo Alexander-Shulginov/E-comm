@@ -10,15 +10,21 @@ const isActive = ref<boolean>(false)
 
 <template>
     <div class="cardsLayouts">
-        <button class="cardsLayouts__btn" type="button">
-            <IconCardLayoutLines />
-        </button>
-        <button class="cardsLayouts__btn" type="button">
-            <IconCardLayoutDots3x3 />
-        </button>
-        <button class="cardsLayouts__btn cardsLayouts__btn--active" type="button">
-            <IconCardLayoutDots4x4 />
-        </button>
+        <div class="cardsLayouts__wrap">
+            <input @click="console.log('click')" type="radio" name="cards-layout" class="cardsLayouts__radio" >
+                <IconCardLayoutLines class="cardsLayouts__icon" />
+            </input>
+        </div>
+        <div class="cardsLayouts__wrap">
+            <input class="cardsLayouts__radio" type="radio" name="cards-layout">
+                <IconCardLayoutDots3x3 class="cardsLayouts__icon" />
+            </input>
+        </div>
+        <div class="cardsLayouts__wrap">
+            <input class="cardsLayouts__radio" type="radio" name="cards-layout">
+                <IconCardLayoutDots4x4 class="cardsLayouts__icon" />
+            </input>
+        </div>
     </div>
 </template>
 
@@ -28,38 +34,40 @@ const isActive = ref<boolean>(false)
     align-items: center;
     gap: 18px;
 
-    &__btn {
+    &__wrap {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
-        background-color: transparent;
-        opacity: 0.8;
-        svg {
-            fill: var(--color-light-second);
-        }
-
         @media (any-hover: hover) {
             &:hover {
-                svg {
+                .cardsLayouts__icon {
                     fill: var(--color-light);
                 }
             }
         }
     }
 
-    &__btn--active {
-        opacity: 1;
-        svg {
-            fill: var(--color-accent);
-        }
-        @media (any-hover: hover) {
-            &:hover {
-                svg {
-                    fill: var(--color-accent);
-                }
-            }
-        }
+    &__radio {
+        appearance: none;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        background-color: transparent;
+
+    }
+
+    &__radio:checked ~ .cardsLayouts__icon {
+        fill: var(--color-accent);
+    }
+
+    &__icon {
+        position: absolute;
+        pointer-events: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        fill: var(--color-light-second);
     }
 }
 </style>
