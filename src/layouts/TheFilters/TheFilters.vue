@@ -8,6 +8,7 @@
 
 <style lang="scss" scoped>
 .filters {
+    border-radius: 4px;
     background-color: var(--color-dark-second);
 }
 
