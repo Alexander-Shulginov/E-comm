@@ -49,7 +49,7 @@ const selectedRadio = ref('')
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 22px;
-        margin-bottom: 36px;
+        margin-bottom: 48px;
     }
 
     &__pagination {

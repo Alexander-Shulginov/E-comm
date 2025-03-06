@@ -3,6 +3,7 @@ defineProps<{
     width: number
     height: number
     isLeft?: boolean
+    stroke?: string
 }>()
 </script>
 <template>
