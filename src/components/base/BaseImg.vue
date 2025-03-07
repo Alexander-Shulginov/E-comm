@@ -1,10 +1,12 @@
-
 <script setup lang="ts">
 import { ref } from 'vue'
 
 import errorPl from '@/assets/img/common/error-placeholder.png'
+
 defineProps<{
     src: string
+    width: number 
+    height: number
     alt?: string
 }>()
 
@@ -25,9 +27,10 @@ const onError = () => {
     <img
         :src="hasError ? errorPl : src"
         :alt="alt"
+        :width="width"
+        :height="height"
         @load="onLoad"
         @error="onError"
-        v-bind="$attrs"
     />
 </template>
 

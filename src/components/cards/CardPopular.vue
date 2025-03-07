@@ -12,8 +12,8 @@ defineProps<{
         <BaseImg
             :src="data.image"
             :alt="data.name"
-            width="215"
-            height="230"
+            :width="215"
+            :height="230"
             class="cardPopular__img"
         />
         <p class="cardPopular__name">{{ data.name ? data.name : 'No name' }}</p>

@@ -12,8 +12,8 @@ defineProps<{
         <BaseImg
             :src="game.image"
             :alt="game.name"
-            width="70"
-            height="90"
+            :width="70"
+            :height="90"
             class="cardRating__img"
         />
         <div class="cardRating__wrap">

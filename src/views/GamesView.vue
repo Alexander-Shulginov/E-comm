@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import ListGames from '@/components/ListGames.vue';
-
     
 </script>
 
