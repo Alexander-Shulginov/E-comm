@@ -4,16 +4,17 @@ import BaseTitle from '@/components/base/BaseTitle.vue'
 defineProps<{
     genreName: string
     genreImg: string
+    genreSlug: string
 }>()
 </script>
 
 <template>
-    <a class="genreCard" href="#">
+    <router-link :to="{ name: 'Games', query: { genres: genreSlug } }" class="genreCard">
         <BaseTitle :tag="'h3'" :is-bold="true" :class="'genreCard__title'">{{
             genreName
         }}</BaseTitle>
         <img class="genreCard__img" width="440" height="260" :src="genreImg" :alt="genreName" />
-    </a>
+    </router-link>
 </template>
 
 <style lang="scss" scoped>

@@ -2,6 +2,7 @@
 defineProps<{
     tags: {
         id: number
+        slug: string
         name: string
     }[]
 }>()
@@ -9,9 +10,14 @@ defineProps<{
 
 <template>
     <div class="tags" v-if="tags">
-        <div class="tags__item" v-for="tag in tags">
+        <router-link
+            :to="{ name: 'Games', query: { tags: tag.slug } }"
+            v-for="tag in tags"
+            :key="tag.id"
+            class="tags__item"
+        >
             {{ tag.name }}
-        </div>
+        </router-link>
     </div>
 </template>
 
@@ -29,9 +35,9 @@ defineProps<{
         border-radius: 10px;
         background-color: var(--color-dark-second);
         border: 2px solid transparent;
-        transition: border-color .3s  ease-in-out;
+        transition: border-color 0.3s ease-in-out;
 
-        @media (any-hover:hover) {
+        @media (any-hover: hover) {
             &:hover {
                 border-color: var(--color-accent);
             }

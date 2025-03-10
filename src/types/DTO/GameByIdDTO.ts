@@ -1,6 +1,7 @@
 export interface GameByIdResponseDTO {
     id: number
     name: string
+    slug: string
     metacritic: number
     released: string
     background_image: string

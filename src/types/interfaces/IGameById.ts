@@ -2,6 +2,7 @@ export interface IGameById {
     id: number
     name: string
     descr: string
+    slug:string
     metacritic: number
     released: string
     img: string
@@ -33,6 +34,7 @@ export interface IGameById {
     }[]
     tags: {
         id: number
+        slug: string
         name: string
     }[]
     genres: {

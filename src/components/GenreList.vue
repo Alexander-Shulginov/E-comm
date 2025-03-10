@@ -42,6 +42,7 @@ useSwiper(swiperGenre, {
                     :key="genre.genreName"
                     :genre-name="genre.genreName"
                     :genre-img="genre.genreImg"
+                    :genre-slug="genre.genreSlug"
                     class="swiper-slide"
                 />
             </div>

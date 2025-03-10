@@ -3,14 +3,23 @@ defineProps<{
     data: {
         name: string
         img: string
+        slug: string
     }
 }>()
 </script>
 
 <template>
     <div class="cardGenres">
-        <img class="cardGenres__img" :src="data.img" :alt="data.name" width="340" height="190" />
-        <p class="cardGenres__name">{{ data.name }}</p>
+        <router-link :to="{ name: 'Games', query: { genres: data.slug } }">
+            <img
+                class="cardGenres__img"
+                :src="data.img"
+                :alt="data.name"
+                width="340"
+                height="190"
+            />
+            <p class="cardGenres__name">{{ data.name }}</p>
+        </router-link>
     </div>
 </template>
 
@@ -46,7 +55,7 @@ defineProps<{
     }
 
     &__img {
-    aspect-ratio: 16 / 9;
+        aspect-ratio: 16 / 9;
         object-fit: cover;
         transition: transform 0.6s ease-in-out;
     }

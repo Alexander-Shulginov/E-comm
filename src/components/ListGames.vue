@@ -6,10 +6,13 @@ import { fetchGames } from '@/services/gamesService'
 import ListGamesTop from '@/components/ListGamesTop.vue'
 import CardProduct from '@/components/cards/CardProduct.vue'
 import BasePagination from './UI/BasePagination.vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const { data: game } = useQuery({
-    queryKey: ['getGames'],
-    queryFn: () => fetchGames({ page_size: 20, page: 1 }),
+    queryKey: ['getGames', route.query],
+    queryFn: () => fetchGames({ page_size: 20, page: 1, ...route.query }),
     staleTime: 1000 * 60 * 5
 })
 

@@ -4,6 +4,7 @@ import { IGameById } from '@/types/interfaces/IGameById'
 export const GameByIdModel = (dto: GameByIdResponseDTO): IGameById => ({
     id: dto.id ?? 0,
     name: dto.name ?? '',
+    slug: dto.slug ?? '',
     descr: dto.description_raw,
     metacritic: dto.metacritic ?? 0,
     released: dto.released ?? '',
