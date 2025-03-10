@@ -1,9 +1,20 @@
 <script setup lang="ts">
 import IconCardLayoutLines from '@/components/icons/cards-layouts/IconCardLayoutLines.vue'
 import IconCardLayoutDots3x3 from '@/components/icons/cards-layouts/IconCardLayoutDots3x3.vue'
+import { onMounted } from 'vue'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 // import IconCardLayoutDots4x4 from '@/components/icons/cards-layouts/IconCardLayoutDots4x4.vue'
 
 const radioValue = defineModel()
+
+let initLayoutValue
+
+const {setToLocalStorage, getLocalStorageItem} = useLocalStorage()
+onMounted(() => {
+    // setToLocalStorage('layout', 'columns')
+    initLayoutValue = getLocalStorageItem('layout')
+    console.log(initLayoutValue)
+})
 
 </script>
 

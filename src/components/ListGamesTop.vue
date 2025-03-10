@@ -5,7 +5,7 @@ const radioValue = defineModel()
 </script>
 
 <template>
-    <BaseTitle :tag="'h3'">All Games</BaseTitle>
+    <BaseTitle :tag="'h3'">Games</BaseTitle>
     <ListGamesTopCardsLayout v-model="radioValue" />
 </template>
 
