@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { fetchGameById, fetchGameDLC, fetchGameSeries, fetchScreenShootsById } from '@/services/gamesService'
+import { computed, onMounted, watchEffect } from 'vue'
+import {
+    fetchGameById,
+    fetchGameDLC,
+    fetchGameSeries,
+    fetchScreenShootsById
+} from '@/services/gamesService'
 import { useQuery } from '@tanstack/vue-query'
 import { useRoute } from 'vue-router'
 import BaseTitle from './base/BaseTitle.vue'
@@ -18,8 +23,7 @@ import BaseLoader from './base/BaseLoader.vue'
 const route = useRoute()
 const gameId = computed(() => Number(route.params.id))
 
-
-const { data: game, isError, isLoading } = useQuery({
+const { data: game, isLoading } = useQuery({
     queryKey: ['getGameById', gameId.value],
     queryFn: () => fetchGameById(gameId.value)
 })
@@ -38,6 +42,10 @@ const { data: dlc } = useQuery({
     queryKey: ['getGameDLC', gameId.value],
     queryFn: () => fetchGameDLC(gameId.value)
 })
+
+watchEffect(() => {
+    document.title = isLoading.value ? 'Loading...' : game.value?.name || 'Game'
+})
 </script>
 
 <template>
@@ -45,7 +53,13 @@ const { data: dlc } = useQuery({
     <div class="gameInfo" v-else-if="game">
         <div class="gameInfo__wrap">
             <div class="gameInfo__picture">
-                <BaseImg :width="535" :height="346" :src="game.img" :alt="game.name" class="gameInfo__img" />
+                <BaseImg
+                    :width="535"
+                    :height="346"
+                    :src="game.img"
+                    :alt="game.name"
+                    class="gameInfo__img"
+                />
                 <EsrbRating :esrb="game.esrb" class="gameInfo__esrb" />
             </div>
             <div class="gameInfo__right">

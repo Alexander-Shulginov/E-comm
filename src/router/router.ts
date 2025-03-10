@@ -20,7 +20,7 @@ const routes = [
         path: '/game/:id',
         name: 'Game',
         props: true,
-        meta: { title: 'Game' },
+        // meta: { title: 'Game' },
         component: () => import('@/views/GameView.vue')
     },
     {

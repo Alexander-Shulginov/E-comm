@@ -7,10 +7,11 @@ import ListGamesTop from '@/components/ListGamesTop.vue'
 import CardProduct from '@/components/cards/CardProduct.vue'
 import BasePagination from './UI/BasePagination.vue'
 import { useRoute } from 'vue-router'
+import BaseLoader from './base/BaseLoader.vue'
 
 const route = useRoute()
 
-const { data: game } = useQuery({
+const { data: games, isLoading } = useQuery({
     queryKey: ['getGames', route.query],
     queryFn: () => fetchGames({ page_size: 20, page: 1, ...route.query }),
     staleTime: 1000 * 60 * 5
@@ -24,13 +25,16 @@ const selectedRadio = ref('')
         <div class="listGames__top">
             <ListGamesTop v-model="selectedRadio" />
         </div>
-        <div class="listGames__content" :class="selectedRadio">
-            <CardProduct
-                v-for="game in game"
-                :key="game.id"
-                :game="game"
-                :to="{ name: 'Game', params: { id: game.id } }"
-            />
+        <div class="listGames__content">
+            <BaseLoader v-if="isLoading" />
+            <div v-else class="listGames__grid" :class="selectedRadio">
+                <CardProduct
+                    v-for="game in games"
+                    :key="game.id"
+                    :game="game"
+                    :to="{ name: 'Game', params: { id: game.id } }"
+                />
+            </div>
         </div>
 
         <div class="listGames__pagination">
@@ -49,10 +53,15 @@ const selectedRadio = ref('')
     }
 
     &__content {
+        margin-bottom: 48px;
+        position: relative;
+        min-height: 100vh;
+    }
+
+    &__grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 22px;
-        margin-bottom: 48px;
     }
 
     &__pagination {
@@ -60,13 +69,13 @@ const selectedRadio = ref('')
     }
 }
 
-.layout-row.listGames__content {
+.layout-row.listGames__grid {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.layout-row.listGames__content {
+.layout-row.listGames__grid {
     .productCard {
         display: flex;
         align-items: center;

@@ -16,10 +16,13 @@ const classes = computed(() => ({
 <template>
     <TheHeader />
     <main :class="classes">
+
         <router-view name="filters"></router-view>
-        <transition name="fade" mode="out-in">
-            <router-view />
-        </transition>
+        <router-view v-slot="{ Component, route }">
+            <transition name="fade" mode="out-in">
+                <component :is="Component" :key="route.path"></component>
+            </transition>
+        </router-view>
     </main>
     <TheFooter />
 </template>
