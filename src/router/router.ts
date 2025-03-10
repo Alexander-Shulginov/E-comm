@@ -28,10 +28,7 @@ const routes = [
         name: 'Games',
         props: true,
         meta: { title: 'Games' },
-        components: {
-            default: () => import('@/views/GamesView.vue'),
-            filters: () => import('@/layouts/TheFilters/TheFilters.vue')
-        }
+        component: () => import('@/views/GamesView.vue')
     },
     {
         path: '/wishlist',

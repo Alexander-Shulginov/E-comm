@@ -18,6 +18,7 @@ import BaseLoader from './base/BaseLoader.vue'
 const route = useRoute()
 const gameId = computed(() => Number(route.params.id))
 
+
 const { data: game, isError, isLoading } = useQuery({
     queryKey: ['getGameById', gameId.value],
     queryFn: () => fetchGameById(gameId.value)
