@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
@@ -11,13 +11,22 @@ import BaseLoader from './base/BaseLoader.vue'
 
 const route = useRoute()
 
-const { data: games, isLoading } = useQuery({
+const {
+    data: games,
+    isLoading,
+    refetch
+} = useQuery({
     queryKey: ['getGames', route.query],
     queryFn: () => fetchGames({ page_size: 20, page: 1, ...route.query }),
     staleTime: 1000 * 60 * 5
 })
 
 const selectedRadio = ref('')
+
+watch(
+    () => route.query,
+    () => refetch()
+)
 </script>
 
 <template>
