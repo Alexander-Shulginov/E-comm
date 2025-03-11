@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useSwiper } from '@/hooks/useSwiper'
 import { Pagination } from 'swiper/modules'
-import GenreListCard from '@/components/GenreListCard.vue'
+import { useSwiper } from '@/hooks/useSwiper'
 import { genreList } from '@/types/genres'
+import GenreListCard from '@/components/GenreListCard.vue'
 
 const swiperGenre = ref<HTMLElement | null>(null)
 

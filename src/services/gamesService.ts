@@ -1,10 +1,10 @@
 import { api } from '@/services/api'
 
-import { IGame } from '@/types/interfaces/IGames'
+import { IListGames } from '@/types/interfaces/IGames'
+import { IListGamesScreens } from '@/types/interfaces/IGameScreens'
 import { IGameById } from '@/types/interfaces/IGameById'
-import { IGameScreens } from '@/types/interfaces/IGameScreens'
 
-import { GameModel } from '@/types/models/GamesModel'
+import { GamesModel } from '@/types/models/GamesModel'
 import { GameScreensModel } from '@/types/models/GameScreenModel'
 import { GameByIdModel } from '@/types/models/GameByIdModel'
 
@@ -14,9 +14,9 @@ import { GameByIdResponseDTO } from '@/types/DTO/GameByIdDTO'
 
 const ENDPOINT = '/games'
 
-export const fetchGames = async (params?: {}): Promise<IGame[]> => {
+export const fetchGames = async (params?: {}): Promise<IListGames> => {
     const response = await api.get<GamesResponseDTO>(ENDPOINT, { params })
-    return response.data.results.map(GameModel)
+    return GamesModel(response.data)
 }
 
 export const fetchGameById = async (id: number): Promise<IGameById> => {
@@ -24,17 +24,17 @@ export const fetchGameById = async (id: number): Promise<IGameById> => {
     return GameByIdModel(response.data)
 }
 
-export const fetchScreenShootsById = async (id: number): Promise<IGameScreens[]> => {
+export const fetchScreenShootsById = async (id: number): Promise<IListGamesScreens[]> => {
     const response = await api.get<GameScreenResponseDTO>(`${ENDPOINT}/${id}/screenshots`)
     return response.data.results.map(GameScreensModel)
 }
 
-export const fetchGameSeries = async (id: number): Promise<IGame[]> => {
+export const fetchGameSeries = async (id: number): Promise<IListGames> => {
     const response = await api.get<GamesResponseDTO>(`${ENDPOINT}/${id}/game-series`)
-    return response.data.results.map(GameModel)
+    return GamesModel(response.data)
 }
 
-export const fetchGameDLC = async (id: number): Promise<IGame[]> => {
+export const fetchGameDLC = async (id: number): Promise<IListGames> => {
     const response = await api.get<GamesResponseDTO>(`${ENDPOINT}/${id}/additions`)
-    return response.data.results.map(GameModel)
+    return GamesModel(response.data)
 }

@@ -2,7 +2,7 @@ export interface IGameById {
     id: number
     name: string
     descr: string
-    slug:string
+    slug: string
     metacritic: number
     released: string
     img: string

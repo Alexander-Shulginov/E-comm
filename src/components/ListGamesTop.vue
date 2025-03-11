@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BaseTitle from './base/BaseTitle.vue'
-import ListGamesTopCardsLayout from './ListGamesTopCardsLayout.vue'
+import BaseTitle from '@/components/base/BaseTitle.vue'
+import ListGamesTopCardsLayout from '@/components/ListGamesTopCardsLayout.vue'
 const radioValue = defineModel()
 </script>
 

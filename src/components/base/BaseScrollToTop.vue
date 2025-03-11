@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import IconToTop from '../icons/IconToTop.vue'
+import IconToTop from '@/components/icons/IconToTop.vue'
 const percent = ref(0)
 
 window.addEventListener('scroll', () => {

@@ -4,10 +4,10 @@ import CardBase from '@/components/cards/CardBase.vue'
 import { useSwiper } from '@/hooks/useSwiper'
 import BaseLoader from '@/components/base/BaseLoader.vue'
 import { Navigation } from 'swiper/modules'
-import { IGame } from '@/types/interfaces/IGames'
+import { IListGames } from '@/types/interfaces/IGames'
 
 const props = defineProps<{
-    data:IGame[] | undefined
+    data: IListGames | undefined
     isPending: boolean
 }>()
 
@@ -42,7 +42,7 @@ watch([() => props.data, swiperPopular], (newData) => {
         <BaseLoader v-if="isPending" />
         <div v-if="data" class="swiper" ref="swiperPopular">
             <ul class="popularGames__list swiper-wrapper">
-                <li v-for="game in data" :key="game.id" class="swiper-slide">
+                <li v-for="game in data.results" :key="game.id" class="swiper-slide">
                     <CardBase :game="game" :to="{ name: 'Game', params: { id: game.id } }" />
                 </li>
             </ul>

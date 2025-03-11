@@ -29,7 +29,7 @@ const selectedRadio = ref('')
             <BaseLoader v-if="isLoading" />
             <div v-else class="listGames__grid" :class="selectedRadio">
                 <CardProduct
-                    v-for="game in games"
+                    v-for="game in games?.results"
                     :key="game.id"
                     :game="game"
                     :to="{ name: 'Game', params: { id: game.id } }"

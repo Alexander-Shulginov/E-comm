@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Fancybox } from '@fancyapps/ui'
 import { ref } from 'vue'
+import { Fancybox } from '@fancyapps/ui'
 import { useSwiper } from '@/hooks/useSwiper'
 import { Pagination } from 'swiper/modules'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'

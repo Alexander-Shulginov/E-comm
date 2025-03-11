@@ -1,4 +1,4 @@
-export interface IGameScreens {
+export interface IListGamesScreens {
     id: number
     img: string
     width: number

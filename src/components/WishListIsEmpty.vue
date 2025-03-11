@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BaseTitle from './base/BaseTitle.vue'
-import BaseLink from './UI/BaseLink.vue'
+import BaseTitle from '@/components/base/BaseTitle.vue'
+import BaseLink from '@/components/UI/BaseLink.vue'
 </script>
 
 <template>

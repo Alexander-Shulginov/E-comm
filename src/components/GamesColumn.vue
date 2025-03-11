@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import CardRating from '@/components/cards/CardRating.vue'
-import { IGame } from '@/types/interfaces/IGames';
-import BaseLoader from './base/BaseLoader.vue'
+import BaseLoader from '@/components/base/BaseLoader.vue'
+import { IGame } from '@/types/interfaces/IGames'
+
 defineProps<{
     games: IGame[] | undefined
     loading: boolean

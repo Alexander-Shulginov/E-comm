@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { IGame } from '@/types/interfaces/IGames';
 import BaseImg from '../base/BaseImg.vue'
 import BaseRating from '../base/BaseRating.vue'
-import { IGame } from '@/types/interfaces/IGames'
 defineProps<{
     game: IGame | undefined
 }>()

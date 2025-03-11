@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { IGame } from '@/types/interfaces/IGames'
-import CardBaseRating from './CardBaseRating.vue'
-const props = defineProps<{
+import CardBaseRating from '@/components/cards/CardBaseRating.vue'
+defineProps<{
     game: IGame
     to?: any
 }>()
@@ -17,12 +17,18 @@ const props = defineProps<{
                 width="250"
                 height="360"
             />
-            <CardBaseRating :rating="game.rating" class="productCard__rating productCard__rating--column" />
+            <CardBaseRating
+                :rating="game.rating"
+                class="productCard__rating productCard__rating--column"
+            />
         </div>
         <p class="productCard__name">
             {{ game.name }}
         </p>
-        <CardBaseRating :rating="game.rating" class="productCard__rating productCard__rating--row" />
+        <CardBaseRating
+            :rating="game.rating"
+            class="productCard__rating productCard__rating--row"
+        />
     </router-link>
 </template>
 

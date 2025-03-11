@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query'
-import CardGenre from './cards/CardGenre.vue'
+import CardGenre from '@/components/cards/CardGenre.vue'
 import { fetchGenres } from '@/services/genresService'
 
 const { data } = useQuery({

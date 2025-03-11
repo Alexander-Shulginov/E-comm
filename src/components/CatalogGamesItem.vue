@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import GamesColumn from '@/components/GamesColumn.vue'
 import BaseTitle from '@/components/base/BaseTitle.vue'
-import { IGame } from '@/types/interfaces/IGames'
+import { IListGames } from '@/types/interfaces/IGames'
 
 defineProps<{
-    games: IGame[] | undefined
+    games: IListGames | undefined
     title: string
     loading: boolean
 }>()
@@ -13,7 +13,7 @@ defineProps<{
 <template>
     <div class="catalogGames__item">
         <BaseTitle :tag="'h2'" class="catalogGames__title">{{ title }}</BaseTitle>
-        <GamesColumn :games="games" :loading="loading" />
+        <GamesColumn :games="games?.results" :loading="loading" />
     </div>
 </template>
 

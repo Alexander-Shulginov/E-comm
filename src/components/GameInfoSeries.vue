@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { IGame } from '@/types/interfaces/IGames'
-import BaseTitle from './base/BaseTitle.vue'
+import { IListGames } from '@/types/interfaces/IGames'
+import BaseTitle from '@/components/base/BaseTitle.vue'
+
 defineProps<{
-    data: IGame[] | undefined
+    data: IListGames | undefined
     title: string
 }>()
 </script>
 
 <template>
-    
-    <section v-if="data?.length" class="gameSeries">
+    <section v-if="data" class="gameSeries">
         <BaseTitle class="gameSeries__title" :tag="'h2'">{{ title }}</BaseTitle>
         <div class="gameSeries__grid">
             <router-link
-                :to="{ name: 'Game', params: { id: game.id } }"
-                v-for="game in data"
+                v-for="game in data.results"
                 :key="game.id"
+                :to="{ name: 'Game', params: { id: game.id } }"
                 class="gameSeries__card"
             >
                 <img

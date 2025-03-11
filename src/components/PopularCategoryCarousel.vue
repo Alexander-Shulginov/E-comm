@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue'
-import { IGame } from '@/types/interfaces/IGames'
+import { Navigation } from 'swiper/modules'
+import { IListGames } from '@/types/interfaces/IGames'
 import CardPopular from '@/components/cards/CardPopular.vue'
 import { useSwiper } from '@/hooks/useSwiper'
 import BaseLoader from '@/components/base/BaseLoader.vue'
-import { Navigation } from 'swiper/modules'
 
 const props = defineProps<{
-    data: IGame[] | undefined
+    data: IListGames | undefined
     isLoading: boolean
 }>()
 
@@ -48,7 +48,7 @@ watch([() => props.data, swiperCategory], async (newData) => {
             <div class="swiper-wrapper">
                 <CardPopular
                     class="swiper-slide"
-                    v-for="game in data"
+                    v-for="game in data.results"
                     :key="game.id"
                     :data="game"
                 />
