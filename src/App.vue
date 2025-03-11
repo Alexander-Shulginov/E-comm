@@ -17,7 +17,9 @@ const classes = computed(() => ({
     <TheHeader />
     <main :class="classes">
         <router-view name="filters"></router-view>
-        <router-view></router-view>
+        <router-view v-slot="{ Component, route }">
+            <component :is="Component" :key="route.path"></component>
+        </router-view>
     </main>
     <TheFooter />
 </template>
