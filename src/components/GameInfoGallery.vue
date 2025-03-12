@@ -50,7 +50,7 @@ defineProps<{
 </script>
 
 <template>
-    <div v-if="screens.length" class="gameInfo__gallery">
+    <div class="gameInfo__gallery">
         <div class="swiper" ref="swiperSimilar">
             <div class="swiper-wrapper">
                 <a

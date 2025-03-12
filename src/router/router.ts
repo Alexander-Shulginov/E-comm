@@ -49,7 +49,10 @@ const routes = [
 
 export const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
+    scrollBehavior(to, form, savedPosition) {
+        return savedPosition || { top: 0 }
+    }
 })
 
 router.afterEach((to) => {

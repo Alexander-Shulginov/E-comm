@@ -51,6 +51,7 @@ defineProps<{
 
     &__img {
         object-fit: cover;
+        object-position: top;
     }
 
     &__wrapper {

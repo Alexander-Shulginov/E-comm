@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-    <section v-if="data" class="gameSeries">
+    <section v-if="data?.results.length" class="gameSeries">
         <BaseTitle class="gameSeries__title" :tag="'h2'">{{ title }}</BaseTitle>
         <div class="gameSeries__grid">
             <router-link

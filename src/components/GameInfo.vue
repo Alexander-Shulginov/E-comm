@@ -81,7 +81,9 @@ watchEffect(() => {
         </GameInfoDescription>
 
         <GameInfoTags :tags="game.tags" class="gameInfo__tags" />
+
         <GameInfoSeries :data="series" :title="'Game series'" />
+
         <GameInfoSeries :data="dlc" :title="'DLC'" />
     </div>
     <div v-else="isError">ERROR</div>
