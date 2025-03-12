@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { IGame } from '@/types/interfaces/IGames'
 import CardBaseRating from '@/components/cards/CardBaseRating.vue'
+import BaseImg from '../base/BaseImg.vue'
 defineProps<{
     game: IGame
     to?: any
@@ -10,12 +11,12 @@ defineProps<{
 <template>
     <router-link :to="to" class="productCard">
         <div class="productCard__picture">
-            <img
+            <BaseImg
                 :src="game.image"
                 :alt="game.name"
+                :width="250"
+                :height="360"
                 class="productCard__img"
-                width="250"
-                height="360"
             />
             <CardBaseRating
                 :rating="game.rating"

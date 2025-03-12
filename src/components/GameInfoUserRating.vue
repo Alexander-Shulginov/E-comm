@@ -10,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-    <div v-if="user_rating" class="userRating">
+    <div v-if="user_rating.length" class="userRating">
         <div class="userRating__block">
             <div v-for="rating in user_rating" :key="rating.id" class="userRating__item">
                 <div class="userRating__wrap">

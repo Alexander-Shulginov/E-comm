@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-    <div class="tags" v-if="tags">
+    <div class="tags" v-if="tags.length">
         <router-link
             :to="{ name: 'Games', query: { tags: tag.slug } }"
             v-for="tag in tags"

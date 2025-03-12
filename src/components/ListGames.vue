@@ -13,8 +13,8 @@ const route = useRoute()
 
 const {
     data: games,
-    isLoading,
-    refetch
+    refetch,
+    isFetching
 } = useQuery({
     queryKey: ['getGames', route.query],
     queryFn: () => fetchGames({ page_size: 20, page: 1, ...route.query }),
@@ -35,7 +35,7 @@ watch(
             <ListGamesTop v-model="selectedRadio" />
         </div>
         <div class="listGames__content">
-            <BaseLoader v-if="isLoading" />
+            <BaseLoader v-if="isFetching" />
             <div v-else class="listGames__grid" :class="selectedRadio">
                 <CardProduct
                     v-for="game in games?.results"

@@ -16,19 +16,19 @@ defineProps<{
                 <BaseRating :rating="info.rating" />
             </span>
         </div> -->
-        <div class="gameDetails__item">
+        <div v-if="info.genres.length" class="gameDetails__item">
             <span class="gameDetails__key">Genre</span>
             <span v-for="genre in info.genres">
                 {{ genre.name }}
             </span>
         </div>
-        <div class="gameDetails__item">
+        <div v-if="info.developers.length" class="gameDetails__item">
             <span class="gameDetails__key">Developer</span>
             <span v-for="developer in info.developers">
                 {{ developer.name }}
             </span>
         </div>
-        <div class="gameDetails__item">
+        <div v-if="info.publishers.length" class="gameDetails__item">
             <span class="gameDetails__key">Publisher</span>
             <span v-for="publisher in info.publishers">
                 {{ publisher.name }}
@@ -41,7 +41,7 @@ defineProps<{
             }}</span>
         </div>
 
-        <div class="gameDetails__item">
+        <div v-if="info.website" class="gameDetails__item">
             <span class="gameDetails__key"> Website</span>
             <a
                 :href="info.website"
@@ -50,7 +50,7 @@ defineProps<{
                 >{{ info.name }}</a
             >
         </div>
-        <div class="gameDetails__item">
+        <div v-if="info.platforms" class="gameDetails__item">
             <span class="gameDetails__key">Platforms</span>
             <div class="gameDetails__value--platforms">
                 <span v-for="(platform, index) in info.platforms" :key="index">

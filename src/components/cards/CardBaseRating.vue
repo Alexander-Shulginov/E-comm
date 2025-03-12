@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-    <div v-if="rating !== undefined" class="cardBase__rating">
+    <div v-if="rating > 0" class="cardBase__rating">
         <span class="cardBase__value">
             {{ formatNumber(rating) }}
         </span>
