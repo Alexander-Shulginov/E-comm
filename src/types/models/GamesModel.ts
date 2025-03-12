@@ -4,7 +4,7 @@ import { IListGames } from '@/types/interfaces/IGames'
 export const GamesModel = (dto: GamesResponseDTO): IListGames => ({
     count: dto.count,
     next: dto.next ?? null,
-    prev: dto.prev ?? null,
+    prev: dto.previous ?? null,
     results:
         dto.results.map((result) => ({
             id: result.id,

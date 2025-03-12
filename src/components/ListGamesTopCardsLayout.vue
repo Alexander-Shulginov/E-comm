@@ -13,7 +13,6 @@ const {setToLocalStorage, getLocalStorageItem} = useLocalStorage()
 onMounted(() => {
     // setToLocalStorage('layout', 'columns')
     initLayoutValue = getLocalStorageItem('layout')
-    console.log(initLayoutValue)
 })
 
 </script>

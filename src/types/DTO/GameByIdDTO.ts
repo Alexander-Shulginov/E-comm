@@ -37,10 +37,12 @@ export interface GameByIdResponseDTO {
     tags: {
         id: number
         name: string
+        slug: string
     }[]
     genres: {
         id: number
         name: string
+        slug: string
     }[]
 
 }

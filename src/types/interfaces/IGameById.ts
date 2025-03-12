@@ -40,5 +40,6 @@ export interface IGameById {
     genres: {
         id: number
         name: string
+        slug: string
     }[]
 }

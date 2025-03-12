@@ -8,6 +8,7 @@ import CardProduct from '@/components/cards/CardProduct.vue'
 import BasePagination from './UI/BasePagination.vue'
 import { useRoute } from 'vue-router'
 import BaseLoader from './base/BaseLoader.vue'
+import { router } from '@/router/router'
 
 const route = useRoute()
 
@@ -23,16 +24,32 @@ const {
 
 const selectedRadio = ref('')
 
+let currentPage = ref(1)
 watch(
     () => route.query,
     () => refetch()
 )
+
+watch(
+    () => currentPage.value,
+    () => {
+        router.replace({ query: { ...route.query, page: currentPage.value } })
+    }
+)
+
+const increasePage = () => {
+    if (games.value?.next) currentPage.value++
+}
+
+const decreasePage = () => {
+    if (games.value?.prev) currentPage.value--
+}
 </script>
 
 <template>
     <div class="listGames">
         <div class="listGames__top">
-            <ListGamesTop v-model="selectedRadio" />
+            <ListGamesTop :results="games?.count" v-model="selectedRadio" />
         </div>
         <div class="listGames__content">
             <BaseLoader v-if="isFetching" />
@@ -47,12 +64,51 @@ watch(
         </div>
 
         <div class="listGames__pagination">
-            <BasePagination />
+            <!-- <BasePagination /> -->
+            <div class="gamesNav">
+                <button
+                    :disabled="games?.prev === null"
+                    @click="decreasePage"
+                    class="gamesNav__btn"
+                    type="button"
+                >
+                    Prev
+                </button>
+                <button
+                    :disabled="games?.next === null"
+                    @click="increasePage"
+                    class="gamesNav__btn"
+                    type="button"
+                >
+                    Next
+                </button>
+            </div>
         </div>
     </div>
 </template>
 
 <style lang="scss">
+.gamesNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    &__btn {
+        color: var(--color-light);
+        flex-grow: 2;
+        font-size: 16px;
+        background-color: var(--color-dark-second);
+        padding: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    &__btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.8;
+    }
+}
 .listGames {
     &__top {
         display: flex;

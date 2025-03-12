@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref, nextTick } from 'vue'
 import { Fancybox } from '@fancyapps/ui'
 import { useSwiper } from '@/hooks/useSwiper'
 import { Pagination } from 'swiper/modules'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
 
+defineProps<{
+    data: any
+    screens: any
+}>()
+
 const swiperSimilar = ref<HTMLElement | null>(null)
 
-useSwiper(swiperSimilar, {
+const { initSwiper, destroySwiper } = useSwiper(swiperSimilar, {
     modules: [Pagination],
-    loop: true,
+    loop: false,
     spaceBetween: 16,
     speed: 800,
     breakpoints: {
@@ -43,10 +48,15 @@ Fancybox.bind('[data-fancybox]', {
     }
 })
 
-defineProps<{
-    data: any
-    screens: any
-}>()
+onMounted(() => {
+    nextTick(() => {
+        initSwiper()
+    })
+})
+
+onUnmounted(() => {
+    destroySwiper()
+})
 </script>
 
 <template>

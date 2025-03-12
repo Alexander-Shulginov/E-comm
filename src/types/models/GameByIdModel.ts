@@ -1,7 +1,7 @@
 import { GameByIdResponseDTO } from '@/types/DTO/GameByIdDTO'
-import { IListGamesById } from '@/types/interfaces/IGameById'
+import { IGameById } from '@/types/interfaces/IGameById'
 
-export const GameByIdModel = (dto: GameByIdResponseDTO): IListGamesById => ({
+export const GameByIdModel = (dto: GameByIdResponseDTO): IGameById => ({
     id: dto.id ?? 0,
     name: dto.name ?? '',
     slug: dto.slug ?? '',
