@@ -2,20 +2,22 @@
 defineProps<{
     id: string
     text: string
-    value: string
+    value: number
     isDisabled?: false
 }>()
+
+const platformsModel = defineModel()
 </script>
 
 <template>
     <div class="baseCheckbox">
         <div class="baseCheckbox__wrap">
             <input
-                @click="console.log('1')"
                 class="baseCheckbox__input"
+                type="checkbox"
+                v-model="platformsModel"
                 :id="id"
                 :value="value"
-                type="checkbox"
                 :disabled="isDisabled"
             />
             <div class="baseCheckbox__icon">+</div>
@@ -28,12 +30,13 @@ defineProps<{
 .baseCheckbox {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     cursor: pointer;
 
     &__wrap {
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
         position: relative;
     }
 
@@ -43,44 +46,38 @@ defineProps<{
         appearance: none;
         border: 1px solid rgba(255, 255, 255, 0.85);
         border-radius: 3px;
+        cursor: pointer;
     }
 
     &__input:checked {
         background-color: var(--color-accent);
     }
 
-    &__input:checked + .baseCheckbox__icon {
-        visibility: visible;
+    &__input:checked ~ .baseCheckbox__icon {
         opacity: 1;
     }
 
     &__icon {
-        // position: absolute;
-        // top: 50%;
-        // left: 50%;
-        // transform: translate(-50%, -50%);
-        // visibility: hidden;
-        // opacity: 0;
-
-        // &::after {
-        //     content: "";
-
-        // }
-        content: '';
+        pointer-events: none;
         position: absolute;
         top: 50%;
         left: 50%;
         width: 5px;
-        height: 10px;
-        opacity: 1;
-        transform: translate(-50%, -50%) rotate(0deg) scale(0);
-        border-right: 2px solid #fff;
-        border-bottom: 2px solid #fff;
-        transition: all 0.3s ease;
+        height: 9px;
+        overflow: hidden;
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(45deg) scale(1);
+        border-right: 2px solid rgba(255, 255, 255, 0.85);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+        transition:
+            transform 0.3s ease,
+            opacity 0.3s ease;
     }
 
     &__label {
+        width: 100%;
         color: rgba(255, 255, 255, 0.85);
+        cursor: pointer;
     }
 }
 </style>

@@ -3,6 +3,7 @@ import { updateUrlQuery } from '@/utils/updateUrlQuery'
 import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import TheFiltersByPlatforms from './TheFiltersByPlatforms.vue'
+import TheFiltersByGenres from './TheFiltersByGenres.vue'
 
 const router = useRouter()
 
@@ -17,12 +18,15 @@ watch(
         })
     }
 )
-
 </script>
 
 <template>
     <aside class="filters">
-        <TheFiltersByPlatforms />
+        <div class="filters__block">
+            <TheFiltersByPlatforms />
+            <br>
+            <TheFiltersByGenres />
+        </div>
         <!-- <select v-model="selectValue" name="sort" id="22">
             <option value="-name">Name</option>
             <option value="released">Rel</option>
@@ -37,5 +41,11 @@ watch(
     border-radius: 4px;
     background-color: var(--color-dark-second);
     padding: 16px;
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
 }
 </style>

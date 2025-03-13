@@ -7,7 +7,7 @@ export const updateUrlQuery = (router: Router, payload: Record<string, any>) => 
     }
 
     Object.keys(newQuery).forEach((key) => {
-        if (newQuery[key] == null) delete newQuery[key]
+        if (newQuery[key] == null || newQuery[key] === '') delete newQuery[key]
     })
 
     router.push({ query: newQuery })

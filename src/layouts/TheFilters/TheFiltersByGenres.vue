@@ -4,43 +4,43 @@ import { useRoute, useRouter } from 'vue-router'
 import { updateUrlQuery } from '@/utils/updateUrlQuery'
 import BaseCheckbox from '@/components/UI/BaseCheckbox.vue'
 import { useQuery } from '@tanstack/vue-query'
-import { fetchPlatforms } from '@/services/platformsService'
+import { fetchGenres } from '@/services/genresService'
 
 const route = useRoute()
 const router = useRouter()
-const platformValue = ref([])
+const genresValue = ref([])
 
-const { data: platforms } = useQuery({
-    queryKey: ['getPlatforms'],
-    queryFn: () => fetchPlatforms()
+const { data: genres } = useQuery({
+    queryKey: ['getGenres'],
+    queryFn: () => fetchGenres()
 })
 
 watch(
-    () => platformValue.value,
+    () => genresValue.value,
     (n) => {
         updateUrlQuery(router, {
-            parent_platforms: n.join(','),
+            genres: n.join(','),
             page: 1
         })
     }
 )
 
 onMounted(() => {
-    if (route.query.parent_platforms) {
+    if (route.query.genres) {
         // @ts-ignore
-        platformValue.value = route.query.parent_platforms.split(',')
+        genresValue.value = route.query.genres.split(',')
     }
 })
 </script>
 
-<template v-if="platforms">
-    <p class="filters__name">Platforms</p>
+<template v-if="genres">
+    <p class="filters__name">Genres</p>
     <BaseCheckbox
-        v-for="platform in platforms?.results"
-        :id="platform.slug"
-        :text="platform.name"
-        :value="platform.id"
-        v-model="platformValue"
+        v-for="genre in genres"
+        :id="genre.slug"
+        :text="genre.name"
+        :value="genre.id"
+        v-model="genresValue"
     />
 </template>
 

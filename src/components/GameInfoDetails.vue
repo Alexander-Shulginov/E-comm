@@ -21,7 +21,7 @@ defineProps<{
             <span class="gameDetails__key">Genre</span>
             <div class="gameDetails__values">
                 <router-link
-                    :to="{ name: 'Games', query: { genres: genre.slug } }"
+                    :to="{ name: 'Games', query: { genres: genre.id } }"
                     v-for="genre in info.genres"
                     class="gameDetails__value"
                 >
