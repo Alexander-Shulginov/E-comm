@@ -26,7 +26,7 @@ const routes = [
     {
         path: '/games',
         name: 'Games',
-        props: true,
+        props: route =>({page: Number(route.query.page) || 1}),
         meta: { title: 'Games' },
         components: {
             default: () => import('@/views/GamesView.vue'),

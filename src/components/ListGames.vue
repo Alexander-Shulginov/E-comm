@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
@@ -9,6 +9,7 @@ import BasePagination from './UI/BasePagination.vue'
 import { useRoute } from 'vue-router'
 import BaseLoader from './base/BaseLoader.vue'
 import { router } from '@/router/router'
+import { updateUrlQuery } from '@/utils/updateUrlQuery'
 
 const route = useRoute()
 
@@ -36,13 +37,22 @@ watch(
         router.replace({ query: { ...route.query, page: currentPage.value } })
     }
 )
+const page = computed(() => Number(route.query.page) || 1)
 
 const increasePage = () => {
-    if (games.value?.next) currentPage.value++
+    if (games.value?.next) {
+        updateUrlQuery(router, {
+            page: page.value + 1
+        })
+    }
 }
 
 const decreasePage = () => {
-    if (games.value?.prev) currentPage.value--
+    if (games.value?.prev) {
+        updateUrlQuery(router, {
+            page: page.value - 1
+        })
+    }
 }
 </script>
 
