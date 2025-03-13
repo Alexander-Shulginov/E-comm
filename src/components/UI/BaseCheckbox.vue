@@ -66,7 +66,7 @@ const platformsModel = defineModel()
         height: 9px;
         overflow: hidden;
         opacity: 0;
-        transform: translate(-50%, -50%) rotate(45deg) scale(1);
+        transform: translate(-50%, -60%) rotate(45deg) scale(1);
         border-right: 2px solid rgba(255, 255, 255, 0.85);
         border-bottom: 2px solid rgba(255, 255, 255, 0.85);
         transition:

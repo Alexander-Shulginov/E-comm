@@ -10,7 +10,9 @@
             name="2"
             id="2"
         />
-        <button class="yearFilter__submit" type="button">+</button>
+        <button class="yearFilter__submit" type="button">
+            <span class="yearFilter__icon"></span>
+        </button>
     </div>
 </template>
 
@@ -38,6 +40,7 @@
     }
 
     &__submit {
+        position: relative;
         cursor: pointer;
         border: 1px solid transparent;
         border-radius: 4px;
@@ -46,6 +49,25 @@
         color: var(--color-light);
         background-color: var(--color-accent);
         padding: 8px 0;
+
+        transition: background-color 0.3s ease-in-out;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: var(--color-accent-hover);
+            }
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -70%) rotate(-45deg);
+        width: 13px;
+        height: 6px;
+        border-bottom: 2px solid var(--color-light);
+        border-left: 2px solid var(--color-light);
     }
 }
 
