@@ -4,6 +4,7 @@ import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import TheFiltersByPlatforms from './TheFiltersByPlatforms.vue'
 import TheFiltersByGenres from './TheFiltersByGenres.vue'
+import TheFiltersByYears from './TheFiltersByYears.vue'
 
 const router = useRouter()
 
@@ -23,8 +24,15 @@ watch(
 <template>
     <aside class="filters">
         <div class="filters__block">
+            <p class="filters__name">Years</p>
+            <TheFiltersByYears />
+        </div>
+        <div class="filters__block">
+            <p class="filters__name">Platforms</p>
             <TheFiltersByPlatforms />
-            <br>
+        </div>
+        <div class="filters__block">
+            <p class="filters__name">Genres</p>
             <TheFiltersByGenres />
         </div>
         <!-- <select v-model="selectValue" name="sort" id="22">
@@ -38,6 +46,10 @@ watch(
 
 <style lang="scss" scoped>
 .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
     border-radius: 4px;
     background-color: var(--color-dark-second);
     padding: 16px;
@@ -46,6 +58,11 @@ watch(
         display: flex;
         flex-direction: column;
         gap: 8px;
+    }
+
+    &__name {
+        font-size: 18px;
+        font-weight: 700;
     }
 }
 </style>

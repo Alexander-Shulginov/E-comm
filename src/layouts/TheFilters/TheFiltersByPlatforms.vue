@@ -34,7 +34,6 @@ onMounted(() => {
 </script>
 
 <template v-if="platforms">
-    <p class="filters__name">Platforms</p>
     <BaseCheckbox
         v-for="platform in platforms?.results"
         :id="platform.slug"

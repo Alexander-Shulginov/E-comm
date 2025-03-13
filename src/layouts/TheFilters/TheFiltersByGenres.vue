@@ -34,7 +34,6 @@ onMounted(() => {
 </script>
 
 <template v-if="genres">
-    <p class="filters__name">Genres</p>
     <BaseCheckbox
         v-for="genre in genres"
         :id="genre.slug"
@@ -44,9 +43,3 @@ onMounted(() => {
     />
 </template>
 
-<style lang="scss" scoped>
-.filters__name {
-    font-weight: 700;
-    font-size: 18px;
-}
-</style>
