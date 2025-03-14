@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { removeUrlQuery, updateUrlQuery } from '@/utils/updateUrlQuery'
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
@@ -8,6 +8,8 @@ const router = useRouter()
 
 const currentYear = new Date().getFullYear()
 const minYearToFilter = 1970
+
+let isError = ref(false)
 
 let minYear = ref(minYearToFilter)
 let maxYear = ref(currentYear)
@@ -27,9 +29,52 @@ const resetFiltersByYears = () => {
 const validateMinValue = (e: Event) => {
     const target = e.target as HTMLInputElement
 
-    if (target.value.length !== 4 || Number(target.value) < minYearToFilter) {
-        target.value = target.value.replace(/\D/g, '').slice(0, 4)
-        console.log('er')
+    target.value = target.value.replace(/\D/g, '')
+    if (Number(target.value) < minYearToFilter) {
+        isError.value = true
+    } else if (maxYear.value < minYear.value) {
+        isError.value = true
+    } else if (Number(target.value) > currentYear) {
+        minYear.value = currentYear
+        target.value = String(currentYear)
+        isError.value = false
+    } else {
+        isError.value = false
+    }
+}
+
+const validateMaxValue = (e: Event) => {
+    const target = e.target as HTMLInputElement
+
+    target.value = target.value.replace(/\D/g, '')
+    if (Number(target.value) < minYearToFilter) {
+        isError.value = true
+    } else if (maxYear.value < minYear.value) {
+        isError.value = true
+    } else if (Number(target.value) > currentYear) {
+        maxYear.value = currentYear
+        target.value = String(currentYear)
+        isError.value = false
+    } else {
+        isError.value = false
+    }
+}
+
+const handleBlurMinValue = (e: Event) => {
+    const target = e.target as HTMLInputElement
+    if (Number(target.value.length) < 4) {
+        minYear.value = minYearToFilter
+        target.value = String(minYearToFilter)
+        isError.value = false
+    }
+}
+
+const handleBlurMaxValue = (e: Event) => {
+    const target = e.target as HTMLInputElement
+    if (Number(target.value.length) < 4) {
+        maxYear.value = currentYear
+        target.value = String(currentYear)
+        isError.value = false
     }
 }
 
@@ -49,25 +94,38 @@ onMounted(() => {
         <div class="yearFilter__wrap">
             <input
                 @input="validateMinValue"
+                @blur="handleBlurMinValue"
                 class="yearFilter__num"
                 v-model="minYear"
-                type="number"
-                placeholder="1980"
+                type="text"
+                :min="String(minYearToFilter)"
+                :max="String(currentYear)"
+                :placeholder="String(minYearToFilter)"
+                maxlength="4"
                 name="1"
                 id="1"
             />
-            <span class="yearFilter__tip">Min {{ minYearToFilter }}</span>
+            <span class="yearFilter__tip" :class="{ 'yearFilter__tip--active': isError }"
+                >Min {{ minYearToFilter }}</span
+            >
         </div>
         <div class="yearFilter__wrap">
             <input
+                @input="validateMaxValue"
+                @blur="handleBlurMaxValue"
                 v-model="maxYear"
                 class="yearFilter__num"
+                :min="String(minYearToFilter)"
+                :max="String(currentYear)"
                 :placeholder="String(currentYear)"
+                maxlength="4"
                 type="number"
                 name="2"
                 id="2"
             />
-            <span class="yearFilter__tip">Max {{ currentYear }}</span>
+            <span class="yearFilter__tip" :class="{ 'yearFilter__tip--active': isError }"
+                >Max {{ currentYear }}</span
+            >
         </div>
         <button @click="filterByYearsSubmit" class="yearFilter__submit" type="button">
             <span class="yearFilter__icon"></span>
@@ -84,6 +142,7 @@ onMounted(() => {
     align-items: center;
     gap: 8px;
     width: 100%;
+    margin-bottom: 10px;
 
     &__wrap {
         position: relative;
@@ -98,8 +157,8 @@ onMounted(() => {
 
         width: 100%;
         text-align: center;
-        // opacity: 0;
-        // visibility: hidden;
+        opacity: 0;
+        visibility: hidden;
         transition:
             opacity 0.2s ease-in-out,
             visibility 0.2s ease-in-out;
@@ -119,6 +178,11 @@ onMounted(() => {
             border-color: transparent transparent var(--color-accent) transparent;
             transform: rotate(0deg) translateX(-50%);
         }
+    }
+
+    &__tip--active {
+        visibility: visible;
+        opacity: 1;
     }
 
     &__num {
