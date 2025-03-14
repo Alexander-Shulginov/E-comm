@@ -9,6 +9,7 @@ import { fetchGenres } from '@/services/genresService'
 const route = useRoute()
 const router = useRouter()
 const genresValue = ref([])
+const isExpand = ref(false)
 
 const { data: genres } = useQuery({
     queryKey: ['getGenres'],
@@ -33,13 +34,18 @@ onMounted(() => {
 })
 </script>
 
-<template v-if="genres">
-    <BaseCheckbox
-        v-for="genre in genres"
-        :id="genre.slug"
-        :text="genre.name"
-        :value="genre.id"
-        v-model="genresValue"
-    />
+<template>
+    <ul class="filters__item" :class="{ 'filters__item--expanded': isExpand }">
+        <li v-for="genre in genres" :key="genre.id">
+            <BaseCheckbox
+                :id="genre.slug"
+                :text="genre.name"
+                :value="genre.id"
+                v-model="genresValue"
+            />
+        </li>
+    </ul>
+    <button @click="isExpand = !isExpand" class="filters__toggle" type="button">
+        {{ isExpand ? 'Hide' : 'Show more' }}
+    </button>
 </template>
-

@@ -206,7 +206,7 @@ onMounted(() => {
         cursor: pointer;
         border: 1px solid transparent;
         border-radius: 4px;
-        height: 100%;
+        height: 36px;
         width: 36px;
         color: var(--color-light);
         background-color: var(--color-accent);

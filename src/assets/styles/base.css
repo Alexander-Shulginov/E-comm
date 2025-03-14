@@ -29,6 +29,7 @@ main {
 .filters-wrapper {
     display: grid;
     grid-template-columns: 300px 1fr;
+    align-items: flex-start;
     gap: 36px;
     margin-bottom: 36px;
 }

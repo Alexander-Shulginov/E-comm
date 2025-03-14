@@ -9,6 +9,7 @@ import { fetchPlatforms } from '@/services/platformsService'
 const route = useRoute()
 const router = useRouter()
 const platformValue = ref([])
+const isExpand = ref(false)
 
 const { data: platforms } = useQuery({
     queryKey: ['getPlatforms'],
@@ -34,18 +35,17 @@ onMounted(() => {
 </script>
 
 <template v-if="platforms">
-    <BaseCheckbox
-        v-for="platform in platforms?.results"
-        :id="platform.slug"
-        :text="platform.name"
-        :value="platform.id"
-        v-model="platformValue"
-    />
+    <ul class="filters__item" :class="{ 'filters__item--expanded': isExpand }">
+        <li v-for="platform in platforms?.results" :key="platform.id">
+            <BaseCheckbox
+                :id="platform.slug"
+                :text="platform.name"
+                :value="platform.id"
+                v-model="platformValue"
+            />
+        </li>
+    </ul>
+    <button @click="isExpand = !isExpand" class="filters__toggle" type="button">
+        {{ isExpand ? 'Hide' : 'Show more' }}
+    </button>
 </template>
-
-<style lang="scss" scoped>
-.filters__name {
-    font-weight: 700;
-    font-size: 18px;
-}
-</style>

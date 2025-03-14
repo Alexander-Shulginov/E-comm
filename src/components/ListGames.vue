@@ -138,10 +138,6 @@ const decreasePage = () => {
         grid-template-columns: repeat(4, 1fr);
         gap: 22px;
     }
-
-    &__pagination {
-        margin-bottom: 36px;
-    }
 }
 
 .layout-row.listGames__grid {
