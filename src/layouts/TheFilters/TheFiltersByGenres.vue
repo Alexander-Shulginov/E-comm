@@ -35,6 +35,10 @@ onMounted(() => {
 </script>
 
 <template>
+    <p class="filters__name">
+        Genres
+        <span v-show="genresValue.length > 0">({{ genresValue.length }})</span>
+    </p>
     <ul class="filters__item" :class="{ 'filters__item--expanded': isExpand }">
         <li v-for="genre in genres" :key="genre.id">
             <BaseCheckbox

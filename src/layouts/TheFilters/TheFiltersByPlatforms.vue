@@ -35,6 +35,9 @@ onMounted(() => {
 </script>
 
 <template v-if="platforms">
+    <p class="filters__name">
+        Platforms <span v-show="platformValue.length > 0">({{ platformValue.length }})</span>
+    </p>
     <ul class="filters__item" :class="{ 'filters__item--expanded': isExpand }">
         <li v-for="platform in platforms?.results" :key="platform.id">
             <BaseCheckbox
