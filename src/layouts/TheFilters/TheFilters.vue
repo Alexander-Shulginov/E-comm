@@ -60,7 +60,7 @@ watch(
         gap: 8px;
         height: 190px;
         overflow-y: scroll;
-        padding-top: 4px;
+        padding: 4px;
     }
 
     &__item--expanded {

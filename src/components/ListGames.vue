@@ -10,6 +10,7 @@ import BaseLoader from './base/BaseLoader.vue'
 import { router } from '@/router/router'
 import { updateUrlQuery } from '@/utils/updateUrlQuery'
 import SearchField from './SearchField.vue'
+import ListGamesError from './ListGamesError.vue'
 
 const route = useRoute()
 
@@ -66,6 +67,7 @@ const decreasePage = () => {
         </div>
         <div class="listGames__content">
             <BaseLoader v-if="isFetching" />
+            <ListGamesError v-else-if="games?.count === 0" />
             <div v-else class="listGames__grid" :class="selectedRadio">
                 <CardProduct
                     v-for="game in games?.results"
@@ -76,7 +78,7 @@ const decreasePage = () => {
             </div>
         </div>
 
-        <div class="listGames__pagination">
+        <div v-if="games?.count" class="listGames__pagination">
             <!-- <BasePagination /> -->
             <div class="gamesNav">
                 <button
@@ -137,7 +139,7 @@ const decreasePage = () => {
     &__content {
         margin-bottom: 48px;
         position: relative;
-        min-height: 100vh;
+        // min-height: 100vh;
     }
 
     &__grid {

@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-    <BaseTitle v-if="results" :tag="'h4'">Results: {{ results }}</BaseTitle>
+    <BaseTitle :tag="'h4'">Results: {{ results ? results : 0 }}</BaseTitle>
     <ListGamesTopCardsLayout v-model="radioValue" />
 </template>
 
