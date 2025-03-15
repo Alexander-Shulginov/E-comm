@@ -5,11 +5,11 @@ import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
 import ListGamesTop from '@/components/ListGamesTop.vue'
 import CardProduct from '@/components/cards/CardProduct.vue'
-import BasePagination from './UI/BasePagination.vue'
 import { useRoute } from 'vue-router'
 import BaseLoader from './base/BaseLoader.vue'
 import { router } from '@/router/router'
 import { updateUrlQuery } from '@/utils/updateUrlQuery'
+import SearchField from './SearchField.vue'
 
 const route = useRoute()
 
@@ -58,6 +58,9 @@ const decreasePage = () => {
 
 <template>
     <div class="listGames">
+        <div class="listGames__search">
+            <SearchField />
+        </div>
         <div class="listGames__top">
             <ListGamesTop :results="games?.count" v-model="selectedRadio" />
         </div>
@@ -120,6 +123,10 @@ const decreasePage = () => {
     }
 }
 .listGames {
+    &__search {
+        margin-bottom: 28px;
+    }
+
     &__top {
         display: flex;
         align-items: center;
