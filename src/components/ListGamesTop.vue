@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import BaseTitle from '@/components/base/BaseTitle.vue'
 import ListGamesTopCardsLayout from '@/components/ListGamesTopCardsLayout.vue'
+import ListGamesResults from './ListGamesResults.vue'
+
+defineProps<{
+    results: number | undefined
+}>()
 
 const radioValue = defineModel()
 </script>
 
 <template>
-    <BaseTitle :tag="'h3'">Games</BaseTitle>
+    <ListGamesResults :results="results" />
     <ListGamesTopCardsLayout v-model="radioValue" />
 </template>
 

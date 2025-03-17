@@ -21,7 +21,6 @@ watch(
     (n) => {
         updateUrlQuery(router, {
             parent_platforms: n.join(','),
-            page: 1
         })
     }
 )

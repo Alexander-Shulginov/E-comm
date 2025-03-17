@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
     data: {
+        id: number
         name: string
         img: string
         slug: string
@@ -10,7 +11,7 @@ defineProps<{
 
 <template>
     <div class="cardGenres">
-        <router-link :to="{ name: 'Games', query: { genres: data.slug } }">
+        <router-link :to="{ name: 'Games', query: { genres: data.id } }">
             <img
                 class="cardGenres__img"
                 :src="data.img"

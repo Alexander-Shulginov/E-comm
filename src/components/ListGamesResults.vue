@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TheFiltersReset from '@/layouts/TheFilters/TheFiltersReset.vue'
 
 defineProps<{
     results: number | undefined
@@ -10,6 +11,7 @@ defineProps<{
         <span>Results:</span>
         {{ results ? results : 0 }}
     </div>
+    <TheFiltersReset />
 </template>
 
 <style lang="scss" scoped>

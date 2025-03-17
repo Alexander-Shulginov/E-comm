@@ -8,7 +8,7 @@ import CardProduct from '@/components/cards/CardProduct.vue'
 import { useRoute } from 'vue-router'
 import BaseLoader from './base/BaseLoader.vue'
 import { router } from '@/router/router'
-import { updateUrlQuery } from '@/utils/updateUrlQuery'
+import { removeUrlQuery, updateUrlQuery } from '@/utils/updateUrlQuery'
 import SearchField from './SearchField.vue'
 import ListGamesError from './ListGamesError.vue'
 import ListGamesResults from './ListGamesResults.vue'
@@ -56,6 +56,9 @@ const decreasePage = () => {
             page: page.value - 1
         })
     }
+    if (currentPage.value === 1) {
+        removeUrlQuery(router, 'page')
+    }
 }
 </script>
 
@@ -65,11 +68,11 @@ const decreasePage = () => {
             <SearchField />
         </div>
         <div class="listGames__top">
-            <ListGamesTop v-model="selectedRadio" />
+            <ListGamesTop v-model="selectedRadio" :results="games?.count" />
         </div>
         <div v-if="games?.count" class="listGames__results">
-            <ListGamesResults :results="games?.count" />
-            <TheFiltersReset />
+            <!-- <ListGamesResults :results="games?.count" /> -->
+            <!-- <TheFiltersReset /> -->
         </div>
         <div class="listGames__content">
             <BaseLoader v-if="isFetching" />
@@ -84,7 +87,7 @@ const decreasePage = () => {
             </div>
         </div>
 
-        <div v-if="games?.count" class="listGames__pagination">
+        <div v-if="games?.next && !isFetching" class="listGames__pagination">
             <div class="gamesNav">
                 <button
                     :disabled="games?.prev === null"
@@ -139,6 +142,7 @@ const decreasePage = () => {
         align-items: center;
         justify-content: space-between;
         margin-bottom: 14px;
+        gap: 12px;
     }
 
     &__results {
@@ -151,7 +155,7 @@ const decreasePage = () => {
     &__content {
         margin-bottom: 48px;
         position: relative;
-        // min-height: 100vh;
+        // max-height: min(500px, 100vh);
     }
 
     &__grid {

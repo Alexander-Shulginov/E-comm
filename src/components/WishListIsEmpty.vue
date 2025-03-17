@@ -29,7 +29,7 @@ import BaseLink from '@/components/UI/BaseLink.vue'
             So far, your wishlist is empty.<br />
             On the "Games" page, you can find plenty of interesting games.
         </p>
-        <BaseLink :to="{ name: 'Home' }" :size="'large'" :text="'Home'" />
+        <BaseLink :to="{ name: 'Games' }" :size="'large'" :text="'Games'" />
     </div>
 </template>
 

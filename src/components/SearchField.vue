@@ -31,6 +31,15 @@ watch(
         }, 500)
     }
 )
+
+watch(
+    () => route.query.search,
+    () => {
+        if (!route.query.search) {
+            searchQuery.value = ''
+        }
+    }
+)
 </script>
 
 <template>

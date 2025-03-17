@@ -40,6 +40,7 @@ useSwiper(swiperGenre, {
                 <GenreListCard
                     v-for="genre in genreList"
                     :key="genre.genreName"
+                    :genre-id="genre.genreId"
                     :genre-name="genre.genreName"
                     :genre-img="genre.genreImg"
                     :genre-slug="genre.genreSlug"

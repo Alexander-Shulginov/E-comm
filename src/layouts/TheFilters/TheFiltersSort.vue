@@ -13,7 +13,7 @@ watch(
     (n) => {
         updateUrlQuery(router, {
             ordering: n,
-            page: 1
+            // page: 1
         })
     }
 )
@@ -33,10 +33,10 @@ watch(
     <div class="custom-select">
         <select v-model="selectValue" id="sortSelect" name="sort">
             <option value="" disabled>Choice value</option>
-            <option value="-rating">Rating</option>
-            <option value="-name">Name</option>
-            <option value="released">Rel</option>
             <option value="-metacritic">Metacritic</option>
+            <option value="-rating">Rating</option>
+            <option value="name">Name A-Z</option>
+            <option value="-name">Name Z-A</option>
         </select>
         <div class="select-arrow"></div>
     </div>

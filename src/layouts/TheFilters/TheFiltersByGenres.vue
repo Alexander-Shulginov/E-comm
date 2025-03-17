@@ -21,7 +21,7 @@ watch(
     (n) => {
         updateUrlQuery(router, {
             genres: n.join(','),
-            page: 1
+            // page: 1
         })
     }
 )
