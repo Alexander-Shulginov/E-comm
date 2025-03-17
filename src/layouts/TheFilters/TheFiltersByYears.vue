@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { removeUrlQuery, updateUrlQuery } from '@/utils/updateUrlQuery'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
@@ -13,18 +13,6 @@ let isError = ref(false)
 
 let minYear = ref(minYearToFilter)
 let maxYear = ref(currentYear)
-
-const filterByYearsSubmit = () => {
-    updateUrlQuery(router, {
-        dates: `${minYear.value}-01-01,${maxYear.value}-12-31`
-    })
-}
-
-const resetFiltersByYears = () => {
-    minYear.value = minYearToFilter
-    maxYear.value = currentYear
-    removeUrlQuery(router, 'dates')
-}
 
 const validateMinValue = (e: Event) => {
     const target = e.target as HTMLInputElement
@@ -78,6 +66,27 @@ const handleBlurMaxValue = (e: Event) => {
     }
 }
 
+watch(
+    () => route.query.dates,
+    () => {
+        if (route.query.dates === undefined) {
+            minYear.value = minYearToFilter
+            maxYear.value = currentYear
+        }
+    }
+)
+
+watch(
+    () => isError.value,
+    (newValue) => {
+        if (!newValue) {
+            updateUrlQuery(router, {
+                dates: `${minYear.value}-01-01,${maxYear.value}-12-31`
+            })
+        }
+    }
+)
+
 onMounted(() => {
     if (route.query.dates) {
         const years = (route.query.dates as string)
@@ -127,12 +136,6 @@ onMounted(() => {
                 >Max {{ currentYear }}</span
             >
         </div>
-        <button @click="filterByYearsSubmit" class="yearFilter__submit" type="button">
-            <span class="yearFilter__icon"></span>
-        </button>
-        <button @click="resetFiltersByYears" class="yearFilter__submit" type="button">
-            <span class="yearFilter__reset">X</span>
-        </button>
     </div>
 </template>
 
@@ -146,6 +149,7 @@ onMounted(() => {
 
     &__wrap {
         position: relative;
+        width: 100%;
     }
 
     &__tip {
@@ -187,11 +191,10 @@ onMounted(() => {
 
     &__num {
         appearance: none;
-        width: 85px;
+        width: 100%;
 
         color: var(--color-light);
         background-color: transparent;
-        flex-grow: 2;
 
         border: 1px solid var(--color-light);
         border-radius: 4px;
@@ -204,6 +207,7 @@ onMounted(() => {
     &__submit {
         position: relative;
         cursor: pointer;
+        flex-shrink: 0;
         border: 1px solid transparent;
         border-radius: 4px;
         height: 36px;

@@ -11,7 +11,8 @@ import { router } from '@/router/router'
 import { updateUrlQuery } from '@/utils/updateUrlQuery'
 import SearchField from './SearchField.vue'
 import ListGamesError from './ListGamesError.vue'
-import ListGamesFilters from './ListGamesFilters.vue'
+import ListGamesResults from './ListGamesResults.vue'
+import TheFiltersReset from '@/layouts/TheFilters/TheFiltersReset.vue'
 
 const route = useRoute()
 
@@ -66,8 +67,9 @@ const decreasePage = () => {
         <div class="listGames__top">
             <ListGamesTop v-model="selectedRadio" />
         </div>
-        <div class="listGames__results">
-            <ListGamesFilters :results="games?.count" />
+        <div v-if="games?.count" class="listGames__results">
+            <ListGamesResults :results="games?.count" />
+            <TheFiltersReset />
         </div>
         <div class="listGames__content">
             <BaseLoader v-if="isFetching" />
@@ -141,6 +143,9 @@ const decreasePage = () => {
 
     &__results {
         margin-bottom: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     &__content {

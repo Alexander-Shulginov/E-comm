@@ -26,6 +26,15 @@ watch(
     }
 )
 
+watch(
+    () => route.query.parent_platforms,
+    () => {
+        if (!route.query.parent_platforms) {
+            platformValue.value = []
+        }
+    }
+)
+
 onMounted(() => {
     if (route.query.parent_platforms) {
         // @ts-ignore

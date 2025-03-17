@@ -26,6 +26,14 @@ watch(
     }
 )
 
+watch(
+    () => route.query.genres,
+    () => {
+        if (!route.query.genres) {
+            genresValue.value = []
+        }
+    }
+)
 onMounted(() => {
     if (route.query.genres) {
         // @ts-ignore

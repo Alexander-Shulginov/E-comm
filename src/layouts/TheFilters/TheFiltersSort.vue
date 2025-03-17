@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { updateUrlQuery } from '@/utils/updateUrlQuery'
 import { ref, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 
 const selectValue = ref('')
+
+const route = useRoute()
 
 watch(
     () => selectValue.value,
@@ -13,6 +15,15 @@ watch(
             ordering: n,
             page: 1
         })
+    }
+)
+
+watch(
+    () => route.query.ordering,
+    () => {
+        if (!route.query.ordering) {
+            selectValue.value = ''
+        }
     }
 )
 </script>
@@ -40,8 +51,8 @@ watch(
     appearance: none;
     -webkit-appearance: none;
     width: 100%;
-    font-size: 18px;
-    padding: 12px;
+    font-size: 16px;
+    padding: 10px;
     background-color: var(--color-dark-second);
     border: 1px solid var(--color-light);
     border-radius: 5px;
