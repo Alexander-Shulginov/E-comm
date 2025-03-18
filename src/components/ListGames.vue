@@ -13,6 +13,7 @@ import SearchField from './SearchField.vue'
 import ListGamesError from './ListGamesError.vue'
 import ListGamesResults from './ListGamesResults.vue'
 import TheFiltersReset from '@/layouts/TheFilters/TheFiltersReset.vue'
+import ListGamesShowFilters from './ListGamesShowFilters.vue'
 
 const route = useRoute()
 
@@ -64,6 +65,9 @@ const decreasePage = () => {
 
 <template>
     <div class="listGames">
+        <div class="listGames__toggler">
+            <ListGamesShowFilters />
+        </div>
         <div class="listGames__search">
             <SearchField />
         </div>
@@ -133,6 +137,10 @@ const decreasePage = () => {
     }
 }
 .listGames {
+    &__toggler {
+        margin-bottom: 18px;
+    }
+
     &__search {
         margin-bottom: 28px;
     }

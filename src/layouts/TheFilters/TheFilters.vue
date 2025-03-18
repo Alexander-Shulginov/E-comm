@@ -3,35 +3,56 @@ import TheFiltersSort from '@/layouts/TheFilters/TheFiltersSort.vue'
 import TheFiltersByYears from '@/layouts/TheFilters/TheFiltersByYears.vue'
 import TheFiltersByGenres from '@/layouts/TheFilters/TheFiltersByGenres.vue'
 import TheFiltersByPlatforms from '@/layouts/TheFilters/TheFiltersByPlatforms.vue'
+import TheFiltersClose from '@/layouts/TheFilters//TheFiltersClose.vue'
+import { filtersState } from '@/store/filtersState'
+
+const closeFilters = () => {
+    filtersState.isOpen = false
+}
 </script>
 
 <template>
-    <aside class="filters">
-        <div class="filters__block">
-            <TheFiltersSort />
-        </div>
-        <div class="filters__block">
-            <p class="filters__name">Years</p>
-            <TheFiltersByYears />
-        </div>
-        <div class="filters__block">
-            <TheFiltersByPlatforms />
-        </div>
-        <div class="filters__block">
-            <TheFiltersByGenres />
+    <aside class="filters" :class="{ 'filters--hidden': filtersState.isOpen === false }">
+        <TheFiltersClose @click="closeFilters" />
+        <div class="filters__content">
+            <div class="filters__block">
+                <TheFiltersSort />
+            </div>
+            <div class="filters__block">
+                <p class="filters__name">Years</p>
+                <TheFiltersByYears />
+            </div>
+            <div class="filters__block">
+                <TheFiltersByPlatforms />
+            </div>
+            <div class="filters__block">
+                <TheFiltersByGenres />
+            </div>
         </div>
     </aside>
 </template>
 
 <style lang="scss">
 .filters {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-
     border-radius: 4px;
     background-color: var(--color-dark-second);
     padding: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    width: 300px;
+
+    &--hidden {
+        width: 0;
+        padding: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
 
     &__item {
         display: flex;
