@@ -4,16 +4,12 @@ import TheFiltersByYears from '@/layouts/TheFilters/TheFiltersByYears.vue'
 import TheFiltersByGenres from '@/layouts/TheFilters/TheFiltersByGenres.vue'
 import TheFiltersByPlatforms from '@/layouts/TheFilters/TheFiltersByPlatforms.vue'
 import TheFiltersClose from '@/layouts/TheFilters//TheFiltersClose.vue'
-import { filtersState } from '@/store/filtersState'
-
-const closeFilters = () => {
-    filtersState.isOpen = false
-}
+import { filtersState, hideFilters } from '@/store/filtersStore'
 </script>
 
 <template>
     <aside class="filters" :class="{ 'filters--hidden': filtersState.isOpen === false }">
-        <TheFiltersClose @click="closeFilters" />
+        <TheFiltersClose @click="hideFilters" />
         <div class="filters__content">
             <div class="filters__block">
                 <TheFiltersSort />

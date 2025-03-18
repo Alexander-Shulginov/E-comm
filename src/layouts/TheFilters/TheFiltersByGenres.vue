@@ -21,15 +21,15 @@ watch(
     (n) => {
         updateUrlQuery(router, {
             genres: n.join(','),
-            // page: 1
+            page: 1
         })
     }
 )
 
 watch(
     () => route.query.genres,
-    () => {
-        if (!route.query.genres) {
+    (newValue) => {
+        if (!newValue) {
             genresValue.value = []
         }
     }

@@ -21,14 +21,15 @@ watch(
     (n) => {
         updateUrlQuery(router, {
             parent_platforms: n.join(','),
+            page: 1
         })
     }
 )
 
 watch(
     () => route.query.parent_platforms,
-    () => {
-        if (!route.query.parent_platforms) {
+    (newValue) => {
+        if (!newValue) {
             platformValue.value = []
         }
     }

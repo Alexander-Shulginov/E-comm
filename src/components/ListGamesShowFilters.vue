@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { filtersState } from '@/store/filtersState'
+import { filtersState, showFilters } from '@/store/filtersStore'
 import IconCardLayoutLines from './icons/cards-layouts/IconCardLayoutLines.vue'
-
-const showFilters = () => {
-    filtersState.isOpen = true
-}
 </script>
 
 <template>
-    <button @click="showFilters" class="showFilters" type="button">
+    <button
+        v-show="filtersState.isOpen === false"
+        @click="showFilters"
+        class="showFilters"
+        type="button"
+    >
         <IconCardLayoutLines />
         Show filters
     </button>

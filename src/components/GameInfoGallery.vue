@@ -39,6 +39,7 @@ const { initSwiper, destroySwiper } = useSwiper(swiperSimilar, {
 
 Fancybox.bind('[data-fancybox]', {
     contentClick: false,
+    Hash: false,
     Toolbar: {
         display: {
             left: [],

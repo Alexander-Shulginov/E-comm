@@ -6,7 +6,7 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
-let hasQueryParams = computed(() => Object.keys(route.query).length > 0)
+let hasQueryParams = computed(() => Object.keys(route.query).length > 1)
 
 const resetQuery = () => {
     router.replace({ path: route.path })

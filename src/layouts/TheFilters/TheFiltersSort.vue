@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { updateUrlQuery } from '@/utils/updateUrlQuery'
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 
@@ -13,19 +13,25 @@ watch(
     (n) => {
         updateUrlQuery(router, {
             ordering: n,
-            // page: 1
+            page: 1
         })
     }
 )
 
 watch(
     () => route.query.ordering,
-    () => {
-        if (!route.query.ordering) {
+    (newValue) => {
+        if (!newValue) {
             selectValue.value = ''
         }
     }
 )
+
+onMounted(() => {
+    if (route.query.ordering) {
+        selectValue.value = route.query.ordering as string
+    }
+})
 </script>
 
 <template>

@@ -81,7 +81,8 @@ watch(
     (newValue) => {
         if (!newValue) {
             updateUrlQuery(router, {
-                dates: `${minYear.value}-01-01,${maxYear.value}-12-31`
+                dates: `${minYear.value}-01-01,${maxYear.value}-12-31`,
+                page: 1
             })
         }
     }
