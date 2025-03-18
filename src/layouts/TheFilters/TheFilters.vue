@@ -3,13 +3,13 @@ import TheFiltersSort from '@/layouts/TheFilters/TheFiltersSort.vue'
 import TheFiltersByYears from '@/layouts/TheFilters/TheFiltersByYears.vue'
 import TheFiltersByGenres from '@/layouts/TheFilters/TheFiltersByGenres.vue'
 import TheFiltersByPlatforms from '@/layouts/TheFilters/TheFiltersByPlatforms.vue'
-import TheFiltersClose from '@/layouts/TheFilters//TheFiltersClose.vue'
-import { filtersState, hideFilters } from '@/store/filtersStore'
+import { filtersState, toggleFilters } from '@/store/filtersStore'
+import TheFiltersToggler from '@/layouts/TheFilters/TheFiltersToggler.vue'
 </script>
 
 <template>
-    <aside class="filters" :class="{ 'filters--hidden': filtersState.isOpen === false }">
-        <TheFiltersClose @click="hideFilters" />
+    <aside class="filters" :class="{ 'filters--active': filtersState.isOpen === false }">
+        <TheFiltersToggler @click="toggleFilters" class="filters__close-btn" />
         <div class="filters__content">
             <div class="filters__block">
                 <TheFiltersSort />
@@ -31,17 +31,34 @@ import { filtersState, hideFilters } from '@/store/filtersStore'
 <style lang="scss">
 .filters {
     border-radius: 4px;
+    border-top-right-radius: 0;
     background-color: var(--color-dark-second);
     padding: 16px;
-    overflow: hidden;
     transition: all 0.3s ease-in-out;
     width: 300px;
+    position: relative;
+    z-index: 3;
 
-    &--hidden {
-        width: 0;
-        padding: 0;
-        opacity: 0;
-        visibility: hidden;
+    @media (max-width: 1024px) {
+        position: absolute;
+        top: 0;
+        // bottom: 0;
+        left: -300px;
+    }
+
+    &--active {
+        left: 0px;
+    }
+
+    &__close-btn {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        display: none;
+
+        @media (max-width: 1024px) {
+            display: block;
+        }
     }
 
     &__content {

@@ -65,9 +65,9 @@ const decreasePage = () => {
 
 <template>
     <div class="listGames">
-        <div class="listGames__toggler">
+        <!-- <div class="listGames__toggler">
             <ListGamesShowFilters />
-        </div>
+        </div> -->
         <div class="listGames__search">
             <SearchField />
         </div>
@@ -137,8 +137,12 @@ const decreasePage = () => {
     }
 }
 .listGames {
-    &__toggler {
-        margin-bottom: 18px;
+    // &__toggler {
+    //     margin-bottom: 18px;
+    // }
+
+    @media (max-width: 1024px){
+        padding-top: 50px;
     }
 
     &__search {
@@ -170,6 +174,14 @@ const decreasePage = () => {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 22px;
+
+        @media (max-width: 768px){
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 550px){
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 }
 

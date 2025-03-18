@@ -14,7 +14,6 @@
     "@fancyapps/ui": "^5.0.36",
     "@tanstack/vue-query": "^5.66.0",
     "axios": "^1.7.7",
-    "pinia": "^2.2.4",
     "swiper": "^11.2.1",
     "vue": "^3.5.10",
     "vue-router": "^4.4.5"

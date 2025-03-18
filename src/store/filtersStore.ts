@@ -1,13 +1,22 @@
 import { reactive } from 'vue'
 
+const isDesktop = () => {
+    return window.innerWidth >= 1024
+}
+
 export const filtersState = reactive({
-    isOpen: true
+    isOpen: isDesktop() ? false : true
 })
 
-export const showFilters = () => {
-    filtersState.isOpen = true
+export const toggleFilters = () => {
+    filtersState.isOpen = !filtersState.isOpen
 }
 
-export const hideFilters = () => {
-    filtersState.isOpen = false
+const mediaQuery = window.matchMedia('(max-width: 1024px)')
+
+const handleMediaChange = (e: any) => {
+    filtersState.isOpen = e.matches
 }
+
+mediaQuery.addEventListener('change', handleMediaChange)
+handleMediaChange(mediaQuery)

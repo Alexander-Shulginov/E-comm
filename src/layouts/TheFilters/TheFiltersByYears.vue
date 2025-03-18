@@ -16,8 +16,8 @@ let maxYear = ref(currentYear)
 
 const validateMinValue = (e: Event) => {
     const target = e.target as HTMLInputElement
-
     target.value = target.value.replace(/\D/g, '')
+
     if (Number(target.value) < minYearToFilter) {
         isError.value = true
     } else if (maxYear.value < minYear.value) {
@@ -33,8 +33,8 @@ const validateMinValue = (e: Event) => {
 
 const validateMaxValue = (e: Event) => {
     const target = e.target as HTMLInputElement
-
     target.value = target.value.replace(/\D/g, '')
+
     if (Number(target.value) < minYearToFilter) {
         isError.value = true
     } else if (maxYear.value < minYear.value) {
@@ -129,7 +129,7 @@ onMounted(() => {
                 :max="String(currentYear)"
                 :placeholder="String(currentYear)"
                 maxlength="4"
-                type="number"
+                type="text"
                 name="2"
                 id="2"
             />
