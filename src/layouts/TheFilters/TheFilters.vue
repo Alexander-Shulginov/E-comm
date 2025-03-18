@@ -90,13 +90,6 @@ import { filtersState, hideFilters } from '@/store/filtersStore'
         border-radius: 4px;
     }
 
-    // @supports (scrollbar-width: auto) {
-    //     &__item {
-    //         scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
-    //         scrollbar-width: var(--scrollbar-width);
-    //     }
-    // }
-
     @supports selector(::-webkit-scrollbar) {
         &__item::-webkit-scrollbar-thumb {
             background: var(--scrollbar-color-thumb);

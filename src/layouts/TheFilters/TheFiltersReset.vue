@@ -26,7 +26,6 @@ const resetQuery = () => {
     height: 22px;
     cursor: pointer;
     background-color: var(--color-dark-second);
-    // padding: 8px 12px;
     border-radius: 50%;
     border: 2px solid var(--color-accent);
     color: var(--color-light);

@@ -36,7 +36,7 @@ onMounted(() => {
 
 <template>
     <label class="filters__name" for="sortSelect">Sort by</label>
-    <div class="custom-select">
+    <div class="select-base">
         <select v-model="selectValue" id="sortSelect" name="sort">
             <option value="" disabled>Choice value</option>
             <option value="-metacritic">Metacritic</option>
@@ -49,11 +49,11 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.custom-select {
+.select-base {
     position: relative;
 }
 
-.custom-select select {
+.select-base select {
     appearance: none;
     -webkit-appearance: none;
     width: 100%;
@@ -67,7 +67,7 @@ onMounted(() => {
     outline: none;
 }
 
-.custom-select::after {
+.select-base::after {
     content: '';
     position: absolute;
     pointer-events: none;
