@@ -1,39 +1,59 @@
 <script setup lang="ts">
 import IconCardLayoutLines from '@/components/icons/cards-layouts/IconCardLayoutLines.vue'
 import IconCardLayoutDots3x3 from '@/components/icons/cards-layouts/IconCardLayoutDots3x3.vue'
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
-// import IconCardLayoutDots4x4 from '@/components/icons/cards-layouts/IconCardLayoutDots4x4.vue'
 
 const radioValue = defineModel()
 
-let initLayoutValue
+const { setToLocalStorage, getLocalStorageItem } = useLocalStorage()
 
-const {setToLocalStorage, getLocalStorageItem} = useLocalStorage()
 onMounted(() => {
-    // setToLocalStorage('layout', 'columns')
-    initLayoutValue = getLocalStorageItem('layout')
+    const savedLayout = getLocalStorageItem('layout')
+    if (savedLayout) {
+        radioValue.value = savedLayout
+    } else {
+        radioValue.value = 'layout-column'
+        setToLocalStorage('layout', radioValue.value)
+    }
 })
 
+watch(
+    () => radioValue.value,
+    (newValue) => {
+        setToLocalStorage('layout', newValue)
+    }
+)
 </script>
 
 <template>
     <div class="cardsLayouts">
         <div class="cardsLayouts__wrap">
-            <input type="radio" name="cards-layout" :value="'layout-row'" v-model="radioValue" class="cardsLayouts__radio" >
+            <label class="cardsLayouts__label" for="layout-row">
+                <input
+                    type="radio"
+                    name="cards-layout"
+                    id="layout-row"
+                    value="layout-row"
+                    v-model="radioValue"
+                    class="cardsLayouts__radio"
+                />
                 <IconCardLayoutLines class="cardsLayouts__icon" />
-            </input>
+            </label>
         </div>
         <div class="cardsLayouts__wrap">
-            <input class="cardsLayouts__radio" type="radio" name="cards-layout" checked  v-model="radioValue" :value="null">
+            <label class="cardsLayouts__label" for="layout-column">
+                <input
+                    type="radio"
+                    name="cards-layout"
+                    id="layout-column"
+                    value="layout-column"
+                    v-model="radioValue"
+                    class="cardsLayouts__radio"
+                />
                 <IconCardLayoutDots3x3 class="cardsLayouts__icon" />
-            </input>
+            </label>
         </div>
-        <!-- <div class="cardsLayouts__wrap">
-            <input class="cardsLayouts__radio" type="radio" name="cards-layout">
-                <IconCardLayoutDots4x4 class="cardsLayouts__icon" />
-            </input>
-        </div> -->
     </div>
 </template>
 
@@ -57,13 +77,18 @@ onMounted(() => {
         }
     }
 
+    &__label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     &__radio {
         appearance: none;
         width: 30px;
         height: 30px;
         cursor: pointer;
         background-color: transparent;
-
     }
 
     &__radio:checked ~ .cardsLayouts__icon {
@@ -75,7 +100,7 @@ onMounted(() => {
         pointer-events: none;
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         fill: var(--color-light-second);
     }
 }
