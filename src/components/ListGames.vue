@@ -11,9 +11,9 @@ import { router } from '@/router/router'
 import { removeUrlQuery, updateUrlQuery } from '@/utils/updateUrlQuery'
 import SearchField from './SearchField.vue'
 import ListGamesError from './ListGamesError.vue'
-import ListGamesResults from './ListGamesResults.vue'
-import TheFiltersReset from '@/layouts/TheFilters/TheFiltersReset.vue'
-import ListGamesShowFilters from './ListGamesShowFilters.vue'
+// import ListGamesResults from './ListGamesResults.vue'
+// import TheFiltersReset from '@/layouts/TheFilters/TheFiltersReset.vue'
+// import ListGamesShowFilters from './ListGamesShowFilters.vue'
 
 const route = useRoute()
 
@@ -141,7 +141,7 @@ const decreasePage = () => {
     //     margin-bottom: 18px;
     // }
 
-    @media (max-width: 1024px){
+    @media (max-width: 1024px) {
         padding-top: 50px;
     }
 
@@ -175,11 +175,11 @@ const decreasePage = () => {
         grid-template-columns: repeat(4, 1fr);
         gap: 22px;
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             grid-template-columns: repeat(3, 1fr);
         }
 
-        @media (max-width: 550px){
+        @media (max-width: 550px) {
             grid-template-columns: repeat(2, 1fr);
         }
     }
@@ -199,6 +199,10 @@ const decreasePage = () => {
         border-radius: 4px;
         padding-right: 16px;
 
+        @media (max-width: 768px) {
+            gap: 12px;
+        }
+
         @media (any-hover: hover) {
             &:hover {
                 background-color: var(--color-dark-second);
@@ -211,9 +215,13 @@ const decreasePage = () => {
         }
 
         &__img {
-            max-width: 180px;
+            width: 180px;
             aspect-ratio: 16 / 9;
             border-radius: 4px;
+
+            @media (max-width: 768px) {
+                width: 80px;
+            }
         }
 
         &__rating--row {
@@ -226,6 +234,10 @@ const decreasePage = () => {
 
         &__name {
             font-size: 20px;
+
+            @media (max-width: 768px) {
+                font-size: 14px;
+            }
         }
     }
 }
