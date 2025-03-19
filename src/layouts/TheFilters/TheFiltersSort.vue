@@ -64,7 +64,6 @@ onMounted(() => {
     border-radius: 5px;
     color: #ffffff;
     cursor: pointer;
-    outline: none;
 }
 
 .select-base::after {

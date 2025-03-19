@@ -5,12 +5,15 @@ import TheFiltersByGenres from '@/layouts/TheFilters/TheFiltersByGenres.vue'
 import TheFiltersByPlatforms from '@/layouts/TheFilters/TheFiltersByPlatforms.vue'
 import { filtersState, toggleFilters } from '@/store/filtersStore'
 import TheFiltersToggler from '@/layouts/TheFilters/TheFiltersToggler.vue'
+import { overlayState, useOverlay } from '@/store/overlayStore'
+
+const { toggleOverlay } = useOverlay()
 </script>
 
 <template>
     <aside class="filters" :class="{ 'filters--active': filtersState.isOpen === false }">
-        <TheFiltersToggler @click="toggleFilters" class="filters__close-btn" />
-        <div class="filters__content">
+        <TheFiltersToggler @click="toggleFilters(), toggleOverlay()" class="filters__close-btn" />
+        <div :inert="overlayState.overlayIsOpen === false" class="filters__content">
             <div class="filters__block">
                 <TheFiltersSort />
             </div>
@@ -37,23 +40,23 @@ import TheFiltersToggler from '@/layouts/TheFilters/TheFiltersToggler.vue'
     transition: all 0.3s ease-in-out;
     width: 300px;
     position: relative;
-    z-index: 3;
+    z-index: 5;
 
     @media (max-width: 1024px) {
         position: absolute;
         top: 0;
-        // bottom: 0;
         left: -300px;
     }
 
     &--active {
         left: 0px;
+        visibility: visible;
     }
 
     &__close-btn {
         position: absolute;
         top: 0;
-        left: 100%;
+        left: calc(100% + 10px);
         display: none;
 
         @media (max-width: 1024px) {
