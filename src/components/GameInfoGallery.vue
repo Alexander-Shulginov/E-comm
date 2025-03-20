@@ -69,6 +69,7 @@ onUnmounted(() => {
                     data-fancybox="gallery"
                     :href="screen.img"
                     class="swiper-slide"
+                    tabindex="-1"
                 >
                     <img
                         class="gameInfo__gallery-img"

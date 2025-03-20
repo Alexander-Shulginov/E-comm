@@ -32,7 +32,7 @@ watch(
             <label class="cardsLayouts__label" for="layout-row">
                 <input
                     type="radio"
-                    name="cards-layout"
+                    name="cards-layout-row"
                     id="layout-row"
                     value="layout-row"
                     v-model="radioValue"
@@ -45,7 +45,7 @@ watch(
             <label class="cardsLayouts__label" for="layout-column">
                 <input
                     type="radio"
-                    name="cards-layout"
+                    name="cards-layout-column"
                     id="layout-column"
                     value="layout-column"
                     v-model="radioValue"
