@@ -5,13 +5,14 @@ import { updateUrlQuery } from '@/utils/updateUrlQuery'
 import BaseCheckbox from '@/components/UI/BaseCheckbox.vue'
 import { useQuery } from '@tanstack/vue-query'
 import { fetchGenres } from '@/services/genresService'
+import BaseLoader from '@/components/base/BaseLoader.vue'
 
 const route = useRoute()
 const router = useRouter()
 const genresValue = ref([])
 const isExpand = ref(false)
 
-const { data: genres } = useQuery({
+const { data: genres, isLoading } = useQuery({
     queryKey: ['getGenres'],
     queryFn: () => fetchGenres()
 })
@@ -55,6 +56,9 @@ onMounted(() => {
                 :value="genre.id"
                 v-model="genresValue"
             />
+        </li>
+        <li v-if="isLoading" class="filters__loader">
+            <BaseLoader />
         </li>
     </ul>
     <button @click="isExpand = !isExpand" class="filters__toggle" type="button">

@@ -5,7 +5,7 @@ import TheFiltersByGenres from '@/layouts/TheFilters/TheFiltersByGenres.vue'
 import TheFiltersByPlatforms from '@/layouts/TheFilters/TheFiltersByPlatforms.vue'
 import { filtersState, toggleFilters } from '@/store/filtersStore'
 import TheFiltersToggler from '@/layouts/TheFilters/TheFiltersToggler.vue'
-import { overlayState, useOverlay } from '@/store/overlayStore'
+import { useOverlay } from '@/store/overlayStore'
 
 const { toggleOverlay } = useOverlay()
 </script>
@@ -13,7 +13,7 @@ const { toggleOverlay } = useOverlay()
 <template>
     <aside class="filters" :class="{ 'filters--active': filtersState.isOpen === false }">
         <TheFiltersToggler @click="toggleFilters(), toggleOverlay()" class="filters__close-btn" />
-        <div :inert="overlayState.overlayIsOpen === false" class="filters__content">
+        <div class="filters__content">
             <div class="filters__block">
                 <TheFiltersSort />
             </div>
@@ -51,6 +51,10 @@ const { toggleOverlay } = useOverlay()
     &--active {
         left: 0px;
         visibility: visible;
+
+        .filters__content {
+            visibility: visible;
+        }
     }
 
     &__close-btn {
@@ -68,6 +72,10 @@ const { toggleOverlay } = useOverlay()
         display: flex;
         flex-direction: column;
         gap: 28px;
+
+        @media (max-width: 1024px) {
+            visibility: hidden;
+        }
     }
 
     &__item {
@@ -77,11 +85,19 @@ const { toggleOverlay } = useOverlay()
         height: 190px;
         overflow-y: scroll;
         padding: 4px;
+        position: relative;
     }
 
     &__item--expanded {
         height: auto;
         overflow: hidden;
+    }
+
+    &__loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     &__name {

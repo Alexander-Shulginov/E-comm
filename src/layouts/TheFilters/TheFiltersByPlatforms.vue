@@ -5,13 +5,14 @@ import { updateUrlQuery } from '@/utils/updateUrlQuery'
 import BaseCheckbox from '@/components/UI/BaseCheckbox.vue'
 import { useQuery } from '@tanstack/vue-query'
 import { fetchPlatforms } from '@/services/platformsService'
+import BaseLoader from '@/components/base/BaseLoader.vue'
 
 const route = useRoute()
 const router = useRouter()
 const platformValue = ref([])
 const isExpand = ref(false)
 
-const { data: platforms } = useQuery({
+const { data: platforms, isLoading } = useQuery({
     queryKey: ['getPlatforms'],
     queryFn: () => fetchPlatforms()
 })
@@ -55,6 +56,9 @@ onMounted(() => {
                 :value="platform.id"
                 v-model="platformValue"
             />
+        </li>
+        <li v-if="isLoading" class="filters__loader">
+            <BaseLoader />
         </li>
     </ul>
     <button @click="isExpand = !isExpand" class="filters__toggle" type="button">
