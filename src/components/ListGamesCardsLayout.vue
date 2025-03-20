@@ -62,6 +62,7 @@ watch(
     display: flex;
     align-items: center;
     gap: 14px;
+    margin-left: auto;
 
     &__wrap {
         position: relative;

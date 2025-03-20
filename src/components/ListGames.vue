@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { ref } from 'vue'
 
 import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
-import CardProduct from '@/components/cards/CardProduct.vue'
 import { useRoute } from 'vue-router'
-import BaseLoader from './base/BaseLoader.vue'
-import { router } from '@/router/router'
-import { removeUrlQuery, updateUrlQuery } from '@/utils/updateUrlQuery'
+
 import SearchField from './SearchField.vue'
-import ListGamesError from './ListGamesError.vue'
 import ListGamesTopCardsLayout from '@/components/ListGamesCardsLayout.vue'
 import ListGamesResults from '@/components/ListGamesResults.vue'
+import ListGamesContent from './ListGamesContent.vue'
+import ListGamesNavigation from './ListGamesNavigation.vue'
 
 const route = useRoute()
+const selectedRadio = ref('')
 
 const {
     data: games,
@@ -24,41 +23,6 @@ const {
     queryFn: () => fetchGames({ page_size: 20, page: 1, ...route.query }),
     staleTime: 1000 * 60 * 5
 })
-
-const selectedRadio = ref('')
-
-let currentPage = ref(1)
-watch(
-    () => route.query,
-    () => refetch()
-)
-
-watch(
-    () => currentPage.value,
-    () => {
-        router.replace({ query: { ...route.query, page: currentPage.value } })
-    }
-)
-const page = computed(() => Number(route.query.page) || 1)
-
-const increasePage = () => {
-    if (games.value?.next) {
-        updateUrlQuery(router, {
-            page: page.value + 1
-        })
-    }
-}
-
-const decreasePage = () => {
-    if (games.value?.prev) {
-        updateUrlQuery(router, {
-            page: page.value - 1
-        })
-    }
-    if (currentPage.value === 1) {
-        removeUrlQuery(router, 'page')
-    }
-}
 </script>
 
 <template>
@@ -71,63 +35,14 @@ const decreasePage = () => {
         </div>
 
         <div class="listGames__content">
-            <BaseLoader v-if="isFetching" />
-            <ListGamesError v-else-if="games?.count === 0" />
-            <div v-else class="listGames__grid" :class="selectedRadio">
-                <CardProduct
-                    v-for="game in games?.results"
-                    :key="game.id"
-                    :game="game"
-                    :to="{ name: 'Game', params: { id: game.id } }"
-                />
-            </div>
+            <ListGamesContent :is-fetching="isFetching" :games="games" :layout="selectedRadio" />
         </div>
 
-        <div v-if="games?.next && !isFetching" class="listGames__pagination">
-            <div class="gamesNav">
-                <button
-                    :disabled="games?.prev === null"
-                    @click="decreasePage"
-                    class="gamesNav__btn"
-                    type="button"
-                >
-                    Prev
-                </button>
-                <button
-                    :disabled="games?.next === null"
-                    @click="increasePage"
-                    class="gamesNav__btn"
-                    type="button"
-                >
-                    Next
-                </button>
-            </div>
-        </div>
+        <ListGamesNavigation :games="games" :is-fetching="isFetching" :refetch="refetch" />
     </div>
 </template>
 
 <style lang="scss">
-.gamesNav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-
-    &__btn {
-        color: var(--color-light);
-        flex-grow: 2;
-        font-size: 16px;
-        background-color: var(--color-dark-second);
-        padding: 14px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-
-    &__btn:disabled {
-        cursor: not-allowed;
-        opacity: 0.8;
-    }
-}
 .listGames {
     @media (max-width: 1024px) {
         padding-top: 50px;
@@ -148,77 +63,6 @@ const decreasePage = () => {
     &__content {
         margin-bottom: 48px;
         position: relative;
-    }
-
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 22px;
-
-        @media (max-width: 768px) {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        @media (max-width: 550px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-}
-
-.layout-row.listGames__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.layout-row.listGames__grid {
-    .productCard {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        border-radius: 4px;
-        padding-right: 16px;
-
-        @media (max-width: 768px) {
-            gap: 12px;
-        }
-
-        @media (any-hover: hover) {
-            &:hover {
-                background-color: var(--color-dark-second);
-            }
-        }
-
-        &__picture {
-            margin-bottom: unset;
-            flex-shrink: 0;
-        }
-
-        &__img {
-            width: 180px;
-            aspect-ratio: 16 / 9;
-            border-radius: 4px;
-
-            @media (max-width: 768px) {
-                width: 80px;
-            }
-        }
-
-        &__rating--row {
-            display: flex;
-        }
-
-        &__rating--column {
-            display: none;
-        }
-
-        &__name {
-            font-size: 20px;
-
-            @media (max-width: 768px) {
-                font-size: 14px;
-            }
-        }
     }
 }
 </style>
