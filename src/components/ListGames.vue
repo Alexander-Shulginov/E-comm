@@ -3,7 +3,6 @@ import { computed, ref, watch } from 'vue'
 
 import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
-import ListGamesTop from '@/components/ListGamesTop.vue'
 import CardProduct from '@/components/cards/CardProduct.vue'
 import { useRoute } from 'vue-router'
 import BaseLoader from './base/BaseLoader.vue'
@@ -11,9 +10,8 @@ import { router } from '@/router/router'
 import { removeUrlQuery, updateUrlQuery } from '@/utils/updateUrlQuery'
 import SearchField from './SearchField.vue'
 import ListGamesError from './ListGamesError.vue'
-// import ListGamesResults from './ListGamesResults.vue'
-// import TheFiltersReset from '@/layouts/TheFilters/TheFiltersReset.vue'
-// import ListGamesShowFilters from './ListGamesShowFilters.vue'
+import ListGamesTopCardsLayout from '@/components/ListGamesCardsLayout.vue'
+import ListGamesResults from '@/components/ListGamesResults.vue'
 
 const route = useRoute()
 
@@ -65,19 +63,13 @@ const decreasePage = () => {
 
 <template>
     <div class="listGames">
-        <!-- <div class="listGames__toggler">
-            <ListGamesShowFilters />
-        </div> -->
-        <div class="listGames__search">
-            <SearchField />
-        </div>
+        <SearchField class="listGames__search" />
+
         <div class="listGames__top">
-            <ListGamesTop v-model="selectedRadio" :results="games?.count" />
+            <ListGamesResults :results="games?.count" />
+            <ListGamesTopCardsLayout v-model="selectedRadio" />
         </div>
-        <div v-if="games?.count" class="listGames__results">
-            <!-- <ListGamesResults :results="games?.count" /> -->
-            <!-- <TheFiltersReset /> -->
-        </div>
+
         <div class="listGames__content">
             <BaseLoader v-if="isFetching" />
             <ListGamesError v-else-if="games?.count === 0" />
@@ -137,10 +129,6 @@ const decreasePage = () => {
     }
 }
 .listGames {
-    // &__toggler {
-    //     margin-bottom: 18px;
-    // }
-
     @media (max-width: 1024px) {
         padding-top: 50px;
     }
@@ -153,21 +141,13 @@ const decreasePage = () => {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 14px;
+        margin-bottom: 28px;
         gap: 12px;
-    }
-
-    &__results {
-        margin-bottom: 26px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
     &__content {
         margin-bottom: 48px;
         position: relative;
-        // max-height: min(500px, 100vh);
     }
 
     &__grid {

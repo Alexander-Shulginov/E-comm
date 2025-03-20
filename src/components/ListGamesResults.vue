@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-    <div class="result-value" :tag="'h4'">
+    <div class="result-value">
         <span>Results:</span>
         {{ results ? results : 0 }}
     </div>

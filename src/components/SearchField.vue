@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { fetchGames } from '@/services/gamesService'
 import { updateUrlQuery } from '@/utils/updateUrlQuery'
 import { useQuery } from '@tanstack/vue-query'
-import { useRoute, useRouter } from 'vue-router'
 import IconClose from '@/components/icons/IconClose.vue'
 
 const route = useRoute()
