@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 import { useQuery } from '@tanstack/vue-query'
 import { fetchGames } from '@/services/gamesService'
@@ -13,6 +13,8 @@ import ListGamesNavigation from './ListGamesNavigation.vue'
 
 const route = useRoute()
 const selectedRadio = ref('')
+
+
 
 const {
     data: games,

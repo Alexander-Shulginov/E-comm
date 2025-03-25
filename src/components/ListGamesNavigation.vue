@@ -3,6 +3,7 @@ import { computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { IListGames } from '@/types/interfaces/IGames'
 import { removeUrlQuery, updateUrlQuery } from '@/utils/updateUrlQuery'
+import IconPixelArrow from '@/components/icons/IconPixelArrow.vue'
 
 const props = defineProps<{
     isFetching: boolean
@@ -41,14 +42,16 @@ const decreasePage = () => {
 </script>
 
 <template>
-    <div v-if="games?.next && !isFetching" class="gamesNav">
+    <div v-if="games && games?.count > 20 && !isFetching" class="gamesNav">
         <button
             :disabled="games?.prev === null"
             @click="decreasePage"
             class="gamesNav__btn"
             type="button"
         >
-            Prev
+            <IconPixelArrow style="transform: rotate(180deg)" />
+            <IconPixelArrow style="transform: rotate(180deg)" />
+            <IconPixelArrow style="transform: rotate(180deg)" />
         </button>
         <button
             :disabled="games?.next === null"
@@ -56,7 +59,9 @@ const decreasePage = () => {
             class="gamesNav__btn"
             type="button"
         >
-            Next
+            <IconPixelArrow />
+            <IconPixelArrow />
+            <IconPixelArrow />
         </button>
     </div>
 </template>
@@ -69,6 +74,7 @@ const decreasePage = () => {
     gap: 12px;
 
     &__btn {
+        display: flex;
         color: var(--color-light);
         flex-grow: 2;
         font-size: 16px;
@@ -76,6 +82,14 @@ const decreasePage = () => {
         padding: 14px;
         border-radius: 6px;
         cursor: pointer;
+    }
+
+    &__btn:nth-child(1) {
+        justify-content: flex-start;
+    }
+
+    &__btn:nth-child(2) {
+        justify-content: flex-end;
     }
 
     &__btn:disabled {

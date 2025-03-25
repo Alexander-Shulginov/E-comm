@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
     <nav class="nav">
         <ul class="nav__items">
@@ -7,7 +5,7 @@
                 <RouterLink :to="{ name: 'Home' }">Home</RouterLink>
             </li>
             <li>
-                <RouterLink :to="{ name: 'Games' }">Games</RouterLink>
+                <RouterLink :to="{ name: 'Games', query: { page: 1 } }">Games</RouterLink>
             </li>
             <li>
                 <RouterLink :to="{ name: 'Genres' }">Genres</RouterLink>

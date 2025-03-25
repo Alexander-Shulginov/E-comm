@@ -26,7 +26,7 @@ import PromoGame from '@/components/PromoGame.vue'
     }
 
     &__genre {
-        margin-bottom: 60px;
+        padding-bottom: 80px;
     }
 }
 </style>

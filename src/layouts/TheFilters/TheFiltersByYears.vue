@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { removeUrlQuery, updateUrlQuery } from '@/utils/updateUrlQuery'
+import { updateUrlQuery } from '@/utils/updateUrlQuery'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -9,48 +9,32 @@ const router = useRouter()
 const currentYear = new Date().getFullYear()
 const minYearToFilter = 1970
 
+let sendRequest = ref(false)
 let isError = ref(false)
 
 let minYear = ref(minYearToFilter)
 let maxYear = ref(currentYear)
 
-const validateMinValue = (e: Event) => {
+const validateInputValue = (e: Event) => {
     const target = e.target as HTMLInputElement
     target.value = target.value.replace(/\D/g, '')
 
-    if (Number(target.value) < minYearToFilter) {
+    if (Number(target.value) < minYearToFilter ||
+        Number(target.value) > currentYear) {
         isError.value = true
-    } else if (maxYear.value < minYear.value) {
-        isError.value = true
-    } else if (Number(target.value) > currentYear) {
-        minYear.value = currentYear
-        target.value = String(currentYear)
-        isError.value = false
     } else {
         isError.value = false
-    }
-}
-
-const validateMaxValue = (e: Event) => {
-    const target = e.target as HTMLInputElement
-    target.value = target.value.replace(/\D/g, '')
-
-    if (Number(target.value) < minYearToFilter) {
-        isError.value = true
-    } else if (maxYear.value < minYear.value) {
-        isError.value = true
-    } else if (Number(target.value) > currentYear) {
-        maxYear.value = currentYear
-        target.value = String(currentYear)
-        isError.value = false
-    } else {
-        isError.value = false
+        sendRequest.value = true
     }
 }
 
 const handleBlurMinValue = (e: Event) => {
     const target = e.target as HTMLInputElement
-    if (Number(target.value.length) < 4) {
+    if (
+        Number(target.value.length) < 4 ||
+        Number(target.value) < minYearToFilter ||
+        Number(target.value) > currentYear
+    ) {
         minYear.value = minYearToFilter
         target.value = String(minYearToFilter)
         isError.value = false
@@ -59,7 +43,11 @@ const handleBlurMinValue = (e: Event) => {
 
 const handleBlurMaxValue = (e: Event) => {
     const target = e.target as HTMLInputElement
-    if (Number(target.value.length) < 4) {
+    if (
+        Number(target.value.length) < 4 ||
+        Number(target.value) < minYearToFilter ||
+        Number(target.value) > currentYear
+    ) {
         maxYear.value = currentYear
         target.value = String(currentYear)
         isError.value = false
@@ -77,13 +65,14 @@ watch(
 )
 
 watch(
-    () => isError.value,
+    () => sendRequest.value,
     (newValue) => {
-        if (!newValue) {
+        if (newValue) {
             updateUrlQuery(router, {
                 dates: `${minYear.value}-01-01,${maxYear.value}-12-31`,
                 page: 1
             })
+            sendRequest.value = false
         }
     }
 )
@@ -103,7 +92,7 @@ onMounted(() => {
     <div class="yearFilter">
         <div class="yearFilter__wrap">
             <input
-                @input="validateMinValue"
+                @input="validateInputValue"
                 @blur="handleBlurMinValue"
                 class="yearFilter__num"
                 v-model="minYear"
@@ -121,7 +110,7 @@ onMounted(() => {
         </div>
         <div class="yearFilter__wrap">
             <input
-                @input="validateMaxValue"
+                @input="validateInputValue"
                 @blur="handleBlurMaxValue"
                 v-model="maxYear"
                 class="yearFilter__num"
