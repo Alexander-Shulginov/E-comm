@@ -27,6 +27,7 @@ defineProps<{
     cursor: pointer;
 
     transition: background-color 0.3s ease-in-out;
+    flex-shrink: 0;
 
     background-color: var(--color-accent);
 

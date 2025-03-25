@@ -7,6 +7,7 @@ import PopularGames from '@/components/PopularGames.vue'
 import MainCarousel from '@/components/MainCarousel.vue'
 import BaseScrollToTop from '@/components/base/BaseScrollToTop.vue'
 import ProjectInfo from '@/components/ProjectInfo.vue'
+import BlogSection from '@/components/BlogSection.vue'
 </script>
 
 <template>
@@ -17,6 +18,7 @@ import ProjectInfo from '@/components/ProjectInfo.vue'
         <PopularCategory />
         <CatalogGames />
         <PromoGame />
+        <BlogSection />
         <ProjectInfo />
         <BaseScrollToTop />
     </div>
