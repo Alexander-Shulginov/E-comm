@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import BaseImg from '../base/BaseImg.vue'
+import BaseImg from '@/components/base/BaseImg.vue'
 import someimg from '@/assets/img/main/atomic.webp'
 </script>
 
 <template>
-    <router-link :to="{ name: 'Home' }" class="cardArticle">
+    <router-link :to="{ name: 'Article' }" class="cardArticle">
         <BaseImg :src="someimg" :width="500" :height="600" :alt="'test'" class="cardArticle__img" />
         <div class="cardArticle__date">
             <span class="cardArticle__date-day">28</span>

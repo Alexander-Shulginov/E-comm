@@ -1,19 +1,15 @@
 <script setup lang="ts">
 import BaseText from '@/components/base/BaseText.vue'
 import BaseTitle from '@/components/base/BaseTitle.vue'
+import { promoGame } from './PromoGame.vue';
 
 defineProps<{
-    data: {
-        id: number
-        title: string
-        descr: string
-        img: string
-    }
+    data: promoGame
 }>()
 </script>
 
 <template>
-    <router-link :to="{ name: 'Game', params: { id: data.id } }" class="promoCard">
+    <router-link :to="{ name: 'Game', params: { id: data.item_id } }" class="promoCard">
         <img class="promoCard__img" :src="data.img" alt="Promo img" />
         <div class="promoCard__wrapper">
             <BaseTitle :tag="'h3'" :is-bold="true" class="promoCard__title">{{

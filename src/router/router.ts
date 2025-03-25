@@ -34,6 +34,12 @@ const routes = [
         }
     },
     {
+        path: '/article',
+        name: 'Article',
+        props: true,
+        component: () => import('@/views/ArticleView.vue')
+    },
+    {
         path: '/wishlist',
         name: 'WishList',
         meta: { title: 'Wish List' },
