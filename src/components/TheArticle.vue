@@ -4,7 +4,7 @@ import TheArticleNav from '@/components/TheArticleNav.vue'
 </script>
 
 <template>
-    <TheArticleNav />
+    <!-- <TheArticleNav /> -->
     <TheArticleBody />
 </template>
 

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import GenreList from '@/components/GenreList.vue';
 import TheArticle from '@/components/TheArticle.vue';
 
     
@@ -7,6 +8,7 @@ import TheArticle from '@/components/TheArticle.vue';
 <template>
     <section aria-label="Article page">
         <TheArticle />
+        <GenreList />
     </section>
 </template>
 
