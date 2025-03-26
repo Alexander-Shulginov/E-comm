@@ -5,12 +5,12 @@ export interface Genre {
     genreSlug: string
 }
 
-import actionImg from '@/assets/img/genre/actions.jpg?format=webp'
-import racingImg from '@/assets/img/genre/racing.jpg?format=webp'
-import rpgImg from '@/assets/img/genre/rpg.jpg?format=webp'
-import adventureImg from '@/assets/img/genre/adventure.jpg?format=webp'
-import casualImg from '@/assets/img/genre/casual.jpg?format=webp'
-import simulationImg from '@/assets/img/genre/simulation.jpg?format=webp'
+import actionImg from '@/assets/img/genre/actions.webp'
+import racingImg from '@/assets/img/genre/racing.webp'
+import rpgImg from '@/assets/img/genre/rpg.webp'
+import adventureImg from '@/assets/img/genre/adventure.webp'
+import casualImg from '@/assets/img/genre/casual.webp'
+import simulationImg from '@/assets/img/genre/simulation.webp'
 
 export const genreList: Genre[] = [
     { genreId: 4, genreName: 'Action', genreImg: actionImg, genreSlug: 'action' },

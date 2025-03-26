@@ -1,29 +1,22 @@
 <script setup lang="ts">
-import GamePromoCard from '@/components/PromoGameCard.vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
 import { useSwiper } from '@/hooks/useSwiper'
-import { onMounted, ref } from 'vue'
 import { Pagination } from 'swiper/modules'
-import { supabase } from '@/supabase/init'
+import GamePromoCard from '@/components/PromoGameCard.vue'
+import { useQuery } from '@tanstack/vue-query'
+import { fetchPromoContent } from '@/services/promoService'
+import BaseLoader from './base/BaseLoader.vue'
 
-export interface promoGame {
-    item_id: number
-    title: string
-    descr: string
-    img: string
-}
-
-const promoItems = ref<promoGame[] | null>([])
-
-async function getPromoContent() {
-    const { data, error } = await supabase.from('Promo-content').select('*')
-    promoItems.value = data
-}
+const { data: promoGames, isFetching } = useQuery({
+    queryKey: ['fetchPromoGames'],
+    queryFn: () => fetchPromoContent()
+})
 
 const swiperPromo = ref<HTMLElement | null>(null)
 
-useSwiper(swiperPromo, {
+const { initSwiper } = useSwiper(swiperPromo, {
     modules: [Pagination],
-    loop: true,
+    // loop: true,
     spaceBetween: 16,
     speed: 800,
     breakpoints: {
@@ -39,18 +32,21 @@ useSwiper(swiperPromo, {
     }
 })
 
-onMounted(() => {
-    getPromoContent()
+watch([() => promoGames, swiperPromo], (newData) => {
+    if (newData && swiperPromo.value) {
+        nextTick(() => initSwiper())
+    }
 })
 </script>
 
 <template>
     <section class="promo">
-        <div class="swiper promo__swiper" ref="swiperPromo">
+        <BaseLoader v-if="isFetching" />
+        <div v-else class="swiper promo__swiper" ref="swiperPromo">
             <div class="swiper-wrapper">
                 <GamePromoCard
-                    v-for="promo in promoItems"
-                    :key="promo.item_id"
+                    v-for="promo in promoGames"
+                    :key="promo.id"
                     :data="promo"
                     class="swiper-slide"
                 />
@@ -63,6 +59,8 @@ onMounted(() => {
 <style lang="scss" scoped>
 .promo {
     margin-bottom: 40px;
+    position: relative;
+    min-height: 300px;
 
     &__swiper {
         padding-bottom: 40px;

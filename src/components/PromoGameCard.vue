@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import BaseText from '@/components/base/BaseText.vue'
 import BaseTitle from '@/components/base/BaseTitle.vue'
-import { promoGame } from './PromoGame.vue';
+import { IPromoGames } from '@/types/interfaces/IPromoGames'
 
 defineProps<{
-    data: promoGame
+    data: IPromoGames
 }>()
 </script>
 
 <template>
-    <router-link :to="{ name: 'Game', params: { id: data.item_id } }" class="promoCard">
+    <router-link :to="{ name: 'Game', params: { id: data.id } }" class="promoCard">
         <img class="promoCard__img" :src="data.img" alt="Promo img" />
         <div class="promoCard__wrapper">
             <BaseTitle :tag="'h3'" :is-bold="true" class="promoCard__title">{{
@@ -74,7 +74,7 @@ defineProps<{
     &__descr {
         padding-right: 20%;
         margin-bottom: 20px;
-        color: rgba(255, 255, 255, .9);
+        color: rgba(255, 255, 255, 0.9);
 
         overflow: hidden;
         display: -webkit-box;
