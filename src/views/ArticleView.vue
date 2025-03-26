@@ -5,7 +5,9 @@ import TheArticle from '@/components/TheArticle.vue';
 </script>
 
 <template>
-    <TheArticle />
+    <section aria-label="Article page">
+        <TheArticle />
+    </section>
 </template>
 
 <style lang="scss" scoped>
