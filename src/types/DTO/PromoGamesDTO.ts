@@ -1,4 +1,4 @@
-export interface PromoGamesDTO {
+export interface PromoGamesResponseDTO {
     item_id: number
     title: string
     descr: string

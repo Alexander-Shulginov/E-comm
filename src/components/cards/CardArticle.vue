@@ -1,22 +1,31 @@
 <script setup lang="ts">
 import BaseImg from '@/components/base/BaseImg.vue'
-import someimg from '@/assets/img/main/atomic.webp'
+import { IBlogCard } from '@/types/interfaces/IBlogCard'
+
+defineProps<{
+    data: IBlogCard
+}>()
 </script>
 
 <template>
-    <router-link :to="{ name: 'Article' }" class="cardArticle">
-        <BaseImg :src="someimg" :width="500" :height="600" :alt="'test'" class="cardArticle__img" />
+    <router-link :to="{ name: 'Article', params: { id: data.id } }" class="cardArticle">
+        <BaseImg
+            :src="data.img"
+            :width="500"
+            :height="600"
+            :alt="data.title"
+            class="cardArticle__img"
+        />
         <div class="cardArticle__date">
-            <span class="cardArticle__date-day">28</span>
-            <span class="cardArticle__date-month">jun</span>
+            <div class="cardArticle__date-value">{{ data.date }}</div>
         </div>
 
         <div class="cardArticle__content">
-            <span class="cardArticle__type">Article</span>
+            <span class="cardArticle__type">{{ data.type }}</span>
             <div class="cardArticle__name">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis, fuga!
+                {{ data.title }}
             </div>
-            <div class="cardArticle__author">Posted by Mr.Mario</div>
+            <div class="cardArticle__author">Posted by {{ data.author }}</div>
         </div>
     </router-link>
 </template>
@@ -55,27 +64,25 @@ import someimg from '@/assets/img/main/atomic.webp'
         background-color: var(--color-dark-second);
         padding: 6px 16px;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
         @media (max-width: 768px) {
             top: 16px;
             left: 16px;
         }
     }
 
-    &__date-day {
-        font-size: 24px;
+    &__date-value {
+        width: 33px;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    &__date-value::first-line {
+        font-size: 22px;
 
         @media (max-width: 768px) {
             font-size: 20px;
         }
-    }
-
-    &__date-month {
-        text-transform: uppercase;
-        font-size: 12px;
     }
 
     &__content {

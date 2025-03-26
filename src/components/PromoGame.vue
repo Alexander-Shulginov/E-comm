@@ -16,7 +16,7 @@ const swiperPromo = ref<HTMLElement | null>(null)
 
 const { initSwiper } = useSwiper(swiperPromo, {
     modules: [Pagination],
-    // loop: true,
+    loop: true,
     spaceBetween: 16,
     speed: 800,
     breakpoints: {

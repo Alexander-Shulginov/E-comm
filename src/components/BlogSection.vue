@@ -1,15 +1,22 @@
 <script setup lang="ts">
 import BlogSectionTop from '@/components/BlogSectionTop.vue'
-import BlogSectionCards from '@/components/BlogSectionCards.vue'
+import CardArticle from '@/components/cards/CardArticle.vue'
+import { fetchArticles } from '@/services/articlesService'
+import { useQuery } from '@tanstack/vue-query'
+
+const { data: articleCard } = useQuery({
+    queryKey: ['fetchArticleCards'],
+    queryFn: () => fetchArticles()
+})
 </script>
 
-<template>
+<template v-if="articleCard">
     <section class="blogSection">
         <div class="blogSection__top">
             <BlogSectionTop />
         </div>
         <div class="blogSection__wrap">
-            <BlogSectionCards />
+            <CardArticle v-for="card in articleCard" :key="card.id" :data="card" />
         </div>
     </section>
 </template>
@@ -34,7 +41,7 @@ import BlogSectionCards from '@/components/BlogSectionCards.vue'
             grid-template-columns: repeat(2, 1fr);
         }
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             grid-template-columns: 1fr;
         }
     }
