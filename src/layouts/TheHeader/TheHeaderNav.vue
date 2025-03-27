@@ -14,7 +14,6 @@
                 <RouterLink :to="{ name: 'Blog' }">Blog</RouterLink>
             </li>
         </ul>
-        <span>|</span>
     </nav>
 </template>
 
@@ -26,9 +25,26 @@
     margin-left: auto;
     margin-right: 12px;
 
+    @media (max-width: 768px) {
+        position: absolute;
+        top: 105%;
+        right: 0;
+        z-index: 3;
+        width: 100%;
+        margin-right: unset;
+    }
+
     &__items {
         display: flex;
-        gap: 12px;
+        gap: 18px;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--color-dark-second);
+            padding: 16px;
+        }
     }
 }
 </style>

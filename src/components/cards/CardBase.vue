@@ -3,8 +3,7 @@ import BaseImg from '@/components/base/BaseImg.vue'
 import CardBasePlatforms from '@/components/cards/CardBasePlatforms.vue'
 import CardBaseRating from '@/components/cards/CardBaseRating.vue'
 import { computed } from 'vue'
-import { IGame, IListGames } from '@/types/interfaces/IGames'
-import BtnAddToFavorites from '@/components/UI/BtnAddToFavorites.vue'
+import { IGame } from '@/types/interfaces/IGames'
 
 const props = defineProps<{
     game: IGame
@@ -26,7 +25,6 @@ const displayName = computed(() => {
                 :height="400"
                 class="cardBase__img"
             />
-            <BtnAddToFavorites :width="18" :height="18" class="cardBase__favorite" />
         </div>
         <p class="cardBase__name">
             {{ displayName }}
@@ -82,18 +80,6 @@ const displayName = computed(() => {
 
     &__img-wrap {
         position: relative;
-    }
-
-    &__favorite {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        visibility: hidden;
-        opacity: 0;
-        z-index: 3;
-        transition:
-            visibility 0.3s ease-in-out,
-            opacity 0.3s ease-in-out;
     }
 
     &__wrap {

@@ -20,7 +20,6 @@ const { data: platforms, isLoading } = useQuery({
 watch(
     () => platformValue.value,
     (n) => {
-        console.log(n)
         updateUrlQuery(router, {
             parent_platforms: n.join(','),
             page: 1

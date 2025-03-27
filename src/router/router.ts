@@ -26,7 +26,7 @@ const routes = [
     {
         path: '/games',
         name: 'Games',
-        props: route =>({page: Number(route.query.page) || 1}),
+        props: (route) => ({ page: Number(route.query.page) || 1 }),
         meta: { title: 'Games' },
         components: {
             default: () => import('@/views/GamesView.vue'),
@@ -42,14 +42,8 @@ const routes = [
     {
         path: '/blog',
         name: 'Blog',
-        props: true,
+        meta: {title: 'Blog'},
         component: () => import('@/views/ArticleListView.vue')
-    },
-    {
-        path: '/wishlist',
-        name: 'WishList',
-        meta: { title: 'Wish List' },
-        component: () => import('@/views/WishlistView.vue')
     },
     {
         path: '/:pathMatch(.*)*',

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import BaseToggleColorTheme from '@/components/base/BaseToggleColorTheme.vue'
-import BaseFavorites from '@/components/base/BaseFavorites.vue'
 import BaseGitHubLink from '@/components/base/BaseGitHubLink.vue'
 import BaseLogo from '@/components/base/BaseLogo.vue'
+import BaseBurger from '@/components/UI/BaseBurger.vue';
 import TheHeaderNav from '@/layouts/TheHeader/TheHeaderNav.vue'
 </script>
 
@@ -11,9 +10,8 @@ import TheHeaderNav from '@/layouts/TheHeader/TheHeaderNav.vue'
         <div class="header__inner">
             <BaseLogo />
             <TheHeaderNav />
-            <!-- <BaseToggleColorTheme /> -->
-            <BaseFavorites />
             <BaseGitHubLink />
+            <BaseBurger />
         </div>
     </header>
 </template>
@@ -31,6 +29,8 @@ import TheHeaderNav from '@/layouts/TheHeader/TheHeaderNav.vue'
         max-width: 1440px;
         margin: 0 auto;
         padding: 16px 15px;
+
+        position: relative;
 
         display: flex;
         justify-content: space-between;
