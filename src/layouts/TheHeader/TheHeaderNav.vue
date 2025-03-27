@@ -10,6 +10,9 @@
             <li>
                 <RouterLink :to="{ name: 'Genres' }">Genres</RouterLink>
             </li>
+            <li>
+                <RouterLink :to="{ name: 'Blog' }">Blog</RouterLink>
+            </li>
         </ul>
         <span>|</span>
     </nav>

@@ -32,8 +32,10 @@ defineProps<{
 
 <style lang="scss" scoped>
 .cardArticle {
+    display: block;
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--color-dark-base);
     border-radius: 12px;
     min-height: 300px;
 
@@ -47,7 +49,7 @@ defineProps<{
         bottom: 0;
         left: 0;
 
-        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 70%);
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 70%);
         width: 100%;
         transition: transform 0.8s ease-in-out;
     }

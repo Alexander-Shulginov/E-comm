@@ -10,8 +10,5 @@ export const articleModel = (dto: ArticleResponseDTO): IArticle => ({
     img: dto.img,
     article_details: dto.article_details.map((i) => ({
         content: i.content
-    })),
-    article_images: dto.article_images.map((i) => ({
-        src: i.src
     }))
 })

@@ -2,10 +2,6 @@ interface ArticleDetail {
     content: string
 }
 
-interface ArticleImage {
-    src: string
-}
-
 export interface ArticleResponseDTO {
     id: number
     date: string
@@ -14,5 +10,4 @@ export interface ArticleResponseDTO {
     author: string
     img: string
     article_details: ArticleDetail[]
-    article_images: ArticleImage[]
 }

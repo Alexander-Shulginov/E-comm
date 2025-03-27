@@ -40,6 +40,12 @@ const routes = [
         component: () => import('@/views/ArticleView.vue')
     },
     {
+        path: '/blog',
+        name: 'Blog',
+        props: true,
+        component: () => import('@/views/ArticleListView.vue')
+    },
+    {
         path: '/wishlist',
         name: 'WishList',
         meta: { title: 'Wish List' },

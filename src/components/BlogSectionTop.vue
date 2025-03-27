@@ -5,5 +5,5 @@ import BaseLink from '@/components/UI/BaseLink.vue'
 
 <template>
     <BaseTitle :tag="'h2'">Our Latest Articles</BaseTitle>
-    <BaseLink :size="'compact'" :text="'More Articles'" to="/" />
+    <BaseLink :size="'compact'" :text="'More Articles'" :to="{ name: 'Blog' }" />
 </template>
