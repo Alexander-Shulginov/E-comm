@@ -1,11 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+
+const props = defineProps<{
+    state?: boolean
+}>()
 
 const isOpen = ref(false)
 
 const toggleBurger = () => {
     isOpen.value = !isOpen.value
 }
+
+watch(
+    () => props.state,
+    (n) => {
+        if (n === false) {
+            isOpen.value = false
+        }
+    }
+)
 
 const mediaQuery = window.matchMedia('(max-width: 1024px)')
 
