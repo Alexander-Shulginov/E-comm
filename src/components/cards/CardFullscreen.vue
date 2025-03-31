@@ -9,7 +9,9 @@ interface GameData {
     date: string
 }
 
-defineProps<{ data: GameData }>()
+defineProps<{
+    data: GameData
+}>()
 </script>
 
 <template>
@@ -28,7 +30,6 @@ defineProps<{ data: GameData }>()
                 {{ data.descr }}
             </p>
             <div class="cardFull__block" data-swiper-anim>
-                <!-- <BaseBtn :as="'a'" :variant="'accent'">Details</BaseBtn> -->
                 <BaseLink
                     :to="{ name: 'Game', params: { id: data.id } }"
                     :text="'Details'"
@@ -139,6 +140,10 @@ defineProps<{ data: GameData }>()
 
     &__date {
         font-family: var(--font-second);
+
+        @media (max-width: 768px){
+            font-size: 14px;
+        }
     }
 }
 

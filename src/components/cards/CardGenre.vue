@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseImg from '../base/BaseImg.vue'
+import BaseImg from '@/components/base/BaseImg.vue'
 
 defineProps<{
     data: {

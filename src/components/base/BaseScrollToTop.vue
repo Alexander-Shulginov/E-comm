@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import IconToTop from '@/components/icons/IconToTop.vue'
+
 const percent = ref(0)
 
 window.addEventListener('scroll', () => {
@@ -19,7 +20,7 @@ const scrollToTop = () => {
 </script>
 
 <template>
-    <div class="goTop">
+    <div v-show="percent > 0" class="goTop">
         <button
             @click="scrollToTop"
             class="goTop__btn"

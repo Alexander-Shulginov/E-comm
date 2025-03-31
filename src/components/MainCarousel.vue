@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Pagination } from 'swiper/modules'
-import CardFullscreen from '@/components/cards/CardFullscreen.vue'
 import { useSwiper } from '@/hooks/useSwiper'
 import { mainContent } from '@/data/mainContent'
+import CardFullscreen from '@/components/cards/CardFullscreen.vue'
 
 const swiperFullscreen = ref<HTMLElement | null>(null)
+
 useSwiper(swiperFullscreen, {
     modules: [Pagination],
     loop: true,

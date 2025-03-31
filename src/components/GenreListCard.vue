@@ -25,6 +25,12 @@ defineProps<{
     border-radius: 8px;
     overflow: hidden;
 
+    &:focus-visible {
+        .genreCard__img {
+            transform: scale(1.05);
+        }
+    }
+
     @media (any-hover: hover) {
         &:hover {
             .genreCard__img,

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Pagination } from 'swiper/modules'
 import { useSwiper } from '@/hooks/useSwiper'
 import { genreList } from '@/types/genres'
 import GenreListCard from '@/components/GenreListCard.vue'
@@ -8,28 +7,26 @@ import GenreListCard from '@/components/GenreListCard.vue'
 const swiperGenre = ref<HTMLElement | null>(null)
 
 useSwiper(swiperGenre, {
-    modules: [Pagination],
-    loop: true,
+    // loop: true,
     spaceBetween: 16,
     speed: 800,
     breakpoints: {
         320: {
-            slidesPerView: 1
+            slidesPerView: 1.1
         },
         450: {
-            slidesPerView: 2
+            slidesPerView: 2.2
         },
         768: {
-            slidesPerView: 3
+            slidesPerView: 3.2
         },
         1024: {
-            slidesPerView: 4
+            slidesPerView: 4.2
         },
-        1220: {
-            slidesPerView: 5
+        1280: {
+            slidesPerView: 6
         }
-    },
-    pagination: { el: '.swiper-pagination' }
+    }
 })
 </script>
 
@@ -47,7 +44,6 @@ useSwiper(swiperGenre, {
                     class="swiper-slide"
                 />
             </div>
-            <div class="swiper-pagination"></div>
         </div>
     </section>
 </template>
@@ -55,14 +51,14 @@ useSwiper(swiperGenre, {
 <style lang="scss" scoped>
 .genre {
     position: relative;
-    margin-bottom: 56px;
+    margin-bottom: 60px;
 
     @media (max-width: 768px) {
         margin-bottom: 35px;
     }
 
     &__swiper {
-        padding: 4px 3px 40px 3px;
+        padding: 5px;
     }
 }
 </style>
