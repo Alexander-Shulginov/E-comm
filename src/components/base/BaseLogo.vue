@@ -3,7 +3,7 @@ import IconLogo from '@/components/icons/IconLogo.vue'
 </script>
 
 <template>
-    <a href="/" class="logo">
+    <a href="/" class="logo" aria-label="Main logo">
         <img src="@/assets/img/logo/logo.png" width="60" height="60" alt="Main logo" />
         <IconLogo />
     </a>

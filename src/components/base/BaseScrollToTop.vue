@@ -24,6 +24,7 @@ const scrollToTop = () => {
             @click="scrollToTop"
             class="goTop__btn"
             type="button"
+            aria-label="Go to top button"
             :style="`background: conic-gradient(#6d4eec 0% ${percent}%, #212121 0% 100%)`"
         ></button>
         <div class="goTop__wrap">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import BaseGitHubLink from '@/components/base/BaseGitHubLink.vue'
 import BaseLogo from '@/components/base/BaseLogo.vue'
 import TheHeaderNav from '@/layouts/TheHeader/TheHeaderNav.vue'
+import BaseGitHubLink from '@/components/base/BaseGitHubLink.vue'
 </script>
 
 <template>
@@ -34,13 +34,14 @@ import TheHeaderNav from '@/layouts/TheHeader/TheHeaderNav.vue'
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         align-items: center;
+        justify-items: start;
 
         @media (max-width: 768px) {
             gap: 18px;
         }
 
         @media (max-width: 568px) {
-            gap: 8px;
+            gap: 16px;
         }
     }
 
@@ -58,6 +59,7 @@ import TheHeaderNav from '@/layouts/TheHeader/TheHeaderNav.vue'
     &__gh {
         grid-column: 4 / 5;
         grid-row: 1 / 2;
+
         @media (max-width: 568px) {
             grid-column: 3 / 4;
             margin-left: auto;

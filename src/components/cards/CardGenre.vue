@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import BaseImg from '../base/BaseImg.vue'
+
 defineProps<{
     data: {
         id: number
@@ -12,12 +14,12 @@ defineProps<{
 <template>
     <div class="cardGenres">
         <router-link :to="{ name: 'Games', query: { genres: data.id } }">
-            <img
+            <BaseImg
                 class="cardGenres__img"
                 :src="data.img"
-                :alt="data.name"
-                width="340"
-                height="190"
+                :alt="`Link to ${data.name}`"
+                :width="340"
+                :height="190"
             />
             <p class="cardGenres__name">{{ data.name }}</p>
         </router-link>

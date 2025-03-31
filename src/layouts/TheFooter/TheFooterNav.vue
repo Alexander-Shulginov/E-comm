@@ -1,32 +1,73 @@
 <script setup lang="ts">
-import BaseTitle from '../../components/base/BaseTitle.vue'
-import TheFooterNavList from './TheFooterNavList.vue'
+import BaseTitle from '@/components/base/BaseTitle.vue'
+import TheFooterNavList from '@/layouts/TheFooter/TheFooterNavList.vue'
 
 const footerNav = [
     {
         title: 'Useful Links',
         links: [
-            { text: 'Games', url: { name: 'Games' } },
-            { text: 'Genres', url: { name: 'Genres' } },
-            { text: 'Blog', url: { name: 'Blog' } }
-            // { text: 'FAQs', url: '/' }
+            {
+                text: 'Games',
+                url: { name: 'Games' }
+            },
+            {
+                text: 'Genres',
+                url: { name: 'Genres' }
+            },
+            {
+                text: 'Blog',
+                url: { name: 'Blog' }
+            }
         ]
     },
     {
         title: 'Games',
         links: [
-            { text: 'PC', url: { name: 'Games', query: { parent_platforms: 1 } } },
-            { text: 'PlayStation', url: { name: 'Games', query: { parent_platforms: 2 } } },
-            { text: 'Xbox', url: { name: 'Games', query: { parent_platforms: 3 } } },
-            { text: 'Nintendo', url: { name: 'Games', query: { parent_platforms: 7 } } },
+            {
+                text: 'PC',
+                url: {
+                    name: 'Games',
+                    query: { parent_platforms: 1 }
+                }
+            },
+            {
+                text: 'PlayStation',
+                url: {
+                    name: 'Games',
+                    query: { parent_platforms: 2 }
+                }
+            },
+            {
+                text: 'Xbox',
+                url: {
+                    name: 'Games',
+                    query: { parent_platforms: 3 }
+                }
+            },
+            {
+                text: 'Nintendo',
+                url: {
+                    name: 'Games',
+                    query: { parent_platforms: 7 }
+                }
+            }
         ]
     },
     {
         title: 'Social Links',
         links: [
-            { text: 'Instagram', url: {name: 'Home'} },
-            { text: 'Twitter', url: {name: 'Home'} },
-            { text: 'YouTube', url: {name: 'Home'} }
+            {
+                text: 'Instagram',
+                url: { name: 'Home' }
+            },
+            {
+                text: 'Twitter',
+                url: { name: 'Home' }
+            },
+            {
+                text: 'YouTube',
+                url: { name: 'Home' }
+            }
         ]
     }
 ]

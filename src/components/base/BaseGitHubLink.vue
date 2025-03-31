@@ -3,7 +3,7 @@ import IconGitHub from '@/components/icons/IconGitHub.vue'
 </script>
 
 <template>
-    <a href="#" target="_blank" class="git-link">
+    <a href="#" target="_blank" class="git-link" aria-label="Github link">
         <IconGitHub />
     </a>
 </template>

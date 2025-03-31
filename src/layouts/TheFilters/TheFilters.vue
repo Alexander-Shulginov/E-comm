@@ -125,11 +125,13 @@ const { toggleOverlay } = useOverlay()
         padding: 8px 12px;
         border-radius: 4px;
 
-        transition: border-color .2s  ease-in-out;
+        outline: 2px solid transparent;
+        outline-offset: 3px;
+        transition: outline-color 0.2s ease-in-out;
 
-        @media (any-hover:hover) {
+        @media (any-hover: hover) {
             &:hover {
-                border-color: var(--color-accent);
+                outline-color: var(--color-accent);
             }
         }
     }

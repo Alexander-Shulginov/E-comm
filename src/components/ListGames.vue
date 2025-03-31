@@ -14,8 +14,6 @@ import ListGamesNavigation from './ListGamesNavigation.vue'
 const route = useRoute()
 const selectedRadio = ref('')
 
-
-
 const {
     data: games,
     refetch,

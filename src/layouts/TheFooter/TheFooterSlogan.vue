@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BaseLogo from '../../components/base/BaseLogo.vue'
-import BaseText from '../../components/base/BaseText.vue'
+import BaseLogo from '@/components/base/BaseLogo.vue'
+import BaseText from '@/components/base/BaseText.vue'
 </script>
 
 <template>
@@ -10,5 +10,3 @@ import BaseText from '../../components/base/BaseText.vue'
         unforgettable stories. The journey begins here!
     </BaseText>
 </template>
-
-<style lang="scss" scoped></style>

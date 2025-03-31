@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TheFooterNav from './TheFooterNav.vue'
-import TheFooterPolicy from './TheFooterPolicy.vue';
-import TheFooterSlogan from './TheFooterSlogan.vue';
+import TheFooterNav from '@/layouts/TheFooter/TheFooterNav.vue'
+import TheFooterPolicy from '@/layouts/TheFooter/TheFooterPolicy.vue';
+import TheFooterSlogan from '@/layouts/TheFooter/TheFooterSlogan.vue';
 </script>
 
 <template>
