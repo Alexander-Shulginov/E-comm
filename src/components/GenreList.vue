@@ -6,7 +6,7 @@ import GenreListCard from '@/components/GenreListCard.vue'
 
 const swiperGenre = ref<HTMLElement | null>(null)
 
-useSwiper(swiperGenre, {
+const { swiperInstance } = useSwiper(swiperGenre, {
     // loop: true,
     spaceBetween: 16,
     speed: 800,

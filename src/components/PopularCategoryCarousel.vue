@@ -16,7 +16,7 @@ const { initSwiper, swiperInstance, destroySwiper } = useSwiper(swiperCategory, 
     modules: [Navigation],
     loop: true,
     speed: 800,
-    spaceBetween: 18,
+    spaceBetween: 14,
     breakpoints: {
         320: { slidesPerView: 1, spaceBetween: 16 },
         460: { slidesPerView: 2, spaceBetween: 18 },
@@ -44,7 +44,7 @@ watch([() => props.data, swiperCategory], async (newData) => {
 <template>
     <div class="popularCarousel">
         <BaseLoader v-if="isLoading" />
-        <div class="swiper" ref="swiperCategory" v-if="data">
+        <div class="swiper popularCarousel__swiper" ref="swiperCategory" v-if="data">
             <div class="swiper-wrapper">
                 <CardPopular
                     class="swiper-slide"
@@ -68,6 +68,10 @@ watch([() => props.data, swiperCategory], async (newData) => {
 
     @media (max-width: 768px) {
         min-height: 160px;
+    }
+
+    &__swiper {
+        padding: 4px;
     }
 }
 </style>

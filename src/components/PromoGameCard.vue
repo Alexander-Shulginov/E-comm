@@ -12,7 +12,13 @@ defineProps<{
 <template>
     <router-link :to="{ name: 'Game', params: { id: data.id } }" class="promoCard">
         <div class="promoCard__img-wrap">
-            <BaseImg :src="data.img" :alt="data.title" :width="700" :height="390" class="promoCard__img" />
+            <BaseImg
+                :src="data.img"
+                :alt="data.title"
+                :width="700"
+                :height="390"
+                class="promoCard__img"
+            />
         </div>
         <div class="promoCard__wrapper">
             <BaseTitle :tag="'h3'" :is-bold="true" class="promoCard__title">{{
@@ -32,6 +38,12 @@ defineProps<{
     overflow: hidden;
     aspect-ratio: 16 / 9;
     min-height: 300px;
+
+    &:focus-visible {
+        .promoCard__img {
+            transform: scale(1.05);
+        }
+    }
 
     @media (any-hover: hover) {
         &:hover {
@@ -76,6 +88,11 @@ defineProps<{
         @media (max-width: 1024px) {
             bottom: 20px;
             left: 20px;
+        }
+
+        @media (max-width: 768px){
+            bottom: 6px;
+            left: 12px;
         }
     }
 

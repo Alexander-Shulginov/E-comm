@@ -40,6 +40,11 @@ defineProps<{
     border: 1px solid var(--color-dark-base);
     border-radius: 12px;
     min-height: 300px;
+    &:focus-visible {
+        .cardArticle__img {
+            transform: scale(1.05);
+        }
+    }
 
     @media (any-hover: hover) {
         &:hover {

@@ -63,7 +63,7 @@ watch([() => promoGames, swiperPromo], (newData) => {
     min-height: 300px;
 
     &__swiper {
-        padding-bottom: 40px;
+        padding: 4px 4px 40px 4px;
     }
 }
 </style>

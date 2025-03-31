@@ -37,6 +37,10 @@ h1.title {
 
 h2.title {
     font-size: 28px;
+
+    @media (max-width: 768px){
+        font-size: 22px;
+    }
 }
 
 h3.title {

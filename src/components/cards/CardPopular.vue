@@ -1,7 +1,6 @@
 <script setup lang="ts">
-// import { IListGames } from '@/types/interfaces/IListGamess'
-import BaseImg from '@/components/base/BaseImg.vue'
 import { IGame } from '@/types/interfaces/IGames'
+import BaseImg from '@/components/base/BaseImg.vue'
 
 defineProps<{
     data: IGame | undefined
@@ -28,6 +27,12 @@ defineProps<{
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    &:focus-visible {
+        .cardPopular__img {
+            transform: scale(1.05);
+        }
+    }
 
     @media (any-hover: hover) {
         &:hover {
