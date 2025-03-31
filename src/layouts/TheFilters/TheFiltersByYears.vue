@@ -19,8 +19,7 @@ const validateInputValue = (e: Event) => {
     const target = e.target as HTMLInputElement
     target.value = target.value.replace(/\D/g, '')
 
-    if (Number(target.value) < minYearToFilter ||
-        Number(target.value) > currentYear) {
+    if (Number(target.value) < minYearToFilter || Number(target.value) > currentYear) {
         isError.value = true
     } else {
         isError.value = false
@@ -140,6 +139,16 @@ onMounted(() => {
     &__wrap {
         position: relative;
         width: 100%;
+        outline: 2px solid transparent;
+        outline-offset: 3px;
+        border-radius: 5px;
+        transition: outline-color 0.2s ease-in-out;
+
+        @media (any-hover: hover) {
+            &:hover {
+                outline-color: var(--color-accent);
+            }
+        }
     }
 
     &__tip {

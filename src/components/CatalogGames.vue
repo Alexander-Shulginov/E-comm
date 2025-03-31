@@ -9,8 +9,9 @@ const { data: releasedGames, isPending: releasedGamesLoaded } = useQuery({
     queryFn: () =>
         fetchGames({
             page_size: 5,
-            ordering: '-added',
-            dates: '2025-02-01,2025-12-31'
+            ordering: '-rating',
+            platforms: '4',
+            dates: '2025-03-01,2025-12-31'
         })
 })
 

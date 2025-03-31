@@ -2,6 +2,7 @@
 import BaseText from '@/components/base/BaseText.vue'
 import BaseTitle from '@/components/base/BaseTitle.vue'
 import { IPromoGames } from '@/types/interfaces/IPromoGames'
+import BaseImg from './base/BaseImg.vue'
 
 defineProps<{
     data: IPromoGames
@@ -10,7 +11,9 @@ defineProps<{
 
 <template>
     <router-link :to="{ name: 'Game', params: { id: data.id } }" class="promoCard">
-        <img class="promoCard__img" :src="data.img" alt="Promo img" />
+        <div class="promoCard__img-wrap">
+            <BaseImg :src="data.img" :alt="data.title" :width="700" :height="390" class="promoCard__img" />
+        </div>
         <div class="promoCard__wrapper">
             <BaseTitle :tag="'h3'" :is-bold="true" class="promoCard__title">{{
                 data.title
@@ -30,6 +33,14 @@ defineProps<{
     aspect-ratio: 16 / 9;
     min-height: 300px;
 
+    @media (any-hover: hover) {
+        &:hover {
+            .promoCard__img {
+                transform: scale(1.05);
+            }
+        }
+    }
+
     &::after {
         content: '';
         pointer-events: none;
@@ -45,9 +56,15 @@ defineProps<{
         transition: transform 0.8s ease-in-out;
     }
 
+    &__img-wrap {
+        height: 100%;
+        overflow: hidden;
+    }
+
     &__img {
         object-fit: cover;
         object-position: top;
+        transition: transform 0.6s ease-in-out;
     }
 
     &__wrapper {

@@ -9,13 +9,15 @@ defineProps<{
 
 <template>
     <router-link :to="{ name: 'Article', params: { id: data.id } }" class="cardArticle">
-        <BaseImg
-            :src="data.img"
-            :width="500"
-            :height="600"
-            :alt="data.title"
-            class="cardArticle__img"
-        />
+        <div class="cardArticle__img-wrap">
+            <BaseImg
+                :src="data.img"
+                :width="500"
+                :height="600"
+                :alt="data.title"
+                class="cardArticle__img"
+            />
+        </div>
         <div class="cardArticle__date">
             <div class="cardArticle__date-value">{{ data.date }}</div>
         </div>
@@ -39,6 +41,14 @@ defineProps<{
     border-radius: 12px;
     min-height: 300px;
 
+    @media (any-hover: hover) {
+        &:hover {
+            .cardArticle__img {
+                transform: scale(1.05);
+            }
+        }
+    }
+
     &::after {
         content: '';
         pointer-events: none;
@@ -54,9 +64,15 @@ defineProps<{
         transition: transform 0.8s ease-in-out;
     }
 
+    &__img-wrap {
+        overflow: hidden;
+        border-radius: 12px;
+        height: 100%;
+    }
+
     &__img {
         object-fit: cover;
-        border-radius: 12px;
+        transition: transform 0.6s ease-in-out;
     }
 
     &__date {

@@ -35,15 +35,24 @@ defineProps<{
 
 <style lang="scss" scoped>
 .productCard {
+    @media (any-hover: hover) {
+        &:hover {
+            .productCard__img {
+                transform: scale(1.05);
+            }
+        }
+    }
     &__img {
         aspect-ratio: 3 / 4;
         object-fit: cover;
-        border-radius: 6px;
+        transition: transform .6s  ease-in-out;
     }
 
     &__picture {
+        border-radius: 6px;
         margin-bottom: 12px;
         position: relative;
+        overflow: hidden;
         &::after {
             content: '';
             pointer-events: none;

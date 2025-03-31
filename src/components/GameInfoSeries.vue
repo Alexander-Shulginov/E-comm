@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { IListGames } from '@/types/interfaces/IGames'
 import BaseTitle from '@/components/base/BaseTitle.vue'
+import BaseImg from './base/BaseImg.vue'
 
 defineProps<{
     data: IListGames | undefined
@@ -18,13 +19,15 @@ defineProps<{
                 :to="{ name: 'Game', params: { id: game.id } }"
                 class="gameSeries__card"
             >
-                <img
-                    :src="game.image"
-                    :alt="game.name"
-                    class="gameSeries__img"
-                    width="280"
-                    height="155"
-                />
+                <div class="gameSeries__img-wrap">
+                    <BaseImg
+                        :src="game.image"
+                        :alt="game.name"
+                        :width="280"
+                        :height="155"
+                        class="gameSeries__img"
+                    />
+                </div>
                 <p class="gameSeries__name">{{ game.name }}</p>
             </router-link>
         </div>
@@ -34,6 +37,7 @@ defineProps<{
 <style lang="scss" scoped>
 .gameSeries {
     margin-bottom: 50px;
+
     &__title {
         margin-bottom: 30px;
 
@@ -62,19 +66,29 @@ defineProps<{
 
     &__card {
         max-height: 250px;
+        @media (any-hover: hover) {
+            &:hover {
+                .gameSeries__img {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+
+    &__img-wrap {
+        border-radius: 6px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        @media (max-width: 768px) {
+            margin-bottom: 6px;
+        }
     }
 
     &__img {
         aspect-ratio: 16 / 9;
         object-fit: cover;
         object-position: top;
-        margin-bottom: 10px;
-        height: auto;
-        border-radius: 6px;
-
-        @media (max-width: 768px) {
-            margin-bottom: 6px;
-        }
+        transition: transform 0.6s ease-in-out;
     }
 
     &__name {

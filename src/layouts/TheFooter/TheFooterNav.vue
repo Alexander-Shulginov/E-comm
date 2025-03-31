@@ -6,27 +6,27 @@ const footerNav = [
     {
         title: 'Useful Links',
         links: [
-            { text: 'About Us', url: '/' },
-            { text: 'Contact Us', url: '/' },
-            { text: 'Blog', url: '/' },
-            { text: 'FAQs', url: '/' }
+            { text: 'Games', url: { name: 'Games' } },
+            { text: 'Genres', url: { name: 'Genres' } },
+            { text: 'Blog', url: { name: 'Blog' } }
+            // { text: 'FAQs', url: '/' }
         ]
     },
     {
         title: 'Games',
         links: [
-            { text: 'PC', url: '/' },
-            { text: 'PlayStation 5', url: '/' },
-            { text: 'Xbox Series X|S', url: '/' },
-            { text: 'Nintendo Switch', url: '/' }
+            { text: 'PC', url: { name: 'Games', query: { parent_platforms: 1 } } },
+            { text: 'PlayStation', url: { name: 'Games', query: { parent_platforms: 2 } } },
+            { text: 'Xbox', url: { name: 'Games', query: { parent_platforms: 3 } } },
+            { text: 'Nintendo', url: { name: 'Games', query: { parent_platforms: 7 } } },
         ]
     },
     {
         title: 'Social Links',
         links: [
-            { text: 'Instagram', url: '/' },
-            { text: 'Twitter', url: '/' },
-            { text: 'YouTube', url: '/' }
+            { text: 'Instagram', url: {name: 'Home'} },
+            { text: 'Twitter', url: {name: 'Home'} },
+            { text: 'YouTube', url: {name: 'Home'} }
         ]
     }
 ]

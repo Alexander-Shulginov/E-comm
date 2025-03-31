@@ -50,6 +50,12 @@ const updateClickedItem = (index: number) => {
         color: var(--color-light);
         font-size: 16px;
         background-color: transparent;
+
+        @media (any-hover:hover) {
+            &:hover {
+                color: var(--color-accent);
+            }
+        }
     }
 
     &__btn--active {

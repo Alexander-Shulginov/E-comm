@@ -32,6 +32,9 @@ watch(
     (newValue) => {
         if (!newValue) {
             platformValue.value = []
+        } else {
+            // @ts-ignore
+            platformValue.value = route.query.parent_platforms.split(',')
         }
     }
 )
@@ -48,7 +51,7 @@ onMounted(() => {
     <p class="filters__name">
         Platforms <span v-show="platformValue.length > 0">({{ platformValue.length }})</span>
     </p>
-    <ul class="filters__item" :class="{ 'filters__item--expanded': isExpand }">
+    <ul class="filters__items" :class="{ 'filters__items--expanded': isExpand }">
         <li v-for="platform in platforms?.results" :key="platform.id">
             <BaseCheckbox
                 :id="platform.slug"

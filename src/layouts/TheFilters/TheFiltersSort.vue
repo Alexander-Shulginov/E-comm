@@ -51,6 +51,16 @@ onMounted(() => {
 <style lang="scss" scoped>
 .select-base {
     position: relative;
+    outline: 2px solid transparent;
+    outline-offset: 3px;
+    border-radius: 5px;
+    transition: outline-color .2s  ease-in-out;
+
+    @media (any-hover:hover) {
+        &:hover {
+            outline-color: var(--color-accent);
+        }
+    }
 }
 
 .select-base select {

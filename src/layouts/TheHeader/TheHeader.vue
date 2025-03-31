@@ -1,39 +1,15 @@
 <script setup lang="ts">
 import BaseGitHubLink from '@/components/base/BaseGitHubLink.vue'
 import BaseLogo from '@/components/base/BaseLogo.vue'
-import BaseBurger from '@/components/UI/BaseBurger.vue'
 import TheHeaderNav from '@/layouts/TheHeader/TheHeaderNav.vue'
-import { onMounted, onUnmounted, ref } from 'vue'
-
-const menuIsOpen = ref(false)
-const headerRef = ref<Node | null>(null)
-
-const toggleMenu = () => {
-    menuIsOpen.value = !menuIsOpen.value
-}
-const handleClickOutside = (event: Event) => {
-    const target = event.target as Node
-    if (menuIsOpen.value && !headerRef.value?.contains(target)) {
-        menuIsOpen.value = false
-    }
-}
-
-onMounted(() => {
-    window.addEventListener('click', handleClickOutside)
-})
-
-onUnmounted(() => {
-    window.removeEventListener('click', handleClickOutside)
-})
 </script>
 
 <template>
     <header ref="headerRef" class="header">
         <div class="header__inner">
             <BaseLogo />
-            <TheHeaderNav :state="menuIsOpen" />
+            <TheHeaderNav class="header__nav" />
             <BaseGitHubLink class="header__gh" />
-            <BaseBurger :state="menuIsOpen" @click="toggleMenu" class="header__burger" />
         </div>
     </header>
 </template>
@@ -52,26 +28,38 @@ onUnmounted(() => {
         margin: 0 auto;
         padding: 16px 15px;
 
+        gap: 18px;
         position: relative;
 
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         align-items: center;
 
         @media (max-width: 768px) {
-            gap: 12px;
+            gap: 18px;
+        }
+
+        @media (max-width: 568px) {
+            gap: 8px;
         }
     }
 
-    &__burger {
-        display: none;
+    &__nav {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+
         @media (max-width: 568px) {
-            display: block;
+            grid-column: span 3;
+            grid-row: 2 / 3;
+            margin: 0 auto;
         }
     }
 
     &__gh {
+        grid-column: 4 / 5;
+        grid-row: 1 / 2;
         @media (max-width: 568px) {
+            grid-column: 3 / 4;
             margin-left: auto;
         }
     }

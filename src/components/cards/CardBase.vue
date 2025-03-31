@@ -49,17 +49,20 @@ const displayName = computed(() => {
                 visibility: visible;
                 opacity: 1;
             }
+
+            .cardBase__img {
+                transform: scale(1.05);
+            }
         }
     }
 
     &__img {
         aspect-ratio: 3 / 4;
         object-fit: cover;
-        border-radius: 8px;
         overflow: hidden;
 
-        margin-bottom: 12px;
 
+        transition: transform 0.6s ease-in-out;
         @media (max-width: 460px) {
             aspect-ratio: 16 / 9;
         }
@@ -80,6 +83,9 @@ const displayName = computed(() => {
 
     &__img-wrap {
         position: relative;
+        overflow: hidden;
+        margin-bottom: 12px;
+        border-radius: 8px;
     }
 
     &__wrap {

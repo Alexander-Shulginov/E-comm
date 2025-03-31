@@ -78,7 +78,7 @@ const { toggleOverlay } = useOverlay()
         }
     }
 
-    &__item {
+    &__items {
         display: flex;
         flex-direction: column;
         gap: 8px;
@@ -88,7 +88,7 @@ const { toggleOverlay } = useOverlay()
         position: relative;
     }
 
-    &__item--expanded {
+    &__items--expanded {
         height: auto;
         overflow: hidden;
     }
@@ -107,7 +107,7 @@ const { toggleOverlay } = useOverlay()
         display: block;
     }
 
-    &__item {
+    &__items {
         margin-bottom: 12px;
         --scrollbar-color-thumb: var(--color-accent);
         --scrollbar-color-track: var(--color-dark-base);
@@ -124,20 +124,28 @@ const { toggleOverlay } = useOverlay()
         border: 1px solid var(--color-light);
         padding: 8px 12px;
         border-radius: 4px;
+
+        transition: border-color .2s  ease-in-out;
+
+        @media (any-hover:hover) {
+            &:hover {
+                border-color: var(--color-accent);
+            }
+        }
     }
 
     @supports selector(::-webkit-scrollbar) {
-        &__item::-webkit-scrollbar-thumb {
+        &__items::-webkit-scrollbar-thumb {
             background: var(--scrollbar-color-thumb);
             border-radius: 10px;
             cursor: pointer;
         }
 
-        &__item::-webkit-scrollbar-track {
+        &__items::-webkit-scrollbar-track {
             background: var(--scrollbar-color-track);
             border-radius: 10px;
         }
-        &__item::-webkit-scrollbar {
+        &__items::-webkit-scrollbar {
             max-width: var(--scrollbar-width-legacy);
             max-height: var(--scrollbar-width-legacy);
             border-radius: 10px;

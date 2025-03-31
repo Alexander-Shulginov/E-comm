@@ -82,6 +82,14 @@ const decreasePage = () => {
         padding: 14px;
         border-radius: 6px;
         cursor: pointer;
+
+        transition: background-color 0.3s ease-in-out;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: #323232;
+            }
+        }
     }
 
     &__btn:nth-child(1) {
@@ -95,6 +103,11 @@ const decreasePage = () => {
     &__btn:disabled {
         cursor: not-allowed;
         opacity: 0.8;
+        @media (any-hover:hover) {
+            &:hover {
+                background-color: var(--color-dark-second);
+            }
+        }
     }
 }
 </style>

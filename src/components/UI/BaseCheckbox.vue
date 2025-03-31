@@ -32,6 +32,13 @@ const platformsModel = defineModel()
     align-items: center;
     gap: 8px;
     cursor: pointer;
+    @media (any-hover: hover) {
+        &:hover {
+            .baseCheckbox__label {
+                color: var(--color-accent);
+            }
+        }
+    }
 
     &__wrap {
         width: 20px;
@@ -78,6 +85,8 @@ const platformsModel = defineModel()
         width: 100%;
         color: rgba(255, 255, 255, 0.85);
         cursor: pointer;
+
+        transition: color 0.3s ease-in-out;
     }
 }
 </style>
