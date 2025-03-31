@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue'
-import CardBase from '@/components/cards/CardBase.vue'
-import { useSwiper } from '@/hooks/useSwiper'
-import BaseLoader from '@/components/base/BaseLoader.vue'
 import { Navigation } from 'swiper/modules'
+import { useSwiper } from '@/hooks/useSwiper'
 import { IListGames } from '@/types/interfaces/IGames'
+import CardBase from '@/components/cards/CardBase.vue'
+import BaseLoader from '@/components/base/BaseLoader.vue'
 
 const props = defineProps<{
     data: IListGames | undefined
@@ -12,14 +12,15 @@ const props = defineProps<{
 }>()
 
 const swiperPopular = ref<HTMLElement | null>(null)
+
 const { initSwiper } = useSwiper(swiperPopular, {
     modules: [Navigation],
     loop: true,
     speed: 800,
-    spaceBetween: 24,
+    spaceBetween: 14,
     breakpoints: {
-        320: { slidesPerView: 1, spaceBetween: 16 },
-        460: { slidesPerView: 2, spaceBetween: 18 },
+        320: { slidesPerView: 1, spaceBetween: 8 },
+        460: { slidesPerView: 2, spaceBetween: 10 },
         768: { slidesPerView: 3 },
         1024: { slidesPerView: 4 },
         1280: { slidesPerView: 5 }
@@ -64,9 +65,8 @@ watch([() => props.data, swiperPopular], (newData) => {
     }
 
     &__list {
-        padding-bottom: 30px;
-        @media (max-width: 768px) {
-            padding-bottom: 0;
+        .swiper-slide {
+            padding: 4px 4px 30px 4px;
         }
     }
 }

@@ -42,6 +42,13 @@ const displayName = computed(() => {
 <style lang="scss" scoped>
 .cardBase {
     overflow: hidden;
+    display: block;
+
+    &:focus-visible {
+        .cardBase__img {
+            transform: scale(1.05);
+        }
+    }
 
     @media (any-hover: hover) {
         &:hover {
@@ -60,7 +67,6 @@ const displayName = computed(() => {
         aspect-ratio: 3 / 4;
         object-fit: cover;
         overflow: hidden;
-
 
         transition: transform 0.6s ease-in-out;
         @media (max-width: 460px) {
