@@ -20,7 +20,7 @@ const platformsModel = defineModel()
                 :value="value"
                 :disabled="isDisabled"
             />
-            <div class="baseCheckbox__icon">+</div>
+            <div class="baseCheckbox__icon"></div>
         </div>
         <label class="baseCheckbox__label" :for="id">{{ text }}</label>
     </div>
