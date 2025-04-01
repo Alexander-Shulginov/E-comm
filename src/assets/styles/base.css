@@ -128,11 +128,11 @@ select:focus-visible {
 }
 
 .swiper-button-prev {
-    left: 3px;
+    left: 6px;
 }
 
 .swiper-button-next {
-    right: 3px;
+    right: 6px;
 }
 .swiper-button-prev::after {
     position: relative;

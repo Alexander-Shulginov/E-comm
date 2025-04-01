@@ -1,1 +1,2 @@
-<!-- - swiper-pagination ломается при навигации через tab -->
+# GameWorld
+

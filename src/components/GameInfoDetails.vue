@@ -12,9 +12,9 @@ defineProps<{
     <div class="gameDetails">
         <div class="gameDetails__item">
             <span class="gameDetails__key">Rating</span>
-            <span class="gameDetails__value">
+            <div class="gameDetails__value">
                 <BaseRating :rating="info.rating" />
-            </span>
+            </div>
         </div>
 
         <div v-if="info.genres.length" class="gameDetails__item">

@@ -11,7 +11,7 @@ import BlogSection from '@/components/BlogSection.vue'
 </script>
 
 <template>
-    <div aria-label="Home page">
+    <section aria-label="Home page">
         <MainCarousel />
         <GenreList />
         <PopularGames />
@@ -21,5 +21,5 @@ import BlogSection from '@/components/BlogSection.vue'
         <BlogSection />
         <ProjectInfo />
         <BaseScrollToTop />
-    </div>
+    </section>
 </template>
