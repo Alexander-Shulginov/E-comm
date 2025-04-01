@@ -1,1 +1,1 @@
-- swiper-pagination ломается при навигации через tab
+<!-- - swiper-pagination ломается при навигации через tab -->
