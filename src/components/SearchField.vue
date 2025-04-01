@@ -27,7 +27,7 @@ watch(
     (newValue) => {
         clearTimeout(timeout)
         timeout = setTimeout(() => {
-            updateUrlQuery(router, { search: newValue })
+            updateUrlQuery(router, { search: newValue, page:1 })
         }, 500)
     }
 )

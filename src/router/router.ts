@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 import HomeView from '@/views/HomeView.vue'
 
 const APP_NAME = import.meta.env.VITE_APP_NAME
 
-const routes = [
+const routes: RouteRecordRaw[] = [
     {
         path: '/',
         name: 'Home',
@@ -26,12 +27,14 @@ const routes = [
     {
         path: '/games',
         name: 'Games',
+        // @ts-ignore
         props: (route) => ({ page: Number(route.query.page) || 1 }),
         meta: { title: 'Games' },
+        // @ts-ignore
         components: {
             default: () => import('@/views/GamesView.vue'),
             filters: () => import('@/layouts/TheFilters/TheFilters.vue')
-        }
+        } as RouteRecordRaw
     },
     {
         path: '/article/:id',
@@ -42,7 +45,7 @@ const routes = [
     {
         path: '/blog',
         name: 'Blog',
-        meta: {title: 'Blog'},
+        meta: { title: 'Blog' },
         component: () => import('@/views/ArticleListView.vue')
     },
     {

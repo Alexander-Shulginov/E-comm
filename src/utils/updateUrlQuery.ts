@@ -1,4 +1,4 @@
-import { Router, useRouter } from 'vue-router'
+import { Router } from 'vue-router'
 
 export const updateUrlQuery = (router: Router, payload: Record<string, any>) => {
     const newQuery = {
@@ -10,7 +10,7 @@ export const updateUrlQuery = (router: Router, payload: Record<string, any>) => 
         if (newQuery[key] == null || newQuery[key] === '') delete newQuery[key]
     })
 
-    router.push({ query: newQuery })
+    router.replace({ query: newQuery })
 }
 
 export const removeUrlQuery = (router: Router, key: string) => {
@@ -18,5 +18,5 @@ export const removeUrlQuery = (router: Router, key: string) => {
 
     delete newQuery[key]
 
-    router.push({ query: newQuery })
+    router.replace({ query: newQuery })
 }

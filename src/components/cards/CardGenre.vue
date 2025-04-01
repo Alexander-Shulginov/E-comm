@@ -12,26 +12,31 @@ defineProps<{
 </script>
 
 <template>
-    <div class="cardGenres">
-        <router-link :to="{ name: 'Games', query: { genres: data.id } }">
-            <BaseImg
-                class="cardGenres__img"
-                :src="data.img"
-                :alt="`Link to ${data.name}`"
-                :width="340"
-                :height="190"
-            />
-            <p class="cardGenres__name">{{ data.name }}</p>
-        </router-link>
-    </div>
+    <router-link :to="{ name: 'Games', query: { genres: data.id } }" class="cardGenres">
+        <BaseImg
+            class="cardGenres__img"
+            :src="data.img"
+            :alt="`Link to ${data.name}`"
+            :width="340"
+            :height="190"
+        />
+        <p class="cardGenres__name">{{ data.name }}</p>
+    </router-link>
 </template>
 
 <style lang="scss" scoped>
 .cardGenres {
+    display: block;
     position: relative;
 
     border-radius: 10px;
     overflow: hidden;
+
+    &:focus-visible {
+        .cardGenres__img {
+            transform: scale(1.05);
+        }
+    }
 
     @media (any-hover: hover) {
         &:hover {

@@ -35,7 +35,7 @@ const { data: articles, isFetching } = useQuery({
         color: var(--color-light-second);
         max-width: 780px;
 
-        margin-bottom: 28px;
+        margin-bottom: 44px;
     }
 
     &__content {

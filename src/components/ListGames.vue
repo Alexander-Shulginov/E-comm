@@ -63,6 +63,7 @@ const {
     &__content {
         margin-bottom: 48px;
         position: relative;
+        min-height: 300px;
     }
 }
 </style>

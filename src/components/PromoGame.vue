@@ -28,7 +28,7 @@ const { initSwiper } = useSwiper(swiperPromo, {
         }
     },
     pagination: {
-        el: '.swiper-pagination'
+        el: '.swiper-pagination.promo-pagination'
     }
 })
 
@@ -51,8 +51,8 @@ watch([() => promoGames, swiperPromo], (newData) => {
                     class="swiper-slide"
                 />
             </div>
-            <div class="swiper-pagination"></div>
         </div>
+        <div class="swiper-pagination promo-pagination"></div>
     </section>
 </template>
 
@@ -64,7 +64,6 @@ watch([() => promoGames, swiperPromo], (newData) => {
 
     &__swiper {
         padding: 4px 4px 40px 4px;
-        
     }
 }
 </style>

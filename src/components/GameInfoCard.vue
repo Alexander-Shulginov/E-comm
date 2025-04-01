@@ -1,71 +1,70 @@
 <script setup lang="ts">
-import { IGame } from '@/types/interfaces/IGames'
 import BaseImg from '@/components/base/BaseImg.vue'
 
 defineProps<{
-    data: IGame | undefined
+    data: {
+        id: number
+        name: string
+        image: string
+        rating: number
+        platforms: {
+            id: number
+            name: string
+        }[]
+    }
 }>()
 </script>
 
 <template>
-    <router-link
-        :to="{ name: 'Game', params: { id: data.id } }"
-        v-if="data"
-        class="cardPopular"
-    >
-        <div class="cardPopular__img-wrap">
+    <router-link v-if="data" :to="{ name: 'Game', params: { id: data.id } }" class="gameSeriesCard">
+        <div class="gameSeriesCard__img-wrap">
             <BaseImg
                 :src="data.image"
                 :alt="data.name"
-                :width="215"
-                :height="230"
-                class="cardPopular__img"
+                :width="280"
+                :height="155"
+                class="gameSeriesCard__img"
             />
         </div>
-        <p class="cardPopular__name">{{ data.name ? data.name : 'No name' }}</p>
+        <p class="gameSeriesCard__name">{{ data.name }}</p>
     </router-link>
 </template>
 
 <style lang="scss" scoped>
-.cardPopular {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
+.gameSeriesCard {
+    max-height: 250px;
     &:focus-visible {
-        .cardPopular__img {
+        .gameSeriesCard__img {
             transform: scale(1.05);
         }
     }
 
     @media (any-hover: hover) {
         &:hover {
-            .cardPopular__img {
+            .gameSeriesCard__img {
                 transform: scale(1.05);
             }
         }
     }
 
     &__img-wrap {
+        border-radius: 6px;
+        margin-bottom: 10px;
         overflow: hidden;
-        border-radius: 8px;
-        margin-bottom: 12px;
-        height: 100%;
+        @media (max-width: 768px) {
+            margin-bottom: 6px;
+        }
     }
 
     &__img {
+        aspect-ratio: 16 / 9;
         object-fit: cover;
-
+        object-position: top;
         transition: transform 0.6s ease-in-out;
-
-        @media (max-width: 768px) {
-            aspect-ratio: 16 / 9;
-        }
     }
 
     &__name {
         font-weight: 700;
-        font-size: 18px;
         overflow: hidden;
         display: -webkit-box;
 
@@ -73,7 +72,7 @@ defineProps<{
         -webkit-line-clamp: 1;
 
         @media (max-width: 768px) {
-            font-size: 16px;
+            font-size: 14px;
         }
     }
 }

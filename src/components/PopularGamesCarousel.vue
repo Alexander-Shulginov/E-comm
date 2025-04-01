@@ -13,7 +13,7 @@ const props = defineProps<{
 
 const swiperPopular = ref<HTMLElement | null>(null)
 
-const { initSwiper } = useSwiper(swiperPopular, {
+const { initSwiper, swiperInstance } = useSwiper(swiperPopular, {
     modules: [Navigation],
     loop: true,
     speed: 800,
@@ -26,8 +26,8 @@ const { initSwiper } = useSwiper(swiperPopular, {
         1280: { slidesPerView: 5 }
     },
     navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
+        nextEl: '.swiper-button-next.btn-games',
+        prevEl: '.swiper-button-prev.btn-games'
     }
 })
 
@@ -47,9 +47,9 @@ watch([() => props.data, swiperPopular], (newData) => {
                     <CardBase :game="game" :to="{ name: 'Game', params: { id: game.id } }" />
                 </li>
             </ul>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
+        <div class="swiper-button-next btn-games"></div>
+        <div class="swiper-button-prev btn-games"></div>
     </div>
 </template>
 

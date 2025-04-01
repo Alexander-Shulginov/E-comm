@@ -16,7 +16,12 @@ const displayName = computed(() => {
 </script>
 
 <template>
-    <router-link :to="props.to" v-if="game" class="cardBase">
+    <router-link
+        @focus="console.log(123)"
+        :to="props.to"
+        v-if="game"
+        class="cardBase"
+    >
         <div class="cardBase__img-wrap">
             <BaseImg
                 :src="game.image"
@@ -41,7 +46,6 @@ const displayName = computed(() => {
 
 <style lang="scss" scoped>
 .cardBase {
-    overflow: hidden;
     display: block;
 
     &:focus-visible {

@@ -25,8 +25,8 @@ const { initSwiper, swiperInstance, destroySwiper } = useSwiper(swiperCategory, 
         1280: { slidesPerView: 5 }
     },
     navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
+        nextEl: '.swiper-button-next.btn-popular',
+        prevEl: '.swiper-button-prev.btn-popular'
     }
 })
 
@@ -53,9 +53,9 @@ watch([() => props.data, swiperCategory], async (newData) => {
                     :data="game"
                 />
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
+        <div class="swiper-button-next btn-popular"></div>
+        <div class="swiper-button-prev btn-popular"></div>
     </div>
 </template>
 
