@@ -17,7 +17,6 @@ const displayName = computed(() => {
 
 <template>
     <router-link
-        @focus="console.log(123)"
         :to="props.to"
         v-if="game"
         class="cardBase"
