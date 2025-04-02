@@ -1,1 +1,0 @@
-import{Z as s}from"./index-2brXERXG.js";const n=e=>({id:e.id,name:e.name,slug:e.slug,img:e.image_background,gameCount:e.games_count}),a="/genres",g=async e=>(await s.get(a,{params:e})).data.results.map(n);export{g as f};
