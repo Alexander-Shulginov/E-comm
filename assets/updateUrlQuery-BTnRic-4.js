@@ -1,0 +1,1 @@
+const c=(r,u)=>{const e={...r.currentRoute.value.query,...u};Object.keys(e).forEach(t=>{(e[t]==null||e[t]==="")&&delete e[t]}),r.replace({query:e})},l=(r,u)=>{const e={...r.currentRoute.value.query};delete e[u],r.replace({query:e})};export{l as r,c as u};
