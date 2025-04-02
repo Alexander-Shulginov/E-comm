@@ -18,13 +18,13 @@ Creation of a comprehensive online platform providing detailed information about
 Detailed pages with information about each game.
 System for filtering and sorting games based on various criteria.
 
-*Blog*  
-Section with articles, news, reviews, and gaming industry analytics.
-
 *Detailed Game Page*  
 Complete game information.
 Media gallery.
 Tags.
+
+*Blog*  
+Section with articles, news, reviews, and gaming industry analytics.
 
 *Filters and Categories*  
 Advanced filtering system for convenient game search by various parameters.
