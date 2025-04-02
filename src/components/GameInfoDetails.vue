@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { IGameById } from '@/types/interfaces/IGameById'
-import BaseRating from './base/BaseRating.vue'
+import BaseRating from '@/components/base/BaseRating.vue'
 import { formatDate } from '@/utils/formatDate'
 
 defineProps<{
