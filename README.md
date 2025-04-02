@@ -2,7 +2,7 @@
 
 ### Tech stack
 
-**Frontend**: TS, Vue, Vue-Router, Tanstack Query, Swiper  
+**Frontend**: TS, Vue, Vue-Router, Tanstack Query
 **Backend**: Supabase, Public API - [rawg.io](https://rawg.io/apidocs)  
 **Data Base**: PostgreSQL
 
