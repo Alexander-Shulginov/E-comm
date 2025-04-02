@@ -1,6 +1,6 @@
 ![Logo](./src/assets/img/main_logo.svg)
 
-#### Tech stack
+### Tech stack
 
 **Frontend**: Vue, Vue-Router, Tanstack Query, Swiper  
 **Backend**: Supabase, Public API - [rawg.io](https://rawg.io/apidocs)  
@@ -14,23 +14,23 @@ Creation of a comprehensive online platform providing detailed information about
 
 ### Features
 
-**Game Catalog**  
+*Game Catalog*  
 Detailed pages with information about each game.
 System for filtering and sorting games based on various criteria.
 
-**Blog**  
+*Blog*  
 Section with articles, news, reviews, and gaming industry analytics.
 
-**Detailed Game Page**  
+*Detailed Game Page*  
 Complete game information.
 Media gallery.
 Tags.
 
-**Filters and Categories**  
+*Filters and Categories*  
 Advanced filtering system for convenient game search by various parameters.
 Clear categorization of games by genres, platforms, and other criteria.
 
-**Responsive Design**  
+*Responsive Design*  
 Interface optimization for convenient use on various devices (computers, tablets, smartphones).
 
 ---
