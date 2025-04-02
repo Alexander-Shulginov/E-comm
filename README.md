@@ -1,6 +1,15 @@
 ![Logo](./src/assets/img/main_logo.svg)
 
+#### Tech stack
+
+**Frontend**: Vue, Vue-Router, Tanstack Query, Swiper  
+**Backend**: Supabase, Public API - [rawg.io](https://rawg.io/apidocs)  
+**Data Base**: PostgreSQL
+
+---
+
 ### Project Goal
+
 Creation of a comprehensive online platform providing detailed information about games, uniting the community of gamers and gaming industry enthusiasts.
 
 ### Features
@@ -26,36 +35,28 @@ Interface optimization for convenient use on various devices (computers, tablets
 
 ---
 
-#### Tech stack  
-
-**Frontend**: Vue, Vue-Router, Tanstack Query, Swiper  
-**Backend**: Supabase, Public API - [rawg.io](https://rawg.io/apidocs)  
-**Data Base**: PostgreSQL
-
---- 
-
 #### Run Locally
 
-- Clone the project
+-   Clone the project
 
 ```bash
 git clone https://github.com/Alexander-Shulginov/Games_World
 ```
 
-- Go to the project directory
+-   Go to the project directory
 
 ```bash
 cd Games_World
 ```
 
-- Install dependencies
+-   Install dependencies
 
-```bash 
+```bash
 npm i
 ```
 
-- Start the server
+-   Start the server
 
-```bash 
+```bash
 npm run dev
 ```
