@@ -3,11 +3,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-    base:
-        process.env.NODE_ENV === 'production'
-            ? '/https://github.com/Alexander-Shulginov/Games_World/'
-            : '/',
-
     plugins: [vue()],
     resolve: {
         alias: {
