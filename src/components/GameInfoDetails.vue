@@ -106,6 +106,10 @@ defineProps<{
     display: flex;
     flex-direction: column;
     gap: 16px;
+    
+    @media (max-width: 768px){
+        padding: 12px;
+    }
 
     &__item {
         display: flex;
@@ -115,6 +119,10 @@ defineProps<{
     &__key {
         min-width: 90px;
         font-weight: 700;
+
+        @media (max-width: 768px){
+            font-size: 15px;
+        }
     }
 
     &__values {
@@ -123,11 +131,15 @@ defineProps<{
         align-items: center;
         column-gap: 10px;
         row-gap: 4px;
+
     }
 
     &__value {
         color: rgba(255, 255, 255, 0.85);
         font-size: 15px;
+        @media (max-width: 768px){
+            font-size: 14px;
+        }
     }
 
     a {

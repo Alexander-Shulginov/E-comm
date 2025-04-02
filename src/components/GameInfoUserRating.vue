@@ -27,6 +27,10 @@ defineProps<{
 .userRating {
     background-color: var(--color-dark-second);
     padding: 20px;
+
+    @media (max-width: 768px){
+        padding: 12px;
+    }
     &__block {
         display: flex;
         flex-direction: column;
@@ -43,6 +47,10 @@ defineProps<{
     &__title {
         text-align: left;
         text-transform: capitalize;
+
+        @media (max-width: 768px){
+            font-size: 14px;
+        }
     }
 
     &__percent {
@@ -50,11 +58,16 @@ defineProps<{
     }
 
     &__wrap {
+        flex-shrink: 0;
         width: 150px;
         display: flex;
         gap: 6px;
         align-items: center;
         justify-content: space-between;
+
+        @media (max-width: 768px){
+            width: 140px;
+        }
     }
 
     &__item {
