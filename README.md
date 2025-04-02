@@ -3,7 +3,7 @@
 ### Project Goal
 Creation of a comprehensive online platform providing detailed information about games, uniting the community of gamers and gaming industry enthusiasts.
 
-#### Features
+### Features
 
 **Game Catalog**  
 Detailed pages with information about each game.
