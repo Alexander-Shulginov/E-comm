@@ -14,7 +14,7 @@ defineProps<{
         <BaseTitle :tag="'h3'" :is-bold="true" :class="'genreCard__title'">{{
             genreName
         }}</BaseTitle>
-        <img class="genreCard__img" width="440" height="260" :src="genreImg" :alt="genreName" />
+        <img class="genreCard__img" width="440" height="260" :src="genreImg" :alt="genreName" loading="lazy" />
     </router-link>
 </template>
 

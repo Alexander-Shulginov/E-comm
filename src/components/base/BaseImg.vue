@@ -29,6 +29,7 @@ const onError = () => {
         :alt="alt"
         :width="width"
         :height="height"
+        loading="lazy"
         @load="onLoad"
         @error="onError"
     />
