@@ -16,7 +16,14 @@ defineProps<{
 
 <template>
     <div class="cardFull" data-swiper-anim>
-        <img class="cardFull__img" :src="data.img" alt="Game wallpaper" fetchpriority="high" />
+        <img
+            class="cardFull__img"
+            :src="data.img"
+            alt="Game wallpaper"
+            width="1410"
+            height="793"
+            fetchpriority="high"
+        />
         <div class="cardFull__wrap">
             <img
                 class="cardFull__logo"
@@ -141,7 +148,7 @@ defineProps<{
     &__date {
         font-family: var(--font-second);
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             font-size: 14px;
         }
     }
